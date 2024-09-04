@@ -6,6 +6,7 @@ import Link from 'next/link'
 export default function HomePage() {
 	return (
 		<div className="flex h-screen max-h-screen">
+			{/* TODO: OTP Verification | PassKey Modal  */}
 			<section className="remove-scrollbar container my-auto">
 				<div className="sub-container max-w-[496px]">
 					<Image
