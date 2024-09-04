@@ -49,7 +49,7 @@
 
   .bg-image {
     @apply bg-black-900 bg-light-rays bg-cover bg-no-repeat;
-  }
+  } 
 
   .header {
     @apply text-32-bold md:text-36-bold;

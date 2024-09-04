@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import '@/lib/styles/globals.css'
+import '@/app/globals.css'
 import { Plus_Jakarta_Sans as FontSans } from 'next/font/google'
 import { cn } from '@/lib/utils'
 
@@ -30,7 +30,7 @@ export default function RootLayout({
 		<html lang="en">
 			<body
 				className={cn(
-					'bg-zinc-900 text-zinc-100 font-sans antialiased scroll-m-4',
+					'bg-dark-300 text-zinc-100 font-sans antialiased scroll-m-4',
 					fontSans.variable
 				)}
 			>
