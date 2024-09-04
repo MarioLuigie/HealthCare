@@ -52,7 +52,9 @@ export default function CustomFormField({
 			name={name}
 			render={({ field }) => (
 				<FormItem>
-					<FormLabel>{label}</FormLabel>
+					{type !== FormFieldType.CHECKBOX && label && (
+						<FormLabel>{label}</FormLabel>
+					)}
 					<FormControl>
 						<Input placeholder={placeholder} {...field} />
 					</FormControl>
