@@ -1,4 +1,6 @@
 import type { Config } from "tailwindcss";
+import plugin from 'tailwindcss/plugin'
+
 
 const config: Config = {
   content: [
@@ -15,6 +17,35 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+		require('tailwindcss-animate'),
+		plugin(({ addUtilities }) => {
+			addUtilities({
+				'.flex-start': {
+					display: 'flex',
+					justifyContent: 'flex-start',
+					alignItems: 'center',
+				},
+				'.flex-center': {
+					display: 'flex',
+					justifyContent: 'center',
+					alignItems: 'center',
+				},
+				'.flex-between': {
+					display: 'flex',
+					justifyContent: 'space-between',
+					alignItems: 'center',
+				},
+				'.flex-end': {
+					display: 'flex',
+					justifyContent: 'flex-end',
+					alignItems: 'center',
+				},
+				'.grid-auto-300': {
+					gridTemplateColumns: 'repeat(auto-fill, minmax(300px,1fr));',
+				},
+			})
+		}),
+	],
 };
 export default config;
