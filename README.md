@@ -1,6 +1,6 @@
 # HealthCare - The complete platform for your health.
 
-[![Application intro](https://raw.githubusercontent.com/MarioLuigie/HealthCare/main/public/assets/images/intro.jpg)](https://yourmemories.vercel.app/)
+[![Application intro](https://raw.githubusercontent.com/MarioLuigie/HealthCare/main/public/assets/images/readme-intro.jpg)](https://yourmemories.vercel.app/)
 
 ## Introduction
 
