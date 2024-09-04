@@ -4,7 +4,7 @@
 
 ## Introduction
 
-**HealthCare** is a modern medical application that gives clinic patients full control over their health. With this app, users have access to their account, where they can quickly and conveniently schedule, edit, and cancel appointments. The app also offers a clear dashboard where patients can monitor their health status, check test results, and sign up for additional consultations or diagnostic tests. HealthCare is the perfect solution for those who value easy access to essential medical information and want to actively manage their health.
+**HealthCare** is a modern medical application that gives clinic patients full control over their health. With this app, users have access to their account, where they can quickly and conveniently schedule, edit, and cancel appointments with their doctors. The app also offers a clear dashboard where patients can monitor their health status, check test results, and sign up for additional consultations or diagnostic tests. HealthCare is the perfect solution for those who value easy access to essential medical information and want to actively manage their health.
 
 You can try it out here: **[https://youreditorials.vercel.app/](https://youreditorials.vercel.app/)**
 
