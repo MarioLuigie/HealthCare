@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import '@/app/globals.css'
 import { Plus_Jakarta_Sans as FontSans } from 'next/font/google'
 import { cn } from '@/lib/utils'
+import { ThemeProvider } from '@/components/theme-provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -30,11 +31,16 @@ export default function RootLayout({
 		<html lang="en">
 			<body
 				className={cn(
-					'bg-dark-300 text-zinc-100 font-sans antialiased scroll-m-4',
+					'min-h-screen bg-dark-300 font-sans antialiased scroll-m-4',
 					fontSans.variable
 				)}
 			>
-				{children}
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="dark"
+				>
+					{children}
+				</ThemeProvider>
 			</body>
 		</html>
 	)
