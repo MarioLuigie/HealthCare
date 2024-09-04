@@ -5,6 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
 // lib
 import { PatientformSchema, PatientFormData } from '@/lib/types/zod'
+import { FormFieldType } from '@/lib/types/enums'
 // components
 import { Button } from '@/components/ui/button'
 import CustomFormField from '@/components/shared/CustomFormField'
@@ -34,6 +35,7 @@ export default function PatientForm() {
 				</section>
 				<CustomFormField
 					control={form.control}
+          type={FormFieldType.INPUT}
 					name="username"
 					label="Username"
 					placeholder="Enter your user name here"
