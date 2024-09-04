@@ -125,7 +125,7 @@
   }
 
   .side-img {
-    @apply hidden h-full object-cover md:block;
+    @apply hidden md:block h-full object-cover;
   }
 
   .copyright {
