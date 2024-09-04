@@ -31,6 +31,9 @@
     transform: scaleX(2);
   }
 	/* ===== UTILITIES */
+  .test {
+    @apply bg-red-700;
+  }
   .sidebar {
     @apply remove-scrollbar w-full max-w-72 flex-col overflow-auto bg-black-800 px-7 py-10;
   }
