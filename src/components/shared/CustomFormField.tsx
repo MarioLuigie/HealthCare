@@ -2,6 +2,7 @@
 
 // modules
 import { Control } from 'react-hook-form'
+import Image from 'next/image'
 // lib
 import { FormFieldType } from '@/lib/types/enums'
 // components
@@ -31,21 +32,56 @@ interface CustomFormFieldProps {
 	renderSkeleton?: (field: any) => React.ReactNode
 }
 
-export default function CustomFormField({
-	control,
-	type,
-	name,
-	label,
-	placeholder,
-	description,
-	disabled,
-	iconSrc,
-	iconAlt,
-	dateFormat,
-	showTimeSelect,
-	children,
-	renderSkeleton,
-}: CustomFormFieldProps) {
+const RenderInput = ({
+	field,
+	props,
+}: {
+	field: any
+	props: CustomFormFieldProps
+}) => {
+	switch (props.type) {
+		case FormFieldType.INPUT:
+			return (
+				<div className="flex rounded-md border border-dark-500 bg-dark-400">
+					{props.iconSrc && (
+						<Image
+							src={props.iconSrc}
+							height={24}
+							width={24}
+							alt={props.iconAlt || 'icon'}
+							className="ml-2"
+						/>
+					)}
+					<FormControl>
+						<Input
+							{...field}
+							placeholder={props.placeholder}
+							className="shad-input border-0"
+							disabled={props.disabled}
+						/>
+					</FormControl>
+				</div>
+			)
+	}
+}
+
+export default function CustomFormField(props: CustomFormFieldProps) {
+	const {
+		control,
+		type,
+		name,
+		label,
+		placeholder,
+		description,
+		disabled = false,
+		iconSrc,
+		iconAlt,
+		dateFormat,
+		showTimeSelect,
+		children,
+		renderSkeleton,
+	} = props
+
 	return (
 		<FormField
 			control={control}
@@ -55,10 +91,10 @@ export default function CustomFormField({
 					{type !== FormFieldType.CHECKBOX && label && (
 						<FormLabel>{label}</FormLabel>
 					)}
-					<FormControl>
-						<Input placeholder={placeholder} {...field} />
-					</FormControl>
-					<FormDescription>{description}</FormDescription>
+					<RenderInput field={field} props={props} />
+					{props.description && (
+						<FormDescription>{props.description}</FormDescription>
+					)}
 					<FormMessage />
 				</FormItem>
 			)}
