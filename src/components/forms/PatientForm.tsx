@@ -60,7 +60,7 @@ export default function PatientForm() {
 					type={FormFieldType.PHONE_INPUT}
 					name="phone"
 					label="Phone number"
-					placeholder="(+48) 500 600 700"
+					placeholder="500 600 700"
 				/>
 				<Button type="submit">Submit</Button>
 			</form>
