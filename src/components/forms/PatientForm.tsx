@@ -54,6 +54,13 @@ export default function PatientForm() {
 					iconSrc={icons.EMAIL_ICON.path}
 					iconAlt={icons.EMAIL_ICON.alt}
 				/>
+				<CustomFormField
+					control={form.control}
+					type={FormFieldType.PHONE_INPUT}
+					name="phone"
+					label="Phone number"
+					placeholder="(+48) 500 600 700"
+				/>
 				<Button type="submit">Submit</Button>
 			</form>
 		</Form>
