@@ -15,6 +15,7 @@ import {
 	FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
 
 interface CustomFormFieldProps {
 	control: Control<any>
@@ -61,6 +62,18 @@ const RenderInput = ({
 						/>
 					</FormControl>
 				</div>
+			)
+
+		case FormFieldType.TEXTAREA:
+			return (
+				<FormControl>
+					<Textarea
+						{...field}
+						placeholder={props.placeholder}
+						className="shad-textArea"
+						disabled={props.disabled}
+					/>
+				</FormControl>
 			)
 	}
 }
