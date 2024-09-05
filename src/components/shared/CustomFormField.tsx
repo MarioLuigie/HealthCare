@@ -3,6 +3,7 @@
 // modules
 import { Control } from 'react-hook-form'
 import Image from 'next/image'
+import PhoneInput from 'react-phone-number-input/input'
 // lib
 import { FormFieldType } from '@/lib/types/enums'
 // components
@@ -77,20 +78,20 @@ const RenderField = ({
 				</FormControl>
 			)
 
-		// case FormFieldType.PHONE_INPUT:
-		// 	return (
-		// 		<FormControl>
-		// 			<PhoneInput
-		// 				defaultCountry="US"
-		// 				placeholder={props.placeholder}
-		// 				international
-		// 				withCountryCallingCode
-		// 				value={field.value as E164Number | undefined}
-		// 				onChange={field.onChange}
-		// 				className="input-phone"
-		// 			/>
-		// 		</FormControl>
-		// 	)
+		case FormFieldType.PHONE_INPUT:
+			return (
+				<FormControl>
+					<PhoneInput
+						defaultCountry="US"
+            placeholder={props.placeholder}
+            international
+            withCountryCallingCode
+						value={field.value as E164Number | undefined}
+            onChange={field.onChange}
+            className="input-phone"
+					/>
+				</FormControl>
+			)
 	}
 }
 
@@ -116,14 +117,12 @@ export default function CustomFormField(props: CustomFormFieldProps) {
 			control={control}
 			name={name}
 			render={({ field }) => (
-				<FormItem>
+				<FormItem className='flex-1'>
 					{type !== FormFieldType.CHECKBOX && label && (
 						<FormLabel>{label}</FormLabel>
 					)}
 					<RenderField field={field} props={props} />
-					{description && (
-						<FormDescription>{description}</FormDescription>
-					)}
+					{description && <FormDescription>{description}</FormDescription>}
 					<FormMessage />
 				</FormItem>
 			)}

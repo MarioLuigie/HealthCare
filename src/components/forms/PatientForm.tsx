@@ -18,6 +18,7 @@ export default function PatientForm() {
 		defaultValues: {
 			name: '',
 			email: '',
+			phone: '',
 		},
 	})
 
