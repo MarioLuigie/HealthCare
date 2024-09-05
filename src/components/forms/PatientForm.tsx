@@ -40,7 +40,7 @@ export default function PatientForm() {
 					type={FormFieldType.INPUT}
 					name="name"
 					label="Name"
-					placeholder="Enter your user name here"
+					placeholder="John Smith"
 					description="This is your public display name."
 					iconSrc={icons.USER_ICON.path}
 					iconAlt={icons.USER_ICON.alt}
@@ -50,7 +50,7 @@ export default function PatientForm() {
 					type={FormFieldType.INPUT}
 					name="email"
 					label="Email"
-					placeholder="Enter your email here"
+					placeholder="johnsmith@example.com"
 					iconSrc={icons.EMAIL_ICON.path}
 					iconAlt={icons.EMAIL_ICON.alt}
 				/>
