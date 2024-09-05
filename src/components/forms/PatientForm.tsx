@@ -3,18 +3,17 @@
 // modules
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { useState } from 'react'
 // lib
 import { PatientformSchema, PatientFormData } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
 import { icons } from '@/lib/constants'
+import { handleCreateUser } from '@/lib/handlers/user.handlers'
 // components
 import SubmitButton from '@/components/shared/SubmitButton'
 import CustomFormField from '@/components/shared/CustomFormField'
 import { Form } from '@/components/ui/form'
 
 export default function PatientForm() {
-	const [isLoading, setIsLoading] = useState<boolean>(false)
 
 	const form = useForm<PatientFormData>({
 		resolver: zodResolver(PatientformSchema),
@@ -25,10 +24,15 @@ export default function PatientForm() {
 		},
 	})
 
+	const { isSubmitting } = form.formState
+
 	const onSubmit: SubmitHandler<PatientFormData> = async (
 		data: PatientFormData
 	) => {
 		try {
+			const result = await handleCreateUser(data)
+
+			form.reset()
 			
 		} catch (err) {
 			console.error("Error from onSubmit for PatientForm", err)
@@ -71,7 +75,7 @@ export default function PatientForm() {
 					placeholder="500 600 700"
 				/>
 				<div className="mt-8">
-					<SubmitButton isLoading={isLoading}>Get started!</SubmitButton>
+					<SubmitButton isLoading={isSubmitting}>Get started!</SubmitButton>
 				</div>
 			</form>
 		</Form>
