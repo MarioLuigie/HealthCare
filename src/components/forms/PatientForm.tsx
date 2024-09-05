@@ -3,16 +3,19 @@
 // modules
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
+import { useState } from 'react'
 // lib
 import { PatientformSchema, PatientFormData } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
 import { icons } from '@/lib/constants'
 // components
-import { Button } from '@/components/ui/button'
+import SubmitButton from '@/components/shared/SubmitButton'
 import CustomFormField from '@/components/shared/CustomFormField'
 import { Form } from '@/components/ui/form'
 
 export default function PatientForm() {
+	const [isLoading, setIsLoading] = useState<boolean>(false)
+
 	const form = useForm<PatientFormData>({
 		resolver: zodResolver(PatientformSchema),
 		defaultValues: {
@@ -22,27 +25,32 @@ export default function PatientForm() {
 		},
 	})
 
-	const onSubmit: SubmitHandler<PatientFormData> = (
+	const onSubmit: SubmitHandler<PatientFormData> = async (
 		data: PatientFormData
-	) => {}
+	) => {
+		try {
+			
+		} catch (err) {
+			console.error("Error from onSubmit for PatientForm", err)
+		}
+	}
 
 	return (
 		<Form {...form}>
 			<form
 				onSubmit={form.handleSubmit(onSubmit)}
-				className="space-y-6 flex-1"
+				className="flex flex-col gap-8"
 			>
-				<section className="mb-12 space-y-4">
+				<div className="mb-12 space-y-4">
 					<h1 className="header">Hi there !</h1>
 					<p className="text-dark-700">Get started with appointments.</p>
-				</section>
+				</div>
 				<CustomFormField
 					control={form.control}
 					type={FormFieldType.INPUT}
 					name="name"
 					label="Name"
 					placeholder="John Smith"
-					description="This is your public display name."
 					iconSrc={icons.USER_ICON.path}
 					iconAlt={icons.USER_ICON.alt}
 				/>
@@ -62,7 +70,9 @@ export default function PatientForm() {
 					label="Phone number"
 					placeholder="500 600 700"
 				/>
-				<Button type="submit">Submit</Button>
+				<div className="mt-8">
+					<SubmitButton isLoading={isLoading}>Get started!</SubmitButton>
+				</div>
 			</form>
 		</Form>
 	)
