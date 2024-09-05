@@ -18,7 +18,11 @@ export const icons = {
   PHONE_ICON: {
     path: '/assets/icons/email.svg',
     alt: 'Phone icon'
-  }
+  },
+  LOADER: {
+    path: '/assets/icons/loader.svg',
+    alt: 'Loader'
+  },
 }
 
 export const images = {
