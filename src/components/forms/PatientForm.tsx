@@ -6,6 +6,7 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 // lib
 import { PatientformSchema, PatientFormData } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
+import { icons } from '@/lib/constants'
 // components
 import { Button } from '@/components/ui/button'
 import CustomFormField from '@/components/shared/CustomFormField'
@@ -15,7 +16,8 @@ export default function PatientForm() {
 	const form = useForm<PatientFormData>({
 		resolver: zodResolver(PatientformSchema),
 		defaultValues: {
-			username: '',
+			name: '',
+			email: '',
 		},
 	})
 
@@ -35,11 +37,22 @@ export default function PatientForm() {
 				</section>
 				<CustomFormField
 					control={form.control}
-          type={FormFieldType.INPUT}
-					name="username"
-					label="Username"
+					type={FormFieldType.INPUT}
+					name="name"
+					label="Name"
 					placeholder="Enter your user name here"
 					description="This is your public display name."
+					iconSrc={icons.USER_ICON.path}
+					iconAlt={icons.USER_ICON.alt}
+				/>
+				<CustomFormField
+					control={form.control}
+					type={FormFieldType.INPUT}
+					name="email"
+					label="Email"
+					placeholder="Enter your email here"
+					iconSrc={icons.EMAIL_ICON.path}
+					iconAlt={icons.EMAIL_ICON.alt}
 				/>
 				<Button type="submit">Submit</Button>
 			</form>

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { images } from '@/lib/constants'
+import { icons, images } from '@/lib/constants'
 import PatientForm from '@/components/forms/PatientForm'
 import Link from 'next/link'
 
@@ -10,10 +10,10 @@ export default function HomePage() {
 			<section className="remove-scrollbar container my-auto">
 				<div className="sub-container max-w-[496px]">
 					<Image
-						src={images.LOGO_FULL.path}
+						src={icons.LOGO_FULL.path}
 						height={1000}
 						width={1000}
-						alt="patient"
+						alt={icons.LOGO_FULL.alt}
 						className="mb-12 h-10 w-fit"
 						priority
 					/>
@@ -33,7 +33,7 @@ export default function HomePage() {
 					src={images.HOME_PAGE_IMAGE.path}
 					height={1000}
 					width={1000}
-					alt="patient"
+					alt={images.HOME_PAGE_IMAGE.alt}
 					className="side-img"
 					priority
 				/>

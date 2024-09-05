@@ -33,7 +33,7 @@ interface CustomFormFieldProps {
 	renderSkeleton?: (field: any) => React.ReactNode
 }
 
-const RenderInput = ({
+const RenderField = ({
 	field,
 	props,
 }: {
@@ -51,6 +51,7 @@ const RenderInput = ({
 							width={24}
 							alt={props.iconAlt || 'icon'}
 							className="ml-2"
+							priority
 						/>
 					)}
 					<FormControl>
@@ -75,6 +76,21 @@ const RenderInput = ({
 					/>
 				</FormControl>
 			)
+
+		// case FormFieldType.PHONE_INPUT:
+		// 	return (
+		// 		<FormControl>
+		// 			<PhoneInput
+		// 				defaultCountry="US"
+		// 				placeholder={props.placeholder}
+		// 				international
+		// 				withCountryCallingCode
+		// 				value={field.value as E164Number | undefined}
+		// 				onChange={field.onChange}
+		// 				className="input-phone"
+		// 			/>
+		// 		</FormControl>
+		// 	)
 	}
 }
 
@@ -104,9 +120,9 @@ export default function CustomFormField(props: CustomFormFieldProps) {
 					{type !== FormFieldType.CHECKBOX && label && (
 						<FormLabel>{label}</FormLabel>
 					)}
-					<RenderInput field={field} props={props} />
-					{props.description && (
-						<FormDescription>{props.description}</FormDescription>
+					<RenderField field={field} props={props} />
+					{description && (
+						<FormDescription>{description}</FormDescription>
 					)}
 					<FormMessage />
 				</FormItem>
