@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { icons, images } from '@/lib/constants'
-import PatientForm from '@/components/forms/PatientForm'
+import UserForm from '@/components/forms/UserForm'
 import Link from 'next/link'
 
 export default function HomePage() {
@@ -17,10 +17,10 @@ export default function HomePage() {
 						className="mb-12 h-10 w-fit"
 						priority
 					/>
-					<PatientForm />
+					<UserForm />
 					<div className="flex justify-between text-14-regular mt-20">
 						<p className="justify-items-end text-dark-600 xl:text-left">
-							© 2024 HealthCare
+							© 2024 HealthCare by ARWcode
 						</p>
 						<Link href="/?admin=true" className="text-green-500">
 							Admin

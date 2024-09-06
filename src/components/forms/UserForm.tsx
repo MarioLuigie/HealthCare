@@ -4,7 +4,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
 // lib
-import { PatientformSchema, PatientFormData } from '@/lib/types/zod'
+import { UserformSchema, UserFormData } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
 import { icons } from '@/lib/constants'
 import { handleCreateUser } from '@/lib/handlers/user.handlers'
@@ -13,10 +13,10 @@ import SubmitButton from '@/components/shared/SubmitButton'
 import CustomFormField from '@/components/shared/CustomFormField'
 import { Form } from '@/components/ui/form'
 
-export default function PatientForm() {
+export default function UserForm() {
 
-	const form = useForm<PatientFormData>({
-		resolver: zodResolver(PatientformSchema),
+	const form = useForm<UserFormData>({
+		resolver: zodResolver(UserformSchema),
 		defaultValues: {
 			name: '',
 			email: '',
@@ -26,8 +26,8 @@ export default function PatientForm() {
 
 	const { isSubmitting } = form.formState
 
-	const onSubmit: SubmitHandler<PatientFormData> = async (
-		data: PatientFormData
+	const onSubmit: SubmitHandler<UserFormData> = async (
+		data: UserFormData
 	) => {
 		try {
 			const result = await handleCreateUser(data)
@@ -54,7 +54,7 @@ export default function PatientForm() {
 					type={FormFieldType.INPUT}
 					name="name"
 					label="Name"
-					placeholder="John Smith"
+					placeholder="James Smith"
 					iconSrc={icons.USER_ICON.path}
 					iconAlt={icons.USER_ICON.alt}
 				/>
@@ -63,7 +63,7 @@ export default function PatientForm() {
 					type={FormFieldType.INPUT}
 					name="email"
 					label="Email"
-					placeholder="johnsmith@example.com"
+					placeholder="jamessmith@healthcare.com"
 					iconSrc={icons.EMAIL_ICON.path}
 					iconAlt={icons.EMAIL_ICON.alt}
 				/>

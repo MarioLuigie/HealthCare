@@ -1,8 +1,8 @@
 'use server'
 
-import { PatientFormData } from '@/lib/types/zod'
+import { UserFormData } from '@/lib/types/zod'
 
-export async function createUser(data: PatientFormData) {
+export async function createUser(data: UserFormData) {
   try {
 
   return data
