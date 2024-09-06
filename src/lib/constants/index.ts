@@ -31,7 +31,7 @@ export const images = {
     alt: 'Home page image'
   },
   REGISTER_PAGE_IMAGE: {
-    path: "/assets/images/register-img.png",
+    path: "/assets/images/register-img.jpg",
     alt: 'Registration page image'
   },
 }

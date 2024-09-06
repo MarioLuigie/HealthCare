@@ -21,7 +21,7 @@ export default function RegistrationPage() {
 						className="mb-12 h-10 w-fit"
 						priority
 					/>
-					{/* <UserForm /> */}
+					<PatientForm />
 					<div className="flex justify-between text-14-regular mt-20">
 						<p className="justify-items-end text-dark-600 xl:text-left">
 							© 2024 HealthCare by ARWcode
@@ -32,7 +32,7 @@ export default function RegistrationPage() {
 					</div>
 				</div>
 			</section>
-			<section className="max-w-[50%]">
+			<section className="max-w-[420px]">
 				<Image
 					src={images.REGISTER_PAGE_IMAGE.path}
 					height={1000}
