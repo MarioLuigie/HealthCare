@@ -5,6 +5,7 @@ import { ID, Query } from 'node-appwrite'
 // lib
 import { users } from '@/lib/appwrite.config'
 
+// Create user
 export async function createUser(user: CreateUserParams) {
 	try {
 		const createdUser: User = await users.create(
@@ -27,4 +28,13 @@ export async function createUser(user: CreateUserParams) {
 		}
 		console.error('An error occurred while creating a new user:', err)
 	}
+}
+
+// Register patient
+export async function registerPatient () {
+  try {
+    
+  } catch (err) {
+    console.error('An error occurred while registering a new patient:', err)
+  }
 }

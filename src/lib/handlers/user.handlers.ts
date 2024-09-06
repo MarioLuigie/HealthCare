@@ -14,3 +14,7 @@ export const handleCreateUser = async (user: CreateUserParams) => {
 		console.error(err)
 	}
 }
+
+export const handleRegisterPatient = async () => {
+	
+}

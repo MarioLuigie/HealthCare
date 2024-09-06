@@ -32,7 +32,7 @@ export default function RegistrationPage() {
 					</div>
 				</div>
 			</section>
-			<section className="max-w-[420px]">
+			<section className="max-w-[50%]">
 				<Image
 					src={images.REGISTER_PAGE_IMAGE.path}
 					height={1000}
