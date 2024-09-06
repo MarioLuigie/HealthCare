@@ -29,7 +29,11 @@ export const images = {
   HOME_PAGE_IMAGE: {
     path: "/assets/images/onboarding-img.png",
     alt: 'Home page image'
-  }
+  },
+  REGISTER_PAGE_IMAGE: {
+    path: "/assets/images/register-img.png",
+    alt: 'Registration page image'
+  },
 }
 
 export const routes = {
