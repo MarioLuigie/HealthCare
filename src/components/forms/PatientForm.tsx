@@ -49,12 +49,17 @@ export default function PatientForm({ user }: { user: User}) {
 		<Form {...form}>
 			<form
 				onSubmit={form.handleSubmit(onSubmit)}
-				className="flex flex-col gap-8"
+				className="flex flex-col gap-12"
 			>
-				<div className="mb-12 space-y-4">
-					<h1 className="header">Hi there !</h1>
-					<p className="text-dark-700">Get started with appointments.</p>
-				</div>
+				<section className="mb-12 space-y-4">
+					<h1 className="header">Welcome !</h1>
+					<p className="text-dark-700">Let us know more about yourself.</p>
+				</section>
+
+				<section className="space-y-6">
+					<h2 className="sub-header">Personal information</h2>
+				</section>
+
 				<CustomFormField
 					control={form.control}
 					type={FormFieldType.INPUT}
@@ -63,22 +68,6 @@ export default function PatientForm({ user }: { user: User}) {
 					placeholder="James Smith"
 					iconSrc={icons.USER_ICON.path}
 					iconAlt={icons.USER_ICON.alt}
-				/>
-				<CustomFormField
-					control={form.control}
-					type={FormFieldType.INPUT}
-					name="email"
-					label="Email"
-					placeholder="jamessmith@healthcare.com"
-					iconSrc={icons.EMAIL_ICON.path}
-					iconAlt={icons.EMAIL_ICON.alt}
-				/>
-				<CustomFormField
-					control={form.control}
-					type={FormFieldType.PHONE_INPUT}
-					name="phone"
-					label="Phone number"
-					placeholder="500 600 700"
 				/>
 				<div className="mt-8">
 					<SubmitButton isLoading={isSubmitting}>

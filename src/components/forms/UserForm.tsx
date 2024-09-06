@@ -49,10 +49,10 @@ export default function UserForm() {
 				onSubmit={form.handleSubmit(onSubmit)}
 				className="flex flex-col gap-8"
 			>
-				<div className="mb-12 space-y-4">
+				<section className="mb-12 space-y-4">
 					<h1 className="header">Hi there !</h1>
 					<p className="text-dark-700">Get started with appointments.</p>
-				</div>
+				</section>
 				<CustomFormField
 					control={form.control}
 					type={FormFieldType.INPUT}
