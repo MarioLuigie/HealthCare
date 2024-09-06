@@ -1,16 +1,21 @@
 'use server'
 
 // modules
-import { Query } from 'node-appwrite'
-
+import { ID, Query } from 'node-appwrite'
 // lib
 import { users } from '@/lib/appwrite.config'
 
 export async function createUser(user: CreateUserParams) {
 	try {
-    
+		const createdUser = await users.create(
+			ID.unique(),
+			user.email,
+			user.phone,
+			undefined,
+			user.name
+		)
 
-		return 
+		return
 	} catch (err: any) {
 		// Check existing user
 		if (err && err?.code === 409) {
