@@ -1,8 +1,6 @@
 'use server'
 
-import { UserFormData } from '@/lib/types/zod'
-
-export async function createUser(data: UserFormData) {
+export async function createUser(data: CreateUserParams) {
   try {
 
   return data
