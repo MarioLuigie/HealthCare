@@ -19,6 +19,7 @@ export async function createUser(user: CreateUserParams) {
 		)
 
 		return deepClone(createdUser)
+
 	} catch (err: any) {
 		// Check existing user
 		if (err && err?.code === 409) {
@@ -34,7 +35,10 @@ export async function createUser(user: CreateUserParams) {
 
 export async function getUser(userId: string) {
 	try {
-		// const user = await users.
+		const user = await users.get(userId)
+
+		return deepClone(user)
+		
 	} catch (err) {
 		console.error(err)
 	}

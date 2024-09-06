@@ -3,10 +3,14 @@ import Image from 'next/image'
 import Link from 'next/link'
 // lib
 import { icons, images } from '@/lib/constants'
+import { getUser } from '@/lib/actions/user.actions'
 // components
 import PatientForm from '@/components/forms/PatientForm'
 
-export default function RegistrationPage() {
+export default async function RegistrationPage({ userId }: { userId: string }) {
+	const user = await getUser(userId)
+
+	console.log("User from RegistrationPage:", user);
 	return (
 		<div className="flex h-screen max-h-screen">
 			<section className="remove-scrollbar container my-auto">
