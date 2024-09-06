@@ -6,7 +6,6 @@ import { icons, images } from '@/lib/constants'
 // components
 import PatientForm from '@/components/forms/PatientForm'
 
-
 export default function RegistrationPage() {
 	return (
 		<div className="flex h-screen max-h-screen">

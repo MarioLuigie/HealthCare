@@ -29,19 +29,21 @@ export default function PatientForm() {
 	const { isSubmitting } = form.formState
 
 	const onSubmit: SubmitHandler<UserFormData> = async (formData: UserFormData) => {
-		// try {
-		// 	const user = await handleCreateUser(formData)
+		try {
+			const user = await handleCreateUser(formData)
 
-		// 	if (user!) {
-		// 		router.push(`/patients/${user.$id}/register`)
-		// 		form.reset()
-		// 	} else {
-		// 		console.log('Something went wrong with creating user.')
-		// 	}
-		// } catch (err) {
-		// 	console.error('Error from onSubmit for PatientForm', err)
-		// }
+			if (user!) {
+				router.push(`/patients/${user.$id}/register`)
+				form.reset()
+			} else {
+				console.log('Something went wrong with creating user.')
+			}
+		} catch (err) {
+			console.error('Error from onSubmit for PatientForm', err)
+		}
 	}
+
+	console.log("Log from PatientForm");
 
 	return (
 		<Form {...form}>
