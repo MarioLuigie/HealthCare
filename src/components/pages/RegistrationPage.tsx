@@ -22,7 +22,7 @@ export default async function RegistrationPage({ userId }: { userId: string }) {
 						alt={icons.LOGO_FULL.alt}
 						className="mb-12 h-10 w-fit"
 					/>
-					<PatientForm />
+					<PatientForm user={user} />
 					<div className="flex justify-between text-14-regular mt-20">
 						<p className="justify-items-end text-dark-600 xl:text-left">
 							© 2024 HealthCare by ARWcode

@@ -14,7 +14,7 @@ import SubmitButton from '@/components/shared/SubmitButton'
 import CustomFormField from '@/components/shared/CustomFormField'
 import { Form } from '@/components/ui/form'
 
-export default function PatientForm() {
+export default function PatientForm({ user }: { user: User}) {
 	const router = useRouter()
 
 	const form = useForm<UserFormData>({

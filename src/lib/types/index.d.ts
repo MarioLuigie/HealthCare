@@ -48,8 +48,8 @@ declare type UpdateAppointmentParams = {
 	type: string
 }
 
-// Search
-declare type SearchParamProps = {
+// Url params, route query, page params
+declare type UrlParams = {
 	params: { [key: string]: string }
 	searchParams: { [key: string]: string | string[] | undefined }
 }
