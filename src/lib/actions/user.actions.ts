@@ -7,7 +7,7 @@ import { users } from '@/lib/appwrite.config'
 
 export async function createUser(user: CreateUserParams) {
 	try {
-		const createdUser = await users.create(
+		const createdUser: User = await users.create(
 			ID.unique(),
 			user.email,
 			user.phone,
@@ -15,7 +15,7 @@ export async function createUser(user: CreateUserParams) {
 			user.name
 		)
 
-		return
+		return createdUser
 	} catch (err: any) {
 		// Check existing user
 		if (err && err?.code === 409) {

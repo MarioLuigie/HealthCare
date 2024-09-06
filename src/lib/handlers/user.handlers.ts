@@ -6,7 +6,9 @@ export const handleCreateUser = async (user: CreateUserParams) => {
 			setTimeout(resolve, 2000)
 		})
 
-		const result = await createUser(user)
+		const createdUser = await createUser(user)
+
+		return createdUser
 
 	} catch (err) {
 		console.error(err)
