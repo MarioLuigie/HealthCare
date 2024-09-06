@@ -14,7 +14,7 @@ import SubmitButton from '@/components/shared/SubmitButton'
 import CustomFormField from '@/components/shared/CustomFormField'
 import { Form } from '@/components/ui/form'
 
-export default function PatientForm({ user }: { user: User}) {
+export default function PatientForm({ user }: { user: User }) {
 	const router = useRouter()
 
 	const form = useForm<UserFormData>({
@@ -28,7 +28,9 @@ export default function PatientForm({ user }: { user: User}) {
 
 	const { isSubmitting } = form.formState
 
-	const onSubmit: SubmitHandler<UserFormData> = async (formData: UserFormData) => {
+	const onSubmit: SubmitHandler<UserFormData> = async (
+		formData: UserFormData
+	) => {
 		try {
 			const user = await handleCreateUser(formData)
 
@@ -43,36 +45,49 @@ export default function PatientForm({ user }: { user: User}) {
 		}
 	}
 
-	console.log("Log from PatientForm");
+	console.log('Log from PatientForm')
 
 	return (
 		<Form {...form}>
 			<form
 				onSubmit={form.handleSubmit(onSubmit)}
-				className="flex flex-col gap-12"
+				className="flex flex-col gap-6"
 			>
-				<section className="mb-12 space-y-4">
+				<section className="mb-8 space-y-4">
 					<h1 className="header">Welcome !</h1>
 					<p className="text-dark-700">Let us know more about yourself.</p>
 				</section>
 
 				<section className="space-y-6">
-					<h2 className="sub-header">Personal information</h2>
+					<div className="space-y-1">
+						<h2 className="sub-header">Personal information</h2>
+					</div>
 				</section>
 
 				<CustomFormField
 					control={form.control}
 					type={FormFieldType.INPUT}
 					name="name"
-					label="Name"
-					placeholder="James Smith"
-					iconSrc={icons.USER_ICON.path}
-					iconAlt={icons.USER_ICON.alt}
+					label="Full name"
+					placeholder="ex. James Smith"
 				/>
+
+				<div className="flex gap-3">
+					<CustomFormField
+						control={form.control}
+						type={FormFieldType.INPUT}
+						name="email"
+						label="Email address"
+					/>
+					<CustomFormField
+						control={form.control}
+						type={FormFieldType.INPUT}
+						name="phone"
+						label="Phone number"
+					/>
+				</div>
 				<div className="mt-8">
-					<SubmitButton isLoading={isSubmitting}>
-						Register
-					</SubmitButton>
+					<SubmitButton isLoading={isSubmitting}>Register</SubmitButton>
 				</div>
 			</form>
 		</Form>
