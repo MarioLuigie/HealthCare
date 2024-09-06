@@ -4,6 +4,7 @@
 import { ID, Query } from 'node-appwrite'
 // lib
 import { users } from '@/lib/appwrite.config'
+import { deepClone } from '@/lib/utils'
 
 // USER
 // Create user in appwrite users auth
@@ -17,7 +18,7 @@ export async function createUser(user: CreateUserParams) {
 			user.name
 		)
 
-		return createdUser
+		return deepClone(createdUser)
 	} catch (err: any) {
 		// Check existing user
 		if (err && err?.code === 409) {
@@ -31,16 +32,19 @@ export async function createUser(user: CreateUserParams) {
 	}
 }
 
-export async function getUser () {
-
+export async function getUser(userId: string) {
+	try {
+		// const user = await users.
+	} catch (err) {
+		console.error(err)
+	}
 }
 
 // PATIENT
 // Register patient - add patient to patient collection in appwrite database
-export async function registerPatient () {
-  try {
-    
-  } catch (err) {
-    console.error('An error occurred while registering a new patient:', err)
-  }
+export async function registerPatient() {
+	try {
+	} catch (err) {
+		console.error('An error occurred while registering a new patient:', err)
+	}
 }
