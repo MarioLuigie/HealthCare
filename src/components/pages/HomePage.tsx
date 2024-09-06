@@ -15,7 +15,6 @@ export default function HomePage() {
 						width={1000}
 						alt={icons.LOGO_FULL.alt}
 						className="mb-12 h-10 w-fit"
-						priority
 					/>
 					<UserForm />
 					<div className="flex justify-between text-14-regular mt-20">
@@ -35,7 +34,6 @@ export default function HomePage() {
 					width={1000}
 					alt={images.HOME_PAGE_IMAGE.alt}
 					className="side-img"
-					priority
 				/>
 			</section>
 		</div>

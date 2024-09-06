@@ -18,9 +18,8 @@ export default function RegistrationPage() {
 						width={1000}
 						alt={icons.LOGO_FULL.alt}
 						className="mb-12 h-10 w-fit"
-						priority
 					/>
-					{/* <PatientForm /> */}
+					<PatientForm />
 					<div className="flex justify-between text-14-regular mt-20">
 						<p className="justify-items-end text-dark-600 xl:text-left">
 							© 2024 HealthCare by ARWcode
@@ -38,7 +37,6 @@ export default function RegistrationPage() {
 					width={1000}
 					alt={images.REGISTER_PAGE_IMAGE.alt}
 					className="side-img"
-					priority
 				/>
 			</section>
 		</div>
