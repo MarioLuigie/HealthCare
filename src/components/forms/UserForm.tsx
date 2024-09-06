@@ -3,6 +3,7 @@
 // modules
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
+import { useRouter } from 'next/navigation'
 // lib
 import { UserFormSchema, UserFormData } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
@@ -14,6 +15,7 @@ import CustomFormField from '@/components/shared/CustomFormField'
 import { Form } from '@/components/ui/form'
 
 export default function UserForm() {
+	const router = useRouter()
 
 	const form = useForm<UserFormData>({
 		resolver: zodResolver(UserFormSchema),
@@ -26,16 +28,18 @@ export default function UserForm() {
 
 	const { isSubmitting } = form.formState
 
-	const onSubmit: SubmitHandler<UserFormData> = async (
-		data: UserFormData
-	) => {
+	const onSubmit: SubmitHandler<UserFormData> = async (formData: UserFormData) => {
 		try {
-			const result = await handleCreateUser(data)
+			const user = await handleCreateUser(formData)
 
-			form.reset()
-			
+			if (user!) {
+				router.push(`/patients/${user.$id}/register`)
+				form.reset()
+			} else {
+				console.log('Something went wrong with creating user.')
+			}
 		} catch (err) {
-			console.error("Error from onSubmit for PatientForm", err)
+			console.error('Error from onSubmit for PatientForm', err)
 		}
 	}
 
@@ -75,7 +79,9 @@ export default function UserForm() {
 					placeholder="500 600 700"
 				/>
 				<div className="mt-8">
-					<SubmitButton isLoading={isSubmitting}>Get started!</SubmitButton>
+					<SubmitButton isLoading={isSubmitting}>
+						Get started!
+					</SubmitButton>
 				</div>
 			</form>
 		</Form>
