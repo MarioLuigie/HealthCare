@@ -10,7 +10,6 @@ import PatientForm from '@/components/forms/PatientForm'
 export default function RegistrationPage() {
 	return (
 		<div className="flex h-screen max-h-screen">
-			{/* TODO: OTP Verification | PassKey Modal  */}
 			<section className="remove-scrollbar container my-auto">
 				<div className="sub-container max-w-[496px]">
 					<Image
@@ -21,7 +20,7 @@ export default function RegistrationPage() {
 						className="mb-12 h-10 w-fit"
 						priority
 					/>
-					<PatientForm />
+					{/* <PatientForm /> */}
 					<div className="flex justify-between text-14-regular mt-20">
 						<p className="justify-items-end text-dark-600 xl:text-left">
 							© 2024 HealthCare by ARWcode

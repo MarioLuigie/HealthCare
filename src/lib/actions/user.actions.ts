@@ -5,7 +5,8 @@ import { ID, Query } from 'node-appwrite'
 // lib
 import { users } from '@/lib/appwrite.config'
 
-// Create user
+// USER
+// Create user in appwrite users auth
 export async function createUser(user: CreateUserParams) {
 	try {
 		const createdUser: User = await users.create(
@@ -30,7 +31,12 @@ export async function createUser(user: CreateUserParams) {
 	}
 }
 
-// Register patient
+export async function getUser () {
+
+}
+
+// PATIENT
+// Register patient - add patient to patient collection in appwrite database
 export async function registerPatient () {
   try {
     
