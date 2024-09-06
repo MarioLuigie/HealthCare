@@ -1,43 +1,44 @@
-import { Models } from "node-appwrite";
+import { Models } from 'node-appwrite'
 
+// Appwrite output interfaces based on Models.Document template - ensures compatibility and access to hidden functions and keys
+// Interfaces for appwrite data base collections documents
 export interface Patient extends Models.Document {
-  userId: string;
-  name: string;
-  email: string;
-  phone: string;
-  birthDate: Date;
-  gender: Gender;
-  address: string;
-  occupation: string;
-  emergencyContactName: string;
-  emergencyContactNumber: string;
-  primaryPhysician: string;
-  insuranceProvider: string;
-  insurancePolicyNumber: string;
-  allergies: string | undefined;
-  currentMedication: string | undefined;
-  familyMedicalHistory: string | undefined;
-  pastMedicalHistory: string | undefined;
-  identificationType: string | undefined;
-  identificationNumber: string | undefined;
-  identificationDocument: FormData | undefined;
-  privacyConsent: boolean;
+	userId: string
+	name: string
+	email: string
+	phone: string
+	birthDate: Date
+	gender: Gender
+	address: string
+	occupation: string
+	emergencyContactName: string
+	emergencyContactNumber: string
+	primaryPhysician: string
+	insuranceProvider: string
+	insurancePolicyNumber: string
+	allergies: string | undefined
+	currentMedication: string | undefined
+	familyMedicalHistory: string | undefined
+	pastMedicalHistory: string | undefined
+	identificationType: string | undefined
+	identificationNumber: string | undefined
+	identificationDocument: FormData | undefined
+	privacyConsent: boolean
 }
 
 export interface Appointment extends Models.Document {
-  patient: Patient;
-  schedule: Date;
-  status: Status;
-  primaryPhysician: string;
-  reason: string;
-  note: string;
-  userId: string;
-  cancellationReason: string | null;
+	patient: Patient
+	schedule: Date
+	status: Status
+	primaryPhysician: string
+	reason: string
+	note: string
+	userId: string
+	cancellationReason: string | null
 }
 
-
-
-{/* 
+{
+	/* 
 Twój kod w pliku appwrite.type.ts definiuje interfejsy TypeScript dla obiektów w aplikacji używającej Next.js i Appwrite. Oto co te interfejsy oznaczają:
 
     Interfejs Patient:
@@ -138,4 +139,5 @@ export interface Patient {
 Różnica polega na tym, że nie masz w tym przypadku właściwości dokumentu takich jak id, createdAt, updatedAt, które są automatycznie zarządzane przez Appwrite. Jeśli Twoje aplikacje i SDK potrzebują tych właściwości, to rozszerzenie Models.Document może być bardziej praktyczne.
 
 Interface User w pliku index.d.ts w katalogu types jest tworzony manualnie bez szablonu rtypu Models.Document{} bo users nie jest kolekcja w database appwrite wiec nie ma typowego modelu, raczej ma zwiazek z autoryzacja Auth i zbiorem users z Appwrite
-*/}
+*/
+}

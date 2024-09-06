@@ -1,3 +1,4 @@
+// Interfaces available globally throughout the application without the need for import and export
 // User
 declare interface CreateUserParams {
 	name: string
