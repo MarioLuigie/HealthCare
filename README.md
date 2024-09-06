@@ -1,12 +1,12 @@
 # HealthCare - The complete platform for your health.
 
-[![Application intro](https://raw.githubusercontent.com/MarioLuigie/HealthCare/main/public/assets/images/readme-intro.jpg)](https://yourmemories.vercel.app/)
+[![Application intro](https://raw.githubusercontent.com/MarioLuigie/HealthCare/main/public/assets/images/readme-intro.jpg)](https://healthcare-clinic.vercel.app/)
 
 ## Introduction
 
 **HealthCare** is a modern medical application that gives clinic patients full control over their health. With this app, users have access to their account, where they can quickly and conveniently schedule, edit, and cancel appointments with their doctors. The app also offers a clear dashboard where patients can monitor their health status, check test results, and sign up for additional consultations or diagnostic tests. HealthCare is the perfect solution for those who value easy access to essential medical information and want to actively manage their health.
 
-You can try it out here: **[https://youreditorials.vercel.app/](https://youreditorials.vercel.app/)**
+You can try it out here: **[https://healthcare-clinic.vercel.app/](https://healthcare-clinic.vercel.app/)**
 
 ## Technologies
 
