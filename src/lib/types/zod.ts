@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export const UserformSchema = z.object({
+export const UserFormSchema = z.object({
 	name: z
 		.string()
 		.min(2, 'Name must be at least 2 characters')
@@ -66,4 +66,4 @@ export const UserformSchema = z.object({
 	// 	}),
 })
 
-export type UserFormData = z.infer<typeof UserformSchema>
+export type UserFormData = z.infer<typeof UserFormSchema>

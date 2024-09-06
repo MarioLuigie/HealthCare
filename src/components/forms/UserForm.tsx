@@ -4,7 +4,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
 // lib
-import { UserformSchema, UserFormData } from '@/lib/types/zod'
+import { UserFormSchema, UserFormData } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
 import { icons } from '@/lib/constants'
 import { handleCreateUser } from '@/lib/handlers/user.handlers'
@@ -16,7 +16,7 @@ import { Form } from '@/components/ui/form'
 export default function UserForm() {
 
 	const form = useForm<UserFormData>({
-		resolver: zodResolver(UserformSchema),
+		resolver: zodResolver(UserFormSchema),
 		defaultValues: {
 			name: '',
 			email: '',
