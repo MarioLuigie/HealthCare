@@ -140,8 +140,8 @@ Make sure you have the following installed on your machine:
 **Cloning the repository**
 
 ```bash
-git clone https://github.com/MarioLuigie/MERN_App.git
-cd MERN-APP
+git clone https://github.com/MarioLuigie/HealthCare.git
+cd healthcare
 ```
 
 **Installation**
@@ -154,25 +154,18 @@ npm install
 
 **Setup Environment Variables**
 
-Create a new file named `.env` in the api catalog and add the following content:
+Create a new file named `.env.local` in the main catalog and add the following content:
 
 ```env
 #GENERAL
-PORT=
-
-#MONGODB
-MONGODB_URI=
-
-#AWS
-AWS_ACCESS_CODE=
-AWS_SECRET_ACCESS_KEY=
-```
-
-Create a new file named `.env.production` in the client catalog and add the following content:
-
-```env
-#REACT VITE
-VITE_REACT_APP_API_URL=
+APPWRITE_PROJECT_ID=
+APPWRITE_API_KEY=
+APPWRITE_DB_ID=
+APPWRITE_DB_PATIENT_COLLECTION_ID=
+APPWRITE_DB_DOCTOR_COLLECTION_ID=
+APPWRITE_DB_APPOINTMENT_COLLECTION_ID=
+APPWRITE_PUBLIC_BUCKET_ID=
+APPWRITE_PUBLIC_ENDPOINT=
 ```
 
 Fill in the environmental variable values with your actual credentials.
@@ -183,7 +176,7 @@ Fill in the environmental variable values with your actual credentials.
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173/) in your browser to view the project.
+Open [http://localhost:3000](http://localhost:3000/) in your browser to view the project.
 
 ## More
 For more information please contact [mk.lotocki@gmail.com](mailto:mk.lotocki@gmail.com).
