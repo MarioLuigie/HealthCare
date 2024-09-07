@@ -10,9 +10,9 @@ import { FormFieldType } from '@/lib/types/enums'
 import { icons } from '@/lib/constants'
 import { handleCreateUser } from '@/lib/handlers/user.handlers'
 // components
+import { Form, FormControl } from '@/components/ui/form'
 import SubmitButton from '@/components/shared/SubmitButton'
 import CustomFormField from '@/components/shared/CustomFormField'
-import { Form } from '@/components/ui/form'
 
 export default function PatientForm({ user }: { user: User }) {
 	const router = useRouter()
@@ -74,7 +74,7 @@ export default function PatientForm({ user }: { user: User }) {
 					iconAlt={icons.USER_ICON.alt}
 				/>
 
-				<div className="flex gap-3">
+				<div className="flex flex-col xl:flex-row gap-3">
 					<CustomFormField
 						control={form.control}
 						type={FormFieldType.INPUT}
@@ -92,6 +92,30 @@ export default function PatientForm({ user }: { user: User }) {
 						iconAlt={icons.PHONE_ICON.alt}
 					/>
 				</div>
+
+				<div className="flex flex-col xl:flex-row gap-3">
+					<CustomFormField
+						control={form.control}
+						type={FormFieldType.DATE_PICKER}
+						name="birthDate"
+						label="Date of Birth"
+					/>
+					<CustomFormField
+						control={form.control}
+						type={FormFieldType.SKELETON}
+						name="gender"
+						label="Gender"
+						renderSkeleton={(field) => (
+							<FormControl>
+
+							</FormControl>
+						)}
+					/>
+				</div>
+
+				<div className="flex flex-col xl:flex-row gap-3"></div>
+
+				<div className="flex flex-col xl:flex-row gap-3"></div>
 				<div className="mt-8">
 					<SubmitButton isLoading={isSubmitting}>Register</SubmitButton>
 				</div>
