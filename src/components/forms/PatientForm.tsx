@@ -23,13 +23,13 @@ export default function PatientForm({ user }: { user: User }) {
 	const router = useRouter()
 
 	console.log("User from PatientForm:", user)
-	
+
 	const form = useForm<UserFormData>({
 		resolver: zodResolver(UserFormSchema),
 		defaultValues: {
 			name: '',
-			email: user?.email,
-			phone: user?.phone,
+			email: user.email,
+			phone: user.phone,
 		},
 	})
 
