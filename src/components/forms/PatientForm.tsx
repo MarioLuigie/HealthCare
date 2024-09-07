@@ -217,13 +217,13 @@ export default function PatientForm({ user }: { user: User }) {
 						placeholder="ex: ABC123456789"
 					/>
 				</div>
-				{/* Alergies */}
+				{/* Allergies */}
 				<div className="flex flex-col xl:flex-row gap-4">
 					<CustomFormField
 						control={form.control}
 						type={FormFieldType.TEXTAREA}
-						name="alergies"
-						label="Alergies (if any)"
+						name="allergies"
+						label="Allergies (if any)"
 						placeholder="ex: Peanuts, Penicilin, Pollen..."
 					/>
 					<CustomFormField
@@ -231,7 +231,7 @@ export default function PatientForm({ user }: { user: User }) {
 						type={FormFieldType.TEXTAREA}
 						name="currentMedications"
 						label="Current madications"
-						placeholder="ex: Ibuprofen 200mg etc."
+						placeholder="ex: Ibuprofen 200mg, Paracetamol 500mg"
 					/>
 				</div>
 				{/* Medical histories */}
@@ -241,7 +241,7 @@ export default function PatientForm({ user }: { user: User }) {
 						type={FormFieldType.TEXTAREA}
 						name="familyMedicalHistory"
 						label="Family medical history"
-						placeholder="ex: Mother had cancer"
+						placeholder="ex: Grandmother had cancer"
 					/>
 					<CustomFormField
 						control={form.control}
