@@ -22,8 +22,6 @@ import "react-datepicker/dist/react-datepicker.css"
 export default function PatientForm({ user }: { user: User }) {
 	const router = useRouter()
 
-	console.log("User from PatientForm:", user)
-
 	const form = useForm<UserFormData>({
 		resolver: zodResolver(UserFormSchema),
 		defaultValues: {
@@ -51,8 +49,6 @@ export default function PatientForm({ user }: { user: User }) {
 			console.error('Error from onSubmit for PatientForm', err)
 		}
 	}
-
-	console.log('Log from PatientForm')
 
 	return (
 		<Form {...form}>
@@ -106,7 +102,7 @@ export default function PatientForm({ user }: { user: User }) {
 						type={FormFieldType.DATE_PICKER}
 						name="birthDate"
 						label="Date of birth"
-						placeholder='Select your date'
+						placeholder='Select your birth date'
 					/>
 					<CustomFormField
 						control={form.control}
@@ -116,7 +112,7 @@ export default function PatientForm({ user }: { user: User }) {
 						renderSkeleton={(field) => (
 							<FormControl>
 								<RadioGroup
-									className="flex gap-6 h-11 xl:justify-between"
+									className="flex gap-2 h-11 xl:justify-between"
 									onValueChange={field.onChange}
 									defaultValue={field.value}
 								>
