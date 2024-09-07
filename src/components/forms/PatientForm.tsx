@@ -9,7 +9,7 @@ import { UserFormSchema, UserFormData } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
 import { icons } from '@/lib/constants'
 import { handleCreateUser } from '@/lib/handlers/user.handlers'
-import { GenderOptions } from '@/lib/constants'
+import { GenderOptions, Doctors } from '@/lib/constants'
 // components
 import { Form, FormControl } from '@/components/ui/form'
 import SubmitButton from '@/components/shared/SubmitButton'
@@ -139,15 +139,32 @@ export default function PatientForm({ user }: { user: User }) {
 						type={FormFieldType.INPUT}
 						name="address"
 						label="Address"
+						placeholder="ex. 12th Street, New York"
 					/>
 					<CustomFormField
 						control={form.control}
 						type={FormFieldType.INPUT}
 						name="occupation"
 						label="Occupation"
+						placeholder="ex. Architect"
 					/>
 				</div>
-
+				{/* Emergency Contact Name and Phone */}
+				<div className="flex flex-col xl:flex-row gap-4">
+					<CustomFormField
+						control={form.control}
+						type={FormFieldType.INPUT}
+						name="emergencyContactName"
+						label="Emergency contact name"
+						placeholder="Guardian's name"
+					/>
+					<CustomFormField
+						control={form.control}
+						type={FormFieldType.PHONE_INPUT}
+						name="emergencyContactNumber"
+						label="Emergency contact number"
+					/>
+				</div>
 				{/* MEDICAL INFORMATION */}
 				<section className="space-y-6 pt-4">
 					<div className="space-y-1">
@@ -155,17 +172,14 @@ export default function PatientForm({ user }: { user: User }) {
 					</div>
 				</section>
 				{/* Primary care physician */}
-				<div className="flex flex-col xl:flex-row gap-4">
-					<CustomFormField
-						control={form.control}
-						type={FormFieldType.SELECT}
-						name="name"
-						label="Primary care physician"
-						placeholder="ex. James Smith"
-						iconSrc={icons.USER_ICON.path}
-						iconAlt={icons.USER_ICON.alt}
-					/>
-				</div>
+				<CustomFormField
+					control={form.control}
+					type={FormFieldType.SELECT}
+					name="primaryPhysician"
+					label="Primary physician"
+					placeholder='Select a physician'
+				>
+				</CustomFormField>
 
 				<div className="flex flex-col xl:flex-row gap-4"></div>
 

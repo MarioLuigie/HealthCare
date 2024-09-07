@@ -123,6 +123,13 @@ const RenderField = ({
 
 		case FormFieldType.SKELETON:
 			return (props.renderSkeleton && props.renderSkeleton(field))
+
+		case FormFieldType.SELECT:
+			return (
+				<div className="flex rounded-md border border-dark-500 bg-dark-400"></div>
+			)
+
+
 	}
 }
 
