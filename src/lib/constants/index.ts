@@ -78,6 +78,14 @@ export const icons = {
 		path: '/assets/icons/loader.svg',
 		alt: 'Loader',
 	},
+	UPLOAD_ICON: {
+		path: '/assets/icons/upload.svg',
+		alt: 'Upload',
+	},
+	UPLOAD_GIF: {
+		path: '/assets/gifs/upload.gif',
+		alt: 'Upload',
+	},
 }
 
 export const images = {
