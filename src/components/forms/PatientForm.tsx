@@ -26,8 +26,8 @@ export default function PatientForm({ user }: { user: User }) {
 		resolver: zodResolver(UserFormSchema),
 		defaultValues: {
 			name: '',
-			email: user.email,
-			phone: user.phone,
+			email: user?.email,
+			phone: user?.phone,
 		},
 	})
 
