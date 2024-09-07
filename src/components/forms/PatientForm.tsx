@@ -17,9 +17,7 @@ import SubmitButton from '@/components/shared/SubmitButton'
 import CustomFormField from '@/components/shared/CustomFormField'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Label } from '@/components/ui/label'
-import {
-	SelectItem,
-} from '@/components/ui/select'
+import { SelectItem } from '@/components/ui/select'
 // Styles
 import 'react-datepicker/dist/react-datepicker.css'
 
@@ -76,7 +74,7 @@ export default function PatientForm({ user }: { user: User }) {
 					type={FormFieldType.INPUT}
 					name="name"
 					label="Full name"
-					placeholder="ex. James Smith"
+					placeholder="ex: James Smith"
 					iconSrc={icons.USER_ICON.path}
 					iconAlt={icons.USER_ICON.alt}
 				/>
@@ -143,14 +141,14 @@ export default function PatientForm({ user }: { user: User }) {
 						type={FormFieldType.INPUT}
 						name="address"
 						label="Address"
-						placeholder="ex. 12th Street, New York"
+						placeholder="ex: 12th Street, New York"
 					/>
 					<CustomFormField
 						control={form.control}
 						type={FormFieldType.INPUT}
 						name="occupation"
 						label="Occupation"
-						placeholder="ex. Architect"
+						placeholder="ex: Architect"
 					/>
 				</div>
 				{/* Emergency Contact Name and Phone */}
@@ -201,6 +199,63 @@ export default function PatientForm({ user }: { user: User }) {
 						</SelectItem>
 					))}
 				</CustomFormField>
+				{/* Insurance */}
+				<div className="flex flex-col xl:flex-row gap-4">
+					<CustomFormField
+						control={form.control}
+						type={FormFieldType.INPUT}
+						name="insuranceProvider"
+						label="Insurance provider"
+						placeholder="ex: Nationale Nederlanden"
+					/>
+					<CustomFormField
+						control={form.control}
+						type={FormFieldType.INPUT}
+						name="insurancePolicyNumber"
+						label="Insurance policy number"
+						placeholder="ex: ABC123456789"
+					/>
+				</div>
+				{/* Alergies */}
+				<div className="flex flex-col xl:flex-row gap-4">
+					<CustomFormField
+						control={form.control}
+						type={FormFieldType.TEXTAREA}
+						name="alergies"
+						label="Alergies (if any)"
+						placeholder="ex: Peanuts, Penicilin, Pollen..."
+					/>
+					<CustomFormField
+						control={form.control}
+						type={FormFieldType.TEXTAREA}
+						name="currentMedications"
+						label="Current madications"
+						placeholder="ex: Ibuprofen 200mg etc."
+					/>
+				</div>
+				{/* Medical histories */}
+				<div className="flex flex-col xl:flex-row gap-4">
+					<CustomFormField
+						control={form.control}
+						type={FormFieldType.TEXTAREA}
+						name="familyMedicalHistory"
+						label="Family medical history"
+						placeholder="ex: Mother had cancer"
+					/>
+					<CustomFormField
+						control={form.control}
+						type={FormFieldType.TEXTAREA}
+						name="pastMedicalHistory"
+						label="Past medical history"
+						placeholder="ex: Asthma diagnosis in childhood"
+					/>
+				</div>
+				{/* IDENTIFICATION AND VERIFICATION */}
+				<section className="space-y-6 pt-4">
+					<div className="space-y-1">
+						<h2 className="sub-header">Identification and Verification</h2>
+					</div>
+				</section>
 
 				<div className="flex flex-col xl:flex-row gap-4"></div>
 
