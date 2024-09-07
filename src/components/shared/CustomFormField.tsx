@@ -150,7 +150,7 @@ export default function CustomFormField(props: CustomFormFieldProps) {
 			render={({ field }) => (
 				<FormItem className="flex flex-col flex-1">
 					{type !== FormFieldType.CHECKBOX && label && (
-						<FormLabel className="mb-2">{label}</FormLabel>
+						<FormLabel className="mb-1">{label}</FormLabel>
 					)}
 					<RenderField field={field} props={props} />
 					{description && <FormDescription>{description}</FormDescription>}
