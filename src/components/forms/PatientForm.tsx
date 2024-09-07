@@ -18,6 +18,7 @@ import CustomFormField from '@/components/shared/CustomFormField'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Label } from '@/components/ui/label'
 import { SelectItem } from '@/components/ui/select'
+import FileUploader from '@/components/shared/FileUploader'
 // Styles
 import 'react-datepicker/dist/react-datepicker.css'
 
@@ -285,6 +286,18 @@ export default function PatientForm({ user }: { user: User }) {
 					label="Identification number"
 					placeholder="ex: 123456789"
 				/>
+				{/* Scanned copy of identification document */}
+				<CustomFormField
+						control={form.control}
+						type={FormFieldType.SKELETON}
+						name="identificationDocument"
+						label="Scanned copy of identification document"
+						renderSkeleton={(field) => (
+							<FormControl>
+								<FileUploader />
+							</FormControl>
+						)}
+					/>
 
 				<div className="flex flex-col xl:flex-row gap-4"></div>
 
