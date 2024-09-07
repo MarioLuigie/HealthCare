@@ -9,10 +9,13 @@ import { UserFormSchema, UserFormData } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
 import { icons } from '@/lib/constants'
 import { handleCreateUser } from '@/lib/handlers/user.handlers'
+import { GenderOptions } from '@/lib/constants'
 // components
 import { Form, FormControl } from '@/components/ui/form'
 import SubmitButton from '@/components/shared/SubmitButton'
 import CustomFormField from '@/components/shared/CustomFormField'
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+import { Label } from '@/components/ui/label'
 
 export default function PatientForm({ user }: { user: User }) {
 	const router = useRouter()
@@ -57,13 +60,12 @@ export default function PatientForm({ user }: { user: User }) {
 					<h1 className="header">Welcome !</h1>
 					<p className="text-dark-700">Let us know more about yourself.</p>
 				</section>
-
 				<section className="space-y-6">
 					<div className="space-y-1">
 						<h2 className="sub-header">Personal information</h2>
 					</div>
 				</section>
-
+				{/* Name */}
 				<CustomFormField
 					control={form.control}
 					type={FormFieldType.INPUT}
@@ -73,7 +75,7 @@ export default function PatientForm({ user }: { user: User }) {
 					iconSrc={icons.USER_ICON.path}
 					iconAlt={icons.USER_ICON.alt}
 				/>
-
+				{/* Email Phone */}
 				<div className="flex flex-col xl:flex-row gap-3">
 					<CustomFormField
 						control={form.control}
@@ -93,6 +95,7 @@ export default function PatientForm({ user }: { user: User }) {
 					/>
 				</div>
 
+				{/* Date of birth and Gender */}
 				<div className="flex flex-col xl:flex-row gap-3">
 					<CustomFormField
 						control={form.control}
@@ -107,7 +110,23 @@ export default function PatientForm({ user }: { user: User }) {
 						label="Gender"
 						renderSkeleton={(field) => (
 							<FormControl>
-
+								<RadioGroup
+									className="flex gap-6 h-11 xl:justify-between"
+									onValueChange={field.onChange}
+									defaultValue={field.value}
+								>
+									{GenderOptions.map((option, i) => (
+										<div key={option + i} className="radio-group">
+											<RadioGroupItem value={option} id={option} />
+											<Label
+												htmlFor={option}
+												className="cursor-pointer"
+											>
+												{option}
+											</Label>
+										</div>
+									))}
+								</RadioGroup>
 							</FormControl>
 						)}
 					/>
@@ -116,6 +135,7 @@ export default function PatientForm({ user }: { user: User }) {
 				<div className="flex flex-col xl:flex-row gap-3"></div>
 
 				<div className="flex flex-col xl:flex-row gap-3"></div>
+
 				<div className="mt-8">
 					<SubmitButton isLoading={isSubmitting}>Register</SubmitButton>
 				</div>
