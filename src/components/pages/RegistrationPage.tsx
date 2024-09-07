@@ -13,7 +13,7 @@ export default async function RegistrationPage({ userId }: { userId: string }) {
 	console.log("User from RegistrationPage:", user);
 	return (
 		<div className="flex h-screen max-h-screen">
-			<section className="remove-scrollbar container my-auto">
+			<section className="remove-scrollbar container my-auto max-h-screen overflow-y-auto">
 				<div className="sub-container max-w-[496px]">
 					<Image
 						src={icons.LOGO_FULL.path}
@@ -33,7 +33,7 @@ export default async function RegistrationPage({ userId }: { userId: string }) {
 					</div>
 				</div>
 			</section>
-			<section className="max-w-[50%]">
+			<section className="max-w-[33%]">
 				<Image
 					src={images.REGISTER_PAGE_IMAGE.path}
 					height={1000}

@@ -6,7 +6,7 @@ import { Control } from 'react-hook-form'
 import Image from 'next/image'
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
-import ReactDatePicker from "react-datepicker"
+import ReactDatePicker from 'react-datepicker'
 
 // lib
 import { FormFieldType } from '@/lib/types/enums'
@@ -111,17 +111,18 @@ const RenderField = ({
 						<ReactDatePicker
 							showTimeSelect={props.showTimeSelect ?? false}
 							selected={field.value}
-							onChange={(date: Date) => field.onChange(date)}
+							onChange={(date: Date | null) => field.onChange(date)}
 							timeInputLabel="Time:"
 							dateFormat={props.dateFormat ?? 'MM/dd/yyyy'}
 							wrapperClassName="date-picker"
+							placeholderText={props.placeholder}
 						/>
 					</FormControl>
 				</div>
 			)
 
 		case FormFieldType.SKELETON:
-			return <FormControl></FormControl>
+			return (props.renderSkeleton && props.renderSkeleton(field))
 	}
 }
 

@@ -16,6 +16,8 @@ import SubmitButton from '@/components/shared/SubmitButton'
 import CustomFormField from '@/components/shared/CustomFormField'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Label } from '@/components/ui/label'
+// Styles
+import "react-datepicker/dist/react-datepicker.css"
 
 export default function PatientForm({ user }: { user: User }) {
 	const router = useRouter()
@@ -102,6 +104,7 @@ export default function PatientForm({ user }: { user: User }) {
 						type={FormFieldType.DATE_PICKER}
 						name="birthDate"
 						label="Date of birth"
+						placeholder='Select your date'
 					/>
 					<CustomFormField
 						control={form.control}
