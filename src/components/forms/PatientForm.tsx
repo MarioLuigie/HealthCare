@@ -21,8 +21,8 @@ export default function PatientForm({ user }: { user: User }) {
 		resolver: zodResolver(UserFormSchema),
 		defaultValues: {
 			name: '',
-			email: '',
-			phone: '',
+			email: user.email,
+			phone: user.phone,
 		},
 	})
 
@@ -70,6 +70,8 @@ export default function PatientForm({ user }: { user: User }) {
 					name="name"
 					label="Full name"
 					placeholder="ex. James Smith"
+					iconSrc={icons.USER_ICON.path}
+					iconAlt={icons.USER_ICON.alt}
 				/>
 
 				<div className="flex gap-3">
@@ -78,12 +80,16 @@ export default function PatientForm({ user }: { user: User }) {
 						type={FormFieldType.INPUT}
 						name="email"
 						label="Email address"
+						iconSrc={icons.EMAIL_ICON.path}
+						iconAlt={icons.EMAIL_ICON.alt}
 					/>
 					<CustomFormField
 						control={form.control}
 						type={FormFieldType.INPUT}
 						name="phone"
 						label="Phone number"
+						iconSrc={icons.PHONE_ICON.path}
+						iconAlt={icons.PHONE_ICON.alt}
 					/>
 				</div>
 				<div className="mt-8">

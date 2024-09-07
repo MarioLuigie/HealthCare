@@ -16,7 +16,7 @@ export const icons = {
     alt: 'Email icon'
   },
   PHONE_ICON: {
-    path: '/assets/icons/email.svg',
+    path: '/assets/icons/phone.svg',
     alt: 'Phone icon'
   },
   LOADER: {
