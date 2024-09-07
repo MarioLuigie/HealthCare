@@ -76,7 +76,7 @@ export default function PatientForm({ user }: { user: User }) {
 					iconAlt={icons.USER_ICON.alt}
 				/>
 				{/* Email Phone */}
-				<div className="flex flex-col xl:flex-row gap-3">
+				<div className="flex flex-col xl:flex-row gap-4">
 					<CustomFormField
 						control={form.control}
 						type={FormFieldType.INPUT}
@@ -96,13 +96,13 @@ export default function PatientForm({ user }: { user: User }) {
 				</div>
 
 				{/* Date of birth and Gender */}
-				<div className="flex flex-col xl:flex-row gap-3">
+				<div className="flex flex-col xl:flex-row gap-4">
 					<CustomFormField
 						control={form.control}
 						type={FormFieldType.DATE_PICKER}
 						name="birthDate"
 						label="Date of birth"
-						placeholder='Select your birth date'
+						placeholder='Select your birth'
 					/>
 					<CustomFormField
 						control={form.control}
@@ -112,7 +112,7 @@ export default function PatientForm({ user }: { user: User }) {
 						renderSkeleton={(field) => (
 							<FormControl>
 								<RadioGroup
-									className="flex gap-2 h-11 xl:justify-between"
+									className="flex gap-3 h-11 xl:justify-between"
 									onValueChange={field.onChange}
 									defaultValue={field.value}
 								>
@@ -133,9 +133,9 @@ export default function PatientForm({ user }: { user: User }) {
 					/>
 				</div>
 
-				<div className="flex flex-col xl:flex-row gap-3"></div>
+				<div className="flex flex-col xl:flex-row gap-4"></div>
 
-				<div className="flex flex-col xl:flex-row gap-3"></div>
+				<div className="flex flex-col xl:flex-row gap-4"></div>
 
 				<div className="mt-8">
 					<SubmitButton isLoading={isSubmitting}>Register</SubmitButton>
