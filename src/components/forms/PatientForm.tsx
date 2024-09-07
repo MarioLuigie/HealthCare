@@ -98,7 +98,7 @@ export default function PatientForm({ user }: { user: User }) {
 						control={form.control}
 						type={FormFieldType.DATE_PICKER}
 						name="birthDate"
-						label="Date of Birth"
+						label="Date of birth"
 					/>
 					<CustomFormField
 						control={form.control}
