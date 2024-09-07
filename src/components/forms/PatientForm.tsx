@@ -17,7 +17,7 @@ import CustomFormField from '@/components/shared/CustomFormField'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Label } from '@/components/ui/label'
 // Styles
-import "react-datepicker/dist/react-datepicker.css"
+import 'react-datepicker/dist/react-datepicker.css'
 
 export default function PatientForm({ user }: { user: User }) {
 	const router = useRouter()
@@ -60,6 +60,7 @@ export default function PatientForm({ user }: { user: User }) {
 					<h1 className="header">Welcome !</h1>
 					<p className="text-dark-700">Let us know more about yourself.</p>
 				</section>
+				{/* PERSONAL INFORMATION */}
 				<section className="space-y-6">
 					<div className="space-y-1">
 						<h2 className="sub-header">Personal information</h2>
@@ -94,7 +95,6 @@ export default function PatientForm({ user }: { user: User }) {
 						iconAlt={icons.PHONE_ICON.alt}
 					/>
 				</div>
-
 				{/* Date of birth and Gender */}
 				<div className="flex flex-col xl:flex-row gap-4">
 					<CustomFormField
@@ -102,7 +102,7 @@ export default function PatientForm({ user }: { user: User }) {
 						type={FormFieldType.DATE_PICKER}
 						name="birthDate"
 						label="Date of birth"
-						placeholder='Select your birth'
+						placeholder="Select your birth"
 					/>
 					<CustomFormField
 						control={form.control}
@@ -132,8 +132,40 @@ export default function PatientForm({ user }: { user: User }) {
 						)}
 					/>
 				</div>
+				{/* Address and Occupation */}
+				<div className="flex flex-col xl:flex-row gap-4">
+					<CustomFormField
+						control={form.control}
+						type={FormFieldType.INPUT}
+						name="address"
+						label="Address"
+					/>
+					<CustomFormField
+						control={form.control}
+						type={FormFieldType.INPUT}
+						name="occupation"
+						label="Occupation"
+					/>
+				</div>
 
-				<div className="flex flex-col xl:flex-row gap-4"></div>
+				{/* MEDICAL INFORMATION */}
+				<section className="space-y-6 pt-4">
+					<div className="space-y-1">
+						<h2 className="sub-header">Medical information</h2>
+					</div>
+				</section>
+				{/* Primary care physician */}
+				<div className="flex flex-col xl:flex-row gap-4">
+					<CustomFormField
+						control={form.control}
+						type={FormFieldType.SELECT}
+						name="name"
+						label="Primary care physician"
+						placeholder="ex. James Smith"
+						iconSrc={icons.USER_ICON.path}
+						iconAlt={icons.USER_ICON.alt}
+					/>
+				</div>
 
 				<div className="flex flex-col xl:flex-row gap-4"></div>
 
