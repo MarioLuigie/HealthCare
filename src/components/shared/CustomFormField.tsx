@@ -7,7 +7,12 @@ import Image from 'next/image'
 import 'react-phone-number-input/style.css'
 import PhoneInput from 'react-phone-number-input'
 import ReactDatePicker from 'react-datepicker'
-
+import {
+	Select,
+	SelectContent,
+	SelectTrigger,
+	SelectValue,
+} from '@/components/ui/select'
 // lib
 import { FormFieldType } from '@/lib/types/enums'
 // components
@@ -122,14 +127,19 @@ const RenderField = ({
 			)
 
 		case FormFieldType.SKELETON:
-			return (props.renderSkeleton && props.renderSkeleton(field))
+			return props.renderSkeleton && props.renderSkeleton(field)
 
 		case FormFieldType.SELECT:
 			return (
-				<div className="flex rounded-md border border-dark-500 bg-dark-400"></div>
+				<FormControl>
+					<Select onValueChange={field.onChange} defaultValue={field.value}>
+						<SelectTrigger className="shad-select-trigger">
+							<SelectValue placeholder={props.placeholder} />
+						</SelectTrigger>
+						<SelectContent>{props.children}</SelectContent>
+					</Select>
+				</FormControl>
 			)
-
-
 	}
 }
 

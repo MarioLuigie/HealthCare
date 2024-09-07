@@ -4,6 +4,7 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 // lib
 import { UserFormSchema, UserFormData } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
@@ -16,6 +17,9 @@ import SubmitButton from '@/components/shared/SubmitButton'
 import CustomFormField from '@/components/shared/CustomFormField'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Label } from '@/components/ui/label'
+import {
+	SelectItem,
+} from '@/components/ui/select'
 // Styles
 import 'react-datepicker/dist/react-datepicker.css'
 
@@ -177,8 +181,25 @@ export default function PatientForm({ user }: { user: User }) {
 					type={FormFieldType.SELECT}
 					name="primaryPhysician"
 					label="Primary physician"
-					placeholder='Select a physician'
+					placeholder="Select a physician"
 				>
+					{Doctors.map((doctor, i) => (
+						<SelectItem
+							key={doctor.name + i}
+							value={doctor.name}
+							className="cursor-pointer"
+						>
+							<div className="flex justify-start items-center gap-4">
+								<Image
+									src={doctor.image}
+									width={32}
+									height={32}
+									alt="doctor full name"
+								/>
+								<p>{doctor.name}</p>
+							</div>
+						</SelectItem>
+					))}
 				</CustomFormField>
 
 				<div className="flex flex-col xl:flex-row gap-4"></div>
