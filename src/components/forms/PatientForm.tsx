@@ -194,7 +194,7 @@ export default function PatientForm({ user }: { user: User }) {
 									src={doctor.image}
 									width={32}
 									height={32}
-									alt="doctor full name"
+									alt={doctor.name}
 								/>
 								<p>{doctor.name}</p>
 							</div>
