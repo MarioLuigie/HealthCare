@@ -6,11 +6,11 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 // lib
-import { UserFormSchema, UserFormData } from '@/lib/types/zod'
+import { PatientFormSchema, PatientFormData } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
 import { icons } from '@/lib/constants'
 import { handleCreateUser } from '@/lib/handlers/user.handlers'
-import { GenderOptions, Doctors } from '@/lib/constants'
+import { GenderOptions, Doctors, IdentificationTypes } from '@/lib/constants'
 // components
 import { Form, FormControl } from '@/components/ui/form'
 import SubmitButton from '@/components/shared/SubmitButton'
@@ -24,19 +24,20 @@ import 'react-datepicker/dist/react-datepicker.css'
 export default function PatientForm({ user }: { user: User }) {
 	const router = useRouter()
 
-	const form = useForm<UserFormData>({
-		resolver: zodResolver(UserFormSchema),
+	const form = useForm<PatientFormData>({
+		resolver: zodResolver(PatientFormSchema),
 		defaultValues: {
 			name: '',
 			email: user.email,
 			phone: user.phone,
+			identificationType: IdentificationTypes[0],
 		},
 	})
 
 	const { isSubmitting } = form.formState
 
-	const onSubmit: SubmitHandler<UserFormData> = async (
-		formData: UserFormData
+	const onSubmit: SubmitHandler<PatientFormData> = async (
+		formData: PatientFormData
 	) => {
 		try {
 			const user = await handleCreateUser(formData)
@@ -253,9 +254,37 @@ export default function PatientForm({ user }: { user: User }) {
 				{/* IDENTIFICATION AND VERIFICATION */}
 				<section className="space-y-6 pt-4">
 					<div className="space-y-1">
-						<h2 className="sub-header">Identification and Verification</h2>
+						<h2 className="sub-header">
+							Identification and Verification
+						</h2>
 					</div>
 				</section>
+				{/* Identification type */}
+				<CustomFormField
+					control={form.control}
+					type={FormFieldType.SELECT}
+					name="identificationType"
+					label="Identification type"
+					placeholder="Select an identification type"
+				>
+					{IdentificationTypes.map((type, i) => (
+						<SelectItem
+							key={type + i}
+							value={type}
+							className="cursor-pointer"
+						>
+							<p>{type}</p>
+						</SelectItem>
+					))}
+				</CustomFormField>
+				{/* Identification number */}
+				<CustomFormField
+					control={form.control}
+					type={FormFieldType.INPUT}
+					name="identificationNumber"
+					label="Identification number"
+					placeholder="ex: 123456789"
+				/>
 
 				<div className="flex flex-col xl:flex-row gap-4"></div>
 
