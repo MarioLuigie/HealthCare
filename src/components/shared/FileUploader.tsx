@@ -9,8 +9,8 @@ interface FileUploaderProps {
 }
 
 export default function FileUploader({ files, onChange }: FileUploaderProps) {
-	const onDrop = useCallback((acceptedFiles) => {
-		// Do something with the files
+	const onDrop = useCallback((acceptedFiles: File[]) => {
+		onChange(acceptedFiles)
 	}, [])
 	const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
 
@@ -20,7 +20,7 @@ export default function FileUploader({ files, onChange }: FileUploaderProps) {
 			{isDragActive ? (
 				<p>Drop the files here ...</p>
 			) : (
-				<p>Drag 'n' drop some files here, or click to select files</p>
+				<p>Drag and drop some files here, or click to select files</p>
 			)}
 		</div>
 	)
