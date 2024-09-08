@@ -24,13 +24,16 @@ export default function FileUploader({ files, onChange }: FileUploaderProps) {
 			<input {...getInputProps()} />
 
 			{files && files?.length > 0 ? (
-				<Image
-					src={convertFileToUrl(files[0])}
-					width={1000}
-					height={1000}
-					alt="uploaded image"
-					className="max-h-[400px] overflow-hidden object-cover"
-				/>
+				files.slice(0,2).map((file, i) => (
+					<Image
+						src={convertFileToUrl(file)}
+						width={1000}
+						height={1000}
+						alt="uploaded image"
+						className="max-h-[400px] overflow-hidden object-cover"
+            key={i}
+					/>
+				))
 			) : isDragActive ? (
 				<Image
 					src={icons.UPLOAD_GIF.path}
