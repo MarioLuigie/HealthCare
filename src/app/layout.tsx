@@ -1,17 +1,7 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import { Plus_Jakarta_Sans as FontSans } from 'next/font/google'
 import { cn } from '@/lib/utils'
 import { ThemeProvider } from '@/components/theme-provider'
 import '@/app/globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
-
-const fontSans = FontSans({
-	subsets: ['latin'],
-	weight: ['300', '400', '500', '600', '700'],
-	variable: '--font-sans',
-})
 
 export const metadata: Metadata = {
 	title: 'HealthCare',
@@ -32,7 +22,6 @@ export default function RootLayout({
 			<body
 				className={cn(
 					'min-h-screen font-sans antialiased scroll-m-4',
-					fontSans.variable
 				)}
 			>
 				<ThemeProvider
