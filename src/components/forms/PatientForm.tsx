@@ -45,16 +45,26 @@ export default function PatientForm({ user }: { user: User }) {
 	const onSubmit: SubmitHandler<PatientFormData> = async (
 		formData: PatientFormData
 	) => {
-		try {
-			console.log('Reistering Patient', formData)
-			// const user = await handleCreateUser(formData)
+		let data
 
-			// if (user!) {
-			// 	router.push(`/patients/${user.$id}/register`)
-			// 	form.reset()
-			// } else {
-			// 	console.log('Something went wrong with registering patient.')
-			// }
+		// extracting files from formData
+		if (
+			formData.identificationDocument &&
+			formData.identificationDocument.length > 0
+		) {
+			// file that can be read by browsers
+			const blobFile = new Blob([formData.identificationDocument[0]], {
+				type: formData.identificationDocument[0].type,
+			})
+			// file possible to open
+			data = new FormData()
+			data.append('blobFile', blobFile)
+			data.append('fileName', formData.identificationDocument[0].name)
+		}
+
+		try {
+			console.log('Registering Patient', formData)
+
 			form.reset()
 		} catch (err) {
 			console.error('Error from onSubmit for PatientForm', err)
