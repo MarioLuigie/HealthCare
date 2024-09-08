@@ -10,7 +10,12 @@ import { PatientFormSchema, PatientFormData } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
 import { icons } from '@/lib/constants'
 import { handleCreateUser } from '@/lib/handlers/user.handlers'
-import { GenderOptions, Doctors, IdentificationTypes, PatientFormDefaultValues } from '@/lib/constants'
+import {
+	GenderOptions,
+	Doctors,
+	IdentificationTypes,
+	PatientFormDefaultValues,
+} from '@/lib/constants'
 // components
 import { Form, FormControl } from '@/components/ui/form'
 import SubmitButton from '@/components/shared/SubmitButton'
@@ -50,6 +55,7 @@ export default function PatientForm({ user }: { user: User }) {
 			// } else {
 			// 	console.log('Something went wrong with registering patient.')
 			// }
+			form.reset()
 		} catch (err) {
 			console.error('Error from onSubmit for PatientForm', err)
 		}
