@@ -3,6 +3,7 @@ import { icons, images } from '@/lib/constants'
 import UserForm from '@/components/forms/UserForm'
 import Link from 'next/link'
 import PageTitle from '@/components/shared/PageTitle'
+import LogoFull from '@/components/shared/LogoFull'
 
 export default function HomePage() {
 	return (
@@ -10,14 +11,7 @@ export default function HomePage() {
 			{/* TODO: OTP Verification | PassKey Modal  */}
 			<section className="remove-scrollbar container my-auto">
 				<div className="sub-container max-w-[496px]">
-					<Image
-						src={icons.LOGO_FULL.path}
-						height={1000}
-						width={1000}
-						alt={icons.LOGO_FULL.alt}
-						className="mb-12 h-10 w-fit"
-						priority
-					/>
+					<LogoFull />
 					<PageTitle
 						title="Hi there !"
 						description="Get started with appointments."

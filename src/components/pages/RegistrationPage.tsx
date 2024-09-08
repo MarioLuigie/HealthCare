@@ -6,6 +6,7 @@ import { getUser } from '@/lib/actions/user.actions'
 // components
 import PatientForm from '@/components/forms/PatientForm'
 import PageTitle from '@/components/shared/PageTitle'
+import LogoFull from '@/components/shared/LogoFull'
 
 export default async function RegistrationPage({ userId }: { userId: string }) {
 	const user = await getUser(userId)
@@ -15,13 +16,7 @@ export default async function RegistrationPage({ userId }: { userId: string }) {
 		<div className="flex h-screen max-h-screen">
 			<section className="remove-scrollbar container my-auto max-h-screen overflow-y-auto">
 				<div className="sub-container max-w-[780px]">
-					<Image
-						src={icons.LOGO_FULL.path}
-						height={1000}
-						width={1000}
-						alt={icons.LOGO_FULL.alt}
-						className="mb-12 h-10 w-fit"
-					/>
+					<LogoFull />
 					<PageTitle
 						title="Welcome !"
 						description="Let us know more about yourself."
