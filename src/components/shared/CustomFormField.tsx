@@ -26,6 +26,8 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Label } from '../ui/label'
 
 interface CustomFormFieldProps {
 	control: Control<any>
@@ -132,11 +134,16 @@ const RenderField = ({
 		case FormFieldType.SELECT:
 			return (
 				<FormControl>
-					<Select onValueChange={field.onChange} defaultValue={field.value}>
+					<Select
+						onValueChange={field.onChange}
+						defaultValue={field.value}
+					>
 						<SelectTrigger className="shad-select-trigger">
 							<SelectValue placeholder={props.placeholder} />
 						</SelectTrigger>
-						<SelectContent className='shad-select-content'>{props.children}</SelectContent>
+						<SelectContent className="shad-select-content">
+							{props.children}
+						</SelectContent>
 					</Select>
 				</FormControl>
 			)
@@ -144,7 +151,20 @@ const RenderField = ({
 		case FormFieldType.CHECKBOX:
 			return (
 				<FormControl>
-
+					<div className="flex items-center gap-3">
+						<Checkbox
+							checked={field.value}
+							onCheckedChange={field.onChange}
+							disabled={props.disabled}
+							id={props.name}
+						/>
+						<Label
+							htmlFor={props.name}
+							className="text-xs font-thin text-zinc-200 leading-6 cursor-pointer"
+						>
+							{props.label}
+						</Label>
+					</div>
 				</FormControl>
 			)
 	}
