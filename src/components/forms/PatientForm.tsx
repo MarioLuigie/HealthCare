@@ -288,21 +288,49 @@ export default function PatientForm({ user }: { user: User }) {
 				/>
 				{/* Scanned copy of identification document */}
 				<CustomFormField
-						control={form.control}
-						type={FormFieldType.SKELETON}
-						name="identificationDocument"
-						label="Scanned copy of identification document"
-						renderSkeleton={(field) => (
-							<FormControl>
-								<FileUploader files={field.value} onChange={field.onChange}/>
-							</FormControl>
-						)}
-					/>
-
-				<div className="flex flex-col xl:flex-row gap-4"></div>
-
+					control={form.control}
+					type={FormFieldType.SKELETON}
+					name="identificationDocument"
+					label="Scanned copy of identification document"
+					renderSkeleton={(field) => (
+						<FormControl>
+							<FileUploader
+								files={field.value}
+								onChange={field.onChange}
+							/>
+						</FormControl>
+					)}
+				/>
+				{/* CONSENT AND PRIVACY */}
+				<section className="space-y-6 pt-4">
+					<div className="space-y-1">
+						<h2 className="sub-header">Consent and Privacy</h2>
+					</div>
+					<CustomFormField
+            type={FormFieldType.CHECKBOX}
+            control={form.control}
+            name="treatmentConsent"
+            label="I consent to receive treatment for my health condition."
+          />
+          <CustomFormField
+            type={FormFieldType.CHECKBOX}
+            control={form.control}
+            name="disclosureConsent"
+            label="I consent to the use and disclosure of my health
+            information for treatment purposes."
+          />
+          <CustomFormField
+            type={FormFieldType.CHECKBOX}
+            control={form.control}
+            name="privacyConsent"
+            label="I acknowledge that I have reviewed and agree to the
+            privacy policy"
+          />
+				</section>
 				<div className="mt-8">
-					<SubmitButton isLoading={isSubmitting}>Register</SubmitButton>
+					<SubmitButton isLoading={isSubmitting}>
+						Register and Continue
+					</SubmitButton>
 				</div>
 			</form>
 		</Form>

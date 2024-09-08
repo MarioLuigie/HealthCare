@@ -140,6 +140,13 @@ const RenderField = ({
 					</Select>
 				</FormControl>
 			)
+
+		case FormFieldType.CHECKBOX:
+			return (
+				<FormControl>
+
+				</FormControl>
+			)
 	}
 }
 
