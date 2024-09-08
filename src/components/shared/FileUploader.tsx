@@ -45,8 +45,8 @@ export default function FileUploader({ files, onChange }: FileUploaderProps) {
 				<>
 					<Image
 						src={icons.UPLOAD_ICON.path}
-						width={40}
-						height={40}
+						width={50}
+						height={50}
 						alt={icons.UPLOAD_ICON.alt}
 					/>
 					<div className="file-upload_label">
