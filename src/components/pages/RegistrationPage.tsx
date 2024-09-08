@@ -1,7 +1,7 @@
 // modules
 import Image from 'next/image'
 // lib
-import { icons, images } from '@/lib/constants'
+import { images } from '@/lib/constants'
 import { getUser } from '@/lib/actions/user.actions'
 // components
 import PatientForm from '@/components/forms/PatientForm'

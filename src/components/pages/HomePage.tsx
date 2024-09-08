@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { icons, images } from '@/lib/constants'
+import { images } from '@/lib/constants'
 import UserForm from '@/components/forms/UserForm'
 import Link from 'next/link'
 import PageTitle from '@/components/shared/PageTitle'
