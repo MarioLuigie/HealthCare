@@ -326,12 +326,6 @@ export default function PatientForm({ user }: { user: User }) {
 						label="I acknowledge that I have reviewed and agree to the
             privacy policy"
 					/>
-					<CustomFormField
-						type={FormFieldType.CHECKBOX}
-						control={form.control}
-						name="selectAll"
-						label="Select all consents"
-					/>
 				</section>
 				<div className="mt-8">
 					<SubmitButton isLoading={isSubmitting}>

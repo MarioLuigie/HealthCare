@@ -14,7 +14,7 @@ export default async function RegistrationPage({ userId }: { userId: string }) {
 	return (
 		<div className="flex h-screen max-h-screen">
 			<section className="remove-scrollbar container my-auto max-h-screen overflow-y-auto">
-				<div className="sub-container max-w-[496px]">
+				<div className="sub-container max-w-[780px]">
 					<Image
 						src={icons.LOGO_FULL.path}
 						height={1000}

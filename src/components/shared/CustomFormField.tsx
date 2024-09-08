@@ -160,7 +160,7 @@ const RenderField = ({
 						/>
 						<Label
 							htmlFor={props.name}
-							className="text-xs font-thin text-zinc-200 leading-6 cursor-pointer"
+							className="text-xs font-thin text-zinc-200 leading-5 cursor-pointer"
 						>
 							{props.label}
 						</Label>
