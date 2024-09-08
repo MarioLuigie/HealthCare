@@ -22,8 +22,8 @@ export interface Patient extends Models.Document {
 	pastMedicalHistory: string | undefined
 	identificationType: string | undefined
 	identificationNumber: string | undefined
-	identificationDocument: FormData | undefined // W database appwrite zamiast it mamy identificationDocumentId i identificationDocumentUrl ???
-	privacyConsent: boolean // Brak pozostałych 2 consents tu i w db appwrite
+	identificationDocument: FormData | undefined // ?? W database appwrite zamiast it mamy identificationDocumentId i identificationDocumentUrl ??
+	privacyConsent: boolean // ?? Brak pozostałych 2 consents tu i w db appwrite ??
 }
 
 export interface Appointment extends Models.Document {

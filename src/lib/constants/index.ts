@@ -1,8 +1,8 @@
 export const GenderOptions = ['Male', 'Female', 'Other']
 
 export const PatientFormDefaultValues = {
-	firstName: '',
-	lastName: '',
+	firstName: '', // ?? a nie name??
+	lastName: '', // ?? a nie name ??
 	email: '',
 	phone: '',
 	birthDate: new Date('01-01-1900'),
