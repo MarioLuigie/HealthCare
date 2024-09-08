@@ -10,7 +10,7 @@ import { PatientFormSchema, PatientFormData } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
 import { icons } from '@/lib/constants'
 import { handleCreateUser } from '@/lib/handlers/user.handlers'
-import { GenderOptions, Doctors, IdentificationTypes } from '@/lib/constants'
+import { GenderOptions, Doctors, IdentificationTypes, PatientFormDefaultValues } from '@/lib/constants'
 // components
 import { Form, FormControl } from '@/components/ui/form'
 import SubmitButton from '@/components/shared/SubmitButton'
@@ -28,10 +28,10 @@ export default function PatientForm({ user }: { user: User }) {
 	const form = useForm<PatientFormData>({
 		resolver: zodResolver(PatientFormSchema),
 		defaultValues: {
-			name: '',
+			...PatientFormDefaultValues,
+			name: user.name,
 			email: user.email,
 			phone: user.phone,
-			identificationType: IdentificationTypes[0],
 		},
 	})
 
@@ -41,14 +41,15 @@ export default function PatientForm({ user }: { user: User }) {
 		formData: PatientFormData
 	) => {
 		try {
-			const user = await handleCreateUser(formData)
+			console.log('Reistering Patient', formData)
+			// const user = await handleCreateUser(formData)
 
-			if (user!) {
-				router.push(`/patients/${user.$id}/register`)
-				form.reset()
-			} else {
-				console.log('Something went wrong with creating user.')
-			}
+			// if (user!) {
+			// 	router.push(`/patients/${user.$id}/register`)
+			// 	form.reset()
+			// } else {
+			// 	console.log('Something went wrong with registering patient.')
+			// }
 		} catch (err) {
 			console.error('Error from onSubmit for PatientForm', err)
 		}

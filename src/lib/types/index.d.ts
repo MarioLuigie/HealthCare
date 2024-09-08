@@ -27,7 +27,7 @@ declare interface RegisterPatientParams extends CreateUserParams {
 	identificationType: string | undefined
 	identificationNumber: string | undefined
 	identificationDocument: FormData | undefined // W database appwrite zamiast it mamy identificationDocumentId i identificationDocumentUrl ???
-	privacyConsent: boolean
+	privacyConsent: boolean // Brak pozostałych 2 consents
 }
 
 // Appointment

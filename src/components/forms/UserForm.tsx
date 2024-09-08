@@ -41,7 +41,7 @@ export default function UserForm() {
 				console.log('Something went wrong with creating user.')
 			}
 		} catch (err) {
-			console.error('Error from onSubmit for PatientForm', err)
+			console.error('Error from onSubmit for UserForm', err)
 		}
 	}
 
