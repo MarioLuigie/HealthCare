@@ -8,8 +8,9 @@ import Image from 'next/image'
 // lib
 import { PatientFormSchema, PatientFormData } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
+import { prepareFileUploadData } from '@/lib/utils'
+import { handleRegisterPatient } from '@/lib/handlers/user.handlers'
 import { icons } from '@/lib/constants'
-import { handleCreateUser } from '@/lib/handlers/user.handlers'
 import {
 	GenderOptions,
 	Doctors,
@@ -45,25 +46,25 @@ export default function PatientForm({ user }: { user: User }) {
 	const onSubmit: SubmitHandler<PatientFormData> = async (
 		formData: PatientFormData
 	) => {
-		let data
+		const data = prepareFileUploadData(formData.identificationDocument)
 
-		// extracting files from formData
-		if (
-			formData.identificationDocument &&
-			formData.identificationDocument.length > 0
-		) {
-			// file that can be read by browsers
-			const blobFile = new Blob([formData.identificationDocument[0]], {
-				type: formData.identificationDocument[0].type,
-			})
-			// file possible to open
-			data = new FormData()
-			data.append('blobFile', blobFile)
-			data.append('fileName', formData.identificationDocument[0].name)
-		}
+		// FormData's files
+		data?.forEach(function (value, key) {
+			console.log(key, value)
+		})
 
 		try {
-			console.log('Registering Patient', formData)
+			const patientData = {
+				...formData,
+				userId: user.$id,
+				birthDate: new Date(formData.birthDate),
+				identificationDocument: data,
+			}
+
+			const patient = await handleRegisterPatient(patientData)
+
+			console.log('***patientData', patientData)// with FormData files
+			console.log('***patient', patient)// without FormData files
 
 			form.reset()
 		} catch (err) {

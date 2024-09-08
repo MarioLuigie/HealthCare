@@ -75,3 +75,65 @@ export function encryptKey(passkey: string) {
 export function decryptKey(passkey: string) {
 	return atob(passkey)
 }
+
+export function prepareFileUploadData(fileUploadData: File[] | undefined) {
+	let data: FormData | undefined = undefined
+
+	if (fileUploadData && fileUploadData.length > 0) {
+		data = new FormData()
+
+		// Przetwarzanie wszystkich plików z tablicy
+		fileUploadData.forEach((file) => {
+			// Dodajemy każdy plik do FormData z tym samym kluczem
+			const blobFile = new Blob([file], {
+				type: file.type,
+			})
+
+			// Dodajemy plik do FormData z tym samym kluczem 'files[]'
+			data?.append('files[]', blobFile, file.name)
+		})
+	}
+
+	return data
+}
+
+// export function prepareFileUploadData(fileUploadData: File[] | undefined) {
+// 	let data
+// 	// extracting files from fileUploadData
+// 	if (
+// 		fileUploadData &&
+// 		fileUploadData.length > 0
+// 	) {
+// 		// file that can be read by browsers
+// 		const blobFile = new Blob([fileUploadData[0]], {
+// 			type: fileUploadData[0].type,
+// 		})
+// 		// file possible to open
+// 		data = new FormData()
+// 		data.append('blobFile', blobFile)
+// 		data.append('fileName', fileUploadData[0].name)
+// 	}
+// 	return data
+// }
+
+// export function prepareFileUploadData(fileUploadData: File[] | undefined) {
+// 	let data: FormData | undefined = undefined
+
+// 	if (fileUploadData && fileUploadData.length > 0) {
+// 		data = new FormData()
+
+// 		// Przetwarzanie wszystkich plików z tablicy
+// 		fileUploadData.forEach((file, index) => {
+// 			// Dodajemy każdy plik do FormData
+// 			const blobFile = new Blob([file], {
+// 				type: file.type,
+// 			})
+
+// 			// Dodajemy plik do FormData. Używamy dynamicznych nazw dla plików.
+// 			data?.append(`blobFile_${index}`, blobFile)
+// 			data?.append(`fileName_${index}`, file.name)
+// 		})
+// 	}
+
+// 	return data
+// }

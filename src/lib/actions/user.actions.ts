@@ -19,7 +19,6 @@ export async function createUser(user: CreateUserParams) {
 		)
 
 		return deepClone(createdUser)
-
 	} catch (err: any) {
 		// Check existing user
 		if (err && err?.code === 409) {
@@ -38,7 +37,6 @@ export async function getUser(userId: string) {
 		const user = await users.get(userId)
 
 		return deepClone(user)
-		
 	} catch (err) {
 		console.error(err)
 	}
@@ -46,8 +44,10 @@ export async function getUser(userId: string) {
 
 // PATIENT
 // Register patient - add patient to patient collection in appwrite database
-export async function registerPatient() {
+export async function registerPatient(patient: RegisterPatientParams) {
 	try {
+		// patient with FormData files - before deepClone()
+		return deepClone(patient)
 	} catch (err) {
 		console.error('An error occurred while registering a new patient:', err)
 	}
