@@ -1,9 +1,13 @@
+// modules
 import Image from 'next/image'
-import { images } from '@/lib/constants'
-import UserForm from '@/components/forms/UserForm'
 import Link from 'next/link'
+// lib
+import { images } from '@/lib/constants'
+// components
 import PageTitle from '@/components/shared/PageTitle'
+import UserForm from '@/components/forms/UserForm'
 import LogoFull from '@/components/shared/LogoFull'
+import Copyright from '@/components/shared/Copyright'
 
 export default function HomePage() {
 	return (
@@ -17,14 +21,11 @@ export default function HomePage() {
 						description="Get started with appointments."
 					/>
 					<UserForm />
-					<div className="flex justify-between text-14-regular mt-20">
-						<p className="justify-items-end text-dark-600 xl:text-left">
-							© 2024 HealthCare by ARWcode
-						</p>
+					<Copyright>
 						<Link href="/?admin=true" className="text-green-500">
 							Admin
 						</Link>
-					</div>
+					</Copyright>
 				</div>
 			</section>
 			<section className="max-w-[50%]">

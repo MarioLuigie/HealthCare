@@ -7,6 +7,7 @@ import { getUser } from '@/lib/actions/user.actions'
 import PatientForm from '@/components/forms/PatientForm'
 import PageTitle from '@/components/shared/PageTitle'
 import LogoFull from '@/components/shared/LogoFull'
+import Copyright from '@/components/shared/Copyright'
 
 export default async function RegistrationPage({ userId }: { userId: string }) {
 	const user = await getUser(userId)
@@ -22,11 +23,7 @@ export default async function RegistrationPage({ userId }: { userId: string }) {
 						description="Let us know more about yourself."
 					/>
 					<PatientForm user={user} />
-					<div className="flex justify-between text-14-regular mt-20">
-						<p className="justify-items-end text-dark-600 xl:text-left">
-							© 2024 HealthCare by ARWcode
-						</p>
-					</div>
+					<Copyright />
 				</div>
 			</section>
 			<section className="max-w-[33%]">
