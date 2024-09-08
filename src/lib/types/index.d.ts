@@ -9,7 +9,7 @@ declare interface User extends CreateUserParams {
 	$id: string
 }
 
-declare interface RegisterUserParams extends CreateUserParams {
+declare interface RegisterPatientParams extends CreateUserParams {
 	userId: string
 	birthDate: Date
 	gender: Gender
@@ -26,7 +26,7 @@ declare interface RegisterUserParams extends CreateUserParams {
 	pastMedicalHistory: string | undefined
 	identificationType: string | undefined
 	identificationNumber: string | undefined
-	identificationDocument: FormData | undefined
+	identificationDocument: FormData | undefined // W database appwrite zamiast it mamy identificationDocumentId i identificationDocumentUrl ???
 	privacyConsent: boolean
 }
 
