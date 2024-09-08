@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { icons, images } from '@/lib/constants'
 import UserForm from '@/components/forms/UserForm'
 import Link from 'next/link'
+import PageTitle from '@/components/shared/PageTitle'
 
 export default function HomePage() {
 	return (
@@ -16,6 +17,10 @@ export default function HomePage() {
 						alt={icons.LOGO_FULL.alt}
 						className="mb-12 h-10 w-fit"
 						priority
+					/>
+					<PageTitle
+						title="Hi there !"
+						description="Get started with appointments."
 					/>
 					<UserForm />
 					<div className="flex justify-between text-14-regular mt-20">

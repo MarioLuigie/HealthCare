@@ -60,10 +60,6 @@ export default function PatientForm({ user }: { user: User }) {
 				onSubmit={form.handleSubmit(onSubmit)}
 				className="flex flex-col gap-6"
 			>
-				<section className="mb-8 space-y-4">
-					<h1 className="header">Welcome !</h1>
-					<p className="text-dark-700">Let us know more about yourself.</p>
-				</section>
 				{/* PERSONAL INFORMATION */}
 				<section className="space-y-6">
 					<div className="space-y-1">
