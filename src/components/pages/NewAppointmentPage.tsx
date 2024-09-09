@@ -2,7 +2,7 @@
 import { images } from '@/lib/constants'
 import { getUser } from '@/lib/actions/user.actions'
 // components
-import PatientForm from '@/components/forms/PatientForm'
+import AppointmentForm from '@/components/forms/AppointmentForm'
 import PageTitle from '@/components/shared/PageTitle'
 import LogoFull from '@/components/content/LogoFull'
 import Copyright from '@/components/content/Copyright'
@@ -23,7 +23,7 @@ export default async function NewAppointmentPage({
 				title="Welcome !"
 				description="Request a new appointment in 10s."
 			/>
-
+			<AppointmentForm user={user} />
 			<Copyright />
 		</FormPageTemplate>
 	)
