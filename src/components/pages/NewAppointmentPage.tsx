@@ -1,5 +1,3 @@
-// modules
-import Image from 'next/image'
 // lib
 import { images } from '@/lib/constants'
 import { getUser } from '@/lib/actions/user.actions'

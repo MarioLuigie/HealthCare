@@ -1,5 +1,4 @@
 // modules
-import Image from 'next/image'
 import Link from 'next/link'
 // lib
 import { images } from '@/lib/constants'
