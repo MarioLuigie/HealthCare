@@ -11,7 +11,7 @@ import {
 	storage,
 	databases,
 } from '@/lib/appwrite.config'
-import { ID } from 'node-appwrite'
+import { ID, Query } from 'node-appwrite'
 // lib
 import { deepClone } from '@/lib/utils'
 
@@ -72,7 +72,7 @@ export async function registerPatient(patient: RegisterPatientParams) {
 			}
 		)
 
-		// Remember parse registeredPatient.identificationDocuments
+		// Parse registeredPatient.identificationDocuments
 		const parsedIdentificationDocuments =
 			registeredPatient.identificationDocuments.map(
 				(identificationDocument: string) =>
@@ -86,6 +86,24 @@ export async function registerPatient(patient: RegisterPatientParams) {
 		})
 	} catch (err) {
 		console.error('An error occurred while registering a new patient:', err)
+	}
+}
+
+// Get patient
+export const getPatient = async (userId: string) => {
+	try {
+		const patients = await databases.listDocuments(
+			APPWRITE_DB_ID!,
+			APPWRITE_DB_PATIENT_COLLECTION_ID!,
+			[Query.equal('userId', [userId])]
+		)
+
+		return deepClone(patients.documents[0])
+	} catch (err) {
+		console.error(
+			'An error occurred while retrieving the patient details:',
+			err
+		)
 	}
 }
 
@@ -133,7 +151,8 @@ export async function registerPatient(patient: RegisterPatientParams) {
 }
 
 // STRUKTURA OBIEKTU PACJENTA PO ZAPISIE DO BAZY DANYCH I PO SPARSOWANIU OBIEKTÓW PLIKÓW W identificationDocuments
-{/*
+{
+	/*
 ***patient 
 {name: 'Mariusz Łotocki', email: 'mk.lotocki@gmail.com', phone: '+48509312253', birthDate: '1986-01-19T23:00:00.000Z', gender: 'Male', …}
 $collectionId
@@ -254,4 +273,5 @@ userId
 [[Prototype]]
 : 
 Object
-*/}
+*/
+}
