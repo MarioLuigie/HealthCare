@@ -3,9 +3,11 @@
 // modules
 import { InputFile } from 'node-appwrite/file'
 import {
+	APPWRITE_PROJECT_ID,
 	APPWRITE_PUBLIC_BUCKET_ID,
-	APPWRITE_DB_DOCTOR_COLLECTION_ID,
 	APPWRITE_DB_ID,
+	APPWRITE_DB_PATIENT_COLLECTION_ID,
+	APPWRITE_PUBLIC_ENDPOINT,
 	storage,
 	databases,
 } from '@/lib/appwrite.config'
@@ -49,18 +51,39 @@ export async function registerPatient(patient: RegisterPatientParams) {
 			console.log('Files successfully uploaded to Appwrite:', uploadedFiles)
 		}
 
+		// Create array of uploaded files (return uploaded files as js objs for database)
+		const docs = uploadedFiles?.map((uploadedFile) => ({
+			identificationDocumentId: uploadedFile?.$id ? uploadedFile.$id : null,
+			identificationDocumentUrl: uploadedFile?.$id
+				? `${APPWRITE_PUBLIC_ENDPOINT}/storage/buckets/${APPWRITE_PUBLIC_BUCKET_ID}/files/${uploadedFile.$id}/view??project=${APPWRITE_PROJECT_ID}`
+				: null,
+		}))
+
+		// Serialization docs because the document schema in the appwrite database defines identificationDocuments as an array of strings
+		const docsStrings = docs!.map((doc) => JSON.stringify(doc))
+
 		const registeredPatient = await databases.createDocument(
 			APPWRITE_DB_ID!,
-			APPWRITE_DB_DOCTOR_COLLECTION_ID!,
+			APPWRITE_DB_PATIENT_COLLECTION_ID!,
 			ID.unique(),
 			{
-        ...patient,
-
-      }
+				...patient,
+				identificationDocuments: docsStrings,
+			}
 		)
 
+		// Remember parse registeredPatient.identificationDocuments
+		const parsedIdentificationDocuments =
+			registeredPatient.identificationDocuments.map(
+				(identificationDocument: string) =>
+					JSON.parse(identificationDocument)
+			)
+
 		// patient with FormData files - before deepClone()
-		return deepClone(patient)
+		return deepClone({
+			...registeredPatient,
+			identificationDocuments: parsedIdentificationDocuments,
+		})
 	} catch (err) {
 		console.error('An error occurred while registering a new patient:', err)
 	}
