@@ -30,7 +30,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 type AppointmentFormProps = {
 	userId: string
 	patientId: string
-	type: 'create' | 'cancel' // literal type
+	type: 'create' | 'cancel' | 'schedule' // literal type
 }
 
 export default function AppointmentForm({
@@ -46,6 +46,24 @@ export default function AppointmentForm({
 	})
 
 	const { isSubmitting } = form.formState
+
+	function createSubmitLabel(type: string) {
+		let submitBtnLabel
+
+		switch (type) {
+			case 'cancel':
+				submitBtnLabel = 'Cancel Appointment'
+				break
+			case 'create':
+				submitBtnLabel = 'Create Appointment'
+				break
+			case 'schedule':
+				submitBtnLabel = 'Schedule Appointment'
+				break
+		}
+
+		return submitBtnLabel
+	}
 
 	const onSubmit: SubmitHandler<PatientFormData> = async (
 		formData: PatientFormData
@@ -140,7 +158,7 @@ export default function AppointmentForm({
 						isLoading={isSubmitting}
 						className="w-full"
 					>
-						Submit and Continue
+						{createSubmitLabel(type)}
 					</SubmitButton>
 				</div>
 			</form>
