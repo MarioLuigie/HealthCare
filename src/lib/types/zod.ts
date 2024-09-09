@@ -84,7 +84,7 @@ export const PatientFormSchema = z.object({
 
 export type PatientFormData = z.infer<typeof PatientFormSchema>
 
-// Appointment
+// AppointmentForm
 export const CreateAppointmentSchema = z.object({
 	primaryPhysician: z.string().min(2, 'Select at least one doctor'),
 	schedule: z.coerce.date(),

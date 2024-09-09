@@ -1,6 +1,6 @@
 // lib
 import { images } from '@/lib/constants'
-import { getUser } from '@/lib/actions/user.actions'
+import { getPatient } from '@/lib/actions/patient.actions'
 // components
 import AppointmentForm from '@/components/forms/AppointmentForm'
 import PageTitle from '@/components/shared/PageTitle'
@@ -13,17 +13,20 @@ export default async function NewAppointmentPage({
 }: {
 	userId: string
 }) {
-	const user = await getUser(userId)
+	const patient = await getPatient(userId)
 
-	console.log('User from RegistrationPage:', user)
 	return (
 		<FormPageTemplate image={images.NEW_APPOINTMENT_PAGE_IMAGE}>
 			<LogoFull />
 			<PageTitle
-				title="Welcome !"
-				description="Request a new appointment in 10s."
+				title="New appointment !"
+				description="Request a new appointment in 10 seconds."
 			/>
-			<AppointmentForm user={user} />
+			<AppointmentForm
+				type="create"
+				userId={userId}
+				patientId={patient.$id}
+			/>
 			<Copyright />
 		</FormPageTemplate>
 	)
