@@ -123,6 +123,10 @@ export const images = {
 		path: '/assets/images/register-img.jpg',
 		alt: 'Registration page image',
 	},
+	NEW_APPOINTMENT_PAGE_IMAGE: {
+		path: '/assets/images/appointment-img.jpg',
+		alt: 'New appointment page image',
+	},
 }
 
 export const routes = {
