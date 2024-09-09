@@ -1,5 +1,6 @@
 import * as sdk from 'node-appwrite'
 
+// Destructured process obj with envs
 export const {
 	APPWRITE_PROJECT_ID,
 	APPWRITE_API_KEY,
@@ -11,13 +12,16 @@ export const {
 	APPWRITE_PUBLIC_ENDPOINT,
 } = process.env
 
+// Initialize Appwrite Client
 const client = new sdk.Client()
 
+// Add key to client for auth
 client
 	.setEndpoint(APPWRITE_PUBLIC_ENDPOINT!)
 	.setProject(APPWRITE_PROJECT_ID!)
 	.setKey(APPWRITE_API_KEY!)
 
+// Export instances with client auth-ed
 export const databases = new sdk.Databases(client)
 export const users = new sdk.Users(client)
 export const messaging = new sdk.Messaging(client)

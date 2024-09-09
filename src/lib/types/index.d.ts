@@ -26,7 +26,7 @@ declare interface RegisterPatientParams extends CreateUserParams {
 	pastMedicalHistory?: string | undefined
 	identificationType?: string | undefined
 	identificationNumber?: string | undefined
-	identificationDocument?: FormData | undefined // ?? W database appwrite zamiast it mamy identificationDocumentId i identificationDocumentUrl ??
+	identificationDocuments?: FormData | undefined // ?? W database appwrite zamiast it mamy identificationDocumentId i identificationDocumentUrl ??
 	privacyConsent: boolean // ?? Brak pozostałych 2 consents ??
     treatmentConsent: boolean
 	disclosureConsent: boolean

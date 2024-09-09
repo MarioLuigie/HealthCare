@@ -119,6 +119,7 @@ export function prepareFileUploadData(fileUploadData: File[] | undefined) {
 // 	return data
 // }
 
+// OBSŁUGA TYLKO JEDNEGO PLIKU
 // export function prepareFileUploadData(fileUploadData: File[] | undefined) {
 // 	let data
 // 	// extracting files from fileUploadData

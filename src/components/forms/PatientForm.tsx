@@ -46,9 +46,10 @@ export default function PatientForm({ user }: { user: User }) {
 	const onSubmit: SubmitHandler<PatientFormData> = async (
 		formData: PatientFormData
 	) => {
-		const data = prepareFileUploadData(formData.identificationDocument)
+		// Create FormData files from files 
+		const data = prepareFileUploadData(formData.identificationDocuments)
 
-		// FormData's files to checkout
+		// FormData's files to checkout is true
 		data?.forEach(function (value, key) {
 			console.log(key, value)
 		})
@@ -58,7 +59,7 @@ export default function PatientForm({ user }: { user: User }) {
 				...formData,
 				userId: user.$id,
 				birthDate: new Date(formData.birthDate),
-				identificationDocument: data,
+				identificationDocuments: data,
 			}
 
 			const patient = await handleRegisterPatient(patientData)
@@ -311,7 +312,7 @@ export default function PatientForm({ user }: { user: User }) {
 				<CustomFormField
 					control={form.control}
 					type={FormFieldType.SKELETON}
-					name="identificationDocument"
+					name="identificationDocuments"
 					label="Scanned copy of identification document"
 					renderSkeleton={(field) => (
 						<FormControl>
@@ -357,3 +358,30 @@ export default function PatientForm({ user }: { user: User }) {
 		</Form>
 	)
 }
+
+// FILE STRUCTURE FROM FORMDATA FILES IN 'files[]' key
+{/*
+files[] 
+File {name: 'MVC.jpg', lastModified: 1725872490949, lastModifiedDate: Mon Sep 09 2024 11:01:30 GMT+0200 (czas środkowoeuropejski letni), webkitRelativePath: '', size: 55370, …}
+lastModified
+: 
+1725872490949
+lastModifiedDate
+: 
+Mon Sep 09 2024 11:01:30 GMT+0200 (czas środkowoeuropejski letni) {}
+name
+: 
+"MVC.jpg"
+size
+: 
+55370
+type
+: 
+"image/jpeg"
+webkitRelativePath
+: 
+""
+[[Prototype]]
+: 
+File
+*/}
