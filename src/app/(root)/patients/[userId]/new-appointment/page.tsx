@@ -1,8 +1,5 @@
-export default function Page() {
+import NewAppointment from '@/components/pages/NewAppointment'
 
-  return (
-    <div>
-      HALLO NEW APPOINTMENT HERE!
-    </div>
-  )
+export default function Page() {
+	return <NewAppointment />
 }
