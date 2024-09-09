@@ -7,7 +7,7 @@ import { images } from '@/lib/constants'
 import PageTitle from '@/components/shared/PageTitle'
 import UserForm from '@/components/forms/UserForm'
 import LogoFull from '@/components/content/LogoFull'
-import Copyright from '@/components/shared/Copyright'
+import Copyright from '@/components/content/Copyright'
 
 export default function HomePage() {
 	return (
