@@ -350,7 +350,7 @@ export default function PatientForm({ user }: { user: User }) {
 					/>
 				</section>
 				<div className="mt-8">
-					<SubmitButton isLoading={isSubmitting}>
+					<SubmitButton isLoading={isSubmitting} className='w-full'>
 						Register and Continue
 					</SubmitButton>
 				</div>

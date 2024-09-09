@@ -9,18 +9,20 @@ interface SubmitButtonProps {
 	isLoading: boolean
 	className?: string
 	children: React.ReactNode
+	isDanger?: boolean
 }
 
 export default function SubmitButton({
 	isLoading,
 	className,
 	children,
+	isDanger=false
 }: SubmitButtonProps) {
 	return (
 		<Button
 			type="submit"
 			disabled={isLoading}
-			className={className ?? 'shad-primary-btn w-full'}
+			className={`${isDanger ? 'shad-danger-btn' : 'shad-primary-btn'} ${className}`}
 		>
 			{isLoading ? (
 				<div className="flex items-center gap-4">

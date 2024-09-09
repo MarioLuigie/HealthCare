@@ -28,19 +28,21 @@ import { SelectItem } from '@/components/ui/select'
 import 'react-datepicker/dist/react-datepicker.css'
 
 type AppointmentFormProps = {
-  userId: string
-  patientId: string 
-  type: 'create' | 'cancel' // literal type
+	userId: string
+	patientId: string
+	type: 'create' | 'cancel' // literal type
 }
 
-export default function AppointmentForm({ userId, patientId, type }: AppointmentFormProps) {
+export default function AppointmentForm({
+	userId,
+	patientId,
+	type,
+}: AppointmentFormProps) {
 	const router = useRouter()
 
 	const form = useForm<PatientFormData>({
 		resolver: zodResolver(PatientFormSchema),
-		defaultValues: {
-
-		},
+		defaultValues: {},
 	})
 
 	const { isSubmitting } = form.formState
@@ -49,7 +51,6 @@ export default function AppointmentForm({ userId, patientId, type }: Appointment
 		formData: PatientFormData
 	) => {
 		try {
-
 			form.reset()
 		} catch (err) {
 			console.error('Error from onSubmit for PatientForm', err)
@@ -62,11 +63,83 @@ export default function AppointmentForm({ userId, patientId, type }: Appointment
 				onSubmit={form.handleSubmit(onSubmit)}
 				className="flex flex-col gap-6"
 			>
+				{/* CREATE APPOINTMENT */}
+				{type !== 'cancel' && (
+					<>
+						{/* Select doctor */}
+						<CustomFormField
+							control={form.control}
+							type={FormFieldType.SELECT}
+							name="primaryPhysician"
+							label="Doctor"
+							placeholder="Select a doctor"
+						>
+							{Doctors.map((doctor, i) => (
+								<SelectItem
+									key={doctor.name + i}
+									value={doctor.name}
+									className="cursor-pointer"
+								>
+									<div className="flex justify-start items-center gap-4">
+										<Image
+											src={doctor.image}
+											width={32}
+											height={32}
+											alt={doctor.name}
+										/>
+										<p>{doctor.name}</p>
+									</div>
+								</SelectItem>
+							))}
+						</CustomFormField>
 
+						{/* Select date and time of appointment */}
+						<CustomFormField
+							control={form.control}
+							type={FormFieldType.DATE_PICKER}
+							name="schedule"
+							placeholder="Select date of appointment"
+							label="Expected appointment date and time"
+							showTimeSelect
+							dateFormat="MM/dd/yyyy - h: mm aa"
+						/>
 
+						{/* Reason and note for appointment */}
+						<div className="flex flex-col xl:flex-row gap-4">
+							<CustomFormField
+								control={form.control}
+								type={FormFieldType.TEXTAREA}
+								name="reason"
+								label="Reason for appointment "
+								placeholder="ex: Annual montly check-up"
+							/>
+							<CustomFormField
+								control={form.control}
+								type={FormFieldType.TEXTAREA}
+								name="notes"
+								label="Additional comments/notes"
+								placeholder="ex: Prefer afternoon appointments, if possible"
+							/>
+						</div>
+					</>
+				)}
+				{/* CANCEL APPOINTMENT */}
+				{type === 'cancel' && (
+					<CustomFormField
+						control={form.control}
+						type={FormFieldType.TEXTAREA}
+						name="cancellationReason"
+						label="Reason for cancellation"
+						placeholder="ex: Sudden unexpected situation"
+					/>
+				)}
 
 				<div className="mt-8">
-					<SubmitButton isLoading={isSubmitting}>
+					<SubmitButton
+						isDanger={type === 'cancel'}
+						isLoading={isSubmitting}
+						className="w-full"
+					>
 						Submit and Continue
 					</SubmitButton>
 				</div>
