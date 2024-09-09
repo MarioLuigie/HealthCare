@@ -37,7 +37,7 @@ export async function getUser(userId: string) {
 
 		return deepClone(user)
 	} catch (err) {
-		console.error(err)
+		console.error("An error occurred while retrieving the user details:", err)
 	}
 }
 
