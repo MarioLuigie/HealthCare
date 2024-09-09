@@ -6,7 +6,7 @@ import { getUser } from '@/lib/actions/user.actions'
 // components
 import PatientForm from '@/components/forms/PatientForm'
 import PageTitle from '@/components/shared/PageTitle'
-import LogoFull from '@/components/shared/LogoFull'
+import LogoFull from '@/components/content/LogoFull'
 import Copyright from '@/components/shared/Copyright'
 
 export default async function RegistrationPage({ userId }: { userId: string }) {
