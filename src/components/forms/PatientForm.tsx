@@ -9,7 +9,7 @@ import Image from 'next/image'
 import { PatientFormSchema, PatientFormData } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
 import { prepareFileUploadData } from '@/lib/utils'
-import { handleRegisterPatient } from '@/lib/handlers/user.handlers'
+import { handleRegisterPatient } from '@/lib/handlers/patient.handlers'
 import { icons } from '@/lib/constants'
 import {
 	GenderOptions,
@@ -48,7 +48,7 @@ export default function PatientForm({ user }: { user: User }) {
 	) => {
 		const data = prepareFileUploadData(formData.identificationDocument)
 
-		// FormData's files
+		// FormData's files to checkout
 		data?.forEach(function (value, key) {
 			console.log(key, value)
 		})
@@ -62,6 +62,13 @@ export default function PatientForm({ user }: { user: User }) {
 			}
 
 			const patient = await handleRegisterPatient(patientData)
+
+			if (patient!) {
+				router.push(`/patients/${user.$id}/new-appointment`)
+				form.reset()
+			} else {
+				console.log('Something went wrong with registering patient.')
+			}
 
 			console.log('***patientData', patientData)// with FormData files
 			console.log('***patient', patient)// without FormData files

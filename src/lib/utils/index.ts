@@ -98,25 +98,6 @@ export function prepareFileUploadData(fileUploadData: File[] | undefined) {
 }
 
 // export function prepareFileUploadData(fileUploadData: File[] | undefined) {
-// 	let data
-// 	// extracting files from fileUploadData
-// 	if (
-// 		fileUploadData &&
-// 		fileUploadData.length > 0
-// 	) {
-// 		// file that can be read by browsers
-// 		const blobFile = new Blob([fileUploadData[0]], {
-// 			type: fileUploadData[0].type,
-// 		})
-// 		// file possible to open
-// 		data = new FormData()
-// 		data.append('blobFile', blobFile)
-// 		data.append('fileName', fileUploadData[0].name)
-// 	}
-// 	return data
-// }
-
-// export function prepareFileUploadData(fileUploadData: File[] | undefined) {
 // 	let data: FormData | undefined = undefined
 
 // 	if (fileUploadData && fileUploadData.length > 0) {
@@ -135,5 +116,24 @@ export function prepareFileUploadData(fileUploadData: File[] | undefined) {
 // 		})
 // 	}
 
+// 	return data
+// }
+
+// export function prepareFileUploadData(fileUploadData: File[] | undefined) {
+// 	let data
+// 	// extracting files from fileUploadData
+// 	if (
+// 		fileUploadData &&
+// 		fileUploadData.length > 0
+// 	) {
+// 		// file that can be read by browsers
+// 		const blobFile = new Blob([fileUploadData[0]], {
+// 			type: fileUploadData[0].type,
+// 		})
+// 		// file possible to open
+// 		data = new FormData()
+// 		data.append('blobFile', blobFile)
+// 		data.append('fileName', fileUploadData[0].name)
+// 	}
 // 	return data
 // }
