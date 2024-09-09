@@ -13,7 +13,7 @@ import {
 } from '@/lib/appwrite.config'
 import { ID, Query } from 'node-appwrite'
 // lib
-import { deepClone } from '@/lib/utils'
+import { deepClone, formatDateToYMD } from '@/lib/utils'
 
 // Register patient - add patient to patient collection in appwrite database
 export async function registerPatient(patient: RegisterPatientParams) {
@@ -69,6 +69,7 @@ export async function registerPatient(patient: RegisterPatientParams) {
 			{
 				...patient,
 				identificationDocuments: docsStrings,
+        birthDate: formatDateToYMD(patient.birthDate)
 			}
 		)
 
