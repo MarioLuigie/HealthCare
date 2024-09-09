@@ -9,7 +9,7 @@ import PageTitle from '@/components/shared/PageTitle'
 import LogoFull from '@/components/content/LogoFull'
 import Copyright from '@/components/content/Copyright'
 
-export default async function RegistrationPage({ userId }: { userId: string }) {
+export default async function NewAppointmentPage({ userId }: { userId: string }) {
 	const user = await getUser(userId)
 
 	console.log('User from RegistrationPage:', user)
