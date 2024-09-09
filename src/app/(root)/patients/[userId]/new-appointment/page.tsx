@@ -1,5 +1,5 @@
-import NewAppointment from '@/components/pages/NewAppointment'
+import NewAppointmentPage from '@/components/pages/NewAppointmentPage'
 
 export default function Page() {
-	return <NewAppointment />
+	return <NewAppointmentPage />
 }
