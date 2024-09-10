@@ -134,7 +134,7 @@ export default function AppointmentForm({
 							<CustomFormField
 								control={form.control}
 								type={FormFieldType.TEXTAREA}
-								name="notes"
+								name="note"
 								label="Additional comments/notes"
 								placeholder="ex: Prefer afternoon appointments, if possible"
 							/>
