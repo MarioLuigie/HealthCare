@@ -10,9 +10,7 @@ You can try it out here: **[https://healthcare-clinic.vercel.app/](https://healt
 
 ## Technologies
 
-## Technologies
-
-This project is built using modern web development technologies to ensure high performance, maintainability, and scalability. Below is a list of the key technologies and libraries used:
+This project is built using modern full-stack web development technologies to ensure high performance, maintainability, and scalability. Below is a list of the key technologies and libraries used:
 
 - **[Next.js](https://nextjs.org/)**: A powerful React-based framework for building server-rendered and statically generated web applications. Version `14.2.7` is used for optimized performance and features like dynamic routing, SSR (Server-Side Rendering), and API routes.
 
