@@ -1,8 +1,9 @@
+import { PatientFormData } from "../types/zod"
+
 export const GenderOptions = ['Male', 'Female', 'Other']
 
-export const PatientFormDefaultValues = {
-	firstName: '', // ?? a nie name??
-	lastName: '', // ?? a nie name ??
+export const PatientFormDefaultValues: PatientFormData = {
+	name: '',
 	email: '',
 	phone: '',
 	birthDate: new Date('01-01-1900'),

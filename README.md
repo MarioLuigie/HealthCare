@@ -10,31 +10,31 @@ You can try it out here: **[https://healthcare-clinic.vercel.app/](https://healt
 
 ## Technologies
 
-**Frontend:**
-- **[Vite](https://vitejs.dev/guide/)** - Bild tool for modern web development with speedy compilation and on-the-fly module imports.
-- **[React](https://legacy.reactjs.org/docs/getting-started.html)** - A powerful JavaScript library for building user interfaces, known for its declarative syntax and efficient component-based architecture.
-- **[Redux](https://react-redux.js.org/introduction/getting-started)** - A state management library for JavaScript applications, providing a predictable and centralized state container to simplify data flow and management in complex front-end projects.
-- **[Axios](https://axios-http.com/docs/intro)** - A popular JavaScript library for making HTTP requests in web applications.
-- **[MaterialUI](https://mui.com/material-ui/getting-started/installation/)** - A versatile React UI framework that offers a wide range of pre-designed components and styles.
-- **[React Dropzone](https://react-dropzone.js.org/)** - An intuitive and customizable React library for handling file uploads, simplifying the implementation of drag-and-drop functionality with built-in features for managing files and enhancing user experience.
-- **[React Emotion](https://emotion.sh/docs/introduction)** - Library for React applications, offering a flexible and efficient way to handle component styles with JavaScript.
-- **[React Router Dom](https://www.npmjs.com/package/react-router-dom)** - A Navigation library for React applications, enabling developers to implement dynamic and seamless routing, facilitating the creation of multi-page web applications.
-- **[Moment](https://momentjs.com/docs/)** - A JavaScript library for parsing, validating, manipulating, and formatting dates and times, providing a convenient and efficient way to work with time-related data in web applications.
-- **[JWT-decode](https://www.npmjs.com/package/jwt-decode)** - A JavaScript library for decoding JSON Web Tokens (JWT), making it to extract and access the payload data without the need for complex decoding logic, commonly used for authentication in web applications.
-- **[QS](https://www.npmjs.com/package/qs?activeTab=readme)** - A JavaScript library for serializing and parsing query strings, offering a convenient and efficient way to handle URL query parameters in web applications.
-- **[react-oauth/google](https://www.npmjs.com/package/@react-oauth/google)** - A React library for integrating OAuth authentication with Google, streamlining the process of implementing secure and seamless user authentication using Google accounts in web applications.
+## Technologies
 
-**Backend:**
-- **[NodeJS](https://nodejs.org/en/docs/)** - A powerful and versatile JavaScript runtime environment that enables server-side execution of JavaScript code.
-- **[Express](https://expressjs.com/)** - A framework for Node.js, simplifying the development of robust and scalable web applications by providing a set of essential features and middleware.
-- **[Mongoose](https://mongoosejs.com/docs/)** - A MongoDB object modeling library for Node.js that provides a straightforward and schema-based solution for interacting with MongoDB databases.
-- **[AWS-sdk/client-s3](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/client/s3/)** - A JavaScript library provided by AWS SDK for interacting with Amazon Simple Storage Service (S3), offering a comprehensive set of tools for managing and accessing scalable and secure cloud storage in web applications.
-- **[bcryptjs](https://www.npmjs.com/package/bcryptjs)** - A JavaScript library for hashing passwords using the bcrypt hashing algorithm, known for its security and resistance to brute-force attacks, providing a reliable solution for storing and verifying password hashes in web applications.
-- **[google-auth-library](https://www.npmjs.com/package/google-auth-library?activeTab=readme)** - A JavaScript library provided by Google for implementing authentication and authorization in web applications.
-- **[jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken)** - A JavaScript library for creating and verifying JSON Web Tokens (JWT), providing a secure and efficient method for transmitting information between parties in web applications.
-- **[multer](https://www.npmjs.com/package/multer)** - A Node.js middleware for handling multipart/form-data, commonly used in web applications to handle file uploads, providing a flexible and efficient way to process and store files on the server.
-- **[multer-s3](https://www.npmjs.com/package/multer-s3)** - An extension for the Multer middleware in Node.js that facilitates direct file uploads to Amazon S3, streamlining the process of storing and retrieving files on the AWS cloud storage service in web applications.
-- **[sharp](https://www.npmjs.com/package/sharp)** - A Node.js image processing library that provides a simple and efficient interface for performing various image manipulation tasks, such as resizing, cropping, and format conversion, making it well-suited for optimizing and transforming images in web applications.
+This project is built using modern web development technologies to ensure high performance, maintainability, and scalability. Below is a list of the key technologies and libraries used:
+
+- **[Next.js](https://nextjs.org/)**: A powerful React-based framework for building server-rendered and statically generated web applications. Version `14.2.7` is used for optimized performance and features like dynamic routing, SSR (Server-Side Rendering), and API routes.
+
+- **[React](https://reactjs.org/)**: A JavaScript library for building user interfaces, focusing on component-based architecture and efficient updates. This project uses React version `18` for features such as Concurrent Mode and Suspense.
+
+- **[TypeScript](https://www.typescriptlang.org/)**: A statically typed superset of JavaScript that enhances code quality and maintainability by catching errors at compile time. The project uses TypeScript for improved developer experience and scalability.
+
+- **[Tailwind CSS](https://tailwindcss.com/)**: A utility-first CSS framework that allows rapid UI development. Tailwind CSS, combined with `tailwind-merge` and `tailwindcss-animate`, helps create consistent and responsive designs with ease.
+
+- **[React Hook Form](https://react-hook-form.com/)**: A flexible and efficient form management library. Paired with `Zod` for schema-based form validation, it simplifies handling forms and validation in React.
+
+- **[Radix UI](https://www.radix-ui.com/)**: A collection of unstyled, accessible components such as checkboxes, radio buttons, and select dropdowns, used to build a customized and accessible UI.
+
+- **[Appwrite](https://appwrite.io/)**: A backend-as-a-service platform used for managing databases, authentication, and storage in this project. The `node-appwrite` SDK simplifies integration with Appwrite’s API.
+
+- **[Lucide Icons](https://lucide.dev/)**: A collection of beautiful, customizable icons used for enhancing the user interface.
+
+- **[React Dropzone](https://react-dropzone.js.org/)**: A simple, flexible library for handling file uploads via drag-and-drop, improving the user experience for file management.
+
+- **[ESLint](https://eslint.org/)**: A tool for identifying and fixing potential issues in JavaScript code. The project includes ESLint with Next.js-specific rules to enforce coding standards and ensure consistent quality.
+
+This combination of technologies enables the project to be fast, responsive, and scalable, while also ensuring a high level of developer productivity and user experience.
 
 ## Key Features
 
