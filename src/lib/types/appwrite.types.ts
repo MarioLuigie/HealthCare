@@ -39,8 +39,8 @@ export interface Appointment extends Models.Document {
 }
 
 export interface IdentificationDocument extends Models.Document {
-    url: string
-    storageId: string
+    url: string | null
+    storageId: string | null
 }
 
 
