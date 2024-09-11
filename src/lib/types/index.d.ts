@@ -28,9 +28,9 @@ declare interface RegisterPatientParams extends CreateUserParams {
 	pastMedicalHistory?: string | undefined
 	identificationType?: string | undefined
 	identificationNumber?: string | undefined
-	identificationDocuments?: FormData | undefined 
-	privacyConsent: boolean 
-    treatmentConsent: boolean
+	identificationDocuments?: FormData | undefined
+	privacyConsent: boolean
+	treatmentConsent: boolean
 	disclosureConsent: boolean
 }
 
@@ -52,18 +52,14 @@ declare type UpdateAppointmentParams = {
 	type: string
 }
 
-declare type CreateIdentificationDocument = {
-    identificationDocumentUrl: string | null
-    identificationDocumentId: string | null
-}
-
 // Url params, route query, page params
 declare type UrlParams = {
 	params: { [key: string]: string }
 	searchParams: { [key: string]: string | string[] | undefined }
 }
 
-{/*
+{
+	/*
 Tak, te dwa zapisy różnią się i mają różne zastosowania. Oto wyjaśnienie:
 1. declare interface
 
@@ -205,9 +201,11 @@ Podsumowanie:
 
 Rozróżnienie to pomaga w zarządzaniu typami na dużą skalę i w zapewnieniu lepszej struktury w projektach TypeScript.
 
-*/}
+*/
+}
 
-{/*
+{
+	/*
 czyli po zapisaniu usera do Appwrite do Users Appwrite automatycznie nadaje userowi id i zwraca usera juz z tym id tak? Dlatego potrzebuje interface CreateUserParams do wyslania usera do Appwrite i interfejsu User ktory rozszerza CreateUserParams do okreslenia nowego usera zwroconego przez appwrite tak ?
 ChatGPT said:
 ChatGPT
@@ -263,4 +261,25 @@ Tak, Twoje interfejsy są zgodne z typowym użyciem w takich przypadkach:
     User opisuje pełny obiekt użytkownika, który zawiera zarówno dane wejściowe, jak i dodatkowe informacje takie jak automatycznie nadany identyfikator ($id).
 
 Twoje podejście zapewnia jasne oddzielenie struktury danych wejściowych od struktury danych wyjściowych, co jest dobrą praktyką w pracy z API i TypeScript.
+*/
+}
+
+{/*
+declare type UploadedFile = {
+	$id: string // Unikalny identyfikator pliku
+	$createdAt: string // Data utworzenia pliku (ISO string)
+	$updatedAt: string // Data aktualizacji pliku (ISO string)
+	$permissions: {
+		// Uprawnienia dostępu do pliku
+		read: string[] // Lista uprawnień do odczytu, np. role
+		write: string[] // Lista uprawnień do zapisu, np. role
+	}
+	bucketId: string // Identyfikator koszyka (bucket) w Appwrite
+	name: string // Nazwa pliku
+	size: number // Rozmiar pliku w bajtach
+	type: string // Typ pliku (ogólny typ MIME)
+	mimeType: string // Dokładny typ MIME pliku
+	url: string // URL do pobrania lub podglądu pliku
+	etag: string // ETag pliku (służy do śledzenia zmian)
+}
 */}

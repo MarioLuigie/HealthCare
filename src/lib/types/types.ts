@@ -1,3 +1,10 @@
+// Uploaded files
+export interface UploadedFileBasicStructure {
+	url: string | null
+	id: string | null
+}
+
+// Api Results
 export interface IResult<T> {
 	success: boolean
 	data?: T

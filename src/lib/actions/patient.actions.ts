@@ -1,6 +1,7 @@
 'use server'
 
 // modules
+import { Models } from 'node-appwrite'
 import { InputFile } from 'node-appwrite/file'
 import {
 	APPWRITE_DB_ID,
@@ -13,12 +14,13 @@ import {
 } from '@/lib/appwrite.config'
 import { ID, Query } from 'node-appwrite'
 // lib
+import { UploadedFileBasicStructure } from '@/lib/types/types'
 import { deepClone, formatDateToYMD } from '@/lib/utils'
 
 // Register patient - add patient to patient collection in appwrite database
 export async function registerPatient(patient: RegisterPatientParams) {
 	try {
-		let uploadedFiles
+		let uploadedFiles: Models.File[] = [] // Używamy typu Models.File z Appwrite zamiast File[] from browser
 		// Check if the patient has FormData with files in identificationDocument
 		if (
 			patient.identificationDocuments &&
@@ -26,7 +28,7 @@ export async function registerPatient(patient: RegisterPatientParams) {
 			patient.identificationDocuments.has('files[]')
 		) {
 			// Get oll files from FormData files
-			const files = patient.identificationDocuments.getAll(
+			const files: Blob[] = patient.identificationDocuments.getAll(
 				'files[]'
 			) as Blob[]
 
@@ -52,15 +54,13 @@ export async function registerPatient(patient: RegisterPatientParams) {
 		}
 
 		// Create array of uploaded files (return uploaded files as js objs for database)
-		const docs: CreateIdentificationDocument[] =
+		const docs: UploadedFileBasicStructure[] =
 			uploadedFiles &&
 			uploadedFiles instanceof Array &&
 			uploadedFiles.length > 0
 				? uploadedFiles.map((uploadedFile) => ({
-						identificationDocumentId: uploadedFile?.$id
-							? uploadedFile.$id
-							: null,
-						identificationDocumentUrl: uploadedFile?.$id
+						id: uploadedFile?.$id ? uploadedFile.$id : null,
+						url: uploadedFile?.$id
 							? `${APPWRITE_PUBLIC_ENDPOINT}/storage/buckets/${APPWRITE_IDENTIFICATION_DOCUMENTS_BUCKET_ID}/files/${uploadedFile.$id}/view??project=${APPWRITE_PROJECT_ID}`
 							: null,
 				  }))
