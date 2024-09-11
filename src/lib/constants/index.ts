@@ -1,4 +1,4 @@
-import { PatientFormData } from "../types/zod"
+import { PatientFormData } from '../types/zod'
 
 export const GenderOptions = ['Male', 'Female', 'Other']
 
@@ -25,6 +25,30 @@ export const PatientFormDefaultValues: PatientFormData = {
 	treatmentConsent: false,
 	disclosureConsent: false,
 	privacyConsent: false,
+}
+
+export const CreateAppointmentFormDefaultValues = {
+	primaryPhysician: '',
+	schedule: new Date(),
+	reason: '',
+	note: '',
+	cancellationReason: '',
+}
+
+export const CancelAppointmentFormDefaultValues = {
+	primaryPhysician: '',
+	schedule: new Date(),
+	reason: '',
+	note: '',
+	cancellationReason: '',
+}
+
+export const ScheduleAppointmentFormDefaultValues = {
+	primaryPhysician: '',
+	schedule: new Date(),
+	reason: '',
+	note: '',
+	cancellationReason: '',
 }
 
 export const Doctors = [

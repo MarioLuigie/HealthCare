@@ -96,6 +96,8 @@ export const CreateAppointmentSchema = z.object({
 	cancellationReason: z.string().optional(),
 })
 
+export type CreateAppointmentFormData = z.infer<typeof CreateAppointmentSchema>
+
 export const ScheduleAppointmentSchema = z.object({
 	primaryPhysician: z.string().min(2, 'Select at least one doctor'),
 	schedule: z.coerce.date(),
@@ -103,6 +105,8 @@ export const ScheduleAppointmentSchema = z.object({
 	note: z.string().optional(),
 	cancellationReason: z.string().optional(),
 })
+
+export type CancelAppointmentFormData = z.infer<typeof CancelAppointmentSchema>
 
 export const CancelAppointmentSchema = z.object({
 	primaryPhysician: z.string().min(2, 'Select at least one doctor'),
@@ -114,6 +118,10 @@ export const CancelAppointmentSchema = z.object({
 		.min(2, 'Reason must be at least 2 characters')
 		.max(500, 'Reason must be at most 500 characters'),
 })
+
+export type ScheduleAppointmentFormData = z.infer<
+	typeof ScheduleAppointmentSchema
+>
 
 export function getAppointmentSchema(type: string) {
 	switch (type) {

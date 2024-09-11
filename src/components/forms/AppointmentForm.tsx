@@ -9,7 +9,7 @@ import Image from 'next/image'
 import { getAppointmentSchema } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
 import { createSubmitLabel } from '@/lib/utils'
-import { Doctors } from '@/lib/constants'
+import { Doctors, CreateAppointmentFormDefaultValues, CancelAppointmentFormDefaultValues, ScheduleAppointmentFormDefaultValues } from '@/lib/constants'
 // components
 import { Form } from '@/components/ui/form'
 import SubmitButton from '@/components/shared/SubmitButton'
