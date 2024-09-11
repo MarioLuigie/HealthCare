@@ -52,12 +52,19 @@ export async function registerPatient(patient: RegisterPatientParams) {
 		}
 
 		// Create array of uploaded files (return uploaded files as js objs for database)
-		const docs = uploadedFiles?.map((uploadedFile) => ({
-			identificationDocumentId: uploadedFile?.$id ? uploadedFile.$id : null,
-			identificationDocumentUrl: uploadedFile?.$id
-				? `${APPWRITE_PUBLIC_ENDPOINT}/storage/buckets/${APPWRITE_IDENTIFICATION_DOCUMENTS_BUCKET_ID}/files/${uploadedFile.$id}/view??project=${APPWRITE_PROJECT_ID}`
-				: null,
-		}))
+		const docs: CreateIdentificationDocument[] =
+			uploadedFiles &&
+			uploadedFiles instanceof Array &&
+			uploadedFiles.length > 0
+				? uploadedFiles.map((uploadedFile) => ({
+						identificationDocumentId: uploadedFile?.$id
+							? uploadedFile.$id
+							: null,
+						identificationDocumentUrl: uploadedFile?.$id
+							? `${APPWRITE_PUBLIC_ENDPOINT}/storage/buckets/${APPWRITE_IDENTIFICATION_DOCUMENTS_BUCKET_ID}/files/${uploadedFile.$id}/view??project=${APPWRITE_PROJECT_ID}`
+							: null,
+				  }))
+				: []
 
 		// Serialization docs because the document schema in the appwrite database defines identificationDocuments as an array of strings
 		const docsStrings = docs!.map((doc) => JSON.stringify(doc))
