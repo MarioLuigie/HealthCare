@@ -1,7 +1,7 @@
 // Uploaded files
 export interface UploadedFileBasicStructure {
 	url: string | null
-	id: string | null
+	storageId: string | null
 }
 
 // Api Results

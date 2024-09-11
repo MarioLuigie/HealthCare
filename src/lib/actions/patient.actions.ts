@@ -11,6 +11,7 @@ import {
 	APPWRITE_IDENTIFICATION_DOCUMENTS_BUCKET_ID,
 	storage,
 	databases,
+	APPWRITE_DB_IDENTIFICATION_DOCUMENT_COLLECTION_ID,
 } from '@/lib/appwrite.config'
 import { ID, Query } from 'node-appwrite'
 // lib
@@ -54,44 +55,50 @@ export async function registerPatient(patient: RegisterPatientParams) {
 		}
 
 		// Create array of uploaded files (return uploaded files as js objs for database)
-		const docs: UploadedFileBasicStructure[] =
+		const uploadedFilesBasicStructure: UploadedFileBasicStructure[] =
 			uploadedFiles &&
 			uploadedFiles instanceof Array &&
 			uploadedFiles.length > 0
 				? uploadedFiles.map((uploadedFile) => ({
-						id: uploadedFile?.$id ? uploadedFile.$id : null,
+						storageId: uploadedFile?.$id ? uploadedFile.$id : null,
 						url: uploadedFile?.$id
 							? `${APPWRITE_PUBLIC_ENDPOINT}/storage/buckets/${APPWRITE_IDENTIFICATION_DOCUMENTS_BUCKET_ID}/files/${uploadedFile.$id}/view??project=${APPWRITE_PROJECT_ID}`
 							: null,
 				  }))
 				: []
 
-		// Serialization docs because the document schema in the appwrite database defines identificationDocuments as an array of strings
-		const docsStrings = docs!.map((doc) => JSON.stringify(doc))
+		// Create a new documents in identificationDocuments collection
+		const createdUploadedFiles = await Promise.all(
+			uploadedFilesBasicStructure.map(
+				async (file: UploadedFileBasicStructure) => {
+					const res = await databases.createDocument(
+						APPWRITE_DB_ID!,
+						APPWRITE_DB_IDENTIFICATION_DOCUMENT_COLLECTION_ID!,
+						ID.unique(),
+						file
+					)
+					return res.$id
+				}
+			)
+		)
 
+		console.log("***createdUploadedFiles IDs", createdUploadedFiles)
+
+		// Create a new patient in patient collection
 		const registeredPatient = await databases.createDocument(
 			APPWRITE_DB_ID!,
 			APPWRITE_DB_PATIENT_COLLECTION_ID!,
 			ID.unique(),
 			{
 				...patient,
-				identificationDocuments: docsStrings,
+				identificationDocuments: createdUploadedFiles,
 				birthDate: formatDateToYMD(patient.birthDate),
 			}
 		)
 
-		// Parse registeredPatient.identificationDocuments
-		const parsedIdentificationDocuments =
-			registeredPatient.identificationDocuments.map(
-				(identificationDocument: string) =>
-					JSON.parse(identificationDocument)
-			)
+		console.log("***Registered Patient", registeredPatient)
 
-		// patient with FormData files - before deepClone()
-		return deepClone({
-			...registeredPatient,
-			identificationDocuments: parsedIdentificationDocuments,
-		})
+		return deepClone(registeredPatient)
 	} catch (err) {
 		console.error('An error occurred while registering a new patient:', err)
 	}
