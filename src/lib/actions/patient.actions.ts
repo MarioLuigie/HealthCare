@@ -3,11 +3,11 @@
 // modules
 import { InputFile } from 'node-appwrite/file'
 import {
-	APPWRITE_PROJECT_ID,
-	APPWRITE_PUBLIC_BUCKET_ID,
 	APPWRITE_DB_ID,
-	APPWRITE_DB_PATIENT_COLLECTION_ID,
+	APPWRITE_PROJECT_ID,
 	APPWRITE_PUBLIC_ENDPOINT,
+	APPWRITE_DB_PATIENT_COLLECTION_ID,
+	APPWRITE_IDENTIFICATION_DOCUMENTS_BUCKET_ID,
 	storage,
 	databases,
 } from '@/lib/appwrite.config'
@@ -40,7 +40,7 @@ export async function registerPatient(patient: RegisterPatientParams) {
 
 					// Upload file to Appwrite Storage Bucket
 					const res = await storage.createFile(
-						APPWRITE_PUBLIC_BUCKET_ID!, // Bucket id in Appwrite
+						APPWRITE_IDENTIFICATION_DOCUMENTS_BUCKET_ID!, // Bucket id in Appwrite
 						ID.unique(), // Use unique ID generation for each file
 						inputFile // Converted file Blob to Buffer
 					)
@@ -55,7 +55,7 @@ export async function registerPatient(patient: RegisterPatientParams) {
 		const docs = uploadedFiles?.map((uploadedFile) => ({
 			identificationDocumentId: uploadedFile?.$id ? uploadedFile.$id : null,
 			identificationDocumentUrl: uploadedFile?.$id
-				? `${APPWRITE_PUBLIC_ENDPOINT}/storage/buckets/${APPWRITE_PUBLIC_BUCKET_ID}/files/${uploadedFile.$id}/view??project=${APPWRITE_PROJECT_ID}`
+				? `${APPWRITE_PUBLIC_ENDPOINT}/storage/buckets/${APPWRITE_IDENTIFICATION_DOCUMENTS_BUCKET_ID}/files/${uploadedFile.$id}/view??project=${APPWRITE_PROJECT_ID}`
 				: null,
 		}))
 
@@ -69,7 +69,7 @@ export async function registerPatient(patient: RegisterPatientParams) {
 			{
 				...patient,
 				identificationDocuments: docsStrings,
-        birthDate: formatDateToYMD(patient.birthDate)
+				birthDate: formatDateToYMD(patient.birthDate),
 			}
 		)
 
