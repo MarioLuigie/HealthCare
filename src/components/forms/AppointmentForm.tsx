@@ -3,26 +3,21 @@
 // modules
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 // lib
-import { PatientFormSchema, PatientFormData } from '@/lib/types/zod'
+import {
+	getAppointmentSchema,
+	CreateAppointmentFormData,
+	CancelAppointmentFormData,
+	ScheduleAppointmentFormData,
+} from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
 import { createSubmitLabel } from '@/lib/utils'
-import { handleRegisterPatient } from '@/lib/handlers/patient.handlers'
-import { icons } from '@/lib/constants'
-import {
-	GenderOptions,
-	Doctors,
-	IdentificationTypes,
-	PatientFormDefaultValues,
-} from '@/lib/constants'
+import { Doctors } from '@/lib/constants'
 // components
-import { Form, FormControl } from '@/components/ui/form'
+import { Form } from '@/components/ui/form'
 import SubmitButton from '@/components/shared/SubmitButton'
 import CustomFormField from '@/components/shared/CustomFormField'
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import { Label } from '@/components/ui/label'
 import { SelectItem } from '@/components/ui/select'
 // Styles
 import 'react-datepicker/dist/react-datepicker.css'
@@ -38,19 +33,27 @@ export default function AppointmentForm({
 	patientId,
 	type,
 }: AppointmentFormProps) {
-	const router = useRouter()
+	
+	type AppointmentFormData =
+		| CreateAppointmentFormData
+		| CancelAppointmentFormData
+		| ScheduleAppointmentFormData
 
-	const form = useForm<PatientFormData>({
-		resolver: zodResolver(PatientFormSchema),
-		defaultValues: {},
+	const form = useForm<AppointmentFormData>({
+		resolver: zodResolver(getAppointmentSchema(type)),
+		defaultValues: {
+			primaryPhysician: '',
+			schedule: new Date(),
+			reason: '',
+			note: '',
+			cancellationReason: '',
+		},
 	})
 
 	const { isSubmitting } = form.formState
 
-
-
-	const onSubmit: SubmitHandler<PatientFormData> = async (
-		formData: PatientFormData
+	const onSubmit: SubmitHandler<AppointmentFormData> = async (
+		formData: AppointmentFormData
 	) => {
 		try {
 			form.reset()
