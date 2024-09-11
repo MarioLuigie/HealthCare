@@ -28,8 +28,8 @@ declare interface RegisterPatientParams extends CreateUserParams {
 	pastMedicalHistory?: string | undefined
 	identificationType?: string | undefined
 	identificationNumber?: string | undefined
-	identificationDocuments?: FormData | undefined // ?? W database appwrite zamiast it mamy identificationDocumentId i identificationDocumentUrl ??
-	privacyConsent: boolean // ?? Brak pozostałych 2 consents ??
+	identificationDocuments?: FormData | undefined 
+	privacyConsent: boolean 
     treatmentConsent: boolean
 	disclosureConsent: boolean
 }
@@ -50,6 +50,11 @@ declare type UpdateAppointmentParams = {
 	userId: string
 	appointment: Appointment
 	type: string
+}
+
+declare type CreateIdentificationDocument = {
+    identificationDocumentUrl: string | null
+    identificationDocumentId: string | null
 }
 
 // Url params, route query, page params
