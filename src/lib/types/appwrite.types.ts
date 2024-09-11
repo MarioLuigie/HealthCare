@@ -38,6 +38,13 @@ export interface Appointment extends Models.Document {
 	cancellationReason: string | null
 }
 
+export interface IdentificationDocument extends Models.Document {
+    identificationUrl: string
+    identificationId: string
+}
+
+
+
 {
 	/* 
 Twój kod w pliku appwrite.type.ts definiuje interfejsy TypeScript dla obiektów w aplikacji używającej Next.js i Appwrite. Oto co te interfejsy oznaczają:
