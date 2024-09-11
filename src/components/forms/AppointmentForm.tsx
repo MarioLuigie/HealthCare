@@ -9,7 +9,12 @@ import Image from 'next/image'
 import { getAppointmentSchema } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
 import { createSubmitLabel } from '@/lib/utils'
-import { Doctors, CreateAppointmentFormDefaultValues, CancelAppointmentFormDefaultValues, ScheduleAppointmentFormDefaultValues } from '@/lib/constants'
+import {
+	Doctors,
+	CreateAppointmentFormDefaultValues,
+	CancelAppointmentFormDefaultValues,
+	ScheduleAppointmentFormDefaultValues,
+} from '@/lib/constants'
 // components
 import { Form } from '@/components/ui/form'
 import SubmitButton from '@/components/shared/SubmitButton'
@@ -47,7 +52,32 @@ export default function AppointmentForm({
 	const onSubmit: SubmitHandler<
 		z.infer<typeof AppointmentFormSchema>
 	> = async (formData: z.infer<typeof AppointmentFormSchema>) => {
+		let status: Status = 'pending'
+
+		switch (type) {
+			case 'schedule':
+				status = 'scheduled'
+				break
+			case 'cancel':
+				status = 'cancelled'
+				break
+			default:
+				status = 'pending'
+		}
+
 		try {
+			if(type === 'create' && patientId) {
+				const appointmentData = {
+					userId,
+					patientId,
+					primaryPhysician: formData.primaryPhysician,
+					schedule: new Date(formData.schedule),
+					reason: formData.reason,
+					note: formData.note,
+					status: status as Status
+				}
+			}
+
 			form.reset()
 		} catch (err) {
 			console.error('Error from onSubmit for PatientForm', err)
