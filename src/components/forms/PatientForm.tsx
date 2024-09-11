@@ -6,7 +6,7 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 // lib
-import { PatientFormSchema, PatientFormData } from '@/lib/types/zod'
+import { PatientFormSchema, PatientFormData, defaultPatientFormData } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
 import { prepareFileUploadData } from '@/lib/utils'
 import { handleRegisterPatient } from '@/lib/handlers/patient.handlers'
@@ -15,7 +15,6 @@ import {
 	GenderOptions,
 	Doctors,
 	IdentificationTypes,
-	PatientFormDefaultValues,
 } from '@/lib/constants'
 // components
 import { Form, FormControl } from '@/components/ui/form'
@@ -34,7 +33,7 @@ export default function PatientForm({ user }: { user: User }) {
 	const form = useForm<PatientFormData>({
 		resolver: zodResolver(PatientFormSchema),
 		defaultValues: {
-			...PatientFormDefaultValues,
+			...defaultPatientFormData,
 			name: user.name,
 			email: user.email,
 			phone: user.phone,

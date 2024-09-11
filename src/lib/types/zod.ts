@@ -93,7 +93,8 @@ export const PatientFormSchema = z.object({
 		.default(false),
 })
 
-export type PatientFormData = z.infer<typeof PatientFormSchema>
+export type PatientFormData = z.infer<typeof PatientFormSchema>// Type of form data based on zod schema
+export const defaultPatientFormData: PatientFormData = PatientFormSchema.parse({})// Object with keys of default values from zod schema
 
 // AppointmentForm validation
 export const CreateAppointmentSchema = z.object({
