@@ -69,11 +69,11 @@ export const formatDateTime = (dateString: Date | string) => {
 }
 
 export const formatDateToYMD = (dateString: Date | string): string => {
-	const date = new Date(dateString);
-	const year = date.getFullYear();
-	const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Miesiące są indeksowane od 0
-	const day = date.getDate().toString().padStart(2, '0');
-	return `${year}-${month}-${day}`;
+	const date = new Date(dateString)
+	const year = date.getFullYear()
+	const month = (date.getMonth() + 1).toString().padStart(2, '0') // Miesiące są indeksowane od 0
+	const day = date.getDate().toString().padStart(2, '0')
+	return `${year}-${month}-${day}`
 }
 
 export function encryptKey(passkey: string) {
@@ -103,6 +103,24 @@ export function prepareFileUploadData(fileUploadData: File[] | undefined) {
 	}
 
 	return data
+}
+
+export function createSubmitLabel(type: string = '', thing: string): string {
+	let submitBtnLabel = `${thing}`;
+
+	switch (type) {
+			case 'cancel':
+					submitBtnLabel = `Cancel ${thing}`;
+					break;
+			case 'create':
+					submitBtnLabel = `Create ${thing}`;
+					break;
+			case 'schedule':
+					submitBtnLabel = `Schedule ${thing}`;
+					break;
+	}
+
+	return submitBtnLabel;
 }
 
 // export function prepareFileUploadData(fileUploadData: File[] | undefined) {

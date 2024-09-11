@@ -8,7 +8,7 @@ import Image from 'next/image'
 // lib
 import { PatientFormSchema, PatientFormData } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
-import { prepareFileUploadData } from '@/lib/utils'
+import { createSubmitLabel } from '@/lib/utils'
 import { handleRegisterPatient } from '@/lib/handlers/patient.handlers'
 import { icons } from '@/lib/constants'
 import {
@@ -47,23 +47,7 @@ export default function AppointmentForm({
 
 	const { isSubmitting } = form.formState
 
-	function createSubmitLabel(type: string) {
-		let submitBtnLabel
 
-		switch (type) {
-			case 'cancel':
-				submitBtnLabel = 'Cancel Appointment'
-				break
-			case 'create':
-				submitBtnLabel = 'Create Appointment'
-				break
-			case 'schedule':
-				submitBtnLabel = 'Schedule Appointment'
-				break
-		}
-
-		return submitBtnLabel
-	}
 
 	const onSubmit: SubmitHandler<PatientFormData> = async (
 		formData: PatientFormData
@@ -158,7 +142,7 @@ export default function AppointmentForm({
 						isLoading={isSubmitting}
 						className="w-full"
 					>
-						{createSubmitLabel(type)}
+						{createSubmitLabel(type, 'Appointment')}
 					</SubmitButton>
 				</div>
 			</form>
