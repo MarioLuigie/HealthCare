@@ -106,21 +106,27 @@ export function prepareFileUploadData(fileUploadData: File[] | undefined) {
 }
 
 export function createSubmitLabel(type: string = '', thing: string): string {
-	let submitBtnLabel = `${thing}`;
+	let submitBtnLabel = `${thing}`
 
 	switch (type) {
-			case 'cancel':
-					submitBtnLabel = `Cancel ${thing}`;
-					break;
-			case 'create':
-					submitBtnLabel = `Create ${thing}`;
-					break;
-			case 'schedule':
-					submitBtnLabel = `Schedule ${thing}`;
-					break;
+		case 'cancel':
+			submitBtnLabel = `Cancel ${thing}`
+			break
+		case 'schedule':
+			submitBtnLabel = `Schedule ${thing}`
+			break
+		case 'create':
+			submitBtnLabel = `Create ${thing}`
+			break
+		case 'update':
+			submitBtnLabel = `Update ${thing}`
+			break
+		case 'delete':
+			submitBtnLabel = `Delete ${thing}`
+			break
 	}
 
-	return submitBtnLabel;
+	return submitBtnLabel
 }
 
 // export function prepareFileUploadData(fileUploadData: File[] | undefined) {
