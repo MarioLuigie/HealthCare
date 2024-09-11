@@ -1,16 +1,12 @@
 'use client'
 
 // modules
+import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import Image from 'next/image'
 // lib
-import {
-	getAppointmentSchema,
-	CreateAppointmentFormData,
-	CancelAppointmentFormData,
-	ScheduleAppointmentFormData,
-} from '@/lib/types/zod'
+import { getAppointmentSchema } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
 import { createSubmitLabel } from '@/lib/utils'
 import { Doctors } from '@/lib/constants'
@@ -33,14 +29,10 @@ export default function AppointmentForm({
 	patientId,
 	type,
 }: AppointmentFormProps) {
-	
-	type AppointmentFormData =
-		| CreateAppointmentFormData
-		| CancelAppointmentFormData
-		| ScheduleAppointmentFormData
+	const AppointmentFormSchema = getAppointmentSchema(type)
 
-	const form = useForm<AppointmentFormData>({
-		resolver: zodResolver(getAppointmentSchema(type)),
+	const form = useForm<z.infer<typeof AppointmentFormSchema>>({
+		resolver: zodResolver(AppointmentFormSchema),
 		defaultValues: {
 			primaryPhysician: '',
 			schedule: new Date(),
@@ -52,9 +44,9 @@ export default function AppointmentForm({
 
 	const { isSubmitting } = form.formState
 
-	const onSubmit: SubmitHandler<AppointmentFormData> = async (
-		formData: AppointmentFormData
-	) => {
+	const onSubmit: SubmitHandler<
+		z.infer<typeof AppointmentFormSchema>
+	> = async (formData: z.infer<typeof AppointmentFormSchema>) => {
 		try {
 			form.reset()
 		} catch (err) {
