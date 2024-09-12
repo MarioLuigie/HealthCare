@@ -4,7 +4,7 @@ import { Status } from '@/lib/types/enums'
 
 // Create Appoitment
 export async function createAppointment(
-	appointment: any,
+	formData: any,
 	patientId: string,
 	userId: string
 ) {
@@ -12,10 +12,10 @@ export async function createAppointment(
 		const appointmentData = {
 			userId,
 			patientId,
-			primaryPhysician: appointment.primaryPhysician,
-			schedule: new Date(appointment.schedule),
-			reason: appointment.reason,
-			note: appointment.note,
+			primaryPhysician: formData.primaryPhysician,
+			schedule: new Date(formData.schedule),
+			reason: formData.reason,
+			note: formData.note,
 			status: Status.PENDING,
 		}
 	} catch (err) {

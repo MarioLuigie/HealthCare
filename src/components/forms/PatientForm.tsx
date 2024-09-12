@@ -8,7 +8,6 @@ import Image from 'next/image'
 // lib
 import { PatientFormSchema, PatientFormData } from '@/lib/types/zod'
 import { FormFieldType, Gender } from '@/lib/types/enums'
-import { prepareFileUploadData } from '@/lib/utils'
 import { handleRegisterPatient } from '@/lib/handlers/patient.handlers'
 import { icons } from '@/lib/constants'
 import {
@@ -45,23 +44,8 @@ export default function PatientForm({ user }: { user: User }) {
 	const onSubmit: SubmitHandler<PatientFormData> = async (
 		formData: PatientFormData
 	) => {
-		// Create FormData files from files 
-		const data = prepareFileUploadData(formData.identificationDocuments)
-
-		// FormData's files to checkout is true
-		data?.forEach(function (value, key) {
-			console.log(key, value)
-		})
-
 		try {
-			const patientData = {
-				...formData,
-				userId: user.$id,
-				birthDate: new Date(formData.birthDate),
-				identificationDocuments: data,
-			}
-
-			const patient = await handleRegisterPatient(patientData)
+			const patient = await handleRegisterPatient(formData, user.$id)
 
 			if (patient!) {
 				router.push(`/patients/${user.$id}/new-appointment`)
@@ -70,10 +54,7 @@ export default function PatientForm({ user }: { user: User }) {
 				console.log('Something went wrong with registering patient.')
 			}
 
-			console.log('***patientData', patientData)// with FormData files
 			console.log('***patient', patient)// without FormData files
-
-			form.reset()
 		} catch (err) {
 			console.error('Error from onSubmit for PatientForm', err)
 		}

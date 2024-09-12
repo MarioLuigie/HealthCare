@@ -16,11 +16,30 @@ import {
 import { ID, Query } from 'node-appwrite'
 // lib
 import { UploadedFileBasicStructure } from '@/lib/types/types'
-import { deepClone, formatDateToYMD } from '@/lib/utils'
+import { deepClone, formatDateToYMD, prepareFileUploadData } from '@/lib/utils'
+import { PatientFormData } from '@/lib/types/zod'
 
 // Register patient - add patient to patient collection in appwrite database
-export async function registerPatient(patient: RegisterPatientParams) {
+export async function registerPatient(
+	formData: PatientFormData,
+	userId: string
+) {
 	try {
+		// Create FormData files from files
+		const data = prepareFileUploadData(formData.identificationDocuments)
+
+		// FormData's files to checkout is true
+		data?.forEach(function (value, key) {
+			console.log(key, value)
+		})
+
+		const patient = {
+			...formData,
+			userId,
+			birthDate: new Date(formData.birthDate),
+			identificationDocuments: data,
+		} as RegisterPatientParams
+
 		let uploadedFiles: Models.File[] = [] // Używamy typu Models.File z Appwrite zamiast File[] from browser
 		// Check if the patient has FormData with files in identificationDocument
 		if (
@@ -67,7 +86,7 @@ export async function registerPatient(patient: RegisterPatientParams) {
 				  }))
 				: []
 
-		// Create a new documents in identificationDocuments collection
+		// Create a new documents in identificationDocuments collection and return array of id's of identificationDocuments
 		const createdUploadedFiles = await Promise.all(
 			uploadedFilesBasicStructure.map(
 				async (file: UploadedFileBasicStructure) => {
@@ -82,9 +101,9 @@ export async function registerPatient(patient: RegisterPatientParams) {
 			)
 		)
 
-		console.log("***createdUploadedFiles IDs", createdUploadedFiles)
+		console.log('***createdUploadedFiles IDs', createdUploadedFiles)
 
-		// Create a new patient in patient collection
+		// Create a new patient in patient collection with arrray of id's of identificationDocuments
 		const registeredPatient = await databases.createDocument(
 			APPWRITE_DB_ID!,
 			APPWRITE_DB_PATIENT_COLLECTION_ID!,
@@ -96,7 +115,7 @@ export async function registerPatient(patient: RegisterPatientParams) {
 			}
 		)
 
-		console.log("***Registered Patient", registeredPatient)
+		console.log('***Registered Patient', registeredPatient)
 
 		return deepClone(registeredPatient)
 	} catch (err) {
