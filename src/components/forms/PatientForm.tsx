@@ -7,14 +7,13 @@ import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 // lib
 import { PatientFormSchema, PatientFormData } from '@/lib/types/zod'
-import { FormFieldType } from '@/lib/types/enums'
+import { FormFieldType, Gender } from '@/lib/types/enums'
 import { prepareFileUploadData } from '@/lib/utils'
 import { handleRegisterPatient } from '@/lib/handlers/patient.handlers'
 import { icons } from '@/lib/constants'
 import {
-	GenderOptions,
-	Doctors,
-	IdentificationTypes,
+	doctors,
+	identificationTypes,
 	PatientFormDefaultValues,
 } from '@/lib/constants'
 // components
@@ -142,7 +141,7 @@ export default function PatientForm({ user }: { user: User }) {
 									onValueChange={field.onChange}
 									defaultValue={field.value}
 								>
-									{GenderOptions.map((option, i) => (
+									{Object.values(Gender).map((option: string, i: number) => (
 										<div key={option + i} className="radio-group">
 											<RadioGroupItem value={option} id={option} />
 											<Label
@@ -205,7 +204,7 @@ export default function PatientForm({ user }: { user: User }) {
 					label="Primary physician"
 					placeholder="Select a physician"
 				>
-					{Doctors.map((doctor, i) => (
+					{doctors.map((doctor, i) => (
 						<SelectItem
 							key={doctor.name + i}
 							value={doctor.name}
@@ -290,7 +289,7 @@ export default function PatientForm({ user }: { user: User }) {
 					label="Identification type"
 					placeholder="Select an identification type"
 				>
-					{IdentificationTypes.map((type, i) => (
+					{identificationTypes.map((type, i) => (
 						<SelectItem
 							key={type + i}
 							value={type}

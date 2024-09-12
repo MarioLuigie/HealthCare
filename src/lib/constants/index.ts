@@ -1,13 +1,12 @@
-import { PatientFormData } from '../types/zod'
-
-export const GenderOptions = ['Male', 'Female', 'Other']
+import { Gender } from '@/lib/types/enums'
+import { PatientFormData } from '@/lib/types/zod'
 
 export const PatientFormDefaultValues: PatientFormData = {
 	name: '',
 	email: '',
 	phone: '',
 	birthDate: new Date('01-01-1900'),
-	gender: 'Male' as Gender,
+	gender: Gender.MALE,
 	address: '',
 	occupation: '',
 	emergencyContactName: '',
@@ -51,7 +50,7 @@ export const ScheduleAppointmentFormDefaultValues = {
 	cancellationReason: '',
 }
 
-export const Doctors = [
+export const doctors = [
 	{
 		image: '/assets/images/dr-green.png',
 		name: 'John Green',
@@ -90,7 +89,7 @@ export const Doctors = [
 	},
 ]
 
-export const IdentificationTypes = [
+export const identificationTypes = [
 	'Birth Certificate',
 	"Driver's License",
 	'Medical Insurance Card/Policy',

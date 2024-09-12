@@ -1,6 +1,5 @@
 // Interfaces available globally throughout the application without the need for import and export
-declare type Gender = 'Male' | 'Female' | 'Other'
-declare type Status = 'pending' | 'scheduled' | 'cancelled'
+
 // User
 declare interface CreateUserParams {
 	name: string

@@ -1,19 +1,44 @@
 'use server'
 
-// Create
-export async function createAppointment() {
-  try {
-    
-  } catch (err) {
-    console.error(err)
-  }
+import { Status } from '@/lib/types/enums'
+
+// Create Appoitment
+export async function createAppointment(
+	appointment: any,
+	patientId: string,
+	userId: string
+) {
+	try {
+		const appointmentData = {
+			userId,
+			patientId,
+			primaryPhysician: appointment.primaryPhysician,
+			schedule: new Date(appointment.schedule),
+			reason: appointment.reason,
+			note: appointment.note,
+			status: Status.PENDING,
+		}
+	} catch (err) {
+		console.error(err)
+	}
 }
 
-// Cancel
+// Cancel Appointment
 export async function cancelAppointment() {
-  try {
-    
-  } catch (err) {
-    console.error(err)
-  }
+  const status: Status = Status.CANCELLED
+
+	try {
+	} catch (err) {
+		console.error(err)
+	}
+}
+
+// Schedule Appointment
+export async function scheduleAppointment() {
+  const status: Status = Status.SCHEDULED
+
+	try {
+	} catch (err) {
+		console.error(err)
+	}
 }
