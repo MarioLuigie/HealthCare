@@ -7,6 +7,7 @@ import PageTitle from '@/components/shared/PageTitle'
 import LogoFull from '@/components/content/LogoFull'
 import Copyright from '@/components/content/Copyright'
 import FormPageTemplate from '@/components/shared/FormPageTemplate'
+import { ActionTypes } from '@/lib/types/enums'
 
 export default async function NewAppointmentPage({
 	userId,
@@ -23,7 +24,7 @@ export default async function NewAppointmentPage({
 				description="Request a new appointment in 10 seconds."
 			/>
 			<AppointmentForm
-				actionType="cancel"
+				actionType={ActionTypes.CANCEL}
 				userId={userId}
 				patientId={patient.$id}
 			/>
