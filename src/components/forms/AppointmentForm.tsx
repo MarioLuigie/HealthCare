@@ -27,7 +27,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 type AppointmentFormProps = {
 	userId: string
 	patientId: string
-	actionType: ActionTypes 
+	actionType: ActionTypes
 }
 
 export default function AppointmentForm({
@@ -60,17 +60,14 @@ export default function AppointmentForm({
 					patientId,
 					userId
 				)
-			}
-
-			if (actionType === ActionTypes.CANCEL) {
+			} else if (actionType === ActionTypes.CANCEL) {
 				const cancelledAppointment = await handleCancelAppointment(formData)
-			}
-
-			if (actionType === ActionTypes.SCHEDULE) {
+			} else if (actionType === ActionTypes.SCHEDULE) {
 				const scheduledAppointment = await handleScheduleAppointment(
 					formData
 				)
 			}
+
 			form.reset()
 		} catch (err) {
 			console.error('Error from onSubmit for PatientForm', err)
@@ -84,7 +81,7 @@ export default function AppointmentForm({
 				className="flex flex-col gap-6"
 			>
 				{/* CREATE APPOINTMENT */}
-				{actionType !== 'cancel' && (
+				{actionType !== ActionTypes.CANCEL && (
 					<>
 						{/* Select doctor */}
 						<CustomFormField
@@ -144,7 +141,7 @@ export default function AppointmentForm({
 					</>
 				)}
 				{/* CANCEL APPOINTMENT */}
-				{actionType === 'cancel' && (
+				{actionType === ActionTypes.CANCEL && (
 					<CustomFormField
 						control={form.control}
 						type={FormFieldType.TEXTAREA}
@@ -155,7 +152,7 @@ export default function AppointmentForm({
 				)}
 				<div className="mt-8">
 					<SubmitButton
-						isDanger={actionType === 'cancel'}
+						isDanger={actionType === ActionTypes.CANCEL}
 						isLoading={isSubmitting}
 						className="w-full"
 					>
