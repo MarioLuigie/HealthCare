@@ -23,7 +23,7 @@ export default async function NewAppointmentPage({
 				description="Request a new appointment in 10 seconds."
 			/>
 			<AppointmentForm
-				type="create"
+				actionType="cancel"
 				userId={userId}
 				patientId={patient.$id}
 			/>

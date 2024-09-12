@@ -26,15 +26,15 @@ import 'react-datepicker/dist/react-datepicker.css'
 type AppointmentFormProps = {
 	userId: string
 	patientId: string
-	type: 'create' | 'cancel' | 'schedule' // literal type
+	actionType: 'create' | 'cancel' | 'schedule' // literal type
 }
 
 export default function AppointmentForm({
 	userId,
 	patientId,
-	type,
+	actionType,
 }: AppointmentFormProps) {
-	const AppointmentFormSchema = getAppointmentSchema(type)
+	const AppointmentFormSchema = getAppointmentSchema(actionType)
 
 	const form = useForm<z.infer<typeof AppointmentFormSchema>>({
 		resolver: zodResolver(AppointmentFormSchema),
@@ -54,7 +54,7 @@ export default function AppointmentForm({
 	> = async (formData: z.infer<typeof AppointmentFormSchema>) => {
 		let status: Status = 'pending'
 
-		switch (type) {
+		switch (actionType) {
 			case 'schedule':
 				status = 'scheduled'
 				break
@@ -66,7 +66,7 @@ export default function AppointmentForm({
 		}
 
 		try {
-			if(type === 'create' && patientId) {
+			if (actionType === 'create' && patientId) {
 				const appointmentData = {
 					userId,
 					patientId,
@@ -74,7 +74,7 @@ export default function AppointmentForm({
 					schedule: new Date(formData.schedule),
 					reason: formData.reason,
 					note: formData.note,
-					status: status as Status
+					status: status as Status,
 				}
 			}
 
@@ -91,7 +91,7 @@ export default function AppointmentForm({
 				className="flex flex-col gap-6"
 			>
 				{/* CREATE APPOINTMENT */}
-				{type !== 'cancel' && (
+				{actionType !== 'cancel' && (
 					<>
 						{/* Select doctor */}
 						<CustomFormField
@@ -151,7 +151,7 @@ export default function AppointmentForm({
 					</>
 				)}
 				{/* CANCEL APPOINTMENT */}
-				{type === 'cancel' && (
+				{actionType === 'cancel' && (
 					<CustomFormField
 						control={form.control}
 						type={FormFieldType.TEXTAREA}
@@ -160,14 +160,13 @@ export default function AppointmentForm({
 						placeholder="ex: Sudden unexpected situation"
 					/>
 				)}
-
 				<div className="mt-8">
 					<SubmitButton
-						isDanger={type === 'cancel'}
+						isDanger={actionType === 'cancel'}
 						isLoading={isSubmitting}
 						className="w-full"
 					>
-						{createSubmitLabel(type, 'Appointment')}
+						{createSubmitLabel(actionType, 'Appointment')}
 					</SubmitButton>
 				</div>
 			</form>
