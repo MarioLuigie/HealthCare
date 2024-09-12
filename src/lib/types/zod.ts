@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { ActionTypes } from '@/lib/types/enums'
 
 // UserForm
 export const UserFormSchema = z.object({
@@ -106,7 +107,9 @@ export const ScheduleAppointmentSchema = z.object({
 	cancellationReason: z.string().optional(),
 })
 
-export type CancelAppointmentFormData = z.infer<typeof CancelAppointmentSchema>
+export type ScheduleAppointmentFormData = z.infer<
+	typeof ScheduleAppointmentSchema
+>
 
 export const CancelAppointmentSchema = z.object({
 	primaryPhysician: z.string().min(2, 'Select at least one doctor'),
@@ -119,17 +122,15 @@ export const CancelAppointmentSchema = z.object({
 		.max(500, 'Reason must be at most 500 characters'),
 })
 
-export type ScheduleAppointmentFormData = z.infer<
-	typeof ScheduleAppointmentSchema
->
+export type CancelAppointmentFormData = z.infer<typeof CancelAppointmentSchema>
 
-export function getAppointmentSchema(type: string) {
-	switch (type) {
-		case 'create':
+export function getAppointmentSchema(actionType: ActionTypes) {
+	switch (actionType) {
+		case ActionTypes.CREATE:
 			return CreateAppointmentSchema
-		case 'cancel':
+		case ActionTypes.CANCEL:
 			return CancelAppointmentSchema
-		default:
+		case ActionTypes.SCHEDULE:
 			return ScheduleAppointmentSchema
 	}
 }

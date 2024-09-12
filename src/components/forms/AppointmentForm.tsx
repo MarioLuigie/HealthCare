@@ -6,7 +6,12 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import Image from 'next/image'
 // lib
-import { getAppointmentSchema } from '@/lib/types/zod'
+import {
+	CancelAppointmentFormData,
+	CreateAppointmentFormData,
+	ScheduleAppointmentFormData,
+	getAppointmentSchema,
+} from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
 import { createSubmitLabel } from '@/lib/utils'
 import {
@@ -56,15 +61,17 @@ export default function AppointmentForm({
 		try {
 			if (actionType === ActionTypes.CREATE && patientId && userId) {
 				const createdAppointment = await handleCreateAppointment(
-					formData,
+					formData as CreateAppointmentFormData,
 					patientId,
 					userId
 				)
 			} else if (actionType === ActionTypes.CANCEL) {
-				const cancelledAppointment = await handleCancelAppointment(formData)
+				const cancelledAppointment = await handleCancelAppointment(
+					formData as CancelAppointmentFormData
+				)
 			} else if (actionType === ActionTypes.SCHEDULE) {
 				const scheduledAppointment = await handleScheduleAppointment(
-					formData
+					formData as ScheduleAppointmentFormData
 				)
 			}
 

@@ -1,15 +1,20 @@
 'use server'
 
 import { Status } from '@/lib/types/enums'
+import {
+	CreateAppointmentFormData,
+	CancelAppointmentFormData,
+	ScheduleAppointmentFormData,
+} from '@/lib/types/zod'
 
 // Create Appoitment
 export async function createAppointment(
-	formData: any,
+	formData: CreateAppointmentFormData,
 	patientId: string,
 	userId: string
 ) {
 	try {
-		const appointmentData = {
+		const appointmentData: CreateAppointmentParams = {
 			userId,
 			patientId,
 			primaryPhysician: formData.primaryPhysician,
@@ -17,14 +22,15 @@ export async function createAppointment(
 			reason: formData.reason,
 			note: formData.note,
 			status: Status.PENDING,
-		}
+		} 
+
 	} catch (err) {
 		console.error(err)
 	}
 }
 
 // Cancel Appointment
-export async function cancelAppointment() {
+export async function cancelAppointment(formData: CancelAppointmentFormData) {
   const status: Status = Status.CANCELLED
 
 	try {
@@ -34,7 +40,7 @@ export async function cancelAppointment() {
 }
 
 // Schedule Appointment
-export async function scheduleAppointment() {
+export async function scheduleAppointment(formData: ScheduleAppointmentFormData) {
   const status: Status = Status.SCHEDULED
 
 	try {
