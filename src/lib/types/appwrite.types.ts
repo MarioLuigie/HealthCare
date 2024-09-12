@@ -1,4 +1,5 @@
 import { Models } from 'node-appwrite'
+import { Gender, Status } from '@/lib/types/enums'
 
 // Appwrite output interfaces based on Models.Document template - ensures compatibility and access to hidden functions and keys
 // Interfaces for appwrite data base collections documents
