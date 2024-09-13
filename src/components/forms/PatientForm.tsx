@@ -9,7 +9,7 @@ import Image from 'next/image'
 import { PatientFormSchema, PatientFormData } from '@/lib/types/zod'
 import { FormFieldType, Gender } from '@/lib/types/enums'
 import { handleRegisterPatient } from '@/lib/handlers/patient.handlers'
-import { icons } from '@/lib/constants'
+import { Icons } from '@/lib/constants'
 import {
 	doctors,
 	identificationTypes,
@@ -79,8 +79,8 @@ export default function PatientForm({ user }: { user: User }) {
 					name="name"
 					label="Full name"
 					placeholder="ex: James Smith"
-					iconSrc={icons.USER_ICON.path}
-					iconAlt={icons.USER_ICON.alt}
+					iconSrc={Icons.USER_ICON.path}
+					iconAlt={Icons.USER_ICON.alt}
 				/>
 				{/* Email Phone */}
 				<div className="flex flex-col xl:flex-row gap-4">
@@ -89,16 +89,16 @@ export default function PatientForm({ user }: { user: User }) {
 						type={FormFieldType.INPUT}
 						name="email"
 						label="Email address"
-						iconSrc={icons.EMAIL_ICON.path}
-						iconAlt={icons.EMAIL_ICON.alt}
+						iconSrc={Icons.EMAIL_ICON.path}
+						iconAlt={Icons.EMAIL_ICON.alt}
 					/>
 					<CustomFormField
 						control={form.control}
 						type={FormFieldType.INPUT}
 						name="phone"
 						label="Phone number"
-						iconSrc={icons.PHONE_ICON.path}
-						iconAlt={icons.PHONE_ICON.alt}
+						iconSrc={Icons.PHONE_ICON.path}
+						iconAlt={Icons.PHONE_ICON.alt}
 					/>
 				</div>
 				{/* Date of birth and Gender */}

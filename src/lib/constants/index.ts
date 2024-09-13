@@ -26,7 +26,7 @@ export const PatientFormDefaultData: PatientFormData = {
 	privacyConsent: false,
 }
 
-export const CreateAppointmentFormDefaultValues = {
+export const CreateAppointmentFormDefaultData = {
 	primaryPhysician: '',
 	schedule: new Date(),
 	reason: '',
@@ -34,7 +34,7 @@ export const CreateAppointmentFormDefaultValues = {
 	cancellationReason: '',
 }
 
-export const CancelAppointmentFormDefaultValues = {
+export const CancelAppointmentFormDefaultData = {
 	primaryPhysician: '',
 	schedule: new Date(),
 	reason: '',
@@ -42,7 +42,7 @@ export const CancelAppointmentFormDefaultValues = {
 	cancellationReason: '',
 }
 
-export const ScheduleAppointmentFormDefaultValues = {
+export const ScheduleAppointmentFormDefaultData = {
 	primaryPhysician: '',
 	schedule: new Date(),
 	reason: '',
@@ -103,7 +103,7 @@ export const identificationTypes = [
 	'Voter ID Card',
 ]
 
-export const icons = {
+export const Icons = {
 	LOGO_FULL: {
 		path: '/assets/icons/logo-full.svg',
 		alt: 'Logo',
@@ -138,7 +138,7 @@ export const icons = {
 	},
 }
 
-export const images = {
+export const Images = {
 	HOME_PAGE_IMAGE: {
 		path: '/assets/images/onboarding-img.png',
 		alt: 'Home page image',

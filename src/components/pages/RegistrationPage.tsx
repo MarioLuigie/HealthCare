@@ -1,5 +1,5 @@
 // lib
-import { images } from '@/lib/constants'
+import { Images } from '@/lib/constants'
 import { getUser } from '@/lib/actions/user.actions'
 // components
 import PatientForm from '@/components/forms/PatientForm'
@@ -13,7 +13,7 @@ export default async function RegistrationPage({ userId }: { userId: string }) {
 
 	console.log('User from RegistrationPage:', user)
 	return (
-		<FormPageTemplate image={images.REGISTER_PAGE_IMAGE}>
+		<FormPageTemplate image={Images.REGISTER_PAGE_IMAGE}>
 			<LogoFull />
 			<PageTitle
 				title="Welcome !"

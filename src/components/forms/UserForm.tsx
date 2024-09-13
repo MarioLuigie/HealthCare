@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation'
 // lib
 import { UserFormSchema, UserFormData } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
-import { icons } from '@/lib/constants'
+import { Icons } from '@/lib/constants'
 import { handleCreateUser } from '@/lib/handlers/user.handlers'
 // components
 import SubmitButton from '@/components/shared/SubmitButton'
@@ -57,8 +57,8 @@ export default function UserForm() {
 					name="name"
 					label="Name"
 					placeholder="James Smith"
-					iconSrc={icons.USER_ICON.path}
-					iconAlt={icons.USER_ICON.alt}
+					iconSrc={Icons.USER_ICON.path}
+					iconAlt={Icons.USER_ICON.alt}
 				/>
 				<CustomFormField
 					control={form.control}
@@ -66,8 +66,8 @@ export default function UserForm() {
 					name="email"
 					label="Email"
 					placeholder="jamessmith@healthcare.com"
-					iconSrc={icons.EMAIL_ICON.path}
-					iconAlt={icons.EMAIL_ICON.alt}
+					iconSrc={Icons.EMAIL_ICON.path}
+					iconAlt={Icons.EMAIL_ICON.alt}
 				/>
 				<CustomFormField
 					control={form.control}

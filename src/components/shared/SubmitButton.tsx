@@ -1,7 +1,7 @@
 // modules
 import Image from 'next/image'
 // lib
-import { icons } from '@/lib/constants'
+import { Icons } from '@/lib/constants'
 // components
 import { Button } from '@/components/ui/button'
 
@@ -27,8 +27,8 @@ export default function SubmitButton({
 			{isLoading ? (
 				<div className="flex items-center gap-4">
 					<Image
-						src={icons.LOADER.path}
-						alt={icons.LOADER.alt}
+						src={Icons.LOADER.path}
+						alt={Icons.LOADER.alt}
 						width={24}
 						height={24}
 						className="animate-spin"

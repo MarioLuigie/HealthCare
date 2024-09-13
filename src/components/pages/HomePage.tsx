@@ -1,7 +1,7 @@
 // modules
 import Link from 'next/link'
 // lib
-import { images } from '@/lib/constants'
+import { Images } from '@/lib/constants'
 // components
 import PageTitle from '@/components/shared/PageTitle'
 import UserForm from '@/components/forms/UserForm'
@@ -14,7 +14,7 @@ export default function HomePage() {
 		/* TODO: OTP Verification | PassKey Modal  */
 	}
 	return (
-		<FormPageTemplate image={images.HOME_PAGE_IMAGE}>
+		<FormPageTemplate image={Images.HOME_PAGE_IMAGE}>
 			<LogoFull />
 			<PageTitle
 				title="Hi there !"

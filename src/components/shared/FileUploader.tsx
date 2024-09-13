@@ -6,7 +6,7 @@ import React, { useCallback } from 'react'
 import { useDropzone } from 'react-dropzone'
 // lib
 import { convertFileToUrl } from '@/lib/utils'
-import { icons } from '@/lib/constants'
+import { Icons } from '@/lib/constants'
 
 interface FileUploaderProps {
 	files: File[] | undefined
@@ -38,18 +38,18 @@ export default function FileUploader({ files, onChange }: FileUploaderProps) {
 					))
 			) : isDragActive ? (
 				<Image
-					src={icons.UPLOAD_GIF.path}
+					src={Icons.UPLOAD_GIF.path}
 					width={100}
 					height={100}
-					alt={icons.UPLOAD_GIF.alt}
+					alt={Icons.UPLOAD_GIF.alt}
 				/>
 			) : (
 				<>
 					<Image
-						src={icons.UPLOAD_ICON.path}
+						src={Icons.UPLOAD_ICON.path}
 						width={50}
 						height={50}
-						alt={icons.UPLOAD_ICON.alt}
+						alt={Icons.UPLOAD_ICON.alt}
 					/>
 					<div className="file-upload_label">
 						<p className="text-14-regular ">

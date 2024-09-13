@@ -1,5 +1,5 @@
 // lib
-import { images } from '@/lib/constants'
+import { Images } from '@/lib/constants'
 import { getPatient } from '@/lib/actions/patient.actions'
 // components
 import AppointmentForm from '@/components/forms/AppointmentForm'
@@ -17,7 +17,7 @@ export default async function NewAppointmentPage({
 	const patient = await getPatient(userId)
 
 	return (
-		<FormPageTemplate image={images.NEW_APPOINTMENT_PAGE_IMAGE}>
+		<FormPageTemplate image={Images.NEW_APPOINTMENT_PAGE_IMAGE}>
 			<LogoFull />
 			<PageTitle
 				title="New appointment !"
