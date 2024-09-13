@@ -41,8 +41,8 @@ export default function AppointmentForm({
 	actionType,
 }: AppointmentFormProps) {
 	const AppointmentFormSchema = getAppointmentSchema(actionType)
-	// @ts-ignore-next-line
-	const AppointmentFormValues
+	
+	const AppointmentFormValues = ''
 
 	const form = useForm<z.infer<typeof AppointmentFormSchema>>({
 		resolver: zodResolver(AppointmentFormSchema),
