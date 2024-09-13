@@ -13,6 +13,8 @@ import { handleCreateUser } from '@/lib/handlers/user.handlers'
 import SubmitButton from '@/components/shared/SubmitButton'
 import CustomFormField from '@/components/shared/CustomFormField'
 import { Form } from '@/components/ui/form'
+import { generateUrl } from '@/lib/utils'
+import { Route } from '@/lib/constants/paths'
 
 export default function UserForm() {
 	const router = useRouter()
@@ -35,7 +37,8 @@ export default function UserForm() {
 			const user = await handleCreateUser(userFormValues)
 
 			if (user!) {
-				router.push(`/patients/${user.$id}/register`)
+				// router.push(`/patients/${user.$id}/register`)
+				router.push(generateUrl([Route.PATIENTS, user.$id, Route.REGISTER]))
 				form.reset()
 			} else {
 				console.log('Something went wrong with creating user.')

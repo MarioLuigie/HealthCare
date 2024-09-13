@@ -2,6 +2,8 @@ export const Route = {
 	HOME: '/',
 	DASHBOARD: '/dashboard',
 	PATIENTS: '/patients',
+	REGISTER: '/register',
+	NEW_APPOINTMENT: '/new-appointment',
 }
 
 export const IconPath = {
