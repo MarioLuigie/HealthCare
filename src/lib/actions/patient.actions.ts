@@ -16,39 +16,23 @@ import {
 import { ID, Query } from 'node-appwrite'
 // lib
 import { UploadedFileBasicStructure } from '@/lib/types/types'
-import { deepClone, formatDateToYMD, prepareFileUploadData } from '@/lib/utils'
-import { PatientFormValues } from '@/lib/types/zod'
+import { deepClone, formatDateToYMD } from '@/lib/utils'
 
 // Register patient - add patient to patient collection in appwrite database
 export async function registerPatient(
-	patientFormValues: PatientFormValues,
-	userId: string
+	registerPatientData: RegisterPatientParams,
 ) {
 	try {
-		// Create FormData files from files
-		const formData = prepareFileUploadData(patientFormValues.identificationDocuments)
-
-		// FormData's files to checkout is true
-		formData?.forEach(function (value, key) {
-			console.log(key, value)
-		})
-
-		const patient = {
-			...patientFormValues,
-			userId,
-			birthDate: new Date(patientFormValues.birthDate),
-			identificationDocuments: formData,
-		} as RegisterPatientParams
 
 		let uploadedFiles: Models.File[] = [] // Używamy typu Models.File z Appwrite zamiast File[] from browser
 		// Check if the patient has FormData with files in identificationDocument
 		if (
-			patient.identificationDocuments &&
-			patient.identificationDocuments instanceof FormData &&
-			patient.identificationDocuments.has('files[]')
+			registerPatientData.identificationDocuments &&
+			registerPatientData.identificationDocuments instanceof FormData &&
+			registerPatientData.identificationDocuments.has('files[]')
 		) {
 			// Get oll files from FormData files
-			const files: Blob[] = patient.identificationDocuments.getAll(
+			const files: Blob[] = registerPatientData.identificationDocuments.getAll(
 				'files[]'
 			) as Blob[]
 
@@ -109,9 +93,9 @@ export async function registerPatient(
 			APPWRITE_DB_PATIENT_COLLECTION_ID!,
 			ID.unique(),
 			{
-				...patient,
+				...registerPatientData,
 				identificationDocuments: createdUploadedFiles,
-				birthDate: formatDateToYMD(patient.birthDate),
+				birthDate: formatDateToYMD(registerPatientData.birthDate),
 			}
 		)
 
