@@ -7,6 +7,20 @@ export function cn(...inputs: ClassValue[]) {
 
 export const deepClone = (value: any) => JSON.parse(JSON.stringify(value))
 
+export function generateUrl(
+	pathSegments: string[],
+	queryParams: { [key: string]: string | undefined } = {}
+): string {
+	// Join the path segments into a single string
+	const path = pathSegments.join('/')
+
+	// Generate the full URL with query parameters
+	return qs.stringifyUrl({
+		url: path,
+		query: queryParams,
+	})
+}
+
 export const convertFileToUrl = (file: File) => URL.createObjectURL(file)
 
 // FORMAT DATE TIME
