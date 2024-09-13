@@ -12,7 +12,7 @@ import { handleRegisterPatient } from '@/lib/handlers/patient.handlers'
 import { Icons } from '@/lib/constants'
 import {
 	doctors,
-	identificationTypes,
+	identificationDocumentTypes,
 	PatientFormDefaultData,
 } from '@/lib/constants'
 // components
@@ -270,7 +270,7 @@ export default function PatientForm({ user }: { user: User }) {
 					label="Identification type"
 					placeholder="Select an identification type"
 				>
-					{identificationTypes.map((type, i) => (
+					{identificationDocumentTypes.map((type, i) => (
 						<SelectItem
 							key={type + i}
 							value={type}

@@ -1,6 +1,7 @@
 import { Gender } from '@/lib/types/enums'
 import { PatientFormData } from '@/lib/types/zod'
 
+// PatientForm default data
 export const PatientFormDefaultData: PatientFormData = {
 	name: '',
 	email: '',
@@ -26,6 +27,7 @@ export const PatientFormDefaultData: PatientFormData = {
 	privacyConsent: false,
 }
 
+// AppointmentForm default datas
 export const CreateAppointmentFormDefaultData = {
 	primaryPhysician: '',
 	schedule: new Date(),
@@ -50,6 +52,7 @@ export const ScheduleAppointmentFormDefaultData = {
 	cancellationReason: '',
 }
 
+// Doctors array
 export const doctors = [
 	{
 		image: '/assets/images/dr-green.png',
@@ -89,7 +92,8 @@ export const doctors = [
 	},
 ]
 
-export const identificationTypes = [
+// Types of identification document
+export const identificationDocumentTypes = [
 	'Birth Certificate',
 	"Driver's License",
 	'Medical Insurance Card/Policy',
@@ -103,6 +107,7 @@ export const identificationTypes = [
 	'Voter ID Card',
 ]
 
+// Kinde of icons
 export const Icons = {
 	LOGO_FULL: {
 		path: '/assets/icons/logo-full.svg',
@@ -138,6 +143,7 @@ export const Icons = {
 	},
 }
 
+// Kinde of images
 export const Images = {
 	HOME_PAGE_IMAGE: {
 		path: '/assets/images/onboarding-img.png',
