@@ -2,14 +2,14 @@
 
 import { Status } from '@/lib/types/enums'
 import {
-	CreateAppointmentFormData,
-	CancelAppointmentFormData,
-	ScheduleAppointmentFormData,
+	CreateAppointmentFormValues,
+	CancelAppointmentFormValues,
+	ScheduleAppointmentFormValues,
 } from '@/lib/types/zod'
 
 // Create Appoitment
 export async function createAppointment(
-	appointmentFormValues: CreateAppointmentFormData,
+	appointmentFormValues: CreateAppointmentFormValues,
 	patientId: string,
 	userId: string
 ) {
@@ -30,7 +30,7 @@ export async function createAppointment(
 }
 
 // Cancel Appointment
-export async function cancelAppointment(appointmentFormValues: CancelAppointmentFormData) {
+export async function cancelAppointment(appointmentFormValues: CancelAppointmentFormValues) {
   const status: Status = Status.CANCELLED
 
 	try {
@@ -40,7 +40,7 @@ export async function cancelAppointment(appointmentFormValues: CancelAppointment
 }
 
 // Schedule Appointment
-export async function scheduleAppointment(appointmentFormValues: ScheduleAppointmentFormData) {
+export async function scheduleAppointment(appointmentFormValues: ScheduleAppointmentFormValues) {
   const status: Status = Status.SCHEDULED
 
 	try {

@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 // lib
-import { UserFormSchema, UserFormData } from '@/lib/types/zod'
+import { UserFormSchema, UserFormValues } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
 import { Icons } from '@/lib/constants'
 import { handleCreateUser } from '@/lib/handlers/user.handlers'
@@ -17,7 +17,7 @@ import { Form } from '@/components/ui/form'
 export default function UserForm() {
 	const router = useRouter()
 
-	const form = useForm<UserFormData>({
+	const form = useForm<UserFormValues>({
 		resolver: zodResolver(UserFormSchema),
 		defaultValues: {
 			name: '',
@@ -28,8 +28,8 @@ export default function UserForm() {
 
 	const { isSubmitting } = form.formState
 
-	const onSubmit: SubmitHandler<UserFormData> = async (
-		userFormValues: UserFormData
+	const onSubmit: SubmitHandler<UserFormValues> = async (
+		userFormValues: UserFormValues
 	) => {
 		try {
 			const user = await handleCreateUser(userFormValues)

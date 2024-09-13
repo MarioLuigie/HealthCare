@@ -6,7 +6,7 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 // lib
-import { PatientFormSchema, PatientFormData } from '@/lib/types/zod'
+import { PatientFormSchema, PatientFormValues } from '@/lib/types/zod'
 import { FormFieldType, Gender } from '@/lib/types/enums'
 import { handleRegisterPatient } from '@/lib/handlers/patient.handlers'
 import { Icons } from '@/lib/constants'
@@ -29,7 +29,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 export default function PatientForm({ user }: { user: User }) {
 	const router = useRouter()
 
-	const form = useForm<PatientFormData>({
+	const form = useForm<PatientFormValues>({
 		resolver: zodResolver(PatientFormSchema),
 		defaultValues: {
 			...PatientFormDefaultData,
@@ -41,8 +41,8 @@ export default function PatientForm({ user }: { user: User }) {
 
 	const { isSubmitting } = form.formState
 
-	const onSubmit: SubmitHandler<PatientFormData> = async (
-		patientFormValues: PatientFormData
+	const onSubmit: SubmitHandler<PatientFormValues> = async (
+		patientFormValues: PatientFormValues
 	) => {
 		try {
 			const patient = await handleRegisterPatient(patientFormValues, user.$id)

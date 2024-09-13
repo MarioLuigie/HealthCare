@@ -13,7 +13,7 @@ export const UserFormSchema = z.object({
 		.refine((phone) => /^\+\d{10,15}$/.test(phone), 'Invalid phone number'),
 })
 
-export type UserFormData = z.infer<typeof UserFormSchema>
+export type UserFormValues = z.infer<typeof UserFormSchema>
 
 // PatientForm
 export const PatientFormSchema = z.object({
@@ -83,10 +83,10 @@ export const PatientFormSchema = z.object({
 		}),
 })
 
-export type PatientFormData = z.infer<typeof PatientFormSchema>
+export type PatientFormValues = z.infer<typeof PatientFormSchema>
 
 // AppointmentForm
-export const CreateAppointmentSchema = z.object({
+export const CreateAppointmentFormSchema = z.object({
 	primaryPhysician: z.string().min(2, 'Select at least one doctor'),
 	schedule: z.coerce.date(),
 	reason: z
@@ -97,9 +97,9 @@ export const CreateAppointmentSchema = z.object({
 	cancellationReason: z.string().optional(),
 })
 
-export type CreateAppointmentFormData = z.infer<typeof CreateAppointmentSchema>
+export type CreateAppointmentFormValues = z.infer<typeof CreateAppointmentFormSchema>
 
-export const ScheduleAppointmentSchema = z.object({
+export const ScheduleAppointmentFormSchema = z.object({
 	primaryPhysician: z.string().min(2, 'Select at least one doctor'),
 	schedule: z.coerce.date(),
 	reason: z.string().optional(),
@@ -107,11 +107,11 @@ export const ScheduleAppointmentSchema = z.object({
 	cancellationReason: z.string().optional(),
 })
 
-export type ScheduleAppointmentFormData = z.infer<
-	typeof ScheduleAppointmentSchema
+export type ScheduleAppointmentFormValues = z.infer<
+	typeof ScheduleAppointmentFormSchema
 >
 
-export const CancelAppointmentSchema = z.object({
+export const CancelAppointmentFormSchema = z.object({
 	primaryPhysician: z.string().min(2, 'Select at least one doctor'),
 	schedule: z.coerce.date(),
 	reason: z.string().optional(),
@@ -122,20 +122,20 @@ export const CancelAppointmentSchema = z.object({
 		.max(500, 'Reason must be at most 500 characters'),
 })
 
-export type CancelAppointmentFormData = z.infer<typeof CancelAppointmentSchema>
+export type CancelAppointmentFormValues = z.infer<typeof CancelAppointmentFormSchema>
 
-export function getAppointmentSchema(actionType: ActionTypes) {
+export function getAppointmentFormSchema(actionType: ActionTypes) {
 	switch (actionType) {
 		case ActionTypes.CREATE:
-			return CreateAppointmentSchema
+			return CreateAppointmentFormSchema
 		case ActionTypes.CANCEL:
-			return CancelAppointmentSchema
+			return CancelAppointmentFormSchema
 		case ActionTypes.SCHEDULE:
-			return ScheduleAppointmentSchema
+			return ScheduleAppointmentFormSchema
 	}
 }
 
-export function getAppointmentFormDefaultData(actionType: ActionTypes) {
+export function getAppointmentFormDefaultValues(actionType: ActionTypes) {
 	return {
 		
 	}

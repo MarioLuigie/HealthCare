@@ -7,11 +7,11 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import Image from 'next/image'
 // lib
 import {
-	CancelAppointmentFormData,
-	CreateAppointmentFormData,
-	ScheduleAppointmentFormData,
-	getAppointmentSchema,
-	getAppointmentFormDefaultData,
+	CancelAppointmentFormValues,
+	CreateAppointmentFormValues,
+	ScheduleAppointmentFormValues,
+	getAppointmentFormSchema,
+	getAppointmentFormDefaultValues,
 } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
 import { createSubmitLabel } from '@/lib/utils'
@@ -41,8 +41,8 @@ export default function AppointmentForm({
 	patientId,
 	actionType,
 }: AppointmentFormProps) {
-	const AppointmentFormSchema = getAppointmentSchema(actionType)
-	const appointmentFormValues = getAppointmentFormDefaultData(actionType)
+	const AppointmentFormSchema = getAppointmentFormSchema(actionType)
+	const appointmentFormValues = getAppointmentFormDefaultValues(actionType)
 
 	const form = useForm<z.infer<typeof AppointmentFormSchema>>({
 		resolver: zodResolver(AppointmentFormSchema),
@@ -63,17 +63,17 @@ export default function AppointmentForm({
 		try {
 			if (actionType === ActionTypes.CREATE && patientId && userId) {
 				const createdAppointment = await handleCreateAppointment(
-					appointmentFormValues as CreateAppointmentFormData,
+					appointmentFormValues as CreateAppointmentFormValues,
 					patientId,
 					userId
 				)
 			} else if (actionType === ActionTypes.CANCEL) {
 				const cancelledAppointment = await handleCancelAppointment(
-					appointmentFormValues as CancelAppointmentFormData
+					appointmentFormValues as CancelAppointmentFormValues
 				)
 			} else if (actionType === ActionTypes.SCHEDULE) {
 				const scheduledAppointment = await handleScheduleAppointment(
-					appointmentFormValues as ScheduleAppointmentFormData
+					appointmentFormValues as ScheduleAppointmentFormValues
 				)
 			}
 

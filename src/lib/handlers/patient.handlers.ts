@@ -1,8 +1,8 @@
 // lib
 import { registerPatient } from '@/lib/actions/patient.actions'
-import { PatientFormData } from '@/lib/types/zod'
+import { PatientFormValues } from '@/lib/types/zod'
 
-export const handleRegisterPatient = async (patientFormValues: PatientFormData, userId: string) => {
+export const handleRegisterPatient = async (patientFormValues: PatientFormValues, userId: string) => {
 	try {
 		await new Promise((resolve) => {
 			setTimeout(resolve, 2000)

@@ -17,11 +17,11 @@ import { ID, Query } from 'node-appwrite'
 // lib
 import { UploadedFileBasicStructure } from '@/lib/types/types'
 import { deepClone, formatDateToYMD, prepareFileUploadData } from '@/lib/utils'
-import { PatientFormData } from '@/lib/types/zod'
+import { PatientFormValues } from '@/lib/types/zod'
 
 // Register patient - add patient to patient collection in appwrite database
 export async function registerPatient(
-	patientFormValues: PatientFormData,
+	patientFormValues: PatientFormValues,
 	userId: string
 ) {
 	try {

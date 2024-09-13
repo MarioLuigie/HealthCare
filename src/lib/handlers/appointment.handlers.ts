@@ -5,14 +5,14 @@ import {
 	scheduleAppointment,
 } from '@/lib/actions/appointment.actions'
 import {
-	CreateAppointmentFormData,
-	CancelAppointmentFormData,
-	ScheduleAppointmentFormData,
+	CreateAppointmentFormValues,
+	CancelAppointmentFormValues,
+	ScheduleAppointmentFormValues,
 } from '@/lib/types/zod'
 
 // Create Appointment
 export async function handleCreateAppointment(
-	appointmentFormValues: CreateAppointmentFormData,
+	appointmentFormValues: CreateAppointmentFormValues,
 	patientId: string,
 	userId: string
 ) {
@@ -29,7 +29,7 @@ export async function handleCreateAppointment(
 
 // Cancel Appointment
 export async function handleCancelAppointment(
-	appointmentFormValues: CancelAppointmentFormData
+	appointmentFormValues: CancelAppointmentFormValues
 ) {
 	try {
 		const cancelledApointment = await cancelAppointment(appointmentFormValues)
@@ -40,7 +40,7 @@ export async function handleCancelAppointment(
 
 // Schedule Appointment
 export async function handleScheduleAppointment(
-	appointmentFormValues: ScheduleAppointmentFormData
+	appointmentFormValues: ScheduleAppointmentFormValues
 ) {
 	try {
 		const scheduledApointment = await scheduleAppointment(appointmentFormValues)
