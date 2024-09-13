@@ -11,22 +11,32 @@ export const handleRegisterPatient = async (
 		await new Promise((resolve) => {
 			setTimeout(resolve, 2000)
 		})
+		let registerPatientData = {...patientFormValues, userId, identificationDocuments: []}
 
 		// Create FormData files from files
-		const formData = prepareFileUploadData(
-			patientFormValues.identificationDocuments
-		)
+		if (
+			patientFormValues.identificationDocuments &&
+			patientFormValues.identificationDocuments.length > 0
+		) {
+			const formData = prepareFileUploadData(
+				patientFormValues.identificationDocuments
+			)
 
-		// FormData's files to checkout is true
-		formData?.forEach(function (value, key) {
-			console.log(key, value)
-		})
+			// FormData's files to checkout is true
+			formData?.forEach(function (value, key) {
+				console.log(key, value)
+			})
 
-		const registerPatientData = {
-			...patientFormValues,
-			userId,
-			birthDate: new Date(patientFormValues.birthDate),
-			identificationDocuments: formData,
+			registerPatientData = {
+				...registerPatientData,
+				birthDate: new Date(patientFormValues.birthDate),
+				identificationDocuments: formData,
+			}
+		} else {
+			registerPatientData = {
+				...registerPatientData,
+				birthDate: new Date(patientFormValues.birthDate),
+			}
 		}
 
 		// patient without FormData files - after deepClone()

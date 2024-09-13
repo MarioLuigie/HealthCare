@@ -47,16 +47,21 @@ export default function PatientForm({ user }: { user: UserData }) {
 		patientFormValues: PatientFormValues
 	) => {
 		try {
-			const patient = await handleRegisterPatient(patientFormValues, user.$id)
+			const patient = await handleRegisterPatient(
+				patientFormValues,
+				user.$id
+			)
 
 			if (patient!) {
-				router.push(generateUrl([Route.PATIENTS, user.$id, Route.NEW_APPOINTMENT]))
+				router.push(
+					generateUrl([Route.PATIENTS, user.$id, Route.NEW_APPOINTMENT])
+				)
 				form.reset()
 			} else {
 				console.log('Something went wrong with registering patient.')
 			}
 
-			console.log('***patient', patient)// without FormData files
+			console.log('***patient', patient) // without FormData files
 		} catch (err) {
 			console.error('Error from onSubmit for PatientForm', err)
 		}
@@ -124,17 +129,22 @@ export default function PatientForm({ user }: { user: UserData }) {
 									onValueChange={field.onChange}
 									defaultValue={field.value}
 								>
-									{Object.values(Gender).map((option: string, i: number) => (
-										<div key={option + i} className="radio-group">
-											<RadioGroupItem value={option} id={option} />
-											<Label
-												htmlFor={option}
-												className="cursor-pointer"
-											>
-												{option}
-											</Label>
-										</div>
-									))}
+									{Object.values(Gender).map(
+										(option: string, i: number) => (
+											<div key={option + i} className="radio-group">
+												<RadioGroupItem
+													value={option}
+													id={option}
+												/>
+												<Label
+													htmlFor={option}
+													className="cursor-pointer"
+												>
+													{option}
+												</Label>
+											</div>
+										)
+									)}
 								</RadioGroup>
 							</FormControl>
 						)}
@@ -332,7 +342,7 @@ export default function PatientForm({ user }: { user: UserData }) {
 					/>
 				</section>
 				<div className="mt-8">
-					<SubmitButton isLoading={isSubmitting} className='w-full'>
+					<SubmitButton isLoading={isSubmitting} className="w-full">
 						Register and Continue
 					</SubmitButton>
 				</div>
@@ -342,7 +352,8 @@ export default function PatientForm({ user }: { user: UserData }) {
 }
 
 // FILE STRUCTURE FROM FORMDATA FILES IN 'files[]' key
-{/*
+{
+	/*
 files[] 
 File {name: 'MVC.jpg', lastModified: 1725872490949, lastModifiedDate: Mon Sep 09 2024 11:01:30 GMT+0200 (czas środkowoeuropejski letni), webkitRelativePath: '', size: 55370, …}
 lastModified
@@ -366,4 +377,5 @@ webkitRelativePath
 [[Prototype]]
 : 
 File
-*/}
+*/
+}

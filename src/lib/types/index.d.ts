@@ -27,7 +27,7 @@ declare interface RegisterPatientData extends CreateUserData {
 	pastMedicalHistory?: string | undefined
 	identificationType?: string | undefined
 	identificationNumber?: string | undefined
-	identificationDocuments?: FormData | undefined
+	identificationDocuments: FormData | []
 	privacyConsent: boolean
 	treatmentConsent: boolean
 	disclosureConsent: boolean

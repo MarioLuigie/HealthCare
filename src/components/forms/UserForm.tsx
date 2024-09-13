@@ -79,7 +79,7 @@ export default function UserForm() {
 					placeholder="500 600 700"
 				/>
 				<div className="mt-8">
-					<SubmitButton isLoading={isSubmitting} className='w-full'>
+					<SubmitButton isLoading={isSubmitting} className="w-full">
 						Get started!
 					</SubmitButton>
 				</div>

@@ -62,7 +62,7 @@ export const PatientFormSchema = z.object({
 	pastMedicalHistory: z.string().optional(),
 	identificationType: z.string().optional(),
 	identificationNumber: z.string().optional(),
-	identificationDocuments: z.custom<File[]>().optional(),
+	identificationDocuments: z.custom<File[]>().optional().default([]),
 	treatmentConsent: z
 		.boolean()
 		.default(false)
@@ -97,7 +97,9 @@ export const CreateAppointmentFormSchema = z.object({
 	cancellationReason: z.string().optional(),
 })
 
-export type CreateAppointmentFormValues = z.infer<typeof CreateAppointmentFormSchema>
+export type CreateAppointmentFormValues = z.infer<
+	typeof CreateAppointmentFormSchema
+>
 
 export const ScheduleAppointmentFormSchema = z.object({
 	primaryPhysician: z.string().min(2, 'Select at least one doctor'),
@@ -122,7 +124,9 @@ export const CancelAppointmentFormSchema = z.object({
 		.max(500, 'Reason must be at most 500 characters'),
 })
 
-export type CancelAppointmentFormValues = z.infer<typeof CancelAppointmentFormSchema>
+export type CancelAppointmentFormValues = z.infer<
+	typeof CancelAppointmentFormSchema
+>
 
 export function getAppointmentFormSchema(actionType: ActionTypes) {
 	switch (actionType) {
@@ -136,9 +140,5 @@ export function getAppointmentFormSchema(actionType: ActionTypes) {
 }
 
 export function getAppointmentFormDefaultValues(actionType: ActionTypes) {
-	return {
-		
-	}
+	return {}
 }
-
-

@@ -20,10 +20,9 @@ import { deepClone, formatDateToYMD } from '@/lib/utils'
 
 // Register patient - add patient to patient collection in appwrite database
 export async function registerPatient(
-	registerPatientData: RegisterPatientData,
+	registerPatientData: RegisterPatientData
 ) {
 	try {
-
 		let uploadedFiles: Models.File[] = [] // Używamy typu Models.File z Appwrite zamiast File[] from browser
 		// Check if the patient has FormData with files in identificationDocument
 		if (
@@ -32,9 +31,10 @@ export async function registerPatient(
 			registerPatientData.identificationDocuments.has('files[]')
 		) {
 			// Get oll files from FormData files
-			const files: Blob[] = registerPatientData.identificationDocuments.getAll(
-				'files[]'
-			) as Blob[]
+			const files: Blob[] =
+				registerPatientData.identificationDocuments.getAll(
+					'files[]'
+				) as Blob[]
 
 			// Upload each file to Appwrite storage
 			uploadedFiles = await Promise.all(
