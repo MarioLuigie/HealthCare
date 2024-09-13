@@ -14,7 +14,7 @@ export async function createAppointment(
 	userId: string
 ) {
 	try {
-		const appointmentData: CreateAppointmentParams = {
+		const appointmentData: CreateAppointmentData = {
 			userId,
 			patientId,
 			primaryPhysician: appointmentFormValues.primaryPhysician,

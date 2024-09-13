@@ -1,6 +1,6 @@
 import { createUser } from '@/lib/actions/user.actions'
 
-export const handleCreateUser = async (userFormValues: CreateUserParams) => {
+export const handleCreateUser = async (userFormValues: CreateUserData) => {
 	try {
 		await new Promise((resolve) => {
 			setTimeout(resolve, 2000)

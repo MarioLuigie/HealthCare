@@ -20,7 +20,7 @@ import { deepClone, formatDateToYMD } from '@/lib/utils'
 
 // Register patient - add patient to patient collection in appwrite database
 export async function registerPatient(
-	registerPatientData: RegisterPatientParams,
+	registerPatientData: RegisterPatientData,
 ) {
 	try {
 

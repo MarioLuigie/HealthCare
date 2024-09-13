@@ -26,7 +26,7 @@ import FileUploader from '@/components/shared/FileUploader'
 // Styles
 import 'react-datepicker/dist/react-datepicker.css'
 
-export default function PatientForm({ user }: { user: User }) {
+export default function PatientForm({ user }: { user: UserData }) {
 	const router = useRouter()
 
 	const form = useForm<PatientFormValues>({

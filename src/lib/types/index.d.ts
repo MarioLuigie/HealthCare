@@ -1,16 +1,16 @@
 // Interfaces available globally throughout the application without the need for import and export
 
 // User
-declare interface CreateUserParams {
+declare interface CreateUserData {
 	name: string
 	email: string
 	phone: string
 }
-declare interface User extends CreateUserParams {
+declare interface UserData extends CreateUserData {
 	$id: string
 }
 
-declare interface RegisterPatientParams extends CreateUserParams {
+declare interface RegisterPatientData extends CreateUserData {
 	userId: string
 	birthDate: Date
 	gender: Gender
@@ -34,7 +34,7 @@ declare interface RegisterPatientParams extends CreateUserParams {
 }
 
 // Appointment
-declare type CreateAppointmentParams = {
+declare type CreateAppointmentData = {
 	userId: string
 	patientId: string
 	primaryPhysician: string
@@ -44,7 +44,7 @@ declare type CreateAppointmentParams = {
 	note: string | undefined
 }
 
-declare type UpdateAppointmentParams = {
+declare type UpdateAppointmentData = {
 	appointmentId: string
 	userId: string
 	appointment: Appointment
