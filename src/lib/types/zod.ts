@@ -135,7 +135,7 @@ export function getAppointmentSchema(actionType: ActionTypes) {
 	}
 }
 
-export function getAppointmentDefaultData(actionType: ActionTypes) {
+export function getAppointmentFormDefaultData(actionType: ActionTypes) {
 	return {
 		
 	}

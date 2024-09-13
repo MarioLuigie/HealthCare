@@ -1,7 +1,7 @@
 import { Gender } from '@/lib/types/enums'
 import { PatientFormData } from '@/lib/types/zod'
 
-export const PatientFormDefaultValues: PatientFormData = {
+export const PatientFormDefaultData: PatientFormData = {
 	name: '',
 	email: '',
 	phone: '',
