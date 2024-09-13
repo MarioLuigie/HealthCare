@@ -25,6 +25,8 @@ import { SelectItem } from '@/components/ui/select'
 import FileUploader from '@/components/shared/FileUploader'
 // Styles
 import 'react-datepicker/dist/react-datepicker.css'
+import { Route } from '@/lib/constants/paths'
+import { generateUrl } from '@/lib/utils'
 
 export default function PatientForm({ user }: { user: UserData }) {
 	const router = useRouter()
@@ -48,7 +50,7 @@ export default function PatientForm({ user }: { user: UserData }) {
 			const patient = await handleRegisterPatient(patientFormValues, user.$id)
 
 			if (patient!) {
-				router.push(`/patients/${user.$id}/new-appointment`)
+				router.push(generateUrl([Route.PATIENTS, user.$id, Route.NEW_APPOINTMENT]))
 				form.reset()
 			} else {
 				console.log('Something went wrong with registering patient.')

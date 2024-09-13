@@ -37,7 +37,6 @@ export default function UserForm() {
 			const user = await handleCreateUser(userFormValues)
 
 			if (user!) {
-				// router.push(`/patients/${user.$id}/register`)
 				router.push(generateUrl([Route.PATIENTS, user.$id, Route.REGISTER]))
 				form.reset()
 			} else {
