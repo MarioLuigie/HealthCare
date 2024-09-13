@@ -1,5 +1,6 @@
 import { Gender } from '@/lib/types/enums'
 import { PatientFormValues } from '@/lib/types/zod'
+import { ImagePath, IconPath, DoctorPath } from '@/lib/constants/paths'
 
 // PatientForm default data
 export const PatientFormDefaultData: PatientFormValues = {
@@ -55,39 +56,39 @@ export const ScheduleAppointmentFormDefaultData = {
 // Doctors array
 export const doctors = [
 	{
-		image: '/assets/images/dr-green.png',
+		image: DoctorPath.GREEN,
 		name: 'John Green',
 	},
 	{
-		image: '/assets/images/dr-cameron.png',
+		image: DoctorPath.CAMERON,
 		name: 'Leila Cameron',
 	},
 	{
-		image: '/assets/images/dr-livingston.png',
+		image: DoctorPath.LIVINGSTON,
 		name: 'David Livingston',
 	},
 	{
-		image: '/assets/images/dr-peter.png',
+		image: DoctorPath.PETER,
 		name: 'Evan Peter',
 	},
 	{
-		image: '/assets/images/dr-powell.png',
+		image: DoctorPath.POWELL,
 		name: 'Jane Powell',
 	},
 	{
-		image: '/assets/images/dr-remirez.png',
+		image: DoctorPath.REMIREZ,
 		name: 'Alex Ramirez',
 	},
 	{
-		image: '/assets/images/dr-lee.png',
+		image: DoctorPath.LEE,
 		name: 'Jasmine Lee',
 	},
 	{
-		image: '/assets/images/dr-cruz.png',
+		image: DoctorPath.CRUZ,
 		name: 'Alyana Cruz',
 	},
 	{
-		image: '/assets/images/dr-sharma.png',
+		image: DoctorPath.SHARMA,
 		name: 'Hardik Sharma',
 	},
 ]
@@ -110,57 +111,53 @@ export const identificationDocumentTypes = [
 // Kinde of icons
 export const Icons = {
 	LOGO_FULL: {
-		path: '/assets/icons/logo-full.svg',
+		path: IconPath.LOGO_FULL,
 		alt: 'Logo',
 	},
 	LOGO_ICON: {
-		path: '/assets/icons/logo-icon.svg',
+		path: IconPath.LOGO_ICON,
 		alt: 'Logo',
 	},
 	USER_ICON: {
-		path: '/assets/icons/user.svg',
+		path: IconPath.USER_ICON,
 		alt: 'User icon',
 	},
 	EMAIL_ICON: {
-		path: '/assets/icons/email.svg',
+		path: IconPath.EMAIL_ICON,
 		alt: 'Email icon',
 	},
 	PHONE_ICON: {
-		path: '/assets/icons/phone.svg',
+		path: IconPath.PHONE_ICON,
 		alt: 'Phone icon',
 	},
 	LOADER: {
-		path: '/assets/icons/loader.svg',
+		path: IconPath.LOADER,
 		alt: 'Loader',
 	},
 	UPLOAD_ICON: {
-		path: '/assets/icons/upload.svg',
-		alt: 'Upload',
+		path: IconPath.UPLOAD_ICON,
+		alt: 'Upload static icon',
 	},
 	UPLOAD_GIF: {
-		path: '/assets/gifs/upload.gif',
-		alt: 'Upload',
+		path: IconPath.UPLOAD_GIF,
+		alt: 'Upload animation',
 	},
 }
 
 // Kinde of images
 export const Images = {
 	HOME_PAGE_IMAGE: {
-		path: '/assets/images/onboarding-img.png',
+		path: ImagePath.HOME_PAGE_IMAGE,
 		alt: 'Home page image',
 	},
 	REGISTER_PAGE_IMAGE: {
-		path: '/assets/images/register-img.jpg',
+		path: ImagePath.REGISTER_PAGE_IMAGE,
 		alt: 'Registration page image',
 	},
 	NEW_APPOINTMENT_PAGE_IMAGE: {
-		path: '/assets/images/appointment-img.jpg',
+		path: ImagePath.NEW_APPOINTMENT_PAGE_IMAGE,
 		alt: 'New appointment page image',
 	},
 }
 
-export const Routes = {
-	ADMIN: {
-		path: '/',
-	},
-}
+
