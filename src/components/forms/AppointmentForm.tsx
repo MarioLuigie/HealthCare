@@ -11,6 +11,7 @@ import {
 	CreateAppointmentFormData,
 	ScheduleAppointmentFormData,
 	getAppointmentSchema,
+	getAppointmentDefaultData,
 } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
 import { createSubmitLabel } from '@/lib/utils'
@@ -41,8 +42,7 @@ export default function AppointmentForm({
 	actionType,
 }: AppointmentFormProps) {
 	const AppointmentFormSchema = getAppointmentSchema(actionType)
-	
-	const appointmentFormValues = ''
+	const appointmentFormValues = getAppointmentDefaultData(actionType)
 
 	const form = useForm<z.infer<typeof AppointmentFormSchema>>({
 		resolver: zodResolver(AppointmentFormSchema),

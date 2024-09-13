@@ -135,4 +135,10 @@ export function getAppointmentSchema(actionType: ActionTypes) {
 	}
 }
 
+export function getAppointmentDefaultData(actionType: ActionTypes) {
+	return {
+		
+	}
+}
+
 
