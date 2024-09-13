@@ -7,14 +7,14 @@ import { users } from '@/lib/appwrite.config'
 import { deepClone } from '@/lib/utils'
 
 // Create user in appwrite users auth
-export async function createUser(user: CreateUserParams) {
+export async function createUser(userFormValues: CreateUserParams) {
 	try {
 		const createdUser: User = await users.create(
 			ID.unique(),
-			user.email,
-			user.phone,
+			userFormValues.email,
+			userFormValues.phone,
 			undefined,
-			user.name
+			userFormValues.name
 		)
 
 		return deepClone(createdUser)
@@ -22,7 +22,7 @@ export async function createUser(user: CreateUserParams) {
 		// Check existing user
 		if (err && err?.code === 409) {
 			const documents = await users.list([
-				Query.equal('email', [user.email]),
+				Query.equal('email', [userFormValues.email]),
 			])
 
 			return documents.users[0]

@@ -59,21 +59,21 @@ export default function AppointmentForm({
 
 	const onSubmit: SubmitHandler<
 		z.infer<typeof AppointmentFormSchema>
-	> = async (formData: z.infer<typeof AppointmentFormSchema>) => {
+	> = async (appointmentFormValues: z.infer<typeof AppointmentFormSchema>) => {
 		try {
 			if (actionType === ActionTypes.CREATE && patientId && userId) {
 				const createdAppointment = await handleCreateAppointment(
-					formData as CreateAppointmentFormData,
+					appointmentFormValues as CreateAppointmentFormData,
 					patientId,
 					userId
 				)
 			} else if (actionType === ActionTypes.CANCEL) {
 				const cancelledAppointment = await handleCancelAppointment(
-					formData as CancelAppointmentFormData
+					appointmentFormValues as CancelAppointmentFormData
 				)
 			} else if (actionType === ActionTypes.SCHEDULE) {
 				const scheduledAppointment = await handleScheduleAppointment(
-					formData as ScheduleAppointmentFormData
+					appointmentFormValues as ScheduleAppointmentFormData
 				)
 			}
 

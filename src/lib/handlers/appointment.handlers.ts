@@ -12,13 +12,13 @@ import {
 
 // Create Appointment
 export async function handleCreateAppointment(
-	formData: CreateAppointmentFormData,
+	appointmentFormValues: CreateAppointmentFormData,
 	patientId: string,
 	userId: string
 ) {
 	try {
 		const createdAppointment = await createAppointment(
-			formData,
+			appointmentFormValues,
 			patientId,
 			userId
 		)
@@ -29,10 +29,10 @@ export async function handleCreateAppointment(
 
 // Cancel Appointment
 export async function handleCancelAppointment(
-	formData: CancelAppointmentFormData
+	appointmentFormValues: CancelAppointmentFormData
 ) {
 	try {
-		const cancelledApointment = await cancelAppointment(formData)
+		const cancelledApointment = await cancelAppointment(appointmentFormValues)
 	} catch (err) {
 		console.error(err)
 	}
@@ -40,10 +40,10 @@ export async function handleCancelAppointment(
 
 // Schedule Appointment
 export async function handleScheduleAppointment(
-	formData: ScheduleAppointmentFormData
+	appointmentFormValues: ScheduleAppointmentFormData
 ) {
 	try {
-		const scheduledApointment = await scheduleAppointment(formData)
+		const scheduledApointment = await scheduleAppointment(appointmentFormValues)
 	} catch (err) {
 		console.error(err)
 	}

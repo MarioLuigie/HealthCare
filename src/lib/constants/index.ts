@@ -159,7 +159,7 @@ export const Images = {
 	},
 }
 
-export const routes = {
+export const Routes = {
 	ADMIN: {
 		path: '/',
 	},

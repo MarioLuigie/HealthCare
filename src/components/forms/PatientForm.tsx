@@ -42,10 +42,10 @@ export default function PatientForm({ user }: { user: User }) {
 	const { isSubmitting } = form.formState
 
 	const onSubmit: SubmitHandler<PatientFormData> = async (
-		formData: PatientFormData
+		patientFormValues: PatientFormData
 	) => {
 		try {
-			const patient = await handleRegisterPatient(formData, user.$id)
+			const patient = await handleRegisterPatient(patientFormValues, user.$id)
 
 			if (patient!) {
 				router.push(`/patients/${user.$id}/new-appointment`)

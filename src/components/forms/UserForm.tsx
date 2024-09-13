@@ -29,10 +29,10 @@ export default function UserForm() {
 	const { isSubmitting } = form.formState
 
 	const onSubmit: SubmitHandler<UserFormData> = async (
-		formData: UserFormData
+		userFormValues: UserFormData
 	) => {
 		try {
-			const user = await handleCreateUser(formData)
+			const user = await handleCreateUser(userFormValues)
 
 			if (user!) {
 				router.push(`/patients/${user.$id}/register`)

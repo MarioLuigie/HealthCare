@@ -9,7 +9,7 @@ import {
 
 // Create Appoitment
 export async function createAppointment(
-	formData: CreateAppointmentFormData,
+	appointmentFormValues: CreateAppointmentFormData,
 	patientId: string,
 	userId: string
 ) {
@@ -17,10 +17,10 @@ export async function createAppointment(
 		const appointmentData: CreateAppointmentParams = {
 			userId,
 			patientId,
-			primaryPhysician: formData.primaryPhysician,
-			schedule: new Date(formData.schedule),
-			reason: formData.reason,
-			note: formData.note,
+			primaryPhysician: appointmentFormValues.primaryPhysician,
+			schedule: new Date(appointmentFormValues.schedule),
+			reason: appointmentFormValues.reason,
+			note: appointmentFormValues.note,
 			status: Status.PENDING,
 		} 
 
@@ -30,7 +30,7 @@ export async function createAppointment(
 }
 
 // Cancel Appointment
-export async function cancelAppointment(formData: CancelAppointmentFormData) {
+export async function cancelAppointment(appointmentFormValues: CancelAppointmentFormData) {
   const status: Status = Status.CANCELLED
 
 	try {
@@ -40,7 +40,7 @@ export async function cancelAppointment(formData: CancelAppointmentFormData) {
 }
 
 // Schedule Appointment
-export async function scheduleAppointment(formData: ScheduleAppointmentFormData) {
+export async function scheduleAppointment(appointmentFormValues: ScheduleAppointmentFormData) {
   const status: Status = Status.SCHEDULED
 
 	try {

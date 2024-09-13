@@ -21,23 +21,23 @@ import { PatientFormData } from '@/lib/types/zod'
 
 // Register patient - add patient to patient collection in appwrite database
 export async function registerPatient(
-	formData: PatientFormData,
+	patientFormValues: PatientFormData,
 	userId: string
 ) {
 	try {
 		// Create FormData files from files
-		const data = prepareFileUploadData(formData.identificationDocuments)
+		const formData = prepareFileUploadData(patientFormValues.identificationDocuments)
 
 		// FormData's files to checkout is true
-		data?.forEach(function (value, key) {
+		formData?.forEach(function (value, key) {
 			console.log(key, value)
 		})
 
 		const patient = {
-			...formData,
+			...patientFormValues,
 			userId,
-			birthDate: new Date(formData.birthDate),
-			identificationDocuments: data,
+			birthDate: new Date(patientFormValues.birthDate),
+			identificationDocuments: formData,
 		} as RegisterPatientParams
 
 		let uploadedFiles: Models.File[] = [] // Używamy typu Models.File z Appwrite zamiast File[] from browser
