@@ -1,5 +1,10 @@
 import { z } from 'zod'
 import { ActionTypes } from '@/lib/types/enums'
+import {
+	CreateAppointmentFormDefaultValues,
+	CancelAppointmentFormDefaultValues,
+	ScheduleAppointmentFormDefaultValues,
+} from '@/lib/constants'
 
 // UserForm
 export const UserFormSchema = z.object({
@@ -140,9 +145,14 @@ export function getAppointmentFormSchema(actionType: ActionTypes) {
 }
 
 export function getAppointmentFormDefaultValues(actionType: ActionTypes) {
-	return {}
+	switch(actionType) {
+		case ActionTypes.CREATE:
+			return CreateAppointmentFormDefaultValues
+		case ActionTypes.CANCEL:
+			return CancelAppointmentFormDefaultValues
+		case ActionTypes.SCHEDULE:
+			return ScheduleAppointmentFormDefaultValues
+	}
 }
-
-
 
 //	identificationDocuments: z.custom<File[]>().optional().default([]),

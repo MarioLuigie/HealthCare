@@ -22,6 +22,9 @@ export async function handleCreateAppointment(
 			patientId,
 			userId
 		)
+
+		return createdAppointment
+		
 	} catch (err) {
 		console.error(err)
 	}

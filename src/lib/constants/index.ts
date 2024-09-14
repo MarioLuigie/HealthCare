@@ -28,7 +28,7 @@ export const PatientFormDefaultValues: PatientFormValues = {
 	privacyConsent: false,
 }
 
-// AppointmentForm default datas
+// AppointmentForm default values
 export const CreateAppointmentFormDefaultValues = {
 	primaryPhysician: '',
 	schedule: new Date(),

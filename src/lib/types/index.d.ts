@@ -38,10 +38,10 @@ declare type CreateAppointmentData = {
 	userId: string
 	patientId: string
 	primaryPhysician: string
-	reason: string
 	schedule: Date
+	reason: string
+	note?: string | undefined
 	status: Status
-	note: string | undefined
 }
 
 declare type UpdateAppointmentData = {

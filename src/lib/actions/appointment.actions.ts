@@ -1,11 +1,21 @@
 'use server'
 
+// modules
+import {
+	APPWRITE_DB_ID,
+	APPWRITE_DB_APPOINTMENT_COLLECTION_ID,
+	databases,
+} from '@/lib/appwrite.config'
+import { ID } from 'node-appwrite'
+
+// lib
 import { Status } from '@/lib/types/enums'
 import {
 	CreateAppointmentFormValues,
 	CancelAppointmentFormValues,
 	ScheduleAppointmentFormValues,
 } from '@/lib/types/zod'
+import { deepClone } from '@/lib/utils'
 
 // Create Appoitment
 export async function createAppointment(
@@ -23,6 +33,15 @@ export async function createAppointment(
 			note: appointmentFormValues.note,
 			status: Status.PENDING,
 		} 
+
+		const createdAppointment = await databases.createDocument(
+			APPWRITE_DB_ID!,
+			APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
+			ID.unique(),
+			appointmentData
+		)
+
+		return deepClone(createdAppointment)
 
 	} catch (err) {
 		console.error(err)

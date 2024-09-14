@@ -5,6 +5,7 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 // lib
 import {
 	CancelAppointmentFormValues,
@@ -14,7 +15,7 @@ import {
 	getAppointmentFormDefaultValues,
 } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
-import { createSubmitLabel } from '@/lib/utils'
+import { createSubmitLabel, generateUrl } from '@/lib/utils'
 import {
 	handleCreateAppointment,
 	handleCancelAppointment,
@@ -29,6 +30,7 @@ import CustomFormField from '@/components/shared/CustomFormField'
 import { SelectItem } from '@/components/ui/select'
 // Styles
 import 'react-datepicker/dist/react-datepicker.css'
+import { Route } from '@/lib/constants/paths'
 
 type AppointmentFormProps = {
 	userId: string
@@ -41,18 +43,13 @@ export default function AppointmentForm({
 	patientId,
 	actionType,
 }: AppointmentFormProps) {
+	const router = useRouter()
+
 	const AppointmentFormSchema = getAppointmentFormSchema(actionType)
-	const appointmentFormValues = getAppointmentFormDefaultValues(actionType)
 
 	const form = useForm<z.infer<typeof AppointmentFormSchema>>({
 		resolver: zodResolver(AppointmentFormSchema),
-		defaultValues: {
-			primaryPhysician: '',
-			schedule: new Date(),
-			reason: '',
-			note: '',
-			cancellationReason: '',
-		},
+		defaultValues: getAppointmentFormDefaultValues(actionType),
 	})
 
 	const { isSubmitting } = form.formState
@@ -67,6 +64,20 @@ export default function AppointmentForm({
 					patientId,
 					userId
 				)
+
+				if (createdAppointment!) {
+					router.push(
+						generateUrl(
+							[
+								Route.PATIENTS,
+								userId,
+								Route.NEW_APPOINTMENT,
+								Route.SUCCESS,
+							],
+							{ appointmentId: createdAppointment.$id }
+						)
+					)
+				}
 			} else if (actionType === ActionTypes.CANCEL) {
 				const cancelledAppointment = await handleCancelAppointment(
 					appointmentFormValues as CancelAppointmentFormValues
