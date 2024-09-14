@@ -116,24 +116,24 @@ export function prepareFormDataFiles(fileUploadData: File[]): FormData {
 	return formData
 }
 
-export function createSubmitLabel(type: string = '', thing: string): string {
-	let submitBtnLabel = `${thing}`
+export function createSubmitLabel(type: string = '', entity: string): string {
+	let submitBtnLabel = `${entity}`
 
 	switch (type) {
 		case 'cancel':
-			submitBtnLabel = `Cancel ${thing}`
+			submitBtnLabel = `Cancel ${entity}`
 			break
 		case 'schedule':
-			submitBtnLabel = `Schedule ${thing}`
+			submitBtnLabel = `Schedule ${entity}`
 			break
 		case 'create':
-			submitBtnLabel = `Create ${thing}`
+			submitBtnLabel = `Create ${entity}`
 			break
 		case 'update':
-			submitBtnLabel = `Update ${thing}`
+			submitBtnLabel = `Update ${entity}`
 			break
 		case 'delete':
-			submitBtnLabel = `Delete ${thing}`
+			submitBtnLabel = `Delete ${entity}`
 			break
 	}
 
