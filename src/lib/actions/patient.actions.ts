@@ -51,7 +51,6 @@ export async function registerPatient(
 						ID.unique(), // Use unique ID generation for each file
 						inputFile // Converted file Blob to Buffer
 					)
-
 					return res
 				})
 			)
