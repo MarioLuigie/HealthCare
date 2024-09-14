@@ -13,7 +13,7 @@ import { Icons } from '@/lib/constants'
 import {
 	doctors,
 	identificationDocumentTypes,
-	PatientFormDefaultData,
+	PatientFormDefaultValues,
 } from '@/lib/constants'
 // components
 import { Form, FormControl } from '@/components/ui/form'
@@ -34,7 +34,7 @@ export default function PatientForm({ user }: { user: UserData }) {
 	const form = useForm<PatientFormValues>({
 		resolver: zodResolver(PatientFormSchema),
 		defaultValues: {
-			...PatientFormDefaultData,
+			...PatientFormDefaultValues,
 			name: user.name,
 			email: user.email,
 			phone: user.phone,

@@ -99,25 +99,21 @@ export function decryptKey(passkey: string) {
 	return atob(passkey)
 }
 
-export function prepareFileUploadData(fileUploadData: File[] | undefined) {
-	let data: FormData | undefined = undefined
+export function prepareFormDataFiles(fileUploadData: File[]): FormData {
+	const formData = new FormData()
 
-	if (fileUploadData && fileUploadData.length > 0) {
-		data = new FormData()
-
-		// Przetwarzanie wszystkich plików z tablicy
-		fileUploadData.forEach((file) => {
-			// Dodajemy każdy plik do FormData z tym samym kluczem
-			const blobFile = new Blob([file], {
-				type: file.type,
-			})
-
-			// Dodajemy plik do FormData z tym samym kluczem 'files[]'
-			data?.append('files[]', blobFile, file.name)
+	// Przetwarzanie wszystkich plików z tablicy
+	fileUploadData.forEach((file) => {
+		// Dodajemy każdy plik do FormData z tym samym kluczem
+		const blobFile = new Blob([file], {
+			type: file.type,
 		})
-	}
 
-	return data
+		// Dodajemy plik do FormData z tym samym kluczem 'files[]'
+		formData?.append('files[]', blobFile, file.name)
+	})
+
+	return formData
 }
 
 export function createSubmitLabel(type: string = '', thing: string): string {

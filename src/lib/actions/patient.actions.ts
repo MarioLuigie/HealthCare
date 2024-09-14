@@ -23,7 +23,6 @@ export async function registerPatient(
 	registerPatientData: RegisterPatientData
 ) {
 	try {
-		let uploadedFiles: Models.File[] = [] // Używamy typu Models.File z Appwrite zamiast File[] from browser
 		// Check if the patient has FormData with files in identificationDocument
 		if (
 			registerPatientData.identificationDocuments &&
@@ -35,6 +34,8 @@ export async function registerPatient(
 				registerPatientData.identificationDocuments.getAll(
 					'files[]'
 				) as Blob[]
+
+			let uploadedFiles: Models.File[] = [] // Używamy typu Models.File z Appwrite zamiast File[] from browser
 
 			// Upload each file to Appwrite storage
 			uploadedFiles = await Promise.all(
@@ -55,53 +56,68 @@ export async function registerPatient(
 				})
 			)
 			console.log('Files successfully uploaded to Appwrite:', uploadedFiles)
-		}
 
-		// Create array of uploaded files (return uploaded files as js objs for database)
-		const uploadedFilesBasicStructure: UploadedFileBasicStructure[] =
-			uploadedFiles &&
-			uploadedFiles instanceof Array &&
-			uploadedFiles.length > 0
-				? uploadedFiles.map((uploadedFile) => ({
-						storageId: uploadedFile?.$id ? uploadedFile.$id : null,
-						url: uploadedFile?.$id
-							? `${APPWRITE_PUBLIC_ENDPOINT}/storage/buckets/${APPWRITE_IDENTIFICATION_DOCUMENTS_BUCKET_ID}/files/${uploadedFile.$id}/view??project=${APPWRITE_PROJECT_ID}`
-							: null,
-				  }))
-				: []
+			// Create array of uploaded files (return uploaded files as js objs for database)
+			const uploadedFilesBasicStructure: UploadedFileBasicStructure[] =
+				uploadedFiles &&
+				uploadedFiles instanceof Array &&
+				uploadedFiles.length > 0
+					? uploadedFiles.map((uploadedFile) => ({
+							storageId: uploadedFile?.$id ? uploadedFile.$id : null,
+							url: uploadedFile?.$id
+								? `${APPWRITE_PUBLIC_ENDPOINT}/storage/buckets/${APPWRITE_IDENTIFICATION_DOCUMENTS_BUCKET_ID}/files/${uploadedFile.$id}/view??project=${APPWRITE_PROJECT_ID}`
+								: null,
+					  }))
+					: []
 
-		// Create a new documents in identificationDocuments collection and return array of id's of identificationDocuments
-		const createdUploadedFiles = await Promise.all(
-			uploadedFilesBasicStructure.map(
-				async (file: UploadedFileBasicStructure) => {
-					const res = await databases.createDocument(
-						APPWRITE_DB_ID!,
-						APPWRITE_DB_IDENTIFICATION_DOCUMENT_COLLECTION_ID!,
-						ID.unique(),
-						file
-					)
-					return res.$id
+			// Create a new documents in identificationDocuments collection and return array of id's of identificationDocuments
+			const createdUploadedFiles = await Promise.all(
+				uploadedFilesBasicStructure.map(
+					async (file: UploadedFileBasicStructure) => {
+						const res = await databases.createDocument(
+							APPWRITE_DB_ID!,
+							APPWRITE_DB_IDENTIFICATION_DOCUMENT_COLLECTION_ID!,
+							ID.unique(),
+							file
+						)
+						return res.$id
+					}
+				)
+			)
+
+			console.log('***createdUploadedFiles IDs', createdUploadedFiles)
+
+			// Create a new patient in patient collection with arrray of id's of identificationDocuments
+			const registeredPatient = await databases.createDocument(
+				APPWRITE_DB_ID!,
+				APPWRITE_DB_PATIENT_COLLECTION_ID!,
+				ID.unique(),
+				{
+					...registerPatientData,
+					identificationDocuments: createdUploadedFiles,
+					birthDate: formatDateToYMD(registerPatientData.birthDate),
 				}
 			)
-		)
 
-		console.log('***createdUploadedFiles IDs', createdUploadedFiles)
+			console.log('***Registered Patient', registeredPatient)
 
-		// Create a new patient in patient collection with arrray of id's of identificationDocuments
-		const registeredPatient = await databases.createDocument(
-			APPWRITE_DB_ID!,
-			APPWRITE_DB_PATIENT_COLLECTION_ID!,
-			ID.unique(),
-			{
-				...registerPatientData,
-				identificationDocuments: createdUploadedFiles,
-				birthDate: formatDateToYMD(registerPatientData.birthDate),
-			}
-		)
+			return deepClone(registeredPatient)
+		} else {
+			// Create a new patient in patient collection with arrray of id's of identificationDocuments
+			const registeredPatient = await databases.createDocument(
+				APPWRITE_DB_ID!,
+				APPWRITE_DB_PATIENT_COLLECTION_ID!,
+				ID.unique(),
+				{
+					...registerPatientData,
+					birthDate: formatDateToYMD(registerPatientData.birthDate),
+				}
+			)
 
-		console.log('***Registered Patient', registeredPatient)
+			console.log('***Registered Patient', registeredPatient)
 
-		return deepClone(registeredPatient)
+			return deepClone(registeredPatient)
+		}
 	} catch (err) {
 		console.error('An error occurred while registering a new patient:', err)
 	}

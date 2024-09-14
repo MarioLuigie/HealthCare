@@ -3,7 +3,7 @@ import { PatientFormValues } from '@/lib/types/zod'
 import { ImagePath, IconPath, DoctorPath } from '@/lib/constants/paths'
 
 // PatientForm default data
-export const PatientFormDefaultData: PatientFormValues = {
+export const PatientFormDefaultValues: PatientFormValues = {
 	name: '',
 	email: '',
 	phone: '',
@@ -22,14 +22,14 @@ export const PatientFormDefaultData: PatientFormValues = {
 	pastMedicalHistory: '',
 	identificationType: '',
 	identificationNumber: '',
-	identificationDocuments: [],
+	identificationDocuments: [] as File[],
 	treatmentConsent: false,
 	disclosureConsent: false,
 	privacyConsent: false,
 }
 
 // AppointmentForm default datas
-export const CreateAppointmentFormDefaultData = {
+export const CreateAppointmentFormDefaultValues = {
 	primaryPhysician: '',
 	schedule: new Date(),
 	reason: '',
@@ -37,7 +37,7 @@ export const CreateAppointmentFormDefaultData = {
 	cancellationReason: '',
 }
 
-export const CancelAppointmentFormDefaultData = {
+export const CancelAppointmentFormDefaultValues = {
 	primaryPhysician: '',
 	schedule: new Date(),
 	reason: '',
@@ -45,7 +45,7 @@ export const CancelAppointmentFormDefaultData = {
 	cancellationReason: '',
 }
 
-export const ScheduleAppointmentFormDefaultData = {
+export const ScheduleAppointmentFormDefaultValues = {
 	primaryPhysician: '',
 	schedule: new Date(),
 	reason: '',

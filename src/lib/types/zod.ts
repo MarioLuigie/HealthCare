@@ -62,7 +62,7 @@ export const PatientFormSchema = z.object({
 	pastMedicalHistory: z.string().optional(),
 	identificationType: z.string().optional(),
 	identificationNumber: z.string().optional(),
-	identificationDocuments: z.custom<File[]>().optional().default([]),
+	identificationDocuments: z.array(z.instanceof(File)).optional().default([]),
 	treatmentConsent: z
 		.boolean()
 		.default(false)
@@ -142,3 +142,7 @@ export function getAppointmentFormSchema(actionType: ActionTypes) {
 export function getAppointmentFormDefaultValues(actionType: ActionTypes) {
 	return {}
 }
+
+
+
+//	identificationDocuments: z.custom<File[]>().optional().default([]),
