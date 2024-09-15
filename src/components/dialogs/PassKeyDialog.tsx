@@ -79,7 +79,7 @@ export default function PassKeyDialog() {
 						</InputOTPGroup>
 					</InputOTP>
 				</div>
-				<AlertDialogFooter>
+				<AlertDialogFooter className='gap-3'>
 					<AlertDialogCancel>Cancel</AlertDialogCancel>
 					<AlertDialogAction>Continue</AlertDialogAction>
 				</AlertDialogFooter>
