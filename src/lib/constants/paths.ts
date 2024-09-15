@@ -3,7 +3,7 @@ export const Route = {
 	DASHBOARD: '/dashboard',
 	PATIENTS: '/patients',
 	REGISTER: '/register',
-	NEW_APPOINTMENT: '/new-appointment',
+	CREATE_APPOINTMENT: '/create-appointment',
 	SUCCESS: '/success',
 }
 

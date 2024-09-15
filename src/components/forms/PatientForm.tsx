@@ -54,7 +54,7 @@ export default function PatientForm({ user }: { user: UserData }) {
 
 			if (patient!) {
 				router.push(
-					generateUrl([Route.PATIENTS, user.$id, Route.NEW_APPOINTMENT])
+					generateUrl([Route.PATIENTS, user.$id, Route.CREATE_APPOINTMENT])
 				)
 				form.reset()
 			} else {

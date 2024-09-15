@@ -9,7 +9,7 @@ import Copyright from '@/components/content/Copyright'
 import FormPageTemplate from '@/components/shared/FormPageTemplate'
 import { ActionTypes } from '@/lib/types/enums'
 
-export default async function NewAppointmentPage({
+export default async function CreateAppointmentPage({
 	userId,
 }: {
 	userId: string

@@ -71,7 +71,7 @@ export default function AppointmentForm({
 							[
 								Route.PATIENTS,
 								userId,
-								Route.NEW_APPOINTMENT,
+								Route.CREATE_APPOINTMENT,
 								Route.SUCCESS,
 							],
 							{ appointmentId: createdAppointment.$id }
