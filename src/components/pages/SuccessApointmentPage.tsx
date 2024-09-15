@@ -5,52 +5,35 @@ import Link from 'next/link'
 import { formatDateTime } from '@/lib/utils'
 import { doctors } from '@/lib/constants'
 import { getAppointment } from '@/lib/actions/appointment.actions'
+import { IconPath } from '@/lib/constants/paths'
 // components
 import { Button } from '@/components/ui/button'
 import Copyright from '@/components/content/Copyright'
 import LogoFull from '../content/LogoFull'
+import SuccessRes from '@/components/shared/SuccessRes'
 
 export default async function SuccessApointmentPage({
 	appointmentId,
 	userId,
 }: {
-	appointmentId: string | string[] | undefined
+	appointmentId: string
 	userId: string
 }) {
 	const appointment = await getAppointment(appointmentId)
+
+  console.log("APPOINTMENT:", appointment)
 
 	const doctor = doctors.find((doctor) => {})
 
 	return (
 		<div className=" flex h-screen max-h-screen px-[5%]">
 			<div className="success-img">
-				{/* <Link href="/">
-        <Image
-          src={IconPath.LOGO_FULL}
-          height={1000}
-          width={1000}
-          alt="logo"
-          className="h-10 w-fit"
-        />
-      </Link> */}
-
 				<LogoFull />
-
-				<section className="flex flex-col items-center">
-					<Image
-						src="/assets/gifs/success.gif"
-						height={300}
-						width={280}
-						alt="success"
-					/>
-					<h2 className="header mb-6 max-w-[600px] text-center">
-						Your{' '}
-						<span className="text-green-500">appointment request</span>{' '}
-						has been successfully submitted!
-					</h2>
-					<p>We&apos;ll be in touch shortly to confirm.</p>
-				</section>
-
+				<SuccessRes
+					imageSrc={IconPath.SUCCESS_GIF}
+					entity="appointment request"
+					msg="We'll be in touch shortly to confirm."
+				/>
 				<section className="request-details">
 					<p>Requested appointment details: </p>
 					<div className="flex items-center gap-3">

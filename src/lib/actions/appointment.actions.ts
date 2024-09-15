@@ -18,7 +18,7 @@ import {
 import { deepClone } from '@/lib/utils'
 
 // Get Appointment
-export async function getAppointment(appointmentId: string | string[] | undefined) {
+export async function getAppointment(appointmentId: string) {
 	try {
 		const appointments = await databases.listDocuments(
 			APPWRITE_DB_ID!,

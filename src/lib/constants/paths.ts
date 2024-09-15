@@ -16,6 +16,7 @@ export const IconPath = {
 	LOADER: '/assets/icons/loader.svg',
 	UPLOAD_ICON: '/assets/icons/upload.svg',
 	UPLOAD_GIF: '/assets/gifs/upload.gif',
+	SUCCESS_GIF: '/assets/gifs/success.gif',
 }
 
 export const ImagePath = {
@@ -35,5 +36,3 @@ export const DoctorPath = {
 	CRUZ: '/assets/images/dr-cruz.png',
 	SHARMA: '/assets/images/dr-sharma.png',
 }
-
-
