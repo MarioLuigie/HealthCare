@@ -1,5 +1,5 @@
-import RegistrationPage from '@/components/pages/RegistrationPage'
+import RegisterPage from '@/components/pages/RegisterPage'
 
 export default function Page({ params: { userId } }: UrlParams) {
-	return <RegistrationPage userId={userId} />
+	return <RegisterPage userId={userId} />
 }

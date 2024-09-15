@@ -1,5 +1,5 @@
-import NewAppointmentPage from '@/components/pages/NewAppointmentPage'
+import CreateAppointmentPage from '@/components/pages/CreateAppointmentPage'
 
 export default function Page({ params: { userId } }: UrlParams) {
-	return <NewAppointmentPage userId={userId} />
+	return <CreateAppointmentPage userId={userId} />
 }
