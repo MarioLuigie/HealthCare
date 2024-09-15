@@ -8,13 +8,24 @@ import UserForm from '@/components/forms/UserForm'
 import LogoFull from '@/components/content/LogoFull'
 import Copyright from '@/components/content/Copyright'
 import FormPageTemplate from '@/components/shared/FormPageTemplate'
+import { Route } from '@/lib/constants/paths'
+import { generateUrl } from '@/lib/utils'
+import PassKeyDialog from '@/components/dialogs/PassKeyDialog'
 
-export default function HomePage() {
+export default function HomePage({
+	admin
+}: {
+	admin: string
+}) {
 	{
 		/* TODO: OTP Verification | PassKey Modal  */
 	}
+
+	const isAdmin = admin === 'true'
+
 	return (
 		<FormPageTemplate image={Images.HOME_PAGE_IMAGE}>
+			{isAdmin && <PassKeyDialog />}
 			<LogoFull />
 			<PageTitle
 				title="Hi there !"
@@ -22,7 +33,10 @@ export default function HomePage() {
 			/>
 			<UserForm />
 			<Copyright>
-				<Link href="/?admin=true" className="text-green-500">
+				<Link
+					href={generateUrl([Route.HOME], { admin: 'true' })}
+					className="text-green-500"
+				>
 					Admin
 				</Link>
 			</Copyright>
