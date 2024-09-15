@@ -15,7 +15,7 @@ import PassKeyDialog from '@/components/dialogs/PassKeyDialog'
 export default function HomePage({
 	adminDashboard
 }: {
-	adminDashboard: string | undefined
+	adminDashboard?: string | undefined
 }) {
 	{
 		/* TODO: OTP Verification | PassKey Modal  */
