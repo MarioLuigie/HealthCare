@@ -1,5 +1,7 @@
-import SuccessApointmentPage from '@/components/pages/SuccessApointmentPage'
+// lib
 import { prepareSearchParam } from '@/lib/utils'
+// components
+import SuccessApointmentPage from '@/components/pages/SuccessApointmentPage'
 
 export default function Page({
 	params: { userId },

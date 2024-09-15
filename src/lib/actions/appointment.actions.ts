@@ -6,7 +6,7 @@ import {
 	APPWRITE_DB_APPOINTMENT_COLLECTION_ID,
 	databases,
 } from '@/lib/appwrite.config'
-import { ID, Query } from 'node-appwrite'
+import { ID } from 'node-appwrite'
 
 // lib
 import { Status } from '@/lib/types/enums'
