@@ -12,7 +12,6 @@ import Image from 'next/image'
 import {
 	AlertDialog,
 	AlertDialogAction,
-	AlertDialogCancel,
 	AlertDialogContent,
 	AlertDialogDescription,
 	AlertDialogFooter,
@@ -31,6 +30,24 @@ export default function PassKeyDialog() {
 
 	const [isOpen, setIsOpen] = useState<boolean>(true)
 	const [passKey, setPassKey] = useState<string>('')
+	const [error, setError] = useState<string>('')
+
+	const handleChangePassKey = (value: string) => {
+		setPassKey(value)
+		setError('')
+	}
+
+	const validatePassKey = (
+		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+	) => {
+		e.preventDefault()
+		if (passKey === '123456') {
+			console.log('Good PassKey')
+			setPassKey('')
+		} else {
+			setError('Invalid passkey, try again.')
+		}
+	}
 
 	const closeDialog = () => {
 		setIsOpen(false)
@@ -41,14 +58,14 @@ export default function PassKeyDialog() {
 		<AlertDialog open={isOpen} onOpenChange={setIsOpen}>
 			<AlertDialogContent className="shad-alert-dialog">
 				<AlertDialogHeader>
-					<div className="flex justify-end mb-2">
+					<div className="flex justify-end mb-1">
 						<Image
 							src={Icons.CLOSE_ICON.path}
 							alt={Icons.CLOSE_ICON.alt}
 							width={25}
 							height={25}
 							onClick={closeDialog}
-							className='cursor-pointer'
+							className="cursor-pointer"
 						/>
 					</div>
 					<AlertDialogTitle className="flex items-start justify-center xs:justify-start text-[24px]">
@@ -58,11 +75,11 @@ export default function PassKeyDialog() {
 						To access the admin dashboard please enter the passkey.
 					</AlertDialogDescription>
 				</AlertDialogHeader>
-				<div className="mb-8 mt-8">
+				<div className="mb-2 mt-8">
 					<InputOTP
 						maxLength={6}
 						value={passKey}
-						onChange={(value) => setPassKey(value)}
+						onChange={(value) => handleChangePassKey(value)}
 					>
 						<InputOTPGroup className="shad-otp-group">
 							<div className="shad-otp">
@@ -78,10 +95,19 @@ export default function PassKeyDialog() {
 							</div>
 						</InputOTPGroup>
 					</InputOTP>
+					{error && (
+						<p className="shad-error text-14-regular mt-6 flex justify-center">
+							{error}
+						</p>
+					)}
 				</div>
-				<AlertDialogFooter className='gap-3'>
-					<AlertDialogCancel>Cancel</AlertDialogCancel>
-					<AlertDialogAction>Continue</AlertDialogAction>
+				<AlertDialogFooter className="gap-3">
+					<AlertDialogAction
+						onClick={(e) => validatePassKey(e)}
+						className="shad-primary-btn w-full mb-2"
+					>
+						Enter admin passkey
+					</AlertDialogAction>
 				</AlertDialogFooter>
 			</AlertDialogContent>
 		</AlertDialog>
