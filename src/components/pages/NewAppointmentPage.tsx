@@ -20,8 +20,8 @@ export default async function NewAppointmentPage({
 		<FormPageTemplate image={Images.NEW_APPOINTMENT_PAGE_IMAGE}>
 			<LogoFull />
 			<PageTitle
-				title="New appointment !"
-				description="Request a new appointment in 10 seconds."
+				title="New appointment"
+				description="Request a new appointment in 10 seconds"
 			/>
 			<AppointmentForm
 				actionType={ActionTypes.CREATE}

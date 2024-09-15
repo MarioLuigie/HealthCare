@@ -36,7 +36,7 @@ declare interface RegisterPatientData extends CreateUserData {
 // Appointment
 declare type CreateAppointmentData = {
 	userId: string
-	patientId: string
+	patient: string
 	primaryPhysician: string
 	schedule: Date
 	reason: string

@@ -26,7 +26,7 @@ export async function createAppointment(
 	try {
 		const appointmentData: CreateAppointmentData = {
 			userId,
-			patientId,
+			patient: patientId,
 			primaryPhysician: appointmentFormValues.primaryPhysician,
 			schedule: new Date(appointmentFormValues.schedule),
 			reason: appointmentFormValues.reason,
