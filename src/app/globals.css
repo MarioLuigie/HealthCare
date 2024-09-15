@@ -85,7 +85,7 @@
 		--chart-3: 0 0% 55%; /* Jaśniejszy szary */
 		--chart-4: 280 65% 60%; /* Fioletowy */
 		--chart-5: 340 75% 55%; /* Różowy */
-    --font-sans: 'Plus Jakarta Sans', sans-serif;
+		--font-sans: 'Plus Jakarta Sans', sans-serif;
 	}
 }
 
@@ -453,8 +453,12 @@
 		@apply border-b border-dark-400 text-light-200 !important;
 	}
 
+	.shad-otp-group {
+		@apply w-full flex flex-col gap-4 xs:flex-row !important;
+	}
+
 	.shad-otp {
-		@apply w-full flex justify-between !important;
+		@apply w-full flex justify-center gap-2 !important;
 	}
 
 	.shad-otp-slot {
