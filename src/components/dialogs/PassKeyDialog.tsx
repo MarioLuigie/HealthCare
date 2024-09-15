@@ -41,22 +41,24 @@ export default function PassKeyDialog() {
 		<AlertDialog open={isOpen} onOpenChange={setIsOpen}>
 			<AlertDialogContent className="shad-alert-dialog">
 				<AlertDialogHeader>
-					<AlertDialogTitle className="flex items-start justify-between">
+					<div className="flex justify-end mb-2">
+						<Image
+							src={Icons.CLOSE_ICON.path}
+							alt={Icons.CLOSE_ICON.alt}
+							width={25}
+							height={25}
+							onClick={closeDialog}
+							className='cursor-pointer'
+						/>
+					</div>
+					<AlertDialogTitle className="flex items-start justify-center xs:justify-start text-[24px]">
 						Admin Access Verification
-						<div onClick={closeDialog} className="cursor-pointer">
-							<Image
-								src={Icons.CLOSE_ICON.path}
-								alt={Icons.CLOSE_ICON.alt}
-								width={25}
-								height={25}
-							/>
-						</div>
 					</AlertDialogTitle>
-					<AlertDialogDescription>
+					<AlertDialogDescription className="flex items-start justify-center xs:justify-start">
 						To access the admin dashboard please enter the passkey.
 					</AlertDialogDescription>
 				</AlertDialogHeader>
-				<div>
+				<div className="mb-8 mt-8">
 					<InputOTP
 						maxLength={6}
 						value={passKey}
@@ -68,6 +70,7 @@ export default function PassKeyDialog() {
 								<InputOTPSlot className="shad-otp-slot" index={1} />
 								<InputOTPSlot className="shad-otp-slot" index={2} />
 							</div>
+							<InputOTPSeparator />
 							<div className="shad-otp">
 								<InputOTPSlot className="shad-otp-slot" index={3} />
 								<InputOTPSlot className="shad-otp-slot" index={4} />
