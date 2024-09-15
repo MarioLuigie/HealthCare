@@ -163,5 +163,3 @@ export const Images = {
 		alt: 'New appointment page image',
 	},
 }
-
-

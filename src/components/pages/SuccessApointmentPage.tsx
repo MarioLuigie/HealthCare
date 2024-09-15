@@ -9,7 +9,7 @@ import { IconPath, Route } from '@/lib/constants/paths'
 // components
 import { Button } from '@/components/ui/button'
 import Copyright from '@/components/content/Copyright'
-import LogoFull from '../content/LogoFull'
+import LogoFull from '@/components/content/LogoFull'
 import SuccessRes from '@/components/shared/SuccessRes'
 
 export default async function SuccessApointmentPage({
@@ -57,7 +57,13 @@ export default async function SuccessApointmentPage({
 					</div>
 				</section>
 				<Button variant="outline" className="shad-primary-btn" asChild>
-					<Link href={generateUrl([Route.PATIENTS, userId, Route.CREATE_APPOINTMENT])}>
+					<Link
+						href={generateUrl([
+							Route.PATIENTS,
+							userId,
+							Route.CREATE_APPOINTMENT,
+						])}
+					>
 						New Appointment
 					</Link>
 				</Button>
