@@ -1,5 +1,7 @@
-import HomePage from '@/components/pages/HomePage'
+// lib
 import { prepareSearchParam } from '@/lib/utils'
+// components
+import HomePage from '@/components/pages/HomePage'
 
 export default function Page({ searchParams: { adminDashboard } }: UrlParams) {
 	const searchParam =
