@@ -6,6 +6,5 @@ export default function Page({
 	searchParams: { appointmentId },
 }: UrlParams) {
 	const searchParam: string = prepareSearchParam(appointmentId)
-
 	return <SuccessApointmentPage appointmentId={searchParam} userId={userId} />
 }
