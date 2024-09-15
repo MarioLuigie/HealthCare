@@ -454,11 +454,11 @@
 	}
 
 	.shad-otp-group {
-		@apply w-full flex flex-col gap-4 xs:flex-row !important;
+		@apply w-full flex flex-col items-center gap-4 xs:flex-row xs:justify-center !important;
 	}
 
 	.shad-otp {
-		@apply w-full flex justify-center gap-2 !important;
+		@apply flex justify-center gap-2 !important;
 	}
 
 	.shad-otp-slot {
