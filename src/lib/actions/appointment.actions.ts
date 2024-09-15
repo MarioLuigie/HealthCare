@@ -20,13 +20,13 @@ import { deepClone } from '@/lib/utils'
 // Get Appointment
 export async function getAppointment(appointmentId: string) {
 	try {
-		const appointments = await databases.listDocuments(
+		const appointment = await databases.getDocument(
 			APPWRITE_DB_ID!,
 			APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
-			[Query.equal('$id', [appointmentId])]
+			appointmentId
 		)
 
-		return deepClone(appointments.documents[0])
+		return deepClone(appointment)
 	} catch (err) {
 		console.error(err)
 	}
