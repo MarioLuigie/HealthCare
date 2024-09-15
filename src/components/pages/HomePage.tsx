@@ -13,19 +13,17 @@ import { generateUrl } from '@/lib/utils'
 import PassKeyDialog from '@/components/dialogs/PassKeyDialog'
 
 export default function HomePage({
-	admin
+	adminDashboard
 }: {
-	admin?: string
+	adminDashboard: string | undefined
 }) {
 	{
 		/* TODO: OTP Verification | PassKey Modal  */
 	}
 
-	const isAdmin = admin === 'true'
-
 	return (
 		<FormPageTemplate image={Images.HOME_PAGE_IMAGE}>
-			{isAdmin && <PassKeyDialog />}
+			{Boolean(adminDashboard) && <PassKeyDialog />}
 			<LogoFull />
 			<PageTitle
 				title="Hi there !"
@@ -34,7 +32,7 @@ export default function HomePage({
 			<UserForm />
 			<Copyright>
 				<Link
-					href={generateUrl([Route.HOME], { admin: 'true' })}
+					href={generateUrl([Route.HOME], { adminDashboard: 'true' })}
 					className="text-green-500"
 				>
 					Admin

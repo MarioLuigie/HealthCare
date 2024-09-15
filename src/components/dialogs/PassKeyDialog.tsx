@@ -2,7 +2,9 @@
 
 // modules
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 // components
+import Image from 'next/image'
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -12,21 +14,37 @@ import {
 	AlertDialogFooter,
 	AlertDialogHeader,
 	AlertDialogTitle,
-	AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
+import { Icons } from '@/lib/constants'
+import { generateUrl } from '@/lib/utils'
+import { Route } from '@/lib/constants/paths'
 
 export default function PassKeyDialog() {
-  const [ isOpen, setIsOpen ] = useState<boolean>(false)
+  const router = useRouter()
+	const [isOpen, setIsOpen] = useState<boolean>(true)
+
+  const closeDialog = () => {
+    setIsOpen(false)
+    router.push(generateUrl([Route.HOME]))
+  }
 
 	return (
-		<AlertDialog>
-			<AlertDialogTrigger>Open</AlertDialogTrigger>
-			<AlertDialogContent>
+		<AlertDialog open={isOpen} onOpenChange={setIsOpen}>
+			<AlertDialogContent className="shad-alert-dialog">
 				<AlertDialogHeader>
-					<AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+					<AlertDialogTitle className="flex items-start justify-between">
+						Admin Access Verification
+						<div onClick={closeDialog} className='cursor-pointer'>
+							<Image
+								src={Icons.CLOSE_ICON.path}
+								alt={Icons.CLOSE_ICON.alt}
+								width={25}
+								height={25}
+							/>
+						</div>
+					</AlertDialogTitle>
 					<AlertDialogDescription>
-						This action cannot be undone. This will permanently delete
-						your account and remove your data from our servers.
+						To access the admin dashboard please enter the passkey.
 					</AlertDialogDescription>
 				</AlertDialogHeader>
 				<AlertDialogFooter>

@@ -143,8 +143,12 @@ export const Icons = {
 		alt: 'Upload animation',
 	},
 	CALENDAR_ICON: {
-		path: IconPath.CALENDAR,
+		path: IconPath.CALENDAR_ICON,
 		alt: 'Calendar',
+	},
+	CLOSE_ICON: {
+		path: IconPath.CLOSE_ICON,
+		alt: 'Close',
 	},
 }
 
