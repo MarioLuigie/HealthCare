@@ -2,10 +2,10 @@
 import Image from 'next/image'
 import Link from 'next/link'
 // lib
-import { formatDateTime } from '@/lib/utils'
-import { doctors } from '@/lib/constants'
+import { formatDateTime, generateUrl } from '@/lib/utils'
+import { Icons, doctors } from '@/lib/constants'
 import { getAppointment } from '@/lib/actions/appointment.actions'
-import { IconPath } from '@/lib/constants/paths'
+import { IconPath, Route } from '@/lib/constants/paths'
 // components
 import { Button } from '@/components/ui/button'
 import Copyright from '@/components/content/Copyright'
@@ -21,9 +21,9 @@ export default async function SuccessApointmentPage({
 }) {
 	const appointment = await getAppointment(appointmentId)
 
-  console.log("APPOINTMENT:", appointment)
-
-	const doctor = doctors.find((doctor) => {})
+	const doctor = doctors.find(
+		(doctor) => doctor.name === appointment.primaryPhysician
+	)
 
 	return (
 		<div className=" flex h-screen max-h-screen px-[5%]">
@@ -42,23 +42,22 @@ export default async function SuccessApointmentPage({
 							alt="doctor"
 							width={100}
 							height={100}
-							className="size-6"
+							className="size-10"
 						/>
 						<p className="whitespace-nowrap">Dr. {doctor?.name}</p>
 					</div>
 					<div className="flex gap-2">
 						<Image
-							src="/assets/icons/calendar.svg"
+							src={Icons.CALENDAR_ICON.path}
 							height={24}
 							width={24}
-							alt="calendar"
+							alt={Icons.CALENDAR_ICON.alt}
 						/>
 						<p> {formatDateTime(appointment.schedule).dateTime}</p>
 					</div>
 				</section>
-
 				<Button variant="outline" className="shad-primary-btn" asChild>
-					<Link href={`/patients/${userId}/new-appointment`}>
+					<Link href={generateUrl([Route.PATIENTS, userId, Route.CREATE_APPOINTMENT])}>
 						New Appointment
 					</Link>
 				</Button>

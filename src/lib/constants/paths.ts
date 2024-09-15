@@ -17,6 +17,7 @@ export const IconPath = {
 	UPLOAD_ICON: '/assets/icons/upload.svg',
 	UPLOAD_GIF: '/assets/gifs/upload.gif',
 	SUCCESS_GIF: '/assets/gifs/success.gif',
+	CALENDAR: '/assets/icons/calendar.svg'
 }
 
 export const ImagePath = {

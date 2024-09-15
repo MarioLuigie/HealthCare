@@ -142,6 +142,10 @@ export const Icons = {
 		path: IconPath.UPLOAD_GIF,
 		alt: 'Upload animation',
 	},
+	CALENDAR_ICON: {
+		path: IconPath.CALENDAR,
+		alt: 'Calendar',
+	},
 }
 
 // Kinde of images
