@@ -33,17 +33,17 @@ export default function PassKeyDialog() {
 	const [passKey, setPassKey] = useState<string>('')
 	const [error, setError] = useState<string>('')
 
-	const handleChangePassKey = (value: string) => {
+	const handleChange = (value: string) => {
 		setPassKey(value)
 		setError('')
 	}
 
-	const handleCloseDialog = () => {
+	const handleClose = () => {
 		setIsOpen(false)
 		router.push(generateUrl([Route.HOME]))
 	}
 
-	const handleValidatePassKey = (
+	const handleValidate = (
 		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
 		e.preventDefault()
@@ -61,7 +61,7 @@ export default function PassKeyDialog() {
 
 	return (
 		<AlertDialog open={isOpen} onOpenChange={setIsOpen}>
-			<AlertDialogOverlay onClick={handleCloseDialog}>
+			<AlertDialogOverlay onClick={handleClose}>
 				<AlertDialogContent
 					className="shad-alert-dialog"
 					onClick={(e) => e.stopPropagation()}
@@ -73,7 +73,7 @@ export default function PassKeyDialog() {
 								alt={Icons.CLOSE_ICON.alt}
 								width={25}
 								height={25}
-								onClick={handleCloseDialog}
+								onClick={handleClose}
 								className="cursor-pointer"
 							/>
 						</div>
@@ -88,7 +88,7 @@ export default function PassKeyDialog() {
 						<InputOTP
 							maxLength={6}
 							value={passKey}
-							onChange={(value) => handleChangePassKey(value)}
+							onChange={(value) => handleChange(value)}
 						>
 							<InputOTPGroup className="shad-otp-group">
 								<div className="shad-otp">
@@ -114,7 +114,7 @@ export default function PassKeyDialog() {
 					</div>
 					<AlertDialogFooter className="gap-3">
 						<AlertDialogAction
-							onClick={(e) => handleValidatePassKey(e)}
+							onClick={(e) => handleValidate(e)}
 							className="shad-primary-btn w-full mb-2 hover:bg-red-500"
 						>
 							Enter admin passkey
