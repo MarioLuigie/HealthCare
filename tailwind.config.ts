@@ -26,6 +26,7 @@ const config = {
 			},
 			colors: {
 				green: {
+					'400': '#2EBF8A',
 					'500': '#24AE7C',
 					'600': '#0D2A1F',
 				},

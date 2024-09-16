@@ -17,6 +17,7 @@ import {
 	AlertDialogFooter,
 	AlertDialogHeader,
 	AlertDialogTitle,
+	AlertDialogOverlay,
 } from '@/components/ui/alert-dialog'
 import {
 	InputOTP,
@@ -37,7 +38,7 @@ export default function PassKeyDialog() {
 		setError('')
 	}
 
-	const validatePassKey = (
+	const handleValidatePassKey = (
 		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
 		e.preventDefault()
@@ -53,69 +54,71 @@ export default function PassKeyDialog() {
 		}
 	}
 
-	const closeDialog = () => {
+	const handleCloseDialog = () => {
 		setIsOpen(false)
 		router.push(generateUrl([Route.HOME]))
 	}
 
 	return (
 		<AlertDialog open={isOpen} onOpenChange={setIsOpen}>
-			<AlertDialogContent className="shad-alert-dialog">
-				<AlertDialogHeader>
-					<div className="flex justify-end mb-1">
-						<Image
-							src={Icons.CLOSE_ICON.path}
-							alt={Icons.CLOSE_ICON.alt}
-							width={25}
-							height={25}
-							onClick={closeDialog}
-							className="cursor-pointer"
-						/>
+			<AlertDialogOverlay onClick={handleCloseDialog}>
+				<AlertDialogContent className="shad-alert-dialog" onClick={(e) => e.stopPropagation()}>
+					<AlertDialogHeader>
+						<div className="flex justify-end mb-1">
+							<Image
+								src={Icons.CLOSE_ICON.path}
+								alt={Icons.CLOSE_ICON.alt}
+								width={25}
+								height={25}
+								onClick={handleCloseDialog}
+								className="cursor-pointer"
+							/>
+						</div>
+						<AlertDialogTitle className="flex items-start justify-center xs:justify-start text-[24px]">
+							Admin Access Verification
+						</AlertDialogTitle>
+						<AlertDialogDescription className="flex items-start justify-center xs:justify-start">
+							To access the admin dashboard please enter the passkey.
+						</AlertDialogDescription>
+					</AlertDialogHeader>
+					<div className="mb-2 mt-8">
+						<InputOTP
+							maxLength={6}
+							value={passKey}
+							onChange={(value) => handleChangePassKey(value)}
+						>
+							<InputOTPGroup className="shad-otp-group">
+								<div className="shad-otp">
+									<InputOTPSlot className="shad-otp-slot" index={0} />
+									<InputOTPSlot className="shad-otp-slot" index={1} />
+									<InputOTPSlot className="shad-otp-slot" index={2} />
+								</div>
+								<InputOTPSeparator />
+								<div className="shad-otp">
+									<InputOTPSlot className="shad-otp-slot" index={3} />
+									<InputOTPSlot className="shad-otp-slot" index={4} />
+									<InputOTPSlot className="shad-otp-slot" index={5} />
+								</div>
+							</InputOTPGroup>
+						</InputOTP>
+						<div className="h-[30px] flex items-end justify-center">
+							{error && (
+								<p className="shad-error text-14-regular text-center">
+									{error}
+								</p>
+							)}
+						</div>
 					</div>
-					<AlertDialogTitle className="flex items-start justify-center xs:justify-start text-[24px]">
-						Admin Access Verification
-					</AlertDialogTitle>
-					<AlertDialogDescription className="flex items-start justify-center xs:justify-start">
-						To access the admin dashboard please enter the passkey.
-					</AlertDialogDescription>
-				</AlertDialogHeader>
-				<div className="mb-2 mt-8">
-					<InputOTP
-						maxLength={6}
-						value={passKey}
-						onChange={(value) => handleChangePassKey(value)}
-					>
-						<InputOTPGroup className="shad-otp-group">
-							<div className="shad-otp">
-								<InputOTPSlot className="shad-otp-slot" index={0} />
-								<InputOTPSlot className="shad-otp-slot" index={1} />
-								<InputOTPSlot className="shad-otp-slot" index={2} />
-							</div>
-							<InputOTPSeparator />
-							<div className="shad-otp">
-								<InputOTPSlot className="shad-otp-slot" index={3} />
-								<InputOTPSlot className="shad-otp-slot" index={4} />
-								<InputOTPSlot className="shad-otp-slot" index={5} />
-							</div>
-						</InputOTPGroup>
-					</InputOTP>
-					<div className='h-[30px] flex items-end justify-center'>
-						{error && (
-							<p className="shad-error text-14-regular text-center">
-								{error}
-							</p>
-						)}
-					</div>
-				</div>
-				<AlertDialogFooter className="gap-3">
-					<AlertDialogAction
-						onClick={(e) => validatePassKey(e)}
-						className="shad-primary-btn w-full mb-2"
-					>
-						Enter admin passkey
-					</AlertDialogAction>
-				</AlertDialogFooter>
-			</AlertDialogContent>
+					<AlertDialogFooter className="gap-3">
+						<AlertDialogAction
+							onClick={(e) => handleValidatePassKey(e)}
+							className="shad-primary-btn w-full mb-2 hover:bg-red-500"
+						>
+							Enter admin passkey
+						</AlertDialogAction>
+					</AlertDialogFooter>
+				</AlertDialogContent>
+			</AlertDialogOverlay>
 		</AlertDialog>
 	)
 }
