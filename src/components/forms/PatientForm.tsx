@@ -61,7 +61,7 @@ export default function PatientForm({ user }: { user: UserData }) {
 				console.log('Something went wrong with registering patient.')
 			}
 
-			console.log('***patient', patient) // without FormData files
+			// console.log('***patient', patient) // without FormData files
 		} catch (err) {
 			console.error('Error from onSubmit for PatientForm', err)
 		}
