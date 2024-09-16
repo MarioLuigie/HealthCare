@@ -8,6 +8,7 @@ export enum Status {
 	PENDING = 'pending',
 	CANCELLED = 'cancelled',
 	SCHEDULED = 'scheduled',
+	FINISHED = 'finished',
 }
 
 export enum FormFieldType {
