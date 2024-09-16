@@ -38,6 +38,11 @@ export default function PassKeyDialog() {
 		setError('')
 	}
 
+	const handleCloseDialog = () => {
+		setIsOpen(false)
+		router.push(generateUrl([Route.HOME]))
+	}
+
 	const handleValidatePassKey = (
 		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
@@ -54,15 +59,13 @@ export default function PassKeyDialog() {
 		}
 	}
 
-	const handleCloseDialog = () => {
-		setIsOpen(false)
-		router.push(generateUrl([Route.HOME]))
-	}
-
 	return (
 		<AlertDialog open={isOpen} onOpenChange={setIsOpen}>
 			<AlertDialogOverlay onClick={handleCloseDialog}>
-				<AlertDialogContent className="shad-alert-dialog" onClick={(e) => e.stopPropagation()}>
+				<AlertDialogContent
+					className="shad-alert-dialog"
+					onClick={(e) => e.stopPropagation()}
+				>
 					<AlertDialogHeader>
 						<div className="flex justify-end mb-1">
 							<Image
