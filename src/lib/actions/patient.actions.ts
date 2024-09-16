@@ -120,7 +120,7 @@ export async function registerPatient(
 
 			return deepClone(registeredPatient)
 		} else {
-			// Create a new patient in patient collection with arrray of id's of identificationDocuments
+			// Create a new patient in patient collection with empty array of identificationDocuments
 			const registeredPatient = await databases.createDocument(
 				APPWRITE_DB_ID!,
 				APPWRITE_DB_PATIENT_COLLECTION_ID!,

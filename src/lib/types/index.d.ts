@@ -31,6 +31,7 @@ declare interface RegisterPatientData extends CreateUserData {
 	privacyConsent: boolean
 	treatmentConsent: boolean
 	disclosureConsent: boolean
+    appointments: string[]
 }
 
 // Appointment
