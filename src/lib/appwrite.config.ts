@@ -11,7 +11,7 @@ export const {
 	APPWRITE_DB_IDENTIFICATION_DOCUMENT_COLLECTION_ID,
 	APPWRITE_PUBLIC_BUCKET_ID,
 	APPWRITE_IDENTIFICATION_DOCUMENTS_BUCKET_ID,
-	APPWRITE_PUBLIC_ENDPOINT,
+	NEXT_PUBLIC_APPWRITE_ENDPOINT,
 } = process.env
 
 // Initialize Appwrite Client
@@ -19,7 +19,7 @@ const client = new sdk.Client()
 
 // Add key to client for auth
 client
-	.setEndpoint(APPWRITE_PUBLIC_ENDPOINT!)
+	.setEndpoint(NEXT_PUBLIC_APPWRITE_ENDPOINT!)
 	.setProject(APPWRITE_PROJECT_ID!)
 	.setKey(APPWRITE_API_KEY!)
 

@@ -6,7 +6,7 @@ import { InputFile } from 'node-appwrite/file'
 import {
 	APPWRITE_DB_ID,
 	APPWRITE_PROJECT_ID,
-	APPWRITE_PUBLIC_ENDPOINT,
+	NEXT_PUBLIC_APPWRITE_ENDPOINT,
 	APPWRITE_DB_PATIENT_COLLECTION_ID,
 	APPWRITE_IDENTIFICATION_DOCUMENTS_BUCKET_ID,
 	storage,
@@ -82,7 +82,7 @@ export async function registerPatient(
 					? uploadedFiles.map((uploadedFile) => ({
 							storageId: uploadedFile?.$id ? uploadedFile.$id : null,
 							url: uploadedFile?.$id
-								? `${APPWRITE_PUBLIC_ENDPOINT}/storage/buckets/${APPWRITE_IDENTIFICATION_DOCUMENTS_BUCKET_ID}/files/${uploadedFile.$id}/view??project=${APPWRITE_PROJECT_ID}`
+								? `${NEXT_PUBLIC_APPWRITE_ENDPOINT}/storage/buckets/${APPWRITE_IDENTIFICATION_DOCUMENTS_BUCKET_ID}/files/${uploadedFile.$id}/view??project=${APPWRITE_PROJECT_ID}`
 								: null,
 					  }))
 					: []
