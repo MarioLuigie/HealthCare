@@ -9,7 +9,8 @@ export const deepClone = (value: any) => JSON.parse(JSON.stringify(value))
 
 export function prepareSearchParam(searchParam: string | string[] | undefined): string {
 	if(!searchParam) {
-		throw new Error('Search param is undefined')
+		// throw new Error('Search param is undefined')
+		return ""
 	}
 	return Array.isArray(searchParam) ? searchParam[0] : searchParam
 }

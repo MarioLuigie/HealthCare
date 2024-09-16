@@ -47,7 +47,7 @@ export default function PassKeyDialog() {
 		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
 	) => {
 		e.preventDefault()
-		if (passKey === '123456') {
+		if (passKey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY) {
 			setPassKey('')
 
 			// !!Only for test!!
