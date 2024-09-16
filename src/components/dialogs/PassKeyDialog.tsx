@@ -44,6 +44,11 @@ export default function PassKeyDialog() {
 		if (passKey === '123456') {
 			console.log('Good PassKey')
 			setPassKey('')
+
+			setTimeout(() => {
+				router.push('/?isOk=ok')
+			}, 1000)
+
 		} else {
 			setError('Invalid passkey, try again.')
 		}
