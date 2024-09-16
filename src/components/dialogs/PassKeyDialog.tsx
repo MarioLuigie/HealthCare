@@ -50,7 +50,7 @@ export default function PassKeyDialog() {
 		if (passKey === '123456') {
 			setPassKey('')
 
-			// !!Only to test!!
+			// !!Only for test!!
 			setTimeout(() => {
 				router.push('/?isOk=ok')
 			}, 1000)
