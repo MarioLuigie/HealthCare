@@ -13,7 +13,7 @@ export default function LogoFull() {
 				height={1000}
 				width={1000}
 				alt={Icons.LOGO_FULL.alt}
-				className="mb-12 h-10 w-fit"
+				className="h-10 w-fit"
 			/>
 		</Link>
 	)

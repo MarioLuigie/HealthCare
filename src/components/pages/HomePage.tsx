@@ -28,6 +28,7 @@ export default function HomePage({
 			<PageTitle
 				title="Hi there !"
 				description="Get started with appointments."
+				classes='my-12'
 			/>
 			<UserForm />
 			<Copyright>

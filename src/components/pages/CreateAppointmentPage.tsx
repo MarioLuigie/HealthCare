@@ -22,6 +22,7 @@ export default async function CreateAppointmentPage({
 			<PageTitle
 				title="New appointment"
 				description="Request a new appointment in 10 seconds"
+				classes='my-12'
 			/>
 			<AppointmentForm
 				actionType={ActionTypes.CREATE}

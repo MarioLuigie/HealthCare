@@ -18,6 +18,7 @@ export default async function RegistrationPage({ userId }: { userId: string }) {
 			<PageTitle
 				title="Welcome !"
 				description="Let us know more about yourself."
+				classes='my-12'
 			/>
 			<PatientForm user={user} />
 			<Copyright />
