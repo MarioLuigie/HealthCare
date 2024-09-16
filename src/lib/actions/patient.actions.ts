@@ -143,7 +143,23 @@ export async function registerPatient(
 
 
 
+// Get patient
+// export const getPatient = async (userId: string) => {
+// 	try {
+// 		const patients = await databases.listDocuments(
+// 			APPWRITE_DB_ID!,
+// 			APPWRITE_DB_PATIENT_COLLECTION_ID!,
+// 			[Query.equal('userId', [userId])]
+// 		)
 
+// 		return deepClone(patients.documents[0])
+// 	} catch (err) {
+// 		console.error(
+// 			'An error occurred while retrieving the patient details:',
+// 			err
+// 		)
+// 	}
+// }
 
 
 

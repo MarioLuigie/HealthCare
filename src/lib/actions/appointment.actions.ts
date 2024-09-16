@@ -4,6 +4,7 @@
 import {
 	APPWRITE_DB_ID,
 	APPWRITE_DB_APPOINTMENT_COLLECTION_ID,
+	APPWRITE_DB_PATIENT_COLLECTION_ID,
 	databases,
 } from '@/lib/appwrite.config'
 import { ID } from 'node-appwrite'
@@ -47,7 +48,7 @@ export async function createAppointment(
 			reason: appointmentFormValues.reason,
 			note: appointmentFormValues.note,
 			status: Status.PENDING,
-		} 
+		}
 
 		const createdAppointment = await databases.createDocument(
 			APPWRITE_DB_ID!,
@@ -56,16 +57,30 @@ export async function createAppointment(
 			appointmentData
 		)
 
-		return deepClone(createdAppointment)
+		const patient = await databases.getDocument(
+			APPWRITE_DB_ID!,
+			APPWRITE_DB_PATIENT_COLLECTION_ID!,
+			patientId
+		)
 
+		await databases.updateDocument(
+			APPWRITE_DB_ID!, 
+			APPWRITE_DB_PATIENT_COLLECTION_ID!, 
+			patientId, 
+			{ appointments: [...patient.appointments, createdAppointment.$id] } 
+		)
+
+		return deepClone(createdAppointment)
 	} catch (err) {
 		console.error(err)
 	}
 }
 
 // Cancel Appointment
-export async function cancelAppointment(appointmentFormValues: CancelAppointmentFormValues) {
-  const status: Status = Status.CANCELLED
+export async function cancelAppointment(
+	appointmentFormValues: CancelAppointmentFormValues
+) {
+	const status: Status = Status.CANCELLED
 
 	try {
 	} catch (err) {
@@ -74,8 +89,10 @@ export async function cancelAppointment(appointmentFormValues: CancelAppointment
 }
 
 // Schedule Appointment
-export async function scheduleAppointment(appointmentFormValues: ScheduleAppointmentFormValues) {
-  const status: Status = Status.SCHEDULED
+export async function scheduleAppointment(
+	appointmentFormValues: ScheduleAppointmentFormValues
+) {
+	const status: Status = Status.SCHEDULED
 
 	try {
 	} catch (err) {
