@@ -42,9 +42,9 @@ export default function PassKeyDialog() {
 	) => {
 		e.preventDefault()
 		if (passKey === '123456') {
-			console.log('Good PassKey')
 			setPassKey('')
 
+			// !!Only to test!!
 			setTimeout(() => {
 				router.push('/?isOk=ok')
 			}, 1000)
