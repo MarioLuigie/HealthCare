@@ -52,9 +52,30 @@ declare type UpdateAppointmentData = {
 }
 
 // Url params, route query, page params
-declare type UrlParams = {
-	params: { [key: string]: string }
-	searchParams: { [key: string]: string | string[] | undefined }
+declare interface SingleSlugParams {
+	[key: string]: string
+}
+
+declare interface CatchAllSlugParams {
+	[key: string]: string[]
+}
+
+declare interface SearchParams {
+	[key: string]: string | string[] | undefined
+}
+
+declare type SingleSlugPageProps = {
+	params: SingleSlugParams
+	searchParams: SearchParams
+}
+
+declare type CatchAllSlugPageProps = {
+	params: CatchAllSlugParams
+	searchParams: SearchParams
+}
+
+declare type PageProps = {
+	searchParams: SearchParams
 }
 
 {
@@ -263,7 +284,8 @@ Twoje podejście zapewnia jasne oddzielenie struktury danych wejściowych od str
 */
 }
 
-{/*
+{
+	/*
 declare type UploadedFile = {
 	$id: string // Unikalny identyfikator pliku
 	$createdAt: string // Data utworzenia pliku (ISO string)
@@ -281,4 +303,5 @@ declare type UploadedFile = {
 	url: string // URL do pobrania lub podglądu pliku
 	etag: string // ETag pliku (służy do śledzenia zmian)
 }
-*/}
+*/
+}

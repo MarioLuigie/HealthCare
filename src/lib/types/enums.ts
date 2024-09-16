@@ -25,3 +25,9 @@ export enum ActionTypes {
 	SCHEDULE = 'schedule',
 	CANCEL = 'cancel',
 }
+
+export enum SearchParamsString {
+	TRUE = 'true',
+	FALSE = 'false'
+}
+
