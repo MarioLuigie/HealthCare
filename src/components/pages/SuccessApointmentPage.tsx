@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 // lib
-import { formatDateTime, generateUrl } from '@/lib/utils'
+import { formatDateTime, generateUrl, prepareSearchParam } from '@/lib/utils'
 import { Icons, doctors } from '@/lib/constants'
 import { getAppointment } from '@/lib/actions/appointment.actions'
 import { IconPath, Route } from '@/lib/constants/paths'
@@ -13,12 +13,15 @@ import LogoFull from '@/components/content/LogoFull'
 import SuccessRes from '@/components/shared/SuccessRes'
 
 export default async function SuccessApointmentPage({
-	appointmentId,
-	userId,
+	params,
+	searchParams,
 }: {
-	appointmentId: string
-	userId: string
+	params: SingleSlugParams
+	searchParams: SearchParams
 }) {
+	const userId: string = params.userId
+	const appointmentId: string = prepareSearchParam(searchParams.appointmentId)
+
 	const appointment = await getAppointment(appointmentId)
 
 	const doctor = doctors.find(

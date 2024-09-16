@@ -8,7 +8,8 @@ import LogoFull from '@/components/content/LogoFull'
 import Copyright from '@/components/content/Copyright'
 import FormPageTemplate from '@/components/shared/FormPageTemplate'
 
-export default async function RegistrationPage({ userId }: { userId: string }) {
+export default async function RegistrationPage({ params }: { params: SingleSlugParams}) {
+	const userId = params.userId
 	const user = await getUser(userId)
 
 	console.log('User from RegistrationPage:', user)

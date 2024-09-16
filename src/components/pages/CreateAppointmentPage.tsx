@@ -10,10 +10,11 @@ import FormPageTemplate from '@/components/shared/FormPageTemplate'
 import { ActionTypes } from '@/lib/types/enums'
 
 export default async function CreateAppointmentPage({
-	userId,
+	params,
 }: {
-	userId: string
+	params: SingleSlugParams
 }) {
+	const userId = params.userId
 	const patient = await getPatient(userId)
 
 	return (

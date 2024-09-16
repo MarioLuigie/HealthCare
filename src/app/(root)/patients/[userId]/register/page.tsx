@@ -1,5 +1,5 @@
 import RegisterPage from '@/components/pages/RegisterPage'
 
-export default function Page({ params: { userId } }: SingleSlugPageProps) {
-	return <RegisterPage userId={userId} />
+export default function Page({ params }: SingleSlugPageProps) {
+	return <RegisterPage params={params} />
 }
