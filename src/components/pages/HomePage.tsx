@@ -16,13 +16,13 @@ import PassKeyDialog from '@/components/dialogs/PassKeyDialog'
 export default function HomePage({
 	searchParams,
 }: {
-	searchParams: SearchParams
+	searchParams?: SearchParams
 }) {
 	{
 		/* TODO: OTP Verification | PassKey Modal  */
 	}
 	const isPassKeyDialogOpen =
-		prepareSearchParam(searchParams.admin) === SearchParamsString.TRUE
+		prepareSearchParam(searchParams?.admin) === SearchParamsString.TRUE
 
 	return (
 		<FormPageTemplate image={Images.HOME_PAGE_IMAGE}>
