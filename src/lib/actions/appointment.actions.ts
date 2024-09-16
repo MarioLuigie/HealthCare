@@ -40,9 +40,17 @@ export async function createAppointment(
 	userId: string
 ) {
 	try {
+		if (
+			!APPWRITE_DB_ID ||
+			!APPWRITE_DB_APPOINTMENT_COLLECTION_ID ||
+			!APPWRITE_DB_PATIENT_COLLECTION_ID
+		) {
+			throw new Error('Missing required environment variables')
+		}
+
 		const appointmentData: CreateAppointmentData = {
 			userId,
-			patient: patientId,
+			patient: patientId, // relation ship to patient collection
 			primaryPhysician: appointmentFormValues.primaryPhysician,
 			schedule: new Date(appointmentFormValues.schedule),
 			reason: appointmentFormValues.reason,
@@ -57,18 +65,19 @@ export async function createAppointment(
 			appointmentData
 		)
 
-		const patient = await databases.getDocument(
-			APPWRITE_DB_ID!,
-			APPWRITE_DB_PATIENT_COLLECTION_ID!,
-			patientId
-		)
+		if (createdAppointment) {
+			const updatedAppointments = [
+				...createdAppointment.patient.appointments,
+				createdAppointment.$id,
+			]
 
-		await databases.updateDocument(
-			APPWRITE_DB_ID!, 
-			APPWRITE_DB_PATIENT_COLLECTION_ID!, 
-			patientId, 
-			{ appointments: [...patient.appointments, createdAppointment.$id] } 
-		)
+			await databases.updateDocument(
+				APPWRITE_DB_ID!,
+				APPWRITE_DB_PATIENT_COLLECTION_ID!,
+				patientId,
+				{ appointments: updatedAppointments }
+			)
+		}
 
 		return deepClone(createdAppointment)
 	} catch (err) {
