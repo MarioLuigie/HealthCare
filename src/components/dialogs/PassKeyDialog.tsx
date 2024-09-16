@@ -48,7 +48,6 @@ export default function PassKeyDialog() {
 			setTimeout(() => {
 				router.push('/?isOk=ok')
 			}, 1000)
-
 		} else {
 			setError('Invalid passkey, try again.')
 		}
@@ -100,11 +99,13 @@ export default function PassKeyDialog() {
 							</div>
 						</InputOTPGroup>
 					</InputOTP>
-					{error && (
-						<p className="shad-error text-14-regular mt-6 flex justify-center">
-							{error}
-						</p>
-					)}
+					<div className='h-[30px] flex items-end justify-center'>
+						{error && (
+							<p className="shad-error text-14-regular text-center">
+								{error}
+							</p>
+						)}
+					</div>
 				</div>
 				<AlertDialogFooter className="gap-3">
 					<AlertDialogAction
