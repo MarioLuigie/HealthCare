@@ -1,8 +1,12 @@
-export default function AdminDashboardPage({ params }: { params: SingleSlugParams }) {
-
-  return (
-    <div>
-      ADMIN DASHBOARD PAGE
-    </div>
-  )
+export default function AdminDashboardPage({
+	params,
+}: {
+	params: SingleSlugParams
+}) {
+	const { role } = params
+	return (
+		<div className="flex flex-col items-center justify-center grow">
+			{role.toUpperCase()} DASHBOARD PAGE
+		</div>
+	)
 }
