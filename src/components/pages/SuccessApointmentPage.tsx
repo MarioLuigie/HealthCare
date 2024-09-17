@@ -67,7 +67,7 @@ export default async function SuccessApointmentPage({
 							Route.CREATE_APPOINTMENT,
 						])}
 					>
-						Create New Appointment
+						Create Next Appointment
 					</Link>
 				</Button>
 				<Copyright />
