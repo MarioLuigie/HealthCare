@@ -90,7 +90,7 @@ export default function PatientForm({ user }: { user: UserData }) {
 					iconAlt={Icons.USER_ICON.alt}
 				/>
 				{/* Email Phone */}
-				<div className="flex flex-col xl:flex-row gap-4">
+				<div className="flex flex-col lg:flex-row gap-4">
 					<CustomFormField
 						control={form.control}
 						type={FormFieldType.INPUT}
@@ -109,7 +109,7 @@ export default function PatientForm({ user }: { user: UserData }) {
 					/>
 				</div>
 				{/* Date of birth and Gender */}
-				<div className="flex flex-col xl:flex-row gap-4">
+				<div className="flex flex-col lg:flex-row gap-4">
 					<CustomFormField
 						control={form.control}
 						type={FormFieldType.DATE_PICKER}
@@ -125,7 +125,7 @@ export default function PatientForm({ user }: { user: UserData }) {
 						renderSkeleton={(field) => (
 							<FormControl>
 								<RadioGroup
-									className="flex gap-3 h-11 xl:justify-between"
+									className="flex gap-2 h-11 lg:justify-between"
 									onValueChange={field.onChange}
 									defaultValue={field.value}
 								>
@@ -151,7 +151,7 @@ export default function PatientForm({ user }: { user: UserData }) {
 					/>
 				</div>
 				{/* Address and Occupation */}
-				<div className="flex flex-col xl:flex-row gap-4">
+				<div className="flex flex-col lg:flex-row gap-4">
 					<CustomFormField
 						control={form.control}
 						type={FormFieldType.INPUT}
@@ -168,7 +168,7 @@ export default function PatientForm({ user }: { user: UserData }) {
 					/>
 				</div>
 				{/* Emergency Contact Name and Phone */}
-				<div className="flex flex-col xl:flex-row gap-4">
+				<div className="flex flex-col lg:flex-row gap-4">
 					<CustomFormField
 						control={form.control}
 						type={FormFieldType.INPUT}
@@ -216,7 +216,7 @@ export default function PatientForm({ user }: { user: UserData }) {
 					))}
 				</CustomFormField>
 				{/* Insurance */}
-				<div className="flex flex-col xl:flex-row gap-4">
+				<div className="flex flex-col lg:flex-row gap-4">
 					<CustomFormField
 						control={form.control}
 						type={FormFieldType.INPUT}
@@ -233,7 +233,7 @@ export default function PatientForm({ user }: { user: UserData }) {
 					/>
 				</div>
 				{/* Allergies */}
-				<div className="flex flex-col xl:flex-row gap-4">
+				<div className="flex flex-col lg:flex-row gap-4">
 					<CustomFormField
 						control={form.control}
 						type={FormFieldType.TEXTAREA}
@@ -250,7 +250,7 @@ export default function PatientForm({ user }: { user: UserData }) {
 					/>
 				</div>
 				{/* Medical histories */}
-				<div className="flex flex-col xl:flex-row gap-4">
+				<div className="flex flex-col lg:flex-row gap-4">
 					<CustomFormField
 						control={form.control}
 						type={FormFieldType.TEXTAREA}

@@ -8,7 +8,7 @@ export default function PageTitle({ title, description, classes }: PageTitleProp
 	return (
 		<section className={`space-y-3 ${classes}`}>
 			<h1 className="header">{title}</h1>
-			<p className="text-dark-700">{description}</p>
+			<p className="text-dark-700 sm:text-base text-sm ">{description}</p>
 		</section>
 	)
 }

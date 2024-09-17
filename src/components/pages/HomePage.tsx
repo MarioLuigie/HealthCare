@@ -25,7 +25,7 @@ export default function HomePage({
 		prepareSearchParam(searchParams?.admin) === SearchParamsString.TRUE
 
 	return (
-		<FormPageTemplate image={Images.HOME_PAGE_IMAGE}>
+		<FormPageTemplate image={Images.HOME_PAGE_IMAGE} classes='max-w-[480px]'>
 			{isPassKeyDialogOpen && <PassKeyDialog />}
 			<LogoFull />
 			<PageTitle
