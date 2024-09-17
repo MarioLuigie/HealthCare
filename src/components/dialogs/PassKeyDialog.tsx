@@ -44,7 +44,7 @@ export default function PassKeyDialog() {
 	}
 
 	const handleValidate = (
-		e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+		e: React.MouseEvent<HTMLButtonElement>
 	) => {
 		e.preventDefault()
 		if (passKey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY) {
@@ -54,6 +54,7 @@ export default function PassKeyDialog() {
 			setTimeout(() => {
 				router.push('/?isOk=ok')
 			}, 1000)
+			
 		} else {
 			setError('Invalid passkey, try again.')
 		}
