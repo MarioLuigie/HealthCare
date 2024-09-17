@@ -29,6 +29,11 @@ export enum ActionTypes {
 
 export enum SearchParamsString {
 	TRUE = 'true',
-	FALSE = 'false'
+	FALSE = 'false',
 }
 
+export enum Roles {
+	DOCTOR = 'doctor',
+	PATIENT = 'patient',
+	ADMIN = 'admin',
+}

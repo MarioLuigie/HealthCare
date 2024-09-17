@@ -1,4 +1,4 @@
-export default function DoctorDashboardPage() {
+export default function DoctorDashboardPage({ params }: { params: SingleSlugParams }) {
 
   return (
     <div>

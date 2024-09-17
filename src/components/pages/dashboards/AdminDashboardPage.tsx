@@ -1,4 +1,4 @@
-export default function AdminDashboardPage() {
+export default function AdminDashboardPage({ params }: { params: SingleSlugParams }) {
 
   return (
     <div>
