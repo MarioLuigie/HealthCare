@@ -1,11 +1,11 @@
 'use client'
 
 // modules
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 // lib
 import { Icons } from '@/lib/constants'
-import { generateUrl } from '@/lib/utils'
+import { encryptKey, generateUrl } from '@/lib/utils'
 import { Route } from '@/lib/constants/paths'
 // components
 import Image from 'next/image'
@@ -33,6 +33,17 @@ export default function PassKeyDialog() {
 	const [passKey, setPassKey] = useState<string>('')
 	const [error, setError] = useState<string>('')
 
+	//  Wznawianie sesji w oparciu o token dostepu - weryfikacja na serwerze za pomoca JWT Token jesli zwroci true to router.push('/admin') a jesli false to router.push('/login')
+	// useEffect(() => {
+	// 	const token = localStorage.getItem('sessionToken')
+
+	// 	if (token) {
+	// 		// Opcjonalnie: Możesz wysłać token do serwera, aby sprawdzić, czy jest nadal ważny
+	// 	} else {
+	// 		router.push('/login')
+	// 	}
+	// }, [])
+
 	const handleChange = (value: string) => {
 		setPassKey(value)
 		setError('')
@@ -43,18 +54,20 @@ export default function PassKeyDialog() {
 		router.push(generateUrl([Route.HOME]))
 	}
 
-	const handleValidate = (
-		e: React.MouseEvent<HTMLButtonElement>
-	) => {
+	const handleValidate = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault()
 		if (passKey === process.env.NEXT_PUBLIC_ADMIN_PASSKEY) {
+			// !encrypt with base64 - only tests - normaly send string passKey to server and bcrypt there!
+			const encryptedPassKey = encryptKey(passKey)
+			localStorage.setItem('doctorAccessKey', encryptedPassKey)
+
 			setPassKey('')
 
-			// !!Only for test!!
+			// !Only for test!
 			setTimeout(() => {
+				setIsOpen(false)
 				router.push('/?isOk=ok')
 			}, 1000)
-			
 		} else {
 			setError('Invalid passkey, try again.')
 		}
