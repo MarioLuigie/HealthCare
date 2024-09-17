@@ -3,10 +3,11 @@ export default function DoctorDashboardPage({
 }: {
 	params: SingleSlugParams
 }) {
-	const { role } = params
+	const { role, id } = params
 	return (
 		<div className="flex flex-col items-center justify-center grow">
-			{role.toUpperCase()} DASHBOARD PAGE
+			<p>{role.toUpperCase()} DASHBOARD PAGE.</p>
+      <p className="text-sm text-dark-600">{role.toLocaleUpperCase()} ID: {id}</p>
 		</div>
 	)
 }
