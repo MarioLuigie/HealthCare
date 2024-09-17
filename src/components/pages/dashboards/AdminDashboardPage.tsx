@@ -7,7 +7,7 @@ export default function AdminDashboardPage({
 	return (
 		<div className="flex flex-col items-center justify-center grow">
 			<p>{role.toUpperCase()} DASHBOARD PAGE.</p>
-      <p className="text-sm text-dark-600">{role.toLocaleUpperCase()} ID: {id}</p>
+      <p className="text-sm text-dark-600">{role.toUpperCase()} ID: {id}</p>
 		</div>
 	)
 }
