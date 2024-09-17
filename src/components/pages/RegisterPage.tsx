@@ -14,7 +14,7 @@ export default async function RegistrationPage({ params }: { params: SingleSlugP
 
 	console.log('User from RegistrationPage:', user)
 	return (
-		<FormPageTemplate image={Images.REGISTER_PAGE_IMAGE}>
+		<FormPageTemplate image={Images.REGISTER_PAGE_IMAGE} classes='max-w-[780px]'>
 			<LogoFull />
 			<PageTitle
 				title="Welcome !"

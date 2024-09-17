@@ -18,7 +18,7 @@ export default async function CreateAppointmentPage({
 	const patient = await getPatient(userId)
 
 	return (
-		<FormPageTemplate image={Images.NEW_APPOINTMENT_PAGE_IMAGE}>
+		<FormPageTemplate image={Images.NEW_APPOINTMENT_PAGE_IMAGE} classes='max-w-[780px]'>
 			<LogoFull />
 			<PageTitle
 				title="New appointment"

@@ -14,7 +14,7 @@ export default function FormPageTemplate({
 	return (
 		<div className="flex h-screen max-h-screen">
 			<section className="remove-scrollbar container my-auto max-h-screen overflow-y-auto">
-				<div className={`sub-container max-w-[780px] ${classes}`}>{children}</div>
+				<div className={`sub-container ${classes}`}>{children}</div>
 			</section>
 			<section className="max-w-[33%]">
 				<Image
