@@ -72,7 +72,6 @@ export default function PassKeyDialog() {
 			setError('Invalid passkey, try again.')
 		}
 	}
-
 	return (
 		<AlertDialog open={isOpen} onOpenChange={setIsOpen}>
 			<AlertDialogOverlay onClick={handleClose}>
