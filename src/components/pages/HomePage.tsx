@@ -18,9 +18,7 @@ export default function HomePage({
 }: {
 	searchParams?: SearchParams
 }) {
-	{
-		/* TODO: OTP Verification | PassKey Modal  */
-	}
+	{/* TODO: OTP Verification | PassKey Modal  */}
 	const isPassKeyDialogOpen =
 		prepareSearchParam(searchParams?.admin) === SearchParamsString.TRUE
 
