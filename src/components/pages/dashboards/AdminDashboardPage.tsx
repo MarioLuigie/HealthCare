@@ -20,6 +20,7 @@ export default async function AdminDashboardPage({
 	const appointments = await getAppointments()
 
 	countAppointments(appointments)
+	
   return (
     <div className="flex flex-col items-center justify-start grow p-6">
       <section className="admin-stat">
