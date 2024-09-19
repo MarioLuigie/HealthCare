@@ -1,9 +1,14 @@
 // lib
 import { Icons } from "@/lib/constants"
 import { Status } from "@/lib/types/enums"
+import { Appointment } from '@/lib/types/appwrite.types'
 // components
 import StateCard from "@/components/shared/StateCard"
 import { getAppointments } from "@/lib/actions/appointment.actions"
+
+function countAppointments(appointments: Appointment[]) {
+	console.log("APPOINTMENTS", appointments)
+}
 
 export default async function AdminDashboardPage({
   params,
@@ -14,7 +19,7 @@ export default async function AdminDashboardPage({
 
 	const appointments = await getAppointments()
 
-	console.log("### APPOINTMENTS:", appointments)
+	countAppointments(appointments)
   return (
     <div className="flex flex-col items-center justify-start grow p-6">
       <section className="admin-stat">

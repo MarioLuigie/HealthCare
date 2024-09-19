@@ -7,7 +7,7 @@ import {
 	APPWRITE_DB_PATIENT_COLLECTION_ID,
 	databases,
 } from '@/lib/appwrite.config'
-import { ID } from 'node-appwrite'
+import { ID, Query } from 'node-appwrite'
 
 // lib
 import { Status } from '@/lib/types/enums'
@@ -38,6 +38,7 @@ export async function getAppointments() {
 		const appointments = await databases.listDocuments(
 			APPWRITE_DB_ID!,
 			APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
+			[Query.orderDesc('$createdAt')]
 		)
 
 		return deepClone(appointments.documents)
