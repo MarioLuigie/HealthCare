@@ -17,9 +17,9 @@ export default function StateCard({
 }: StateCardProps) {
   return (
     <div className={clsx('stat-card', {
-      'bg-green-300': status === Status.SCHEDULED,
-      'bg-blue-300': status === Status.PENDING,
-      'bg-red-300': status === Status.CANCELLED,
+      'bg-scheduled': status === Status.SCHEDULED,
+      'bg-pending': status === Status.PENDING,
+      'bg-cancelled': status === Status.CANCELLED,
     })}>
       {status}
       Count: {count}
