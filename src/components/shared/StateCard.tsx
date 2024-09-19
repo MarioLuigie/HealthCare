@@ -6,7 +6,7 @@ type StateCardProps = {
   status: Status
   count: number
   label: string
-  icon: { path: string; alt: string }
+  icon: Icons
 }
 
 export default function StateCard({

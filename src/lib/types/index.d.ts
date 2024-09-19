@@ -79,6 +79,11 @@ declare type PageProps = {
 	searchParams: SearchParams
 }
 
+declare type Icons = {
+    path: string
+    alt: string
+}
+
 {
 	/*
 Tak, te dwa zapisy różnią się i mają różne zastosowania. Oto wyjaśnienie:
