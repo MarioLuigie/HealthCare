@@ -1,7 +1,9 @@
+import { Status } from "@/lib/types/enums"
+import clsx from "clsx"
 import Image from "next/image"
 
 type StateCardProps = {
-  status: string
+  status: Status
   count: number
   label: string
   icon: { path: string; alt: string }
@@ -14,11 +16,15 @@ export default function StateCard({
   icon,
 }: StateCardProps) {
   return (
-    <section className="flex flex-col bg-zinc-800">
+    <div className={clsx('stat-card', {
+      'bg-green-300': status === Status.SCHEDULED,
+      'bg-blue-300': status === Status.PENDING,
+      'bg-red-300': status === Status.CANCELLED,
+    })}>
       {status}
       Count: {count}
       {label}
       <Image src={icon.path} alt={icon.alt} width={30} height={30}/>
-    </section>
+    </div>
   )
 }

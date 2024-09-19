@@ -11,7 +11,7 @@ export default function AdminDashboardPage({
   const { role, id } = params
   return (
     <div className="flex flex-col items-center justify-start grow p-6">
-      <section className="admin-stat bg-red-500">
+      <section className="admin-stat">
         <StateCard
           status={Status.SCHEDULED}
           count={5}
