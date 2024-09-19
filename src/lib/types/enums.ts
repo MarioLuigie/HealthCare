@@ -5,10 +5,10 @@ export enum Gender {
 }
 
 export enum Status {
-	PENDING = 'pending',
-	CANCELLED = 'cancelled',
-	SCHEDULED = 'scheduled',
-	FINISHED = 'finished',
+	PENDING = 'Pending',
+	CANCELLED = 'Cancelled',
+	SCHEDULED = 'Scheduled',
+	FINISHED = 'Finished',
 }
 
 export enum FormFieldType {
