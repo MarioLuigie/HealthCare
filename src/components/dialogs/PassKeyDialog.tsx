@@ -25,6 +25,7 @@ import {
 	InputOTPSeparator,
 	InputOTPSlot,
 } from '@/components/ui/input-otp'
+import { Roles } from '@/lib/types/enums'
 
 export default function PassKeyDialog() {
 	const router = useRouter()
@@ -66,7 +67,7 @@ export default function PassKeyDialog() {
 			// !Only for test!
 			setTimeout(() => {
 				setIsOpen(false)
-				router.push('/?isOk=ok')
+				router.push(generateUrl([Route.DASHBOARD, Roles.ADMIN, '123']))
 			}, 1000)
 		} else {
 			setError('Invalid passkey, try again.')
