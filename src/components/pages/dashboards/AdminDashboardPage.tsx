@@ -3,13 +3,18 @@ import { Icons } from "@/lib/constants"
 import { Status } from "@/lib/types/enums"
 // components
 import StateCard from "@/components/shared/StateCard"
+import { getAppointments } from "@/lib/actions/appointment.actions"
 
-export default function AdminDashboardPage({
+export default async function AdminDashboardPage({
   params,
 }: {
   params: SingleSlugParams
 }) {
   const { role, id } = params
+
+	const appointments = await getAppointments()
+
+	console.log("### APPOINTMENTS:", appointments)
   return (
     <div className="flex flex-col items-center justify-start grow p-6">
       <section className="admin-stat">

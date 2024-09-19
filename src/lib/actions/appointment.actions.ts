@@ -33,6 +33,19 @@ export async function getAppointment(appointmentId: string) {
 	}
 }
 
+export async function getAppointments() {
+	try {
+		const appointments = await databases.listDocuments(
+			APPWRITE_DB_ID!,
+			APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
+		)
+
+		return deepClone(appointments.documents)
+	} catch (err) {
+		console.error(err)
+	}
+}
+
 // Create Appoitment
 export async function createAppointment(
 	appointmentFormValues: CreateAppointmentFormValues,
