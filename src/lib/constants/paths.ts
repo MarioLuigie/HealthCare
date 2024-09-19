@@ -19,7 +19,9 @@ export const IconPath = {
 	SUCCESS_GIF: '/assets/gifs/success.gif',
 	CALENDAR_ICON: '/assets/icons/calendar.svg',
 	CLOSE_ICON: '/assets/icons/close.svg',
-	APPOINTMENTS_ICON: '/assets/icons/appointments.svg',
+	SCHEDULED_ICON: '/assets/icons/scheduled.svg',
+	PENDING_ICON: '/assets/icons/pending.svg',
+	CANCELLED_ICON: '/assets/icons/cancelled.svg',
 }
 
 export const ImagePath = {

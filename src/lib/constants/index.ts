@@ -150,9 +150,17 @@ export const Icons = {
 		path: IconPath.CLOSE_ICON,
 		alt: 'Close',
 	},
-	APPOINTMENTS_ICON: {
-		path: IconPath.APPOINTMENTS_ICON,
-		alt: 'Appointments',
+	SCHEDULED_ICON: {
+		path: IconPath.SCHEDULED_ICON,
+		alt: 'Scheduled Appointment',
+	},
+	PENDING_ICON: {
+		path: IconPath.PENDING_ICON,
+		alt: 'Pending Appointment',
+	},
+	CANCELLED_ICON: {
+		path: IconPath.CANCELLED_ICON,
+		alt: 'Cancelled Appointment',
 	},
 }
 

@@ -16,19 +16,19 @@ export default function AdminDashboardPage({
           status={Status.SCHEDULED}
           count={5}
           label={`${Status.SCHEDULED} Appointments`}
-          icon={Icons.APPOINTMENTS_ICON}
+          icon={Icons.SCHEDULED_ICON}
         />
         <StateCard
           status={Status.PENDING}
-          count={5}
+          count={52}
           label={`${Status.PENDING} Appointments`}
-          icon={Icons.APPOINTMENTS_ICON}
+          icon={Icons.PENDING_ICON}
         />
         <StateCard
           status={Status.CANCELLED}
-          count={5}
+          count={15}
           label={`${Status.CANCELLED} Appointments`}
-          icon={Icons.APPOINTMENTS_ICON}
+          icon={Icons.CANCELLED_ICON}
         />
       </section>
       <div>
