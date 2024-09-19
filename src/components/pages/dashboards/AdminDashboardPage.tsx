@@ -1,7 +1,8 @@
-import StateCard from "@/components/shared/StateCard"
+// lib
 import { Icons } from "@/lib/constants"
-import { IconPath } from "@/lib/constants/paths"
 import { Status } from "@/lib/types/enums"
+// components
+import StateCard from "@/components/shared/StateCard"
 
 export default function AdminDashboardPage({
   params,
