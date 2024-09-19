@@ -150,6 +150,10 @@ export const Icons = {
 		path: IconPath.CLOSE_ICON,
 		alt: 'Close',
 	},
+	APPOINTMENTS_ICON: {
+		path: IconPath.APPOINTMENTS_ICON,
+		alt: 'Appointments',
+	},
 }
 
 // Kinde of images
