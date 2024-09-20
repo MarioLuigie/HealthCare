@@ -15,6 +15,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { StatusBadge } from "@/components/shared/StatusBadge"
+import PersonAvatar from "../PersonAvatar"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -76,9 +77,11 @@ export const columns: ColumnDef<Appointment>[] = [
     accessorKey: TableCells.PATIENT_PHONE,
     header: TableColumns.PHONE,
   },
+  // !! Check PersonAvatar - Create Doctor object, Doctor Collection and make relationship to patient
   {
     accessorKey: TableCells.APPOINTMENT_PRIMARY_PHYSICIAN,
     header: TableColumns.PRIMARY_PHYSICIAN,
+    // cell: ({ row }) => <PersonAvatar person={row.original.primaryPhysician} />,
   },
   {
     accessorKey: TableCells.APPOINTMENT_SCHEDULE,
