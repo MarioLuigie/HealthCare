@@ -97,6 +97,7 @@ export function DataTable<TData, TValue>({
 					size="sm"
 					onClick={() => table.previousPage()}
 					disabled={!table.getCanPreviousPage()}
+          className='cursor-pointer'
 				>
 					Previous
 				</Button>
@@ -105,6 +106,7 @@ export function DataTable<TData, TValue>({
 					size="sm"
 					onClick={() => table.nextPage()}
 					disabled={!table.getCanNextPage()}
+          className='cursor-pointer'
 				>
 					Next
 				</Button>
