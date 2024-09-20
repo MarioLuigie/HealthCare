@@ -31,15 +31,15 @@ export const columns: ColumnDef<Appointment>[] = [
     header: TableColumns.PHONE,
   },
   {
-    accessorKey: TableCells.APPOINTMENT_REASON,
-    header: TableColumns.REASON,
-  },
-  {
     accessorKey: TableCells.APPOINTMENT_PRIMARY_PHYSICIAN,
     header: TableColumns.PRIMARY_PHYSICIAN,
   },
   {
     accessorKey: TableCells.APPOINTMENT_SCHEDULE,
     header: TableColumns.SCHEDULE,
+  },
+  {
+    accessorKey: TableCells.APPOINTMENT_REASON,
+    header: TableColumns.REASON,
   },
 ]
