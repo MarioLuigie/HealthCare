@@ -42,3 +42,10 @@ export const DoctorPath = {
 	CRUZ: '/assets/images/dr-cruz.png',
 	SHARMA: '/assets/images/dr-sharma.png',
 }
+
+export const StatusIconPath = {
+	scheduled: '/assets/icons/check.svg',
+	pending: '/assets/icons/pending.svg',
+	cancelled: '/assets/icons/cancelled.svg',
+	finished: '/assets/icons/past.svg',
+}

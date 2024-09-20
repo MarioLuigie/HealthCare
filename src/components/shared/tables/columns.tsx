@@ -14,6 +14,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { StatusBadge } from "@/components/shared/StatusBadge"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -55,8 +56,13 @@ export const columns: ColumnDef<Appointment>[] = [
     },
   },
   {
+    cell: ({ row }) => <p>{row.index + 1}</p>,
+    header: TableColumns.NUMBER,
+  },
+  {
     accessorKey: TableCells.APPOINTMENT_STATUS,
     header: TableColumns.STATUS,
+    cell: ({ row }) => <StatusBadge status={row.original.status} />
   },
   {
     accessorKey: TableCells.PATIENT_NAME,

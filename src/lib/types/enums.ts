@@ -50,6 +50,7 @@ export enum TableCells {
 
 export enum TableColumns {
 	STATUS = 'Status',
+	NUMBER = 'No.',
 	NAME = 'Name',
 	EMAIL = 'Email',
 	PHONE = 'Phone',

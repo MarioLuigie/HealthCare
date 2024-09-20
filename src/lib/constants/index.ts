@@ -183,3 +183,10 @@ export const Images = {
 		alt: 'New appointment page image',
 	},
 }
+
+export const StatusIcon = {
+	Scheduled: '/assets/icons/check.svg',
+	Pending: '/assets/icons/pending.svg',
+	Cancelled: '/assets/icons/cancelled.svg',
+	Finished: '/assets/icons/past.svg',
+}
