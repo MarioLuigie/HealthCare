@@ -37,3 +37,24 @@ export enum Roles {
 	PATIENT = 'patient',
 	ADMIN = 'admin',
 }
+
+export enum TableCells {
+	APPOINTMENT_STATUS = 'status',
+	PATIENT_NAME = 'patient.name',
+	PATIENT_EMAIL = 'patient.email',
+	PATIENT_PHONE = 'patient.email',
+	APPOINTMENT_REASON = 'reason',
+	APPOINTMENT_PRIMARY_PHYSICIAN = 'primaryPhysician',
+	APPOINTMENT_SCHEDULE = 'schedule',
+}
+
+export enum TableColumns {
+	STATUS = 'Status',
+	NAME = 'Name',
+	EMAIL = 'Email',
+	PHONE = 'Phone',
+	PRIMARY_PHYSICIAN = 'Primary Physician',
+	PATIENT = 'Patient',
+	REASON = 'Reason',
+	SCHEDULE = 'Schedule',
+}
