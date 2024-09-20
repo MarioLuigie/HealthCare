@@ -27,6 +27,7 @@ import FileUploader from '@/components/shared/FileUploader'
 import 'react-datepicker/dist/react-datepicker.css'
 import { Route } from '@/lib/constants/paths'
 import { generateUrl } from '@/lib/utils'
+import PersonAvatar from '../shared/PersonAvatar'
 
 export default function PatientForm({ user }: { user: UserData }) {
 	const router = useRouter()
@@ -203,15 +204,7 @@ export default function PatientForm({ user }: { user: UserData }) {
 							value={doctor.name}
 							className="cursor-pointer"
 						>
-							<div className="flex justify-start items-center gap-4">
-								<Image
-									src={doctor.image}
-									width={32}
-									height={32}
-									alt={doctor.name}
-								/>
-								<p>{doctor.name}</p>
-							</div>
+							<PersonAvatar person={doctor} />
 						</SelectItem>
 					))}
 				</CustomFormField>
