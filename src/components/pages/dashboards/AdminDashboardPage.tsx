@@ -34,25 +34,21 @@ export default async function AdminDashboardPage({
 				<StateCard
 					status={Status.SCHEDULED}
 					count={appointments.scheduledCount}
-					label={`${Status.SCHEDULED} Appointments`}
 					icon={Icons.SCHEDULED_ICON}
 				/>
 				<StateCard
 					status={Status.FINISHED}
 					count={appointments.finishedCount}
-					label={`${Status.FINISHED} Appointments`}
 					icon={Icons.FINISHED_ICON}
 				/>
 				<StateCard
 					status={Status.PENDING}
 					count={appointments.pendingCount}
-					label={`${Status.PENDING} Appointments`}
 					icon={Icons.PENDING_ICON}
 				/>
 				<StateCard
 					status={Status.CANCELLED}
 					count={appointments.cancelledCount}
-					label={`${Status.CANCELLED} Appointments`}
 					icon={Icons.CANCELLED_ICON}
 				/>
 			</section>

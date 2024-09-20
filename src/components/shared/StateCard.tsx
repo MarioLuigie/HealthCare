@@ -5,14 +5,12 @@ import Image from 'next/image'
 type StateCardProps = {
 	status: Status
 	count: number
-	label: string
 	icon: Icons
 }
 
 export default function StateCard({
 	status,
 	count,
-	label,
 	icon,
 }: StateCardProps) {
 	const statusClasses: { [key in Status]: string } = {
@@ -34,7 +32,7 @@ export default function StateCard({
 				/>
 				<h2 className="text-32-bold text-zinc-200">{count}</h2>
 			</div>
-			<p className="text-14-regular text-zinc-400">{label}</p>
+			<p className="text-14-regular text-zinc-400">{status} Appointment</p>
 		</div>
 	)
 }
