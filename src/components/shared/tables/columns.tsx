@@ -28,7 +28,7 @@ export const columns: ColumnDef<Appointment>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const payment = row.original
+      const appointment = row.original
  
       return (
         <DropdownMenu>
@@ -41,14 +41,14 @@ export const columns: ColumnDef<Appointment>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Your Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
+              onClick={() => navigator.clipboard.writeText(appointment.$id)}
               className="cursor-pointer"
             >
-              Copy payment ID
+              Copy appointment ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">View patient</DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">View appointment details</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )

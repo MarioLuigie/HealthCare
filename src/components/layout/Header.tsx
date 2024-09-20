@@ -6,7 +6,7 @@ export default function Header({ params }: { params: SingleSlugParams}) {
       <LogoFull />
       <div className="flex"></div>
       <div className="flex-end">
-        <div>{params.role}</div>
+        <div>Welcome, {params.role}</div>
       </div>
     </header>
   )

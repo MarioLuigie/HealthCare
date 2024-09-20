@@ -32,7 +32,7 @@ export default function StateCard({
 				/>
 				<h2 className="text-32-bold text-zinc-200">{count}</h2>
 			</div>
-			<p className="text-14-regular text-zinc-400">{status} Appointment</p>
+			<p className="text-14-regular text-zinc-400">{status} Appointments</p>
 		</div>
 	)
 }
