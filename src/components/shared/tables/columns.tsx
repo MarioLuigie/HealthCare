@@ -3,6 +3,17 @@
 import { ColumnDef } from "@tanstack/react-table"
 import { Appointment } from '@/lib/types/appwrite.types'
 import { TableCells, TableColumns } from '@/lib/types/enums'
+import { MoreHorizontal } from "lucide-react"
+ 
+import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
