@@ -42,7 +42,7 @@ export enum TableCells {
 	APPOINTMENT_STATUS = 'status',
 	PATIENT_NAME = 'patient.name',
 	PATIENT_EMAIL = 'patient.email',
-	PATIENT_PHONE = 'patient.email',
+	PATIENT_PHONE = 'patient.phone',
 	APPOINTMENT_REASON = 'reason',
 	APPOINTMENT_PRIMARY_PHYSICIAN = 'primaryPhysician',
 	APPOINTMENT_SCHEDULE = 'schedule',
