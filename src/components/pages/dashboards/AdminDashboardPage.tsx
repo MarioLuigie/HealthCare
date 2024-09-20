@@ -2,9 +2,15 @@
 import { Icons } from '@/lib/constants'
 import { Status } from '@/lib/types/enums'
 import { Appointment } from '@/lib/types/appwrite.types'
+import { InitialCounts } from '@/lib/actions/appointment.actions'
 // components
 import StateCard from '@/components/shared/StateCard'
 import { getAppointmentsOrderedByStatus } from '@/lib/actions/appointment.actions'
+
+interface AppointmentsOrderedByStatus extends InitialCounts {
+	totalCount: number
+	documents: Appointment[]
+}
 
 function countAppointments(
 	appointments: Appointment[],
@@ -32,32 +38,33 @@ export default async function AdminDashboardPage({
 }) {
 	const { role, id } = params
 
-	const appointments = await getAppointmentsOrderedByStatus()
+	const appointments: AppointmentsOrderedByStatus =
+		await getAppointmentsOrderedByStatus()
 
 	return (
 		<div className="flex flex-col items-center justify-start grow p-6">
 			<section className="admin-stat">
 				<StateCard
 					status={Status.SCHEDULED}
-					count={countAppointments(appointments, Status.SCHEDULED)}
+					count={appointments.scheduledCount}
 					label={`${Status.SCHEDULED} Appointments`}
 					icon={Icons.SCHEDULED_ICON}
 				/>
 				<StateCard
 					status={Status.PENDING}
-					count={countAppointments(appointments, Status.PENDING)}
+					count={appointments.pendingCount}
 					label={`${Status.PENDING} Appointments`}
 					icon={Icons.PENDING_ICON}
 				/>
 				<StateCard
 					status={Status.CANCELLED}
-					count={countAppointments(appointments, Status.CANCELLED)}
+					count={appointments.cancelledCount}
 					label={`${Status.CANCELLED} Appointments`}
 					icon={Icons.CANCELLED_ICON}
 				/>
 				<StateCard
 					status={Status.FINISHED}
-					count={countAppointments(appointments, Status.FINISHED)}
+					count={appointments.finishedCount}
 					label={`${Status.FINISHED} Appointments`}
 					icon={Icons.FINISHED_ICON}
 				/>

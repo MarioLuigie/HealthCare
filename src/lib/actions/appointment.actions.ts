@@ -17,6 +17,14 @@ import {
 	ScheduleAppointmentFormValues,
 } from '@/lib/types/zod'
 import { deepClone } from '@/lib/utils'
+import { Appointment } from '@/lib/types/appwrite.types'
+
+export interface InitialCounts {
+	scheduledCount: number,
+	pendingCount: number,
+	cancelledCount: number,
+	finishedCount: number,
+}
 
 // Get Appointment
 export async function getAppointment(appointmentId: string) {
@@ -41,13 +49,40 @@ export async function getAppointmentsOrderedByStatus() {
 			[Query.orderDesc('$createdAt')]
 		)
 
-		const initialCounts = {
+		const initialCounts: InitialCounts = {
 			scheduledCount: 0,
 			pendingCount: 0,
 			cancelledCount: 0,
+			finishedCount: 0,
 		}
 
-		return deepClone(appointments.documents)
+		const counts: InitialCounts = (
+			appointments.documents as Appointment[]
+		).reduce((acc, currentAppointment) => {
+			switch (currentAppointment.status) {
+				case Status.SCHEDULED:
+					acc.scheduledCount++
+					break
+				case Status.PENDING:
+					acc.pendingCount++
+					break
+				case Status.CANCELLED:
+					acc.cancelledCount++
+					break
+				case Status.FINISHED:
+					acc.finishedCount++
+					break
+			}
+			return acc
+		}, initialCounts)
+
+		const data = {
+			...counts,
+			totalCount: appointments.total,
+			documents: appointments.documents,
+		}
+
+		return deepClone(data)
 	} catch (err) {
 		console.error(err)
 	}
