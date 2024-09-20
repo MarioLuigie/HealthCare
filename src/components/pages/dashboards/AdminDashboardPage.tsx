@@ -6,6 +6,8 @@ import { InitialCounts } from '@/lib/actions/appointment.actions'
 // components
 import StateCard from '@/components/shared/StateCard'
 import { getAppointmentsOrderedByStatus } from '@/lib/actions/appointment.actions'
+import DataTable from '@/components/shared/tables/DataTable'
+import columns from '@/components/shared/tables/columns'
 
 interface AppointmentsOrderedByStatus extends InitialCounts {
 	totalCount: number
@@ -24,12 +26,14 @@ export default async function AdminDashboardPage({
 
 	return (
 		<div className="admin-main">
+			{/* Dashboard introduction*/}
 			<section className="w-full space-y-4">
 				<h1 className="header">Welcome</h1>
 				<p className="text-dark-700">
 					Start the day with managing new appointments
 				</p>
 			</section>
+			{/* Statuses Cards */}
 			<section className="admin-stat">
 				<StateCard
 					status={Status.SCHEDULED}
@@ -52,6 +56,15 @@ export default async function AdminDashboardPage({
 					icon={Icons.CANCELLED_ICON}
 				/>
 			</section>
+			{/* Data Table */}
+			<section>
+				<DataTable columns={columns} data={appointments.documents} />
+			</section>
+
+
+
+
+
 			{/* <div>
 				<p>{role.toUpperCase()} DASHBOARD PAGE.</p>
 				<p className="text-sm text-dark-600">
