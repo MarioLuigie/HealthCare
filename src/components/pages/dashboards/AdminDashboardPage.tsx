@@ -23,10 +23,13 @@ export default async function AdminDashboardPage({
 		await getAppointmentsOrderedByStatus()
 
 	return (
-		<div className="flex flex-col items-center justify-start grow p-6">
-			<p className="w-full text-lg mb-4">
-				Total Appointments: {appointments.totalCount}
-			</p>
+		<div className="admin-main">
+			<section className="w-full space-y-4">
+				<h1 className="header">Welcome</h1>
+				<p className="text-dark-700">
+					Start the day with managing new appointments
+				</p>
+			</section>
 			<section className="admin-stat">
 				<StateCard
 					status={Status.SCHEDULED}
@@ -62,3 +65,7 @@ export default async function AdminDashboardPage({
 		</div>
 	)
 }
+
+{
+	/* <div className="flex flex-col items-center justify-start grow p-6"></div> */
+} //mainwrapper
