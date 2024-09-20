@@ -95,9 +95,10 @@ const config = {
 				sans: ['var(--font-sans)', ...fontFamily.sans],
 			},
 			backgroundImage: {
-				scheduled: "url('/assets/images/scheduled-bg.png')",
-				pending: "url('/assets/images/pending-bg.png')",
-				cancelled: "url('/assets/images/cancelled-bg.png')",
+				scheduled: "url('/assets/images/bg-scheduled.png')",
+				pending: "url('/assets/images/bg-pending.png')",
+				cancelled: "url('/assets/images/bg-cancelled.png')",
+				finished: "url('/assets/images/bg-finished.png')",
 			},
 			keyframes: {
 				'accordion-down': {

@@ -33,13 +33,19 @@ export async function getAppointment(appointmentId: string) {
 	}
 }
 
-export async function getAppointments() {
+export async function getAppointmentsOrderedByStatus() {
 	try {
 		const appointments = await databases.listDocuments(
 			APPWRITE_DB_ID!,
 			APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
 			[Query.orderDesc('$createdAt')]
 		)
+
+		const initialCounts = {
+			scheduledCount: 0,
+			pendingCount: 0,
+			cancelledCount: 0,
+		}
 
 		return deepClone(appointments.documents)
 	} catch (err) {

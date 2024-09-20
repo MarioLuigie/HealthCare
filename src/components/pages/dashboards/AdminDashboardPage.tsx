@@ -4,7 +4,7 @@ import { Status } from "@/lib/types/enums"
 import { Appointment } from "@/lib/types/appwrite.types"
 // components
 import StateCard from "@/components/shared/StateCard"
-import { getAppointments } from "@/lib/actions/appointment.actions"
+import { getAppointmentsOrderedByStatus } from "@/lib/actions/appointment.actions"
 
 function countAppointments(
   appointments: Appointment[],
@@ -32,7 +32,7 @@ export default async function AdminDashboardPage({
 }) {
   const { role, id } = params
 
-  const appointments = await getAppointments()
+  const appointments = await getAppointmentsOrderedByStatus()
 
   return (
     <div className="flex flex-col items-center justify-start grow p-6">
