@@ -162,6 +162,10 @@ export const Icons = {
 		path: IconPath.CANCELLED_ICON,
 		alt: 'Cancelled Appointment',
 	},
+	FINISHED_ICON: {
+		path: IconPath.FINISHED_ICON,
+		alt: 'Finished Appointment',
+	},
 }
 
 // Kinde of images

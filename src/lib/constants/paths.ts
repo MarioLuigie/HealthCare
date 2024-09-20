@@ -22,6 +22,7 @@ export const IconPath = {
 	SCHEDULED_ICON: '/assets/icons/scheduled.svg',
 	PENDING_ICON: '/assets/icons/pending.svg',
 	CANCELLED_ICON: '/assets/icons/cancelled.svg',
+	FINISHED_ICON: '/assets/icons/finished.svg',
 }
 
 export const ImagePath = {
