@@ -12,25 +12,6 @@ interface AppointmentsOrderedByStatus extends InitialCounts {
 	documents: Appointment[]
 }
 
-function countAppointments(
-	appointments: Appointment[],
-	status: Status
-): number {
-	if (!appointments || !status) {
-		return 0
-	}
-
-	const validStatuses = [Status.SCHEDULED, Status.PENDING, Status.CANCELLED]
-
-	if (!validStatuses.includes(status)) {
-		console.warn(`Invalid status provided: ${status}`)
-		return 0
-	}
-
-	return appointments.filter((appointment) => appointment.status === status)
-		.length
-}
-
 export default async function AdminDashboardPage({
 	params,
 }: {
