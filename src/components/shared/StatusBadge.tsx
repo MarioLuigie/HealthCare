@@ -8,7 +8,7 @@ import { StatusConfig } from "@/lib/constants"
 export const StatusBadge = ({ status }: { status: Status }) => {
   // status = Status.SCHEDULED
 
-  const { bgColor, text, icon } = StatusConfig[status] || {}
+  const { bgColor, textColor, icon } = StatusConfig[status] || {}
 
   return (
     <div className={clsx("status-badge", bgColor)}>
@@ -19,7 +19,7 @@ export const StatusBadge = ({ status }: { status: Status }) => {
         height={24}
         className="h-fit w-3"
       />
-      <p className={clsx("text-12-semibold capitalize", text)}>
+      <p className={clsx("text-12-semibold capitalize", textColor)}>
         {status.toLowerCase()}
       </p>
     </div>
