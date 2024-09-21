@@ -3,6 +3,7 @@ import { Icons } from '@/lib/constants'
 import { Status } from '@/lib/types/enums'
 import { Appointment } from '@/lib/types/appwrite.types'
 import { InitialCounts } from '@/lib/actions/appointment.actions'
+import { capitalizeFirstLetter } from '@/lib/utils'
 // components
 import StateCard from '@/components/shared/StateCard'
 import { getAppointmentsOrderedByStatus } from '@/lib/actions/appointment.actions'
@@ -28,7 +29,7 @@ export default async function AdminDashboardPage({
 		<div className="admin-main">
 			{/* Dashboard introduction*/}
 			<section className="w-full space-y-4">
-				<h1 className="header">Dashboard</h1>
+				<h1 className="header">{capitalizeFirstLetter(params.role)} Dashboard</h1>
 				<p className="text-dark-700">
 					Start the day with managing new appointments
 				</p>

@@ -4,6 +4,7 @@ import { ColumnDef } from "@tanstack/react-table"
 import { Appointment } from '@/lib/types/appwrite.types'
 import { TableCells, TableColumns } from '@/lib/types/enums'
 import { MoreHorizontal } from "lucide-react"
+import { truncateText } from '@/lib/utils/index'
  
 import { Button } from "@/components/ui/button"
 import {
@@ -82,6 +83,7 @@ export const columns: ColumnDef<Appointment>[] = [
     accessorKey: TableCells.APPOINTMENT_PRIMARY_PHYSICIAN,
     header: TableColumns.PRIMARY_PHYSICIAN,
     // cell: ({ row }) => <PersonAvatar person={row.original.primaryPhysician} />,
+    cell: ({ row }) => <p>Dr.{' '}{row.original.primaryPhysician}</p>,
   },
   {
     accessorKey: TableCells.APPOINTMENT_SCHEDULE,
@@ -90,5 +92,6 @@ export const columns: ColumnDef<Appointment>[] = [
   {
     accessorKey: TableCells.APPOINTMENT_REASON,
     header: TableColumns.REASON,
+    cell: ({ row }) => <p>{truncateText(row.original.reason, 7)}</p>
   },
 ]
