@@ -9,26 +9,26 @@ export const Route = {
 
 export const IconPath = {
 	LOGO_FULL: '/assets/icons/logo-full.svg',
-	LOGO_ICON: '/assets/icons/logo-icon.svg',
-	USER_ICON: '/assets/icons/user.svg',
-	EMAIL_ICON: '/assets/icons/email.svg',
-	PHONE_ICON: '/assets/icons/phone.svg',
+	LOGO: '/assets/icons/logo-icon.svg',
+	USER: '/assets/icons/user.svg',
+	EMAIL: '/assets/icons/email.svg',
+	PHONE: '/assets/icons/phone.svg',
 	LOADER: '/assets/icons/loader.svg',
-	UPLOAD_ICON: '/assets/icons/upload.svg',
-	UPLOAD_GIF: '/assets/gifs/upload.gif',
-	SUCCESS_GIF: '/assets/gifs/success.gif',
-	CALENDAR_ICON: '/assets/icons/calendar.svg',
-	CLOSE_ICON: '/assets/icons/close.svg',
-	SCHEDULED_ICON: '/assets/icons/scheduled.svg',
-	PENDING_ICON: '/assets/icons/pending.svg',
-	CANCELLED_ICON: '/assets/icons/cancelled.svg',
-	FINISHED_ICON: '/assets/icons/finished.svg',
+	UPLOAD: '/assets/icons/upload.svg',
+	UPLOAD_ANIM: '/assets/gifs/upload.gif',
+	SUCCESS_ANIM: '/assets/gifs/success.gif',
+	CALENDAR: '/assets/icons/calendar.svg',
+	CLOSE: '/assets/icons/close.svg',
+	SCHEDULED: '/assets/icons/scheduled.svg',
+	PENDING: '/assets/icons/pending.svg',
+	CANCELLED: '/assets/icons/cancelled.svg',
+	FINISHED: '/assets/icons/finished.svg',
 }
 
 export const ImagePath = {
-	HOME_PAGE_IMAGE: '/assets/images/onboarding-img.png',
-	REGISTER_PAGE_IMAGE: '/assets/images/register-img.jpg',
-	NEW_APPOINTMENT_PAGE_IMAGE: '/assets/images/appointment-img.jpg',
+	HOME_PAGE: '/assets/images/onboarding-img.png',
+	REGISTER_PAGE: '/assets/images/register-img.jpg',
+	NEW_APPOINTMENT_PAGE: '/assets/images/appointment-img.jpg',
 }
 
 export const DoctorPath = {
@@ -43,9 +43,4 @@ export const DoctorPath = {
 	SHARMA: '/assets/images/dr-sharma.png',
 }
 
-export const StatusIconPath = {
-	scheduled: '/assets/icons/check.svg',
-	pending: '/assets/icons/pending.svg',
-	cancelled: '/assets/icons/cancelled.svg',
-	finished: '/assets/icons/past.svg',
-}
+

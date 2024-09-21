@@ -38,10 +38,10 @@ export default function FileUploader({ files, onChange }: FileUploaderProps) {
 					))
 			) : isDragActive ? (
 				<Image
-					src={Icons.UPLOAD_GIF.path}
+					src={Icons.UPLOAD_ANIME_ICON.path}
 					width={100}
 					height={100}
-					alt={Icons.UPLOAD_GIF.alt}
+					alt={Icons.UPLOAD_ANIME_ICON.alt}
 				/>
 			) : (
 				<>

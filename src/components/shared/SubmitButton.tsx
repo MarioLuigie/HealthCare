@@ -27,8 +27,8 @@ export default function SubmitButton({
 			{isLoading ? (
 				<div className="flex items-center gap-4">
 					<Image
-						src={Icons.LOADER.path}
-						alt={Icons.LOADER.alt}
+						src={Icons.LOADER_ICON.path}
+						alt={Icons.LOADER_ICON.alt}
 						width={24}
 						height={24}
 						className="animate-spin"

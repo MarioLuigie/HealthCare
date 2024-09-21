@@ -1,11 +1,11 @@
 "use client"
 
 import { ColumnDef } from "@tanstack/react-table"
-import { Appointment } from '@/lib/types/appwrite.types'
-import { TableCells, TableColumns } from '@/lib/types/enums'
+import { Appointment } from "@/lib/types/appwrite.types"
+import { TableCells, TableColumns } from "@/lib/types/enums"
 import { MoreHorizontal } from "lucide-react"
-import { truncateText } from '@/lib/utils/index'
- 
+import { truncateText } from "@/lib/utils/index"
+
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -29,10 +29,11 @@ import PersonAvatar from "../PersonAvatar"
 
 export const columns: ColumnDef<Appointment>[] = [
   {
+    header: "Actions",
     id: "actions",
     cell: ({ row }) => {
       const appointment = row.original
- 
+
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -42,7 +43,7 @@ export const columns: ColumnDef<Appointment>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Your Actions</DropdownMenuLabel>
+            {/* <DropdownMenuLabel>Your Actions</DropdownMenuLabel> */}
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(appointment.$id)}
               className="cursor-pointer"
@@ -50,8 +51,22 @@ export const columns: ColumnDef<Appointment>[] = [
               Copy appointment ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem className="cursor-pointer">View patient</DropdownMenuItem>
-            <DropdownMenuItem className="cursor-pointer">View appointment details</DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
+              Schedule
+            </DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
+              Cancel
+            </DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
+              Finish
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem className="cursor-pointer">
+              View appointment details
+            </DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
+              View patient details
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )
@@ -64,7 +79,7 @@ export const columns: ColumnDef<Appointment>[] = [
   {
     accessorKey: TableCells.APPOINTMENT_STATUS,
     header: TableColumns.STATUS,
-    cell: ({ row }) => <StatusBadge status={row.original.status} />
+    cell: ({ row }) => <StatusBadge status={row.original.status} />,
   },
   {
     accessorKey: TableCells.PATIENT_NAME,
@@ -83,7 +98,7 @@ export const columns: ColumnDef<Appointment>[] = [
     accessorKey: TableCells.APPOINTMENT_PRIMARY_PHYSICIAN,
     header: TableColumns.PRIMARY_PHYSICIAN,
     // cell: ({ row }) => <PersonAvatar person={row.original.primaryPhysician} />,
-    cell: ({ row }) => <p>Dr.{' '}{row.original.primaryPhysician}</p>,
+    cell: ({ row }) => <p>Dr. {row.original.primaryPhysician}</p>,
   },
   {
     accessorKey: TableCells.APPOINTMENT_SCHEDULE,
@@ -92,6 +107,6 @@ export const columns: ColumnDef<Appointment>[] = [
   {
     accessorKey: TableCells.APPOINTMENT_REASON,
     header: TableColumns.REASON,
-    cell: ({ row }) => <p>{truncateText(row.original.reason, 7)}</p>
+    cell: ({ row }) => <p>{truncateText(row.original.reason, 7)}</p>,
   },
 ]

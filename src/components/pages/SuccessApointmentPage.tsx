@@ -33,7 +33,7 @@ export default async function SuccessApointmentPage({
 			<div className="success-img">
 				<LogoFull />
 				<SuccessRes
-					imageSrc={IconPath.SUCCESS_GIF}
+					imageSrc={IconPath.SUCCESS_ANIM}
 					entity="appointment request"
 					msg="We'll be in touch shortly to confirm."
 				/>

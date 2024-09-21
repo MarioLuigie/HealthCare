@@ -9,10 +9,10 @@ export default function LogoFull() {
 	return (
 		<Link href={Route.HOME}>
 			<Image
-				src={Icons.LOGO_FULL.path}
+				src={Icons.LOGO_FULL_ICON.path}
 				height={1000}
 				width={1000}
-				alt={Icons.LOGO_FULL.alt}
+				alt={Icons.LOGO_FULL_ICON.alt}
 				className="h-10 w-fit"
 			/>
 		</Link>

@@ -110,60 +110,60 @@ export const identificationDocumentTypes = [
 
 // Kinde of icons
 export const Icons = {
-	LOGO_FULL: {
+	LOGO_FULL_ICON: {
 		path: IconPath.LOGO_FULL,
 		alt: 'Logo',
 	},
 	LOGO_ICON: {
-		path: IconPath.LOGO_ICON,
+		path: IconPath.LOGO,
 		alt: 'Logo',
 	},
 	USER_ICON: {
-		path: IconPath.USER_ICON,
+		path: IconPath.USER,
 		alt: 'User icon',
 	},
 	EMAIL_ICON: {
-		path: IconPath.EMAIL_ICON,
+		path: IconPath.EMAIL,
 		alt: 'Email icon',
 	},
 	PHONE_ICON: {
-		path: IconPath.PHONE_ICON,
+		path: IconPath.PHONE,
 		alt: 'Phone icon',
 	},
-	LOADER: {
+	LOADER_ICON: {
 		path: IconPath.LOADER,
 		alt: 'Loader',
 	},
 	UPLOAD_ICON: {
-		path: IconPath.UPLOAD_ICON,
+		path: IconPath.UPLOAD,
 		alt: 'Upload static icon',
 	},
-	UPLOAD_GIF: {
-		path: IconPath.UPLOAD_GIF,
+	UPLOAD_ANIME_ICON: {
+		path: IconPath.UPLOAD_ANIM,
 		alt: 'Upload animation',
 	},
 	CALENDAR_ICON: {
-		path: IconPath.CALENDAR_ICON,
+		path: IconPath.CALENDAR,
 		alt: 'Calendar',
 	},
 	CLOSE_ICON: {
-		path: IconPath.CLOSE_ICON,
+		path: IconPath.CLOSE,
 		alt: 'Close',
 	},
 	SCHEDULED_ICON: {
-		path: IconPath.SCHEDULED_ICON,
+		path: IconPath.SCHEDULED,
 		alt: 'Scheduled Appointment',
 	},
 	PENDING_ICON: {
-		path: IconPath.PENDING_ICON,
+		path: IconPath.PENDING,
 		alt: 'Pending Appointment',
 	},
 	CANCELLED_ICON: {
-		path: IconPath.CANCELLED_ICON,
+		path: IconPath.CANCELLED,
 		alt: 'Cancelled Appointment',
 	},
 	FINISHED_ICON: {
-		path: IconPath.FINISHED_ICON,
+		path: IconPath.FINISHED,
 		alt: 'Finished Appointment',
 	},
 }
@@ -171,22 +171,24 @@ export const Icons = {
 // Kinde of images
 export const Images = {
 	HOME_PAGE_IMAGE: {
-		path: ImagePath.HOME_PAGE_IMAGE,
+		path: ImagePath.HOME_PAGE,
 		alt: 'Home page image',
 	},
 	REGISTER_PAGE_IMAGE: {
-		path: ImagePath.REGISTER_PAGE_IMAGE,
+		path: ImagePath.REGISTER_PAGE,
 		alt: 'Registration page image',
 	},
 	NEW_APPOINTMENT_PAGE_IMAGE: {
-		path: ImagePath.NEW_APPOINTMENT_PAGE_IMAGE,
+		path: ImagePath.NEW_APPOINTMENT_PAGE,
 		alt: 'New appointment page image',
 	},
 }
 
-export const StatusIcon = {
+export const StatusIcons = {
 	Scheduled: '/assets/icons/check.svg',
 	Pending: '/assets/icons/pending.svg',
 	Cancelled: '/assets/icons/cancelled.svg',
 	Finished: '/assets/icons/past.svg',
 }
+
+
