@@ -1,6 +1,7 @@
 import { Status } from '@/lib/types/enums'
 import clsx from 'clsx'
 import Image from 'next/image'
+import { StatusConfig } from '@/lib/constants'
 
 type StateCardProps = {
 	status: Status
@@ -15,10 +16,10 @@ export default function StateCard({
 }: StateCardProps) {
 	// Tailwind custom classes in tailwin.config.ts => backgroundImage
 	const statusClasses: { [key in Status]: string } = {
-		[Status.SCHEDULED]: 'bg-scheduled',
-		[Status.PENDING]: 'bg-pending',
-		[Status.CANCELLED]: 'bg-cancelled',
-		[Status.FINISHED]: 'bg-finished',
+		[Status.SCHEDULED]: StatusConfig.Scheduled.bgImage,
+		[Status.PENDING]: StatusConfig.Pending.bgImage,
+		[Status.CANCELLED]: StatusConfig.Cancelled.bgImage,
+		[Status.FINISHED]: StatusConfig.Finished.bgImage,
 	}
 
 	return (

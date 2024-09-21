@@ -1,4 +1,4 @@
-import { Gender } from '@/lib/types/enums'
+import { Gender, Status } from '@/lib/types/enums'
 import { PatientFormValues } from '@/lib/types/zod'
 import { ImagePath, IconPath, DoctorPath } from '@/lib/constants/paths'
 
@@ -184,11 +184,38 @@ export const Images = {
 	},
 }
 
-export const StatusIcons = {
-	Scheduled: '/assets/icons/check.svg',
-	Pending: '/assets/icons/pending.svg',
-	Cancelled: '/assets/icons/cancelled.svg',
-	Finished: '/assets/icons/past.svg',
+export const StatusConfig = {
+	[Status.SCHEDULED]: {
+		bgImage: 'bg-scheduled',// tailwind backgroundImage class
+		bgColor: "bg-green-600",
+		text: "text-green-500",
+		icon: IconPath.SCHEDULED,
+	},
+	[Status.PENDING]: {
+		bgImage: 'bg-pending',
+		bgColor: "bg-blue-600",
+		text: "text-blue-500",
+		icon: IconPath.PENDING,
+	},
+	[Status.CANCELLED]: {
+		bgImage: 'bg-cancelled',
+		bgColor: "bg-red-600",
+		text: "text-red-500",
+		icon: IconPath.CANCELLED,
+	},
+	[Status.FINISHED]: {
+		bgImage: 'bg-finished',
+		bgColor: "bg-zinc-600",
+		text: "text-zinc-300",
+		icon: IconPath.FINISHED,
+	},
 }
+
+// export const StatusIcons = {
+// 	Scheduled: '/assets/icons/check.svg',
+// 	Pending: '/assets/icons/pending.svg',
+// 	Cancelled: '/assets/icons/cancelled.svg',
+// 	Finished: '/assets/icons/past.svg',
+// }
 
 
