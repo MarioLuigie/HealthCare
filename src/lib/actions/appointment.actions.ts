@@ -147,7 +147,7 @@ export async function createAppointment(
 // Cancel Appointment
 export async function cancelAppointment(
 	appointment: Appointment,
-	params: SingleSlugParams
+	params: SingleSlugParams 
 ) {
 	const status: Status = Status.CANCELLED
 	const { role, id } = params

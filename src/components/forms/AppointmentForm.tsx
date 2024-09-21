@@ -79,13 +79,13 @@ export default function AppointmentForm({
 					)
 				}
 			} else if (actionType === ActionTypes.CANCEL) {
-				const cancelledAppointment = await handleCancelAppointment(
-					appointmentFormValues as CancelAppointmentFormValues
-				)
+				// const cancelledAppointment = await handleCancelAppointment(
+				// 	appointmentFormValues as CancelAppointmentFormValues
+				// )
 			} else if (actionType === ActionTypes.SCHEDULE) {
-				const scheduledAppointment = await handleScheduleAppointment(
-					appointmentFormValues as ScheduleAppointmentFormValues
-				)
+				// const scheduledAppointment = await handleScheduleAppointment(
+				// 	appointmentFormValues as ScheduleAppointmentFormValues
+				// )
 			}
 
 			form.reset()
