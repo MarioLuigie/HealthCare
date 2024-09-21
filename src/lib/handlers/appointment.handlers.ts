@@ -1,53 +1,65 @@
 // lib
 import {
-	createAppointment,
-	cancelAppointment,
-	scheduleAppointment,
-} from '@/lib/actions/appointment.actions'
+  createAppointment,
+  cancelAppointment,
+  scheduleAppointment,
+} from "@/lib/actions/appointment.actions"
 import {
-	CreateAppointmentFormValues,
-	CancelAppointmentFormValues,
-	ScheduleAppointmentFormValues,
-} from '@/lib/types/zod'
+  CreateAppointmentFormValues,
+  CancelAppointmentFormValues,
+  ScheduleAppointmentFormValues,
+} from "@/lib/types/zod"
+import { Appointment } from "@/lib/types/appwrite.types"
 
 // Create Appointment
 export async function handleCreateAppointment(
-	appointmentFormValues: CreateAppointmentFormValues,
-	patientId: string,
-	userId: string
+  appointmentFormValues: CreateAppointmentFormValues,
+  patientId: string,
+  userId: string
 ) {
-	try {
-		const createdAppointment = await createAppointment(
-			appointmentFormValues,
-			patientId,
-			userId
-		)
+  try {
+    const createdAppointment = await createAppointment(
+      appointmentFormValues,
+      patientId,
+      userId
+    )
 
-		return createdAppointment
-		
-	} catch (err) {
-		console.error(err)
-	}
+    return createdAppointment
+  } catch (err) {
+    console.error(err)
+  }
 }
 
 // Cancel Appointment
 export async function handleCancelAppointment(
-	appointmentFormValues: CancelAppointmentFormValues
+  appointment: Appointment,
+  params: SingleSlugParams
 ) {
-	try {
-		const cancelledApointment = await cancelAppointment(appointmentFormValues)
-	} catch (err) {
-		console.error(err)
-	}
+  try {
+    const cancelledAppointment = await cancelAppointment(appointment, params)
+  } catch (err) {
+    console.error(err)
+  }
 }
 
 // Schedule Appointment
 export async function handleScheduleAppointment(
-	appointmentFormValues: ScheduleAppointmentFormValues
+  appointmentFormValues: ScheduleAppointmentFormValues
 ) {
-	try {
-		const scheduledApointment = await scheduleAppointment(appointmentFormValues)
-	} catch (err) {
-		console.error(err)
-	}
+  try {
+    const scheduledApointment = await scheduleAppointment(appointmentFormValues)
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+// Finish Appointment
+export async function handleFinishAppointment(
+  appointmentFormValues: ScheduleAppointmentFormValues
+) {
+  try {
+    const scheduledApointment = await scheduleAppointment(appointmentFormValues)
+  } catch (err) {
+    console.error(err)
+  }
 }

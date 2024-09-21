@@ -16,8 +16,10 @@ import {
 	CancelAppointmentFormValues,
 	ScheduleAppointmentFormValues,
 } from '@/lib/types/zod'
-import { deepClone } from '@/lib/utils'
+import { deepClone, generateUrl } from '@/lib/utils'
 import { Appointment } from '@/lib/types/appwrite.types'
+import { revalidatePath } from 'next/cache'
+import { Route } from '../constants/paths'
 
 export interface InitialCounts {
 	scheduledCount: number,
@@ -120,12 +122,14 @@ export async function createAppointment(
 			appointmentData
 		)
 
+		// Add created appointment to appointments list of patient
 		if (createdAppointment) {
 			const updatedAppointments = [
 				...createdAppointment.patient.appointments,
 				createdAppointment.$id,
 			]
 
+			// Update patient appointments list - overwrite appointments of patient with updatedAppointments
 			await databases.updateDocument(
 				APPWRITE_DB_ID!,
 				APPWRITE_DB_PATIENT_COLLECTION_ID!,
@@ -142,11 +146,22 @@ export async function createAppointment(
 
 // Cancel Appointment
 export async function cancelAppointment(
-	appointmentFormValues: CancelAppointmentFormValues
+	appointment: Appointment,
+	params: SingleSlugParams
 ) {
 	const status: Status = Status.CANCELLED
-
+	const { role, id } = params
 	try {
+		const cancelledAppointment = await databases.updateDocument(
+			APPWRITE_DB_ID!,
+			APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
+			appointment.$id,
+			{ status: status }
+		)
+
+		revalidatePath(generateUrl([Route.DASHBOARD, role, id]))
+	
+		return deepClone(cancelledAppointment)
 	} catch (err) {
 		console.error(err)
 	}

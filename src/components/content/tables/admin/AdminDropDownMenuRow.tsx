@@ -1,3 +1,5 @@
+'use client'
+
 import { Status } from "@/lib/types/enums"
 import { MoreHorizontal } from "lucide-react"
 
@@ -11,6 +13,9 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Icons, StatusConfig } from "@/lib/constants"
 import Image from "next/image"
+
+import { handleCancelAppointment } from "@/lib/handlers/appointment.handlers"
+import { useParams } from 'next/navigation'
 
 const StatusItem = ({
   status,
@@ -36,6 +41,9 @@ const StatusItem = ({
 }
 
 export default function AdminDropDownMenuRow({ row }: { row: any }) {
+  const params = useParams() as SingleSlugParams
+  const appointment = row.original
+  
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -47,7 +55,7 @@ export default function AdminDropDownMenuRow({ row }: { row: any }) {
       <DropdownMenuContent align="end">
         {/* <DropdownMenuLabel>Your Actions</DropdownMenuLabel> */}
         <DropdownMenuItem
-          onClick={() => navigator.clipboard.writeText(row.original.$id)}
+          onClick={() => navigator.clipboard.writeText(appointment.$id)}
           className="cursor-pointer"
         >
           Copy appointment ID
@@ -60,7 +68,7 @@ export default function AdminDropDownMenuRow({ row }: { row: any }) {
             icon={Icons.SCHEDULED_ICON}
           />
         </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer">
+        <DropdownMenuItem className="cursor-pointer" onClick={() => handleCancelAppointment(appointment, params)}>
           <StatusItem
             status={Status.CANCELLED}
             title="Cancel"

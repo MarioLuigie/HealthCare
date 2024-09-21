@@ -30,7 +30,7 @@ export default async function AdminDashboardPage({
       {/* Dashboard introduction*/}
       <section className="w-full space-y-4">
         <h1 className="header">
-          {capitalizeFirstLetter(params.role)} Dashboard
+          {capitalizeFirstLetter(role)} Dashboard
         </h1>
         <p className="text-dark-700">
           Start the day with managing new appointments
