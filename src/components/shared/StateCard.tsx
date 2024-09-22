@@ -14,7 +14,7 @@ export default function StateCard({
 	count,
 	icon,
 }: StateCardProps) {
-	const statusClasses: { [key in Status]: string } = {
+	const statusBgImage: { [key in Status]: string } = {
 		[Status.SCHEDULED]: StatusConfig.Scheduled.bgImage,
 		[Status.PENDING]: StatusConfig.Pending.bgImage,
 		[Status.CANCELLED]: StatusConfig.Cancelled.bgImage,
@@ -22,7 +22,7 @@ export default function StateCard({
 	}
 
 	return (
-		<div className={clsx('stat-card', statusClasses[status])}>
+		<div className={clsx('stat-card', statusBgImage[status])}>
 			<div className="flex gap-4 items-start">
 				<Image
 					src={icon.path}
