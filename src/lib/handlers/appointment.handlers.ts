@@ -41,6 +41,7 @@ export async function handleCancelAppointment(
   try {
     const cancelledAppointment = await cancelAppointment(appointment, params)
 
+    console.log('Cancelled Appointment:', cancelledAppointment)
   } catch (err) {
     console.error(err)
   }

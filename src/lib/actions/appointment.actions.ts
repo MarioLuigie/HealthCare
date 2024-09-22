@@ -166,6 +166,9 @@ export async function cancelAppointment(
       { status, statusUpdatedBy }
     )
 
+		const parsedStatusUpdatedBy = JSON.parse(cancelledAppointment.statusUpdatedBy)
+		cancelledAppointment.statusUpdatedBy = parsedStatusUpdatedBy
+
     revalidatePath(generateUrl([Route.DASHBOARD, role, id]))
 
     return deepClone(cancelledAppointment)
