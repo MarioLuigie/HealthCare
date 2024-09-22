@@ -115,6 +115,7 @@ export async function createAppointment(
 			status: Status.PENDING,
 		}
 
+		// !!Type returned object by Appointment interface!!
 		const createdAppointment = await databases.createDocument(
 			APPWRITE_DB_ID!,
 			APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,

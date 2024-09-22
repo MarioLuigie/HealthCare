@@ -18,6 +18,7 @@ export async function handleCreateAppointment(
   userId: string
 ) {
   try {
+    // !!Type returned object by Appointment interface!!
     const createdAppointment = await createAppointment(
       appointmentFormValues,
       patientId,
@@ -30,7 +31,7 @@ export async function handleCreateAppointment(
   }
 }
 
-// Cancel Appointment
+// Cancel Appointment but not delete
 export async function handleCancelAppointment(
   appointment: Appointment,
   params: SingleSlugParams
@@ -47,18 +48,18 @@ export async function handleScheduleAppointment(
   appointmentFormValues: ScheduleAppointmentFormValues
 ) {
   try {
-    const scheduledApointment = await scheduleAppointment(appointmentFormValues)
+
   } catch (err) {
     console.error(err)
   }
 }
 
-// Finish Appointment
+// Finish Appointment but not delete
 export async function handleFinishAppointment(
   appointmentFormValues: ScheduleAppointmentFormValues
 ) {
   try {
-    const scheduledApointment = await scheduleAppointment(appointmentFormValues)
+
   } catch (err) {
     console.error(err)
   }
