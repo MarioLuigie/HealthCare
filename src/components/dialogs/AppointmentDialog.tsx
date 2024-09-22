@@ -14,7 +14,7 @@ import {
 
 export default function AppointmentDialog() {
   const [isOpen, setIsOpen] = useState<boolean>(false)
-
+  
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger>Open</DialogTrigger>
