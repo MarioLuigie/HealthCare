@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import { Status } from "@/lib/types/enums"
 import { MoreHorizontal } from "lucide-react"
@@ -14,8 +14,13 @@ import {
 import { Icons, StatusConfig } from "@/lib/constants"
 import Image from "next/image"
 
-import { handleCancelAppointment } from "@/lib/handlers/appointment.handlers"
-import { useParams } from 'next/navigation'
+import {
+  handleAwaitAppointment,
+  handleCancelAppointment,
+  handleFinishAppointment,
+  handleScheduleAppointment,
+} from "@/lib/handlers/appointment.handlers"
+import { useParams } from "next/navigation"
 
 const StatusItem = ({
   status,
@@ -43,7 +48,7 @@ const StatusItem = ({
 export default function AdminDropDownMenuRow({ row }: { row: any }) {
   const params = useParams() as SingleSlugParams
   const appointment = row.original
-  
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -53,7 +58,6 @@ export default function AdminDropDownMenuRow({ row }: { row: any }) {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        {/* <DropdownMenuLabel>Your Actions</DropdownMenuLabel> */}
         <DropdownMenuItem
           onClick={() => navigator.clipboard.writeText(appointment.$id)}
           className="cursor-pointer"
@@ -61,28 +65,40 @@ export default function AdminDropDownMenuRow({ row }: { row: any }) {
           Copy appointment ID
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer">
+        <DropdownMenuItem
+          className="cursor-pointer"
+          onClick={() => handleScheduleAppointment(appointment, params)}
+        >
           <StatusItem
             status={Status.SCHEDULED}
             title="Shedule"
             icon={Icons.SCHEDULED_ICON}
           />
         </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer" onClick={() => handleCancelAppointment(appointment, params)}>
+        <DropdownMenuItem
+          className="cursor-pointer"
+          onClick={() => handleCancelAppointment(appointment, params)}
+        >
           <StatusItem
             status={Status.CANCELLED}
             title="Cancel"
             icon={Icons.CANCELLED_ICON}
           />
         </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer">
+        <DropdownMenuItem
+          className="cursor-pointer"
+          onClick={() => handleAwaitAppointment(appointment, params)}
+        >
           <StatusItem
             status={Status.PENDING}
             title="Await"
             icon={Icons.PENDING_ICON}
           />
         </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer">
+        <DropdownMenuItem
+          className="cursor-pointer"
+          onClick={() => handleFinishAppointment(appointment, params)}
+        >
           <StatusItem
             status={Status.FINISHED}
             title="Finish"

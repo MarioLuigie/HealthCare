@@ -3,6 +3,8 @@ import {
   createAppointment,
   cancelAppointment,
   scheduleAppointment,
+  finishAppointment,
+  awaitAppointment,
 } from "@/lib/actions/appointment.actions"
 import {
   CreateAppointmentFormValues,
@@ -45,10 +47,11 @@ export async function handleCancelAppointment(
 
 // Schedule Appointment
 export async function handleScheduleAppointment(
-  appointmentFormValues: ScheduleAppointmentFormValues
+  appointment: Appointment,
+  params: SingleSlugParams,
 ) {
   try {
-
+    const scheduledAppointment = await scheduleAppointment(appointment, params)
   } catch (err) {
     console.error(err)
   }
@@ -56,10 +59,23 @@ export async function handleScheduleAppointment(
 
 // Finish Appointment but not delete
 export async function handleFinishAppointment(
-  appointmentFormValues: ScheduleAppointmentFormValues
+  appointment: Appointment,
+  params: SingleSlugParams,
 ) {
   try {
+    const finishedAppointment = await finishAppointment(appointment, params)
+  } catch (err) {
+    console.error(err)
+  }
+}
 
+// Await Appointment 
+export async function handleAwaitAppointment(
+  appointment: Appointment,
+  params: SingleSlugParams,
+) {
+  try {
+    const awaitedAppointment = await awaitAppointment(appointment, params)
   } catch (err) {
     console.error(err)
   }
