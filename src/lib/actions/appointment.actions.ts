@@ -97,7 +97,7 @@ export async function createAppointment(
   patientId: string,
   userId: string
 ) {
-	const status: Status = Status.PENDING
+  const status: Status = Status.PENDING
   try {
     if (
       !APPWRITE_DB_ID ||
@@ -174,12 +174,12 @@ export async function cancelAppointment(
 // Schedule Appointment - change appointment status to 'Scheduled'
 export async function scheduleAppointment(
   appointment: Appointment,
-	params: SingleSlugParams,
+  params: SingleSlugParams
 ) {
   const status: Status = Status.SCHEDULED
   const { role, id } = params
   try {
-		const scheduledAppointment = await databases.updateDocument(
+    const scheduledAppointment = await databases.updateDocument(
       APPWRITE_DB_ID!,
       APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
       appointment.$id,
@@ -188,7 +188,7 @@ export async function scheduleAppointment(
 
     revalidatePath(generateUrl([Route.DASHBOARD, role, id]))
 
-		return deepClone(scheduledAppointment)
+    return deepClone(scheduledAppointment)
   } catch (err) {
     console.error(err)
   }
@@ -197,12 +197,12 @@ export async function scheduleAppointment(
 // Finish Appointment - change appointment status to 'Finished'
 export async function finishAppointment(
   appointment: Appointment,
-	params: SingleSlugParams,
+  params: SingleSlugParams
 ) {
   const status: Status = Status.FINISHED
   const { role, id } = params
   try {
-		const finihedAppointment = await databases.updateDocument(
+    const finihedAppointment = await databases.updateDocument(
       APPWRITE_DB_ID!,
       APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
       appointment.$id,
@@ -211,7 +211,7 @@ export async function finishAppointment(
 
     revalidatePath(generateUrl([Route.DASHBOARD, role, id]))
 
-		return deepClone(finihedAppointment)
+    return deepClone(finihedAppointment)
   } catch (err) {
     console.error(err)
   }
@@ -220,12 +220,12 @@ export async function finishAppointment(
 // Await Appointment - change appointment status to 'Pending'
 export async function awaitAppointment(
   appointment: Appointment,
-	params: SingleSlugParams,
+  params: SingleSlugParams
 ) {
   const status: Status = Status.PENDING
   const { role, id } = params
   try {
-		const awaitedAppointment = await databases.updateDocument(
+    const awaitedAppointment = await databases.updateDocument(
       APPWRITE_DB_ID!,
       APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
       appointment.$id,
@@ -234,7 +234,7 @@ export async function awaitAppointment(
 
     revalidatePath(generateUrl([Route.DASHBOARD, role, id]))
 
-		return deepClone(awaitedAppointment)
+    return deepClone(awaitedAppointment)
   } catch (err) {
     console.error(err)
   }
