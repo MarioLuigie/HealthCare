@@ -14,7 +14,6 @@ export default function StateCard({
 	count,
 	icon,
 }: StateCardProps) {
-	// Tailwind custom classes in tailwin.config.ts => backgroundImage
 	const statusClasses: { [key in Status]: string } = {
 		[Status.SCHEDULED]: StatusConfig.Scheduled.bgImage,
 		[Status.PENDING]: StatusConfig.Pending.bgImage,
