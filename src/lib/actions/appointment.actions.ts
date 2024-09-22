@@ -11,7 +11,7 @@ import {
   APPWRITE_DB_PATIENT_COLLECTION_ID,
   databases,
 } from "@/lib/appwrite.config"
-import { Status } from "@/lib/types/enums"
+import { Roles, Status } from "@/lib/types/enums"
 import { Route } from "@/lib/constants/paths"
 import {
   CreateAppointmentFormValues,
@@ -115,6 +115,7 @@ export async function createAppointment(
       reason: appointmentFormValues.reason,
       note: appointmentFormValues.note,
       status: status,
+      statusUpdatedBy: null,
     }
 
     // !!Do it!! - Type returned object by Appointment interface
@@ -155,12 +156,26 @@ export async function cancelAppointment(
   const status: Status = Status.CANCELLED
   const { role, id } = params
   try {
+    let statusUpdatedBy = null
+
+    switch (role) {
+      case Roles.ADMIN:
+        statusUpdatedBy = Roles.ADMIN
+        break
+      case Roles.DOCTOR:
+        statusUpdatedBy = appointment.primaryPhysician // !!Do it!! - change primaryPhysician in appointment from string to relationshipt to doctors collection after creating doctors collection
+        break
+      case Roles.PATIENT:
+        statusUpdatedBy = appointment.patient
+        break
+    }
+
     // Save to DB and Return appointment with status changed to 'Cancelled'
     const cancelledAppointment = await databases.updateDocument(
       APPWRITE_DB_ID!,
       APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
       appointment.$id,
-      { status: status }
+      { status, statusUpdatedBy }
     )
 
     revalidatePath(generateUrl([Route.DASHBOARD, role, id]))
