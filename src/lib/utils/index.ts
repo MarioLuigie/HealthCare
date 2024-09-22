@@ -1,6 +1,10 @@
+// modules
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 import qs from "query-string"
+// lib
+import { Roles } from '@/lib/types/enums'
+import { Appointment } from "@/lib/types/appwrite.types"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -160,6 +164,16 @@ export function createSubmitLabel(type: string = "", entity: string): string {
   }
 
   return submitBtnLabel
+}
+
+export function createStatusUpdatedBy(role: string, id: string): string {
+  const statusUpdatedBy = {
+    id,
+    role,
+    date: new Date().toString()
+  }
+
+  return JSON.stringify(statusUpdatedBy)
 }
 
 // export function prepareFileUploadData(fileUploadData: File[] | undefined) {

@@ -18,7 +18,7 @@ import {
   CancelAppointmentFormValues,
   ScheduleAppointmentFormValues,
 } from "@/lib/types/zod"
-import { deepClone, generateUrl } from "@/lib/utils"
+import { deepClone, generateUrl, createStatusUpdatedBy } from "@/lib/utils"
 import { Appointment } from "@/lib/types/appwrite.types"
 
 export interface InitialCounts {
@@ -156,19 +156,7 @@ export async function cancelAppointment(
   const status: Status = Status.CANCELLED
   const { role, id } = params
   try {
-    let statusUpdatedBy = null
-
-    switch (role) {
-      case Roles.ADMIN:
-        statusUpdatedBy = Roles.ADMIN
-        break
-      case Roles.DOCTOR:
-        statusUpdatedBy = appointment.primaryPhysician // !!Do it!! - change primaryPhysician in appointment from string to relationshipt to doctors collection after creating doctors collection
-        break
-      case Roles.PATIENT:
-        statusUpdatedBy = appointment.patient
-        break
-    }
+		const statusUpdatedBy = createStatusUpdatedBy(role, id)// serialized object with 'id' and 'role' keys
 
     // Save to DB and Return appointment with status changed to 'Cancelled'
     const cancelledAppointment = await databases.updateDocument(
@@ -194,11 +182,12 @@ export async function scheduleAppointment(
   const status: Status = Status.SCHEDULED
   const { role, id } = params
   try {
+		const statusUpdatedBy = createStatusUpdatedBy(role, id)
     const scheduledAppointment = await databases.updateDocument(
       APPWRITE_DB_ID!,
       APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
       appointment.$id,
-      { status: status }
+      { status, statusUpdatedBy }
     )
 
     revalidatePath(generateUrl([Route.DASHBOARD, role, id]))
@@ -217,11 +206,12 @@ export async function finishAppointment(
   const status: Status = Status.FINISHED
   const { role, id } = params
   try {
+		const statusUpdatedBy = createStatusUpdatedBy(role, id)
     const finihedAppointment = await databases.updateDocument(
       APPWRITE_DB_ID!,
       APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
       appointment.$id,
-      { status: status }
+      { status, statusUpdatedBy }
     )
 
     revalidatePath(generateUrl([Route.DASHBOARD, role, id]))
@@ -240,11 +230,12 @@ export async function awaitAppointment(
   const status: Status = Status.PENDING
   const { role, id } = params
   try {
+		const statusUpdatedBy = createStatusUpdatedBy(role, id)
     const awaitedAppointment = await databases.updateDocument(
       APPWRITE_DB_ID!,
       APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
       appointment.$id,
-      { status: status }
+      { status, statusUpdatedBy }
     )
 
     revalidatePath(generateUrl([Route.DASHBOARD, role, id]))
