@@ -1,9 +1,12 @@
 "use client"
 
+// modules
 import { ColumnDef } from "@tanstack/react-table"
+// lib
 import { Appointment } from "@/lib/types/appwrite.types"
 import { TableCells, TableColumns } from "@/lib/types/enums"
 import { truncateText } from "@/lib/utils/index"
+// components
 import { StatusBadge } from "@/components/shared/StatusBadge"
 import AdminDropDownMenuRow from "@/components/content/tables/admin/AdminDropDownMenuRow"
 

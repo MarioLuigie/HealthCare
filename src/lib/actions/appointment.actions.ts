@@ -1,16 +1,18 @@
 "use server"
 
 // modules
+import { revalidatePath } from "next/cache"
+import { ID, Query } from "node-appwrite"
+
+// lib
 import {
   APPWRITE_DB_ID,
   APPWRITE_DB_APPOINTMENT_COLLECTION_ID,
   APPWRITE_DB_PATIENT_COLLECTION_ID,
   databases,
 } from "@/lib/appwrite.config"
-import { ID, Query } from "node-appwrite"
-
-// lib
 import { Status } from "@/lib/types/enums"
+import { Route } from "@/lib/constants/paths"
 import {
   CreateAppointmentFormValues,
   CancelAppointmentFormValues,
@@ -18,8 +20,6 @@ import {
 } from "@/lib/types/zod"
 import { deepClone, generateUrl } from "@/lib/utils"
 import { Appointment } from "@/lib/types/appwrite.types"
-import { revalidatePath } from "next/cache"
-import { Route } from "../constants/paths"
 
 export interface InitialCounts {
   scheduledCount: number

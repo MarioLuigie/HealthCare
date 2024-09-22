@@ -1,8 +1,19 @@
 "use client"
 
-import { Status } from "@/lib/types/enums"
+// modules
 import { MoreHorizontal } from "lucide-react"
-
+import { useParams } from "next/navigation"
+import Image from "next/image"
+//lib
+import { Icons, StatusConfig } from "@/lib/constants"
+import { Status } from "@/lib/types/enums"
+import {
+  handleAwaitAppointment,
+  handleCancelAppointment,
+  handleFinishAppointment,
+  handleScheduleAppointment,
+} from "@/lib/handlers/appointment.handlers"
+//components
 import { Button } from "@/components/ui/button"
 import {
   DropdownMenu,
@@ -11,16 +22,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Icons, StatusConfig } from "@/lib/constants"
-import Image from "next/image"
-
-import {
-  handleAwaitAppointment,
-  handleCancelAppointment,
-  handleFinishAppointment,
-  handleScheduleAppointment,
-} from "@/lib/handlers/appointment.handlers"
-import { useParams } from "next/navigation"
 
 const StatusItem = ({
   status,

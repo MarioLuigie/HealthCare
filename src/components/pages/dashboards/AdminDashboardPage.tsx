@@ -63,17 +63,8 @@ export default async function AdminDashboardPage({
       <section className="w-full">
         <DataTable columns={adminColumns} data={appointments.documents} />
       </section>
-
-      {/* <div>
-				<p>{role.toUpperCase()} DASHBOARD PAGE.</p>
-				<p className="text-sm text-dark-600">
-					{role.toUpperCase()} ID: {id}
-				</p>
-			</div> */}
     </div>
   )
 }
 
-{
-  /* <div className="flex flex-col items-center justify-start grow p-6"></div> */
-} //mainwrapper
+
