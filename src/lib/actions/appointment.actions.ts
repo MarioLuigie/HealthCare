@@ -97,6 +97,7 @@ export async function createAppointment(
   patientId: string,
   userId: string
 ) {
+	const status: Status = Status.PENDING
   try {
     if (
       !APPWRITE_DB_ID ||
@@ -113,7 +114,7 @@ export async function createAppointment(
       schedule: new Date(appointmentFormValues.schedule),
       reason: appointmentFormValues.reason,
       note: appointmentFormValues.note,
-      status: Status.PENDING,
+      status: status,
     }
 
     // !!Do it!! - Type returned object by Appointment interface
