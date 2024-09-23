@@ -12,7 +12,7 @@ import {
 	APPWRITE_DB_CHANGE_STATUS_COLLECTION_ID,
 	databases,
 } from '@/lib/appwrite.config'
-import { Roles, Status } from '@/lib/types/enums'
+import { Status } from '@/lib/types/enums'
 import { Route } from '@/lib/constants/paths'
 import {
 	CreateAppointmentFormValues,
