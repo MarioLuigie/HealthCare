@@ -3,7 +3,7 @@ import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 import qs from "query-string"
 // lib
-import { Roles } from '@/lib/types/enums'
+import { ActionTypes, Roles } from '@/lib/types/enums'
 import { Appointment } from "@/lib/types/appwrite.types"
 
 export function cn(...inputs: ClassValue[]) {
@@ -142,17 +142,17 @@ export function prepareFormDataFiles(fileUploadData: File[]): FormData {
   return formData
 }
 
-export function createSubmitLabel(type: string = "", entity: string): string {
+export function createButtonLabel(type: string = "", entity: string): string {
   let submitBtnLabel = `${entity}`
 
   switch (type) {
-    case "cancel":
+    case ActionTypes.CANCEL:
       submitBtnLabel = `Cancel ${entity}`
       break
-    case "schedule":
+    case ActionTypes.SCHEDULE:
       submitBtnLabel = `Schedule ${entity}`
       break
-    case "create":
+    case ActionTypes.CREATE:
       submitBtnLabel = `Create ${entity}`
       break
     case "update":

@@ -15,7 +15,7 @@ import {
 	getAppointmentFormDefaultValues,
 } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
-import { createSubmitLabel, generateUrl } from '@/lib/utils'
+import { createButtonLabel, generateUrl } from '@/lib/utils'
 import {
 	handleCreateAppointment,
 	handleCancelAppointment,
@@ -176,7 +176,7 @@ export default function AppointmentForm({
 						isLoading={isSubmitting}
 						className="w-full"
 					>
-						{createSubmitLabel(actionType, 'Appointment')}
+						{createButtonLabel(actionType, 'Appointment')}
 					</SubmitButton>
 				</div>
 			</form>

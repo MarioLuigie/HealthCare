@@ -15,7 +15,7 @@ import {
 } from '@/lib/handlers/appointment.handlers'
 import { Button } from '@/components/ui/button'
 import { ActionTypes, Status } from '@/lib/types/enums'
-import { createSubmitLabel } from '@/lib/utils'
+import { createButtonLabel } from '@/lib/utils'
 
 type AppointmentDialogProps = {
 	appointment: Appointment
@@ -54,7 +54,7 @@ export default function AppointmentDialog({
 					</DialogDescription>
 				</DialogHeader>
 				<Button variant="outline" onClick={handleConfirm}>
-        {createSubmitLabel(actionType, 'Appointment')}
+        {createButtonLabel(actionType, 'Appointment')}
 				</Button>
 			</DialogContent>
 		</Dialog>
