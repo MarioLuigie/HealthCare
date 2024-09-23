@@ -4,9 +4,10 @@
 import { MoreHorizontal } from 'lucide-react'
 import { useParams } from 'next/navigation'
 import Image from 'next/image'
+import { useState } from 'react'
 //lib
 import { Icons, StatusConfig } from '@/lib/constants'
-import { Status } from '@/lib/types/enums'
+import { ActionTypes, Status } from '@/lib/types/enums'
 import {
 	handleAwaitAppointment,
 	handleCancelAppointment,
@@ -49,77 +50,95 @@ const StatusItem = ({
 
 export default function AdminDropDownMenuRow({ row }: { row: any }) {
 	const params = useParams() as SingleSlugParams
+	const [isAppointmentDialogOpen, setIsAppointmentDialogOpen] =
+		useState<boolean>(false)
+	const [actionType, setActionType] = useState<ActionTypes | null>(null)
 	const appointment = row.original
 
+	const handleOpenDialog = (type: ActionTypes) => {
+		setActionType(type) // Set action type
+		setIsAppointmentDialogOpen(true) // Open dialog
+	}
+
 	return (
-		<DropdownMenu>
-			<DropdownMenuTrigger asChild>
-				<Button variant="ghost" className="h-8 w-8 p-0">
-					<MoreHorizontal className="h-4 w-4" />
-				</Button>
-			</DropdownMenuTrigger>
-			<DropdownMenuContent align="end">
-				<DropdownMenuItem
-					onClick={() => navigator.clipboard.writeText(appointment.$id)}
-					className="cursor-pointer"
-				>
-					Copy appointment ID
-				</DropdownMenuItem>
-				<DropdownMenuSeparator />
-				<DropdownMenuItem
-					className="cursor-pointer"
-					onClick={() => handleScheduleAppointment(appointment, params)}
-					disabled={appointment.status === Status.SCHEDULED}
-				>
-					<AppointmentDialog appointment={appointment} params={params}>
+		<>
+			<DropdownMenu>
+				<DropdownMenuTrigger asChild>
+					<Button variant="ghost" className="h-8 w-8 p-0">
+						<MoreHorizontal className="h-4 w-4" />
+					</Button>
+				</DropdownMenuTrigger>
+				<DropdownMenuContent align="end">
+					<DropdownMenuItem
+						onClick={() => navigator.clipboard.writeText(appointment.$id)}
+						className="cursor-pointer"
+					>
+						Copy appointment ID
+					</DropdownMenuItem>
+					<DropdownMenuSeparator />
+					<DropdownMenuItem
+						className="cursor-pointer"
+						disabled={appointment.status === Status.SCHEDULED}
+						onClick={() => handleOpenDialog(ActionTypes.SCHEDULE)}
+					>
 						<StatusItem
 							status={Status.SCHEDULED}
 							title="Shedule"
 							icon={Icons.SCHEDULED_ICON}
 						/>
-					</AppointmentDialog>
-				</DropdownMenuItem>
-				<DropdownMenuItem
-					className="cursor-pointer"
-					onClick={() => handleCancelAppointment(appointment, params)}
-					disabled={appointment.status === Status.CANCELLED}
-				>
-					<StatusItem
-						status={Status.CANCELLED}
-						title="Cancel"
-						icon={Icons.CANCELLED_ICON}
-					/>
-				</DropdownMenuItem>
-				<DropdownMenuItem
-					className="cursor-pointer"
-					onClick={() => handleAwaitAppointment(appointment, params)}
-					disabled={appointment.status === Status.PENDING}
-				>
-					<StatusItem
-						status={Status.PENDING}
-						title="Pend"
-						icon={Icons.PENDING_ICON}
-					/>
-				</DropdownMenuItem>
-				<DropdownMenuItem
-					className="cursor-pointer"
-					onClick={() => handleFinishAppointment(appointment, params)}
-					disabled={appointment.status === Status.FINISHED}
-				>
-					<StatusItem
-						status={Status.FINISHED}
-						title="Finish"
-						icon={Icons.FINISHED_ICON}
-					/>
-				</DropdownMenuItem>
-				<DropdownMenuSeparator />
-				<DropdownMenuItem className="cursor-pointer">
-					View appointment details
-				</DropdownMenuItem>
-				<DropdownMenuItem className="cursor-pointer">
-					View patient details
-				</DropdownMenuItem>
-			</DropdownMenuContent>
-		</DropdownMenu>
+					</DropdownMenuItem>
+					<DropdownMenuItem
+						className="cursor-pointer"
+						onClick={() => handleOpenDialog(ActionTypes.CANCEL)}
+						disabled={appointment.status === Status.CANCELLED}
+					>
+						<StatusItem
+							status={Status.CANCELLED}
+							title="Cancel"
+							icon={Icons.CANCELLED_ICON}
+						/>
+					</DropdownMenuItem>
+					<DropdownMenuItem
+						className="cursor-pointer"
+						onClick={() => handleAwaitAppointment(appointment, params)}
+						disabled={appointment.status === Status.PENDING}
+					>
+						<StatusItem
+							status={Status.PENDING}
+							title="Pend"
+							icon={Icons.PENDING_ICON}
+						/>
+					</DropdownMenuItem>
+					<DropdownMenuItem
+						className="cursor-pointer"
+						onClick={() => handleFinishAppointment(appointment, params)}
+						disabled={appointment.status === Status.FINISHED}
+					>
+						<StatusItem
+							status={Status.FINISHED}
+							title="Finish"
+							icon={Icons.FINISHED_ICON}
+						/>
+					</DropdownMenuItem>
+					<DropdownMenuSeparator />
+					<DropdownMenuItem className="cursor-pointer">
+						View appointment details
+					</DropdownMenuItem>
+					<DropdownMenuItem className="cursor-pointer">
+						View patient details
+					</DropdownMenuItem>
+				</DropdownMenuContent>
+			</DropdownMenu>
+			{/* Appointment Dialog */}
+			{isAppointmentDialogOpen && (
+				<AppointmentDialog
+					appointment={appointment}
+					params={params}
+					isOpen={isAppointmentDialogOpen}
+					handleClose={() => setIsAppointmentDialogOpen(false)}
+          actionType={actionType}
+				/>
+			)}
+		</>
 	)
 }

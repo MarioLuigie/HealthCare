@@ -1,7 +1,5 @@
 'use client'
 
-//modules
-import { useState } from 'react'
 // components
 import {
 	Dialog,
@@ -13,23 +11,40 @@ import {
 } from '@/components/ui/dialog'
 // lib
 import { Appointment } from '@/lib/types/appwrite.types'
+import {
+	handleCancelAppointment,
+	handleScheduleAppointment,
+} from '@/lib/handlers/appointment.handlers'
+import { Button } from '@/components/ui/button'
+import { ActionTypes, Status } from '@/lib/types/enums'
 
 type AppointmentDialogProps = {
-	children: React.ReactNode
 	appointment: Appointment
 	params: SingleSlugParams
+	handleClose: () => void
+	isOpen: boolean
+	actionType: ActionTypes | null
 }
 
 export default function AppointmentDialog({
-	children,
 	appointment,
 	params,
+	handleClose,
+	isOpen,
+	actionType,
 }: AppointmentDialogProps) {
-	const [isOpen, setIsOpen] = useState<boolean>(false)
+	const handleConfirm = async () => {
+		if (actionType === ActionTypes.SCHEDULE) {
+			await handleScheduleAppointment(appointment, params)
+			handleClose()
+		} else if (actionType === ActionTypes.CANCEL) {
+			await handleCancelAppointment(appointment, params)
+			handleClose()
+		}
+	}
 
 	return (
-		<Dialog open={isOpen} onOpenChange={setIsOpen}>
-			<DialogTrigger>{children}</DialogTrigger>
+		<Dialog open={isOpen} onOpenChange={handleClose}>
 			<DialogContent>
 				<DialogHeader>
 					<DialogTitle>Are you absolutely sure?</DialogTitle>
@@ -38,6 +53,10 @@ export default function AppointmentDialog({
 						your account and remove your data from our servers.
 					</DialogDescription>
 				</DialogHeader>
+				<Button variant="outline" onClick={handleConfirm}>
+					{actionType === ActionTypes.CANCEL && 'Cancel Appointment'}
+					{actionType === ActionTypes.SCHEDULE && 'Schedule Appointment'}
+				</Button>
 			</DialogContent>
 		</Dialog>
 	)
