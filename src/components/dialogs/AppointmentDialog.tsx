@@ -43,6 +43,15 @@ export default function AppointmentDialog({
 		}
 	}
 
+  const setButtonText = () => {
+    switch (actionType) {
+      case ActionTypes.SCHEDULE:
+        return 'Schedule Appointment'
+      case ActionTypes.CANCEL:
+        return 'Cancel Appointment'
+    }
+  }
+
 	return (
 		<Dialog open={isOpen} onOpenChange={handleClose}>
 			<DialogContent>
@@ -54,8 +63,7 @@ export default function AppointmentDialog({
 					</DialogDescription>
 				</DialogHeader>
 				<Button variant="outline" onClick={handleConfirm}>
-					{actionType === ActionTypes.CANCEL && 'Cancel Appointment'}
-					{actionType === ActionTypes.SCHEDULE && 'Schedule Appointment'}
+					{setButtonText()}
 				</Button>
 			</DialogContent>
 		</Dialog>
