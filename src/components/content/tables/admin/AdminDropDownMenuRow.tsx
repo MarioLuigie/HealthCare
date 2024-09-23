@@ -68,6 +68,7 @@ export default function AdminDropDownMenuRow({ row }: { row: any }) {
         <DropdownMenuItem
           className="cursor-pointer"
           onClick={() => handleScheduleAppointment(appointment, params)}
+          disabled={appointment.status === Status.SCHEDULED}
         >
           <StatusItem
             status={Status.SCHEDULED}
@@ -78,6 +79,7 @@ export default function AdminDropDownMenuRow({ row }: { row: any }) {
         <DropdownMenuItem
           className="cursor-pointer"
           onClick={() => handleCancelAppointment(appointment, params)}
+          disabled={appointment.status === Status.CANCELLED}
         >
           <StatusItem
             status={Status.CANCELLED}
@@ -88,16 +90,18 @@ export default function AdminDropDownMenuRow({ row }: { row: any }) {
         <DropdownMenuItem
           className="cursor-pointer"
           onClick={() => handleAwaitAppointment(appointment, params)}
+          disabled={appointment.status === Status.PENDING}
         >
           <StatusItem
             status={Status.PENDING}
-            title="Await"
+            title="Pend"
             icon={Icons.PENDING_ICON}
           />
         </DropdownMenuItem>
         <DropdownMenuItem
           className="cursor-pointer"
           onClick={() => handleFinishAppointment(appointment, params)}
+          disabled={appointment.status === Status.FINISHED}
         >
           <StatusItem
             status={Status.FINISHED}
