@@ -15,13 +15,14 @@ import {
 } from '@/lib/handlers/appointment.handlers'
 import { Button } from '@/components/ui/button'
 import { ActionTypes, Status } from '@/lib/types/enums'
+import { createSubmitLabel } from '@/lib/utils'
 
 type AppointmentDialogProps = {
 	appointment: Appointment
 	params: SingleSlugParams
 	handleClose: () => void
 	isOpen: boolean
-	actionType: ActionTypes | null
+	actionType: ActionTypes
 }
 
 export default function AppointmentDialog({
@@ -31,6 +32,7 @@ export default function AppointmentDialog({
 	isOpen,
 	actionType,
 }: AppointmentDialogProps) {
+
 	const handleConfirm = async () => {
 		if (actionType === ActionTypes.SCHEDULE) {
 			await handleScheduleAppointment(appointment, params)
@@ -40,15 +42,6 @@ export default function AppointmentDialog({
 			handleClose()
 		}
 	}
-
-  const setButtonText = () => {
-    switch (actionType) {
-      case ActionTypes.SCHEDULE:
-        return 'Schedule Appointment'
-      case ActionTypes.CANCEL:
-        return 'Cancel Appointment'
-    }
-  }
 
 	return (
 		<Dialog open={isOpen} onOpenChange={handleClose}>
@@ -61,7 +54,7 @@ export default function AppointmentDialog({
 					</DialogDescription>
 				</DialogHeader>
 				<Button variant="outline" onClick={handleConfirm}>
-					{setButtonText()}
+        {createSubmitLabel(actionType, 'Appointment')}
 				</Button>
 			</DialogContent>
 		</Dialog>

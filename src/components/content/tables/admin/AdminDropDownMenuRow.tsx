@@ -52,7 +52,7 @@ export default function AdminDropDownMenuRow({ row }: { row: any }) {
 	const params = useParams() as SingleSlugParams
 	const [isAppointmentDialogOpen, setIsAppointmentDialogOpen] =
 		useState<boolean>(false)
-	const [actionType, setActionType] = useState<ActionTypes | null>(null)
+	const [actionType, setActionType] = useState<ActionTypes>(ActionTypes.SCHEDULE)
 	const appointment = row.original
 
 	const handleOpenDialog = (type: ActionTypes) => {
