@@ -43,7 +43,7 @@ declare type CreateAppointmentData = {
 	reason: string
 	note?: string | undefined
 	status: Status
-    statusUpdatedBy: string | null
+    statusUpdatesHistory: string[] 
 }
 
 declare type UpdateAppointmentData = {
