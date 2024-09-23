@@ -1,5 +1,4 @@
 'use client'
-
 // components
 import {
 	Dialog,
@@ -7,7 +6,6 @@ import {
 	DialogDescription,
 	DialogHeader,
 	DialogTitle,
-	DialogTrigger,
 } from '@/components/ui/dialog'
 // lib
 import { Appointment } from '@/lib/types/appwrite.types'
