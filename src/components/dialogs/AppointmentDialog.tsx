@@ -1,6 +1,14 @@
 'use client'
 // modules
 import clsx from 'clsx'
+// lib
+import { Appointment } from '@/lib/types/appwrite.types'
+import {
+	handleCancelAppointment,
+	handleScheduleAppointment,
+} from '@/lib/handlers/appointment.handlers'
+import { ActionTypes } from '@/lib/types/enums'
+import { capitalizeFirstLetter, createButtonLabel } from '@/lib/utils'
 // components
 import {
 	Dialog,
@@ -10,14 +18,7 @@ import {
 	DialogTitle,
 } from '@/components/ui/dialog'
 import { Button } from '@/components/ui/button'
-// lib
-import { Appointment } from '@/lib/types/appwrite.types'
-import {
-	handleCancelAppointment,
-	handleScheduleAppointment,
-} from '@/lib/handlers/appointment.handlers'
-import { ActionTypes } from '@/lib/types/enums'
-import { capitalizeFirstLetter, createButtonLabel } from '@/lib/utils'
+import AppointmentForm from '@/components/forms/AppointmentForm'
 
 type AppointmentDialogProps = {
 	appointment: Appointment
@@ -34,6 +35,7 @@ export default function AppointmentDialog({
 	isOpen,
 	actionType,
 }: AppointmentDialogProps) {
+	
 	const handleConfirm = async () => {
 		if (actionType === ActionTypes.SCHEDULE) {
 			await handleScheduleAppointment(appointment, params)
@@ -57,7 +59,12 @@ export default function AppointmentDialog({
 						your account and remove your data from our servers.
 					</DialogDescription>
 				</DialogHeader>
-				<Button
+				<AppointmentForm 
+					userId={appointment.patient.userId}
+					patientId={appointment.patient.$id}
+					actionType={actionType}
+				/>
+				{/* <Button
 					variant="outline"
 					onClick={handleConfirm}
 					className={clsx(
@@ -67,7 +74,7 @@ export default function AppointmentDialog({
 					)}
 				>
 					{createButtonLabel(actionType, 'Appointment')}
-				</Button>
+				</Button> */}
 			</DialogContent>
 		</Dialog>
 	)
