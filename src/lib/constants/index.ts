@@ -215,11 +215,6 @@ export const StatusConfig = {
 	},
 }
 
-// export const StatusIcons = {
-// 	Scheduled: '/assets/icons/check.svg',
-// 	Pending: '/assets/icons/pending.svg',
-// 	Cancelled: '/assets/icons/cancelled.svg',
-// 	Finished: '/assets/icons/past.svg',
-// }
+
 
 
