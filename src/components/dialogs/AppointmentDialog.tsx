@@ -48,7 +48,7 @@ export default function AppointmentDialog({
 		<Dialog open={isOpen} onOpenChange={handleClose}>
 			<DialogContent className="shad-dialog sm:msx-w-md">
 				<DialogHeader className="mb-4 space-y-3">
-					<DialogTitle>
+					<DialogTitle className='mb-4'>
 						{capitalizeFirstLetter(actionType)}
 						{' Appointment'}
 					</DialogTitle>
