@@ -56,6 +56,7 @@ export default async function AdminDashboardPage({
 
 			{/* Data Table */}
 			<section className="w-full">
+        <p className='mb-4 text-lg'>Appointments List</p>
 				<DataTable columns={adminColumns} data={appointments.documents} />
 			</section>
 		</div>
