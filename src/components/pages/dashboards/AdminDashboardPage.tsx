@@ -41,22 +41,18 @@ export default async function AdminDashboardPage({
         <StateCard
           status={Status.SCHEDULED}
           count={appointments.scheduledCount}
-          icon={Icons.SCHEDULED_ICON}
         />
         <StateCard
           status={Status.CANCELLED}
           count={appointments.cancelledCount}
-          icon={Icons.CANCELLED_ICON}
         />
         <StateCard
           status={Status.PENDING}
           count={appointments.pendingCount}
-          icon={Icons.PENDING_ICON}
         />
         <StateCard
           status={Status.FINISHED}
           count={appointments.finishedCount}
-          icon={Icons.FINISHED_ICON}
         />
       </section>
       {/* Data Table */}
