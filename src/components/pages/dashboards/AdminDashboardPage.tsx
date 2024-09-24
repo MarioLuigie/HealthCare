@@ -8,7 +8,7 @@ import { capitalizeFirstLetter } from "@/lib/utils"
 import StateCard from "@/components/shared/StateCard"
 import { getAppointmentsOrderedByStatus } from "@/lib/actions/appointment.actions"
 import { DataTable } from "@/components/shared/DataTable"
-import { adminColumns } from "@/components/content/tables/admin/adminColumns"
+import { adminColumns } from "@/components/content/tables/admin/appointmentColumns"
 
 interface AppointmentsOrderedByStatus extends InitialCounts {
   totalCount: number
