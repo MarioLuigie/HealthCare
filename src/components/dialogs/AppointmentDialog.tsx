@@ -1,4 +1,6 @@
 'use client'
+// modules
+import clsx from 'clsx'
 // components
 import {
 	Dialog,
@@ -7,15 +9,15 @@ import {
 	DialogHeader,
 	DialogTitle,
 } from '@/components/ui/dialog'
+import { Button } from '@/components/ui/button'
 // lib
 import { Appointment } from '@/lib/types/appwrite.types'
 import {
 	handleCancelAppointment,
 	handleScheduleAppointment,
 } from '@/lib/handlers/appointment.handlers'
-import { Button } from '@/components/ui/button'
-import { ActionTypes, Status } from '@/lib/types/enums'
-import { createButtonLabel } from '@/lib/utils'
+import { ActionTypes } from '@/lib/types/enums'
+import { capitalizeFirstLetter, createButtonLabel } from '@/lib/utils'
 
 type AppointmentDialogProps = {
 	appointment: Appointment
@@ -32,7 +34,6 @@ export default function AppointmentDialog({
 	isOpen,
 	actionType,
 }: AppointmentDialogProps) {
-
 	const handleConfirm = async () => {
 		if (actionType === ActionTypes.SCHEDULE) {
 			await handleScheduleAppointment(appointment, params)
@@ -45,16 +46,27 @@ export default function AppointmentDialog({
 
 	return (
 		<Dialog open={isOpen} onOpenChange={handleClose}>
-			<DialogContent>
-				<DialogHeader>
-					<DialogTitle>Are you absolutely sure?</DialogTitle>
+			<DialogContent className="shad-dialog sm:msx-w-md">
+				<DialogHeader className="mb-4 space-y-3">
+					<DialogTitle>
+						{capitalizeFirstLetter(actionType)}
+						{' Appointment'}
+					</DialogTitle>
 					<DialogDescription>
 						This action cannot be undone. This will permanently delete
 						your account and remove your data from our servers.
 					</DialogDescription>
 				</DialogHeader>
-				<Button variant="outline" onClick={handleConfirm}>
-        {createButtonLabel(actionType, 'Appointment')}
+				<Button
+					variant="outline"
+					onClick={handleConfirm}
+					className={clsx(
+						actionType === ActionTypes.CANCEL
+							? 'shad-danger-btn'
+							: 'shad-primary-btn'
+					)}
+				>
+					{createButtonLabel(actionType, 'Appointment')}
 				</Button>
 			</DialogContent>
 		</Dialog>
