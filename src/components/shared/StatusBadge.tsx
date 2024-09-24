@@ -12,7 +12,7 @@ export const StatusBadge = ({
 	status: Status
 	badge?: boolean
 }): React.ReactNode => {
-	const { bgColor, textColor, icon, title } = StatusConfig[status] || {}
+	const { bgColor, textColor, icon, title } = StatusConfig[status]
 
 	return (
 		<div

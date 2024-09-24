@@ -9,7 +9,7 @@ type StateCardProps = {
 }
 
 export default function StateCard({ status, count }: StateCardProps) {
-	const { bgImage, textColor, icon } = StatusConfig[status] || {}
+	const { bgImage, textColor, icon } = StatusConfig[status]
 
 	// const statusBgImage: { [key in Status]: string } = {
 	// 	[Status.SCHEDULED]: StatusConfig.Scheduled.bgImage,

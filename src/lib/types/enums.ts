@@ -4,12 +4,6 @@ export enum Gender {
 	OTHER = 'Other',
 }
 
-export enum Status {
-	PENDING = 'Pending',
-	CANCELLED = 'Cancelled',
-	SCHEDULED = 'Scheduled',
-	FINISHED = 'Finished',
-}
 
 export enum FormFieldType {
 	INPUT = 'input',
@@ -21,21 +15,28 @@ export enum FormFieldType {
 	SKELETON = 'skeleton',
 }
 
+export enum Status {
+	PENDING = 'Pending',
+	CANCELLED = 'Cancelled',
+	SCHEDULED = 'Scheduled',
+	FINISHED = 'Finished',
+}
+
 export enum ActionTypes {
 	CREATE = 'create',
 	SCHEDULE = 'schedule',
 	CANCEL = 'cancel',
 }
 
-export enum SearchParamsString {
-	TRUE = 'true',
-	FALSE = 'false',
-}
-
 export enum Roles {
 	DOCTOR = 'doctor',
 	PATIENT = 'patient',
 	ADMIN = 'admin',
+}
+
+export enum SearchParamsString {
+	TRUE = 'true',
+	FALSE = 'false',
 }
 
 export enum TableCells {
