@@ -3,10 +3,9 @@
 // modules
 import { MoreHorizontal } from 'lucide-react'
 import { useParams } from 'next/navigation'
-import Image from 'next/image'
 import { useState } from 'react'
 //lib
-import { Icons, StatusConfig } from '@/lib/constants'
+import { StatusConfig } from '@/lib/constants'
 import { ActionTypes, Status } from '@/lib/types/enums'
 import {
 	handleAwaitAppointment,
@@ -16,6 +15,7 @@ import {
 } from '@/lib/handlers/appointment.handlers'
 //components
 import { Button } from '@/components/ui/button'
+import { StatusBadge } from '@/components/shared/StatusBadge'
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -25,36 +25,15 @@ import {
 } from '@/components/ui/dropdown-menu'
 import AppointmentDialog from '@/components/dialogs/AppointmentDialog'
 
-const StatusItem = ({
-	status,
-	title,
-	icon,
-}: {
-	status: Status
-	title: string
-	icon: { path: string; alt: string }
-}): React.ReactNode => {
-	return (
-		<div className="flex gap-2 items-center">
-			<Image
-				src={icon.path}
-				width={25}
-				height={25}
-				alt={icon.alt}
-				className="w-4"
-			/>
-			<p className={StatusConfig[status].textColor}>{title}</p>
-		</div>
-	)
-}
-
 export default function AppointmentManipulation({ row }: { row: any }) {
 	const appointment = row.original
-	
+
 	const params = useParams() as SingleSlugParams
 	const [isAppointmentDialogOpen, setIsAppointmentDialogOpen] =
 		useState<boolean>(false)
-	const [actionType, setActionType] = useState<ActionTypes>(ActionTypes.SCHEDULE)
+	const [actionType, setActionType] = useState<ActionTypes>(
+		ActionTypes.SCHEDULE
+	)
 
 	const handleOpenDialog = (type: ActionTypes) => {
 		setActionType(type) // Set action type
@@ -82,44 +61,29 @@ export default function AppointmentManipulation({ row }: { row: any }) {
 						disabled={appointment.status === Status.SCHEDULED}
 						onClick={() => handleOpenDialog(ActionTypes.SCHEDULE)}
 					>
-						<StatusItem
-							status={Status.SCHEDULED}
-							title="Shedule"
-							icon={Icons.SCHEDULED_ICON}
-						/>
+						<StatusBadge status={Status.SCHEDULED} />
 					</DropdownMenuItem>
 					<DropdownMenuItem
 						className="cursor-pointer"
 						onClick={() => handleOpenDialog(ActionTypes.CANCEL)}
 						disabled={appointment.status === Status.CANCELLED}
 					>
-						<StatusItem
-							status={Status.CANCELLED}
-							title="Cancel"
-							icon={Icons.CANCELLED_ICON}
-						/>
+						{/* <StatusItem status={Status.CANCELLED} /> */}
+						<StatusBadge status={Status.CANCELLED} />
 					</DropdownMenuItem>
 					<DropdownMenuItem
 						className="cursor-pointer"
 						onClick={() => handleAwaitAppointment(appointment, params)}
 						disabled={appointment.status === Status.PENDING}
 					>
-						<StatusItem
-							status={Status.PENDING}
-							title="Pend"
-							icon={Icons.PENDING_ICON}
-						/>
+						<StatusBadge status={Status.PENDING} />
 					</DropdownMenuItem>
 					<DropdownMenuItem
 						className="cursor-pointer"
 						onClick={() => handleFinishAppointment(appointment, params)}
 						disabled={appointment.status === Status.FINISHED}
 					>
-						<StatusItem
-							status={Status.FINISHED}
-							title="Finish"
-							icon={Icons.FINISHED_ICON}
-						/>
+						<StatusBadge status={Status.FINISHED} />
 					</DropdownMenuItem>
 					<DropdownMenuSeparator />
 					<DropdownMenuItem className="cursor-pointer">
@@ -137,7 +101,7 @@ export default function AppointmentManipulation({ row }: { row: any }) {
 					params={params}
 					isOpen={isAppointmentDialogOpen}
 					handleClose={() => setIsAppointmentDialogOpen(false)}
-          actionType={actionType}
+					actionType={actionType}
 				/>
 			)}
 		</>

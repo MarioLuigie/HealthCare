@@ -190,24 +190,28 @@ export const StatusConfig = {
 		bgColor: "bg-green-600",
 		textColor: "text-green-500",
 		icon: IconPath.SCHEDULED,
+		title: 'Schedule',
 	},
 	[Status.PENDING]: {
 		bgImage: 'bg-pending',
 		bgColor: "bg-blue-600",
 		textColor: "text-blue-500",
 		icon: IconPath.PENDING,
+		title: 'Pend',
 	},
 	[Status.CANCELLED]: {
 		bgImage: 'bg-cancelled',
 		bgColor: "bg-red-600",
 		textColor: "text-red-500",
 		icon: IconPath.CANCELLED,
+		title: 'Cancel',
 	},
 	[Status.FINISHED]: {
 		bgImage: 'bg-finished',
 		bgColor: "bg-zinc-600",
 		textColor: "text-zinc-300",
 		icon: IconPath.FINISHED,
+		title: 'Finish',
 	},
 }
 

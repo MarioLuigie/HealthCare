@@ -35,7 +35,7 @@ export const adminColumns: ColumnDef<Appointment>[] = [
 	{
 		accessorKey: TableCells.APPOINTMENT_STATUS,
 		header: TableColumns.STATUS,
-		cell: ({ row }) => <StatusBadge status={row.original.status} />,
+		cell: ({ row }) => <StatusBadge status={row.original.status} badge/>,
 	},
 	{
 		accessorKey: TableCells.PATIENT_NAME,
