@@ -35,7 +35,7 @@ export default function AppointmentDialog({
 	isOpen,
 	actionType,
 }: AppointmentDialogProps) {
-	
+
 	const handleConfirm = async () => {
 		if (actionType === ActionTypes.SCHEDULE) {
 			await handleScheduleAppointment(appointment, params)
@@ -63,6 +63,8 @@ export default function AppointmentDialog({
 					userId={appointment.patient.userId}
 					patientId={appointment.patient.$id}
 					actionType={actionType}
+					appointment={appointment}
+					handleClose={handleClose}
 				/>
 				{/* <Button
 					variant="outline"

@@ -12,7 +12,7 @@ import {
 	APPWRITE_DB_CHANGE_STATUS_COLLECTION_ID,
 	databases,
 } from '@/lib/appwrite.config'
-import { Status } from '@/lib/types/enums'
+import { ActionTypes, Status } from '@/lib/types/enums'
 import { Route } from '@/lib/constants/paths'
 import {
 	CreateAppointmentFormValues,
@@ -149,6 +149,52 @@ export async function createAppointment(
 	}
 }
 
+// Update Appointment - ex. change appointment status to 'Cancelled'
+export async function updateAppointment(
+	appointment: any,
+	params: SingleSlugParams,
+	actionType: ActionTypes
+) {
+	let status = null
+	const { role, id } = params
+
+	if (actionType === ActionTypes.CANCEL) {
+		status = Status.CANCELLED
+	} else if (actionType === ActionTypes.SCHEDULE) {
+		status = Status.SCHEDULED
+	}
+	
+	try {
+		// Save to DB and return object with changes status infos
+		const updatedStatusInfo = await databases.createDocument(
+			APPWRITE_DB_ID!,
+			APPWRITE_DB_CHANGE_STATUS_COLLECTION_ID!,
+			ID.unique(),
+			{ updaterId: id, role, updatedValue: status, updatedAt: new Date() }
+		)
+
+		// Save to DB and Return appointment with status changed to 'Cancelled'
+		const updatedAppointment = await databases.updateDocument(
+			APPWRITE_DB_ID!,
+			APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
+			appointment.$id,
+			{
+				status,
+				statusUpdatesHistory: [
+					...appointment.statusUpdatesHistory,
+					updatedStatusInfo.$id,
+				],
+			}
+		)
+
+		revalidatePath(generateUrl([Route.DASHBOARD, role, id]))
+
+		return deepClone(updatedAppointment)
+	} catch (err) {
+		console.error(err)
+	}
+}
+
 // Cancel Appointment - change appointment status to 'Cancelled'
 export async function cancelAppointment(
 	appointment: Appointment,
@@ -232,7 +278,7 @@ export async function finishAppointment(
 	const status: Status = Status.FINISHED
 	const { role, id } = params
 	try {
-    const updatedStatusInfo = await databases.createDocument(
+		const updatedStatusInfo = await databases.createDocument(
 			APPWRITE_DB_ID!,
 			APPWRITE_DB_CHANGE_STATUS_COLLECTION_ID!,
 			ID.unique(),
@@ -243,7 +289,13 @@ export async function finishAppointment(
 			APPWRITE_DB_ID!,
 			APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
 			appointment.$id,
-			{ status, statusUpdatesHistory: [...appointment.statusUpdatesHistory, updatedStatusInfo.$id] }
+			{
+				status,
+				statusUpdatesHistory: [
+					...appointment.statusUpdatesHistory,
+					updatedStatusInfo.$id,
+				],
+			}
 		)
 
 		revalidatePath(generateUrl([Route.DASHBOARD, role, id]))
@@ -274,7 +326,13 @@ export async function awaitAppointment(
 			APPWRITE_DB_ID!,
 			APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
 			appointment.$id,
-			{ status, statusUpdatesHistory: [...appointment.statusUpdatesHistory, updatedStatusInfo.$id] }
+			{
+				status,
+				statusUpdatesHistory: [
+					...appointment.statusUpdatesHistory,
+					updatedStatusInfo.$id,
+				],
+			}
 		)
 
 		revalidatePath(generateUrl([Route.DASHBOARD, role, id]))

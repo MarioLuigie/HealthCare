@@ -6,13 +6,13 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation'
 // lib
 import {
 	CancelAppointmentFormValues,
 	CreateAppointmentFormValues,
 	ScheduleAppointmentFormValues,
 	getAppointmentFormSchema,
-	getAppointmentFormDefaultValues,
 } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
 import { createButtonLabel, generateUrl } from '@/lib/utils'
@@ -20,6 +20,7 @@ import {
 	handleCreateAppointment,
 	handleCancelAppointment,
 	handleScheduleAppointment,
+	handleUpdateAppointment,
 } from '@/lib/handlers/appointment.handlers'
 import { doctors } from '@/lib/constants'
 import { ActionTypes } from '@/lib/types/enums'
@@ -31,25 +32,37 @@ import { SelectItem } from '@/components/ui/select'
 // Styles
 import 'react-datepicker/dist/react-datepicker.css'
 import { Route } from '@/lib/constants/paths'
+import { Appointment } from '@/lib/types/appwrite.types'
 
 type AppointmentFormProps = {
 	userId: string
 	patientId: string
 	actionType: ActionTypes
+	appointment?: Appointment
+	handleClose?: () => void
 }
 
 export default function AppointmentForm({
 	userId,
 	patientId,
 	actionType,
+	appointment,
+	handleClose,
 }: AppointmentFormProps) {
 	const router = useRouter()
 
 	const AppointmentFormSchema = getAppointmentFormSchema(actionType)
 
+	const params = useParams() as SingleSlugParams
 	const form = useForm<z.infer<typeof AppointmentFormSchema>>({
 		resolver: zodResolver(AppointmentFormSchema),
-		defaultValues: getAppointmentFormDefaultValues(actionType),
+		defaultValues: {
+			primaryPhysician: appointment ? appointment.primaryPhysician : '',
+			schedule: appointment ? new Date(appointment.schedule) : new Date(),
+			reason: appointment ? appointment.reason : '',
+			note: appointment ? appointment.note: '',
+			cancellationReason: appointment ? appointment.cancellationReason : '',
+		},
 	})
 
 	const { isSubmitting } = form.formState
@@ -79,13 +92,10 @@ export default function AppointmentForm({
 					)
 				}
 			} else if (actionType === ActionTypes.CANCEL) {
-				// const cancelledAppointment = await handleCancelAppointment(
-				// 	appointmentFormValues as CancelAppointmentFormValues
-				// )
+				const updatedAppointment = await handleUpdateAppointment(appointment, params, actionType)
+
 			} else if (actionType === ActionTypes.SCHEDULE) {
-				// const scheduledAppointment = await handleScheduleAppointment(
-				// 	appointmentFormValues as ScheduleAppointmentFormValues
-				// )
+
 			}
 
 			form.reset()

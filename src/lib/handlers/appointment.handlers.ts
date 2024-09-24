@@ -1,6 +1,7 @@
 // lib
 import {
   createAppointment,
+  updateAppointment,
   cancelAppointment,
   scheduleAppointment,
   finishAppointment,
@@ -12,6 +13,7 @@ import {
   ScheduleAppointmentFormValues,
 } from "@/lib/types/zod"
 import { Appointment } from "@/lib/types/appwrite.types"
+import { ActionTypes } from "@/lib/types/enums"
 
 // Create Appointment
 export async function handleCreateAppointment(
@@ -28,6 +30,22 @@ export async function handleCreateAppointment(
     )
 
     return createdAppointment
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+
+// Cancel Appointment but not delete
+export async function handleUpdateAppointment(
+  appointment: any,
+  params: SingleSlugParams,
+  actionType: ActionTypes,
+) {
+  try {
+    const updatedAppointment = await updateAppointment(appointment, params, actionType)
+
+    // console.log('Cancelled Appointment:', cancelledAppointment)
   } catch (err) {
     console.error(err)
   }
