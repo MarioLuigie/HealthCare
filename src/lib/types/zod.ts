@@ -151,18 +151,18 @@ export function getAppointmentFormDefaultValues(actionType: ActionTypes, appoint
     case ActionTypes.CREATE:
       return {
         primaryPhysician: "",
-        schedule: new Date(),
+        schedule: new Date(Date.now()),
         reason: "",
         note: "",
       }
     case ActionTypes.CANCEL:
       return {
-        cancellationReason: "",// !!DO IT!! - Check value
+        cancellationReason: "",// !!DO IT!! - Check value empty string or null || ""
       }
     case ActionTypes.SCHEDULE:
       return {
 				primaryPhysician: appointment ? appointment.primaryPhysician : "",
-				schedule: appointment ? new Date(appointment.schedule) : new Date(),
+				schedule: appointment ? new Date(appointment.schedule) : new Date(Date.now()),
 				reason: appointment ? appointment.reason : "",
 				note: appointment ? appointment.note : "",
       }
