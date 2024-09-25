@@ -61,7 +61,6 @@ export default function AppointmentForm({
   const onSubmit: SubmitHandler<z.infer<typeof AppointmentFormSchema>> = async (
     appointmentFormValues: z.infer<typeof AppointmentFormSchema>
   ) => {
-    console.log("*** onSubmit", actionType)
     try {
       if (actionType === ActionTypes.CREATE && patientId && userId) {
         const createdAppointment = await handleCreateAppointment(
