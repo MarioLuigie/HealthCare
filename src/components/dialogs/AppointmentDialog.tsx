@@ -1,10 +1,10 @@
 "use client"
 // lib
 import { Appointment } from "@/lib/types/appwrite.types"
-import {
-  handleCancelAppointment,
-  handleScheduleAppointment,
-} from "@/lib/handlers/appointment.handlers"
+// import {
+//   handleCancelAppointment,
+//   handleScheduleAppointment,
+// } from "@/lib/handlers/appointment.handlers"
 import { ActionTypes } from "@/lib/types/enums"
 import { capitalizeFirstLetter } from "@/lib/utils"
 // components

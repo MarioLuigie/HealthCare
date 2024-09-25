@@ -200,80 +200,80 @@ export async function updateAppointment(
 	}
 }
 
-// Cancel Appointment - change appointment status to 'Cancelled'
-export async function cancelAppointment(
-	appointment: Appointment,
-	params: SingleSlugParams
-) {
-	const status: Status = Status.CANCELLED
-	const { role, id } = params
-	try {
-		// Save to DB and return object with changes status infos
-		const updatedStatusInfo = await databases.createDocument(
-			APPWRITE_DB_ID!,
-			APPWRITE_DB_CHANGE_STATUS_COLLECTION_ID!,
-			ID.unique(),
-			{ updaterId: id, role, updatedValue: status, updatedAt: new Date() }
-		)
+// // Cancel Appointment - change appointment status to 'Cancelled'
+// export async function cancelAppointment(
+// 	appointment: Appointment,
+// 	params: SingleSlugParams
+// ) {
+// 	const status: Status = Status.CANCELLED
+// 	const { role, id } = params
+// 	try {
+// 		// Save to DB and return object with changes status infos
+// 		const updatedStatusInfo = await databases.createDocument(
+// 			APPWRITE_DB_ID!,
+// 			APPWRITE_DB_CHANGE_STATUS_COLLECTION_ID!,
+// 			ID.unique(),
+// 			{ updaterId: id, role, updatedValue: status, updatedAt: new Date() }
+// 		)
 
-		// Save to DB and Return appointment with status changed to 'Cancelled'
-		const cancelledAppointment = await databases.updateDocument(
-			APPWRITE_DB_ID!,
-			APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
-			appointment.$id,
-			{
-				status,
-				statusUpdatesHistory: [
-					...appointment.statusUpdatesHistory,
-					updatedStatusInfo.$id,
-				],
-			}
-		)
+// 		// Save to DB and Return appointment with status changed to 'Cancelled'
+// 		const cancelledAppointment = await databases.updateDocument(
+// 			APPWRITE_DB_ID!,
+// 			APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
+// 			appointment.$id,
+// 			{
+// 				status,
+// 				statusUpdatesHistory: [
+// 					...appointment.statusUpdatesHistory,
+// 					updatedStatusInfo.$id,
+// 				],
+// 			}
+// 		)
 
-		revalidatePath(generateUrl([Route.DASHBOARD, role, id]))
+// 		revalidatePath(generateUrl([Route.DASHBOARD, role, id]))
 
-		return deepClone(cancelledAppointment)
-	} catch (err) {
-		console.error(err)
-	}
-}
+// 		return deepClone(cancelledAppointment)
+// 	} catch (err) {
+// 		console.error(err)
+// 	}
+// }
 
-// Schedule Appointment - change appointment status to 'Scheduled'
-export async function scheduleAppointment(
-	appointment: Appointment,
-	params: SingleSlugParams
-) {
-	const status: Status = Status.SCHEDULED
-	const { role, id } = params
-	try {
-		// Save to DB and return object with changes status infos
-		const updatedStatusInfo = await databases.createDocument(
-			APPWRITE_DB_ID!,
-			APPWRITE_DB_CHANGE_STATUS_COLLECTION_ID!,
-			ID.unique(),
-			{ updaterId: id, role, updatedValue: status, updatedAt: new Date() }
-		)
+// // Schedule Appointment - change appointment status to 'Scheduled'
+// export async function scheduleAppointment(
+// 	appointment: Appointment,
+// 	params: SingleSlugParams
+// ) {
+// 	const status: Status = Status.SCHEDULED
+// 	const { role, id } = params
+// 	try {
+// 		// Save to DB and return object with changes status infos
+// 		const updatedStatusInfo = await databases.createDocument(
+// 			APPWRITE_DB_ID!,
+// 			APPWRITE_DB_CHANGE_STATUS_COLLECTION_ID!,
+// 			ID.unique(),
+// 			{ updaterId: id, role, updatedValue: status, updatedAt: new Date() }
+// 		)
 
-		const scheduledAppointment = await databases.updateDocument(
-			APPWRITE_DB_ID!,
-			APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
-			appointment.$id,
-			{
-				status,
-				statusUpdatesHistory: [
-					...appointment.statusUpdatesHistory,
-					updatedStatusInfo.$id,
-				],
-			}
-		)
+// 		const scheduledAppointment = await databases.updateDocument(
+// 			APPWRITE_DB_ID!,
+// 			APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
+// 			appointment.$id,
+// 			{
+// 				status,
+// 				statusUpdatesHistory: [
+// 					...appointment.statusUpdatesHistory,
+// 					updatedStatusInfo.$id,
+// 				],
+// 			}
+// 		)
 
-		revalidatePath(generateUrl([Route.DASHBOARD, role, id]))
+// 		revalidatePath(generateUrl([Route.DASHBOARD, role, id]))
 
-		return deepClone(scheduledAppointment)
-	} catch (err) {
-		console.error(err)
-	}
-}
+// 		return deepClone(scheduledAppointment)
+// 	} catch (err) {
+// 		console.error(err)
+// 	}
+// }
 
 // Finish Appointment - change appointment status to 'Finished'
 export async function finishAppointment(
@@ -289,6 +289,8 @@ export async function finishAppointment(
 			ID.unique(),
 			{ updaterId: id, role, updatedValue: status, updatedAt: new Date() }
 		)
+
+		console.log('***', Object.keys(appointment))
 
 		const finihedAppointment = await databases.updateDocument(
 			APPWRITE_DB_ID!,

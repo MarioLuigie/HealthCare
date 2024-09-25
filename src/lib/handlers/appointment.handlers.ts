@@ -2,15 +2,15 @@
 import {
   createAppointment,
   updateAppointment,
-  cancelAppointment,
-  scheduleAppointment,
+  // cancelAppointment,
+  // scheduleAppointment,
   finishAppointment,
   awaitAppointment,
 } from "@/lib/actions/appointment.actions"
 import {
   CreateAppointmentFormValues,
-  CancelAppointmentFormValues,
-  ScheduleAppointmentFormValues,
+  // CancelAppointmentFormValues,
+  // ScheduleAppointmentFormValues,
 } from "@/lib/types/zod"
 import { Appointment } from "@/lib/types/appwrite.types"
 import { ActionTypes } from "@/lib/types/enums"
@@ -54,31 +54,31 @@ export async function handleUpdateAppointment(
   }
 }
 
-// Cancel Appointment but not delete
-export async function handleCancelAppointment(
-  appointment: Appointment,
-  params: SingleSlugParams
-) {
-  try {
-    const cancelledAppointment = await cancelAppointment(appointment, params)
+// // Cancel Appointment but not delete
+// export async function handleCancelAppointment(
+//   appointment: Appointment,
+//   params: SingleSlugParams
+// ) {
+//   try {
+//     const cancelledAppointment = await cancelAppointment(appointment, params)
 
-    // console.log('Cancelled Appointment:', cancelledAppointment)
-  } catch (err) {
-    console.error(err)
-  }
-}
+//     // console.log('Cancelled Appointment:', cancelledAppointment)
+//   } catch (err) {
+//     console.error(err)
+//   }
+// }
 
-// Schedule Appointment
-export async function handleScheduleAppointment(
-  appointment: Appointment,
-  params: SingleSlugParams,
-) {
-  try {
-    const scheduledAppointment = await scheduleAppointment(appointment, params)
-  } catch (err) {
-    console.error(err)
-  }
-}
+// // Schedule Appointment
+// export async function handleScheduleAppointment(
+//   appointment: Appointment,
+//   params: SingleSlugParams,
+// ) {
+//   try {
+//     const scheduledAppointment = await scheduleAppointment(appointment, params)
+//   } catch (err) {
+//     console.error(err)
+//   }
+// }
 
 // Finish Appointment but not delete
 export async function handleFinishAppointment(
