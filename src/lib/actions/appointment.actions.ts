@@ -168,6 +168,7 @@ export async function updateAppointment(
 	
 	try {
 		// Save to DB and return object with changes status infos
+		// !! Change to appointmentChangeLog name
 		const updatedStatusInfo = await databases.createDocument(
 			APPWRITE_DB_ID!,
 			APPWRITE_DB_CHANGE_STATUS_COLLECTION_ID!,
@@ -190,7 +191,7 @@ export async function updateAppointment(
 					updatedStatusInfo.$id,
 				],
 			}
-		)
+		) // !! Change statusUpdatesHistory to changeLogHistory
 
 		revalidatePath(generateUrl([Route.DASHBOARD, role, id]))
 
