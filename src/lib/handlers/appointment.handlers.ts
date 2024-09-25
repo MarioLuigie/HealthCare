@@ -38,12 +38,15 @@ export async function handleCreateAppointment(
 
 // Cancel Appointment but not delete
 export async function handleUpdateAppointment(
-  appointment: any,
+  appointmentId: string,
+  appointmentFormValues: any,
   params: SingleSlugParams,
   actionType: ActionTypes,
 ) {
   try {
-    const updatedAppointment = await updateAppointment(appointment, params, actionType)
+    const updatedAppointment = await updateAppointment(appointmentId, appointmentFormValues, params, actionType)
+
+    return updatedAppointment
 
     // console.log('Cancelled Appointment:', cancelledAppointment)
   } catch (err) {

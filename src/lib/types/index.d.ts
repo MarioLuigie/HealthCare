@@ -44,14 +44,15 @@ declare type CreateAppointmentData = {
 	note?: string | undefined
 	status: Status
     statusUpdatesHistory: string[] 
+    cancellationReason: string
 }
 
-declare type UpdateAppointmentData = {
-	appointmentId: string
-	userId: string
-	appointment: Appointment
-	type: string
-}
+// declare type UpdateAppointmentData = {
+// 	appointmentId: string
+// 	userId: string
+// 	appointment: Appointment
+// 	type: string
+// }
 
 // Url params, route query, page params
 declare interface SingleSlugParams {

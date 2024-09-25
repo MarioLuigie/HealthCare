@@ -28,31 +28,6 @@ export const PatientFormDefaultValues: PatientFormValues = {
 	privacyConsent: false,
 }
 
-// AppointmentForm default values
-// export const CreateAppointmentFormDefaultValues = {
-// 	primaryPhysician: '',
-// 	schedule: new Date(),
-// 	reason: '',
-// 	note: '',
-// 	cancellationReason: '',
-// }
-
-// export const CancelAppointmentFormDefaultValues = {
-// 	primaryPhysician: '',
-// 	schedule: new Date(),
-// 	reason: '',
-// 	note: '',
-// 	cancellationReason: '',
-// }
-
-// export const ScheduleAppointmentFormDefaultValues = {
-// 	primaryPhysician: '',
-// 	schedule: new Date(),
-// 	reason: '',
-// 	note: '',
-// 	cancellationReason: '',
-// }
-
 // Doctors array
 export const doctors = [
 	{

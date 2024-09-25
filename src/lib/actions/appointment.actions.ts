@@ -117,6 +117,7 @@ export async function createAppointment(
 			note: appointmentFormValues.note,
 			status: status,
 			statusUpdatesHistory: [],
+			cancellationReason: ''
 		}
 
 		// !!Do it!! - Type returned object by Appointment interface
@@ -151,12 +152,13 @@ export async function createAppointment(
 
 // Update Appointment - ex. change appointment status to 'Cancelled'
 export async function updateAppointment(
-	appointment: any,
+	appointmentId: string,
+	appointmentFormValues: any,
 	params: SingleSlugParams,
 	actionType: ActionTypes
 ) {
-	let status = null
 	const { role, id } = params
+	let status = null
 
 	if (actionType === ActionTypes.CANCEL) {
 		status = Status.CANCELLED
@@ -173,15 +175,18 @@ export async function updateAppointment(
 			{ updaterId: id, role, updatedValue: status, updatedAt: new Date() }
 		)
 
-		// Save to DB and Return appointment with status changed to 'Cancelled'
+		const appointmentToUpdate = await getAppointment(appointmentId)
+
+		// Save to DB and Return appointment with status changed to 'Cancelled' or 'Scheduled'
 		const updatedAppointment = await databases.updateDocument(
 			APPWRITE_DB_ID!,
 			APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
-			appointment.$id,
+			appointmentId,
 			{
 				status,
+				...appointmentFormValues,
 				statusUpdatesHistory: [
-					...appointment.statusUpdatesHistory,
+					...appointmentToUpdate.statusUpdatesHistory,
 					updatedStatusInfo.$id,
 				],
 			}
