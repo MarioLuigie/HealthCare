@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 // lib
 import { Icons } from '@/lib/constants'
-import { encryptKey, generateUrl } from '@/lib/utils'
+import { encryptKey, generateUrl, prepareSearchParam } from '@/lib/utils'
 import { Route } from '@/lib/constants/paths'
 // components
 import Image from 'next/image'
@@ -25,15 +25,30 @@ import {
 	InputOTPSeparator,
 	InputOTPSlot,
 } from '@/components/ui/input-otp'
-import { Roles } from '@/lib/types/enums'
+import { Roles, SearchParamsString } from '@/lib/types/enums'
 
-export default function PassKeyDialog() {
+export default function PassKeyDialog({
+	searchParams,
+}: {
+	searchParams?: SearchParams
+}) {
 	const router = useRouter()
 
-	const [isOpen, setIsOpen] = useState<boolean>(true)
+	useEffect(() => {
+		if(prepareSearchParam(searchParams?.admin) === SearchParamsString.TRUE) {
+			setIsOpen(true)
+		} else {
+			setIsOpen(false)
+		}
+	}, [searchParams?.admin])
+
+	
+	
+	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const [passKey, setPassKey] = useState<string>('')
 	const [error, setError] = useState<string>('')
-
+	
+	console.log(isOpen)
 	//  Wznawianie sesji w oparciu o token dostepu - weryfikacja na serwerze za pomoca JWT Token jesli zwroci true to router.push('/admin') a jesli false to router.push('/login')
 	// useEffect(() => {
 	// 	const token = localStorage.getItem('sessionToken')
@@ -74,7 +89,7 @@ export default function PassKeyDialog() {
 		}
 	}
 	return (
-		<AlertDialog open={isOpen} onOpenChange={setIsOpen}>
+		<AlertDialog open={isOpen} onOpenChange={handleClose}>
 			<AlertDialogOverlay onClick={handleClose}>
 				<AlertDialogContent
 					className="shad-alert-dialog"

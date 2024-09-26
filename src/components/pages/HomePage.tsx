@@ -3,7 +3,7 @@ import Link from 'next/link'
 // lib
 import { Images } from '@/lib/constants'
 import { Route } from '@/lib/constants/paths'
-import { generateUrl, prepareSearchParam } from '@/lib/utils'
+import { generateUrl } from '@/lib/utils'
 import { SearchParamsString } from '@/lib/types/enums'
 // components
 import PageTitle from '@/components/shared/PageTitle'
@@ -18,13 +18,13 @@ export default function HomePage({
 }: {
 	searchParams?: SearchParams
 }) {
-	{/* TODO: OTP Verification | PassKey Modal  */}
-	const isPassKeyDialogOpen =
-		prepareSearchParam(searchParams?.admin) === SearchParamsString.TRUE
+	{
+		/* TODO: OTP Verification | PassKey Modal  */
+	}
 
 	return (
-		<FormPageTemplate image={Images.HOME_PAGE_IMAGE} classes='max-w-[480px]'>
-			{isPassKeyDialogOpen && <PassKeyDialog />}
+		<FormPageTemplate image={Images.HOME_PAGE_IMAGE} classes="max-w-[480px]">
+			<PassKeyDialog searchParams={searchParams} />
 			<LogoFull />
 			<PageTitle
 				title="Hi there !"
@@ -34,7 +34,9 @@ export default function HomePage({
 			<UserForm />
 			<Copyright>
 				<Link
-					href={generateUrl([Route.HOME], { admin: SearchParamsString.TRUE })}
+					href={generateUrl([Route.HOME], {
+						admin: SearchParamsString.TRUE,
+					})}
 					className="text-green-500"
 				>
 					Admin
