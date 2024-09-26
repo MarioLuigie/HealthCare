@@ -1,7 +1,7 @@
 'use client'
 
 // modules
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 // lib
 import { Icons } from '@/lib/constants'
@@ -33,27 +33,18 @@ export default function PassKeyDialog({
 	searchParams?: SearchParams
 }) {
 	const router = useRouter()
-	const otpSlotNo1Ref = useRef<HTMLInputElement>(null)
-
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const [passKey, setPassKey] = useState<string>('')
 	const [error, setError] = useState<string>('')
 
 	useEffect(() => {
-		if (prepareSearchParam(searchParams?.admin) === SearchParamsString.TRUE) {
+		if(prepareSearchParam(searchParams?.admin) === SearchParamsString.TRUE) {
 			setIsOpen(true)
-
-			requestAnimationFrame(() => {
-				if (otpSlotNo1Ref.current) {
-					otpSlotNo1Ref.current.focus()
-				}
-			})
 		} else {
 			setIsOpen(false)
 		}
 	}, [searchParams?.admin])
 
-	console.log(isOpen)
 	//  Wznawianie sesji w oparciu o token dostepu - weryfikacja na serwerze za pomoca JWT Token jesli zwroci true to router.push('/admin') a jesli false to router.push('/login')
 	// useEffect(() => {
 	// 	const token = localStorage.getItem('sessionToken')
@@ -72,7 +63,6 @@ export default function PassKeyDialog({
 
 	const handleClose = () => {
 		setIsOpen(false)
-		setError("")
 		router.push(generateUrl([Route.HOME]))
 	}
 
@@ -124,14 +114,11 @@ export default function PassKeyDialog({
 							maxLength={6}
 							value={passKey}
 							onChange={(value) => handleChange(value)}
+							autoFocus
 						>
 							<InputOTPGroup className="shad-otp-group">
 								<div className="shad-otp">
-									<InputOTPSlot
-										className="shad-otp-slot"
-										index={0}
-										ref={otpSlotNo1Ref}
-									/>
+									<InputOTPSlot className="shad-otp-slot" index={0} />
 									<InputOTPSlot className="shad-otp-slot" index={1} />
 									<InputOTPSlot className="shad-otp-slot" index={2} />
 								</div>
