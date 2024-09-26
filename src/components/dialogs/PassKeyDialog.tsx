@@ -1,7 +1,7 @@
 'use client'
 
 // modules
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { useRouter } from 'next/navigation'
 // lib
 import { Icons } from '@/lib/constants'
@@ -32,10 +32,12 @@ export default function PassKeyDialog({
 }: {
 	searchParams?: SearchParams
 }) {
+	const passKeyMaxLength = 6
 	const router = useRouter()
 	const [isOpen, setIsOpen] = useState<boolean>(false)
 	const [passKey, setPassKey] = useState<string>('')
 	const [error, setError] = useState<string>('')
+	const validateButtonRef = useRef<HTMLButtonElement | null>(null)
 
 	useEffect(() => {
 		if(prepareSearchParam(searchParams?.admin) === SearchParamsString.TRUE) {
@@ -59,10 +61,15 @@ export default function PassKeyDialog({
 	const handleChange = (value: string) => {
 		setPassKey(value)
 		setError('')
+
+		if (value.length === passKeyMaxLength) {
+			validateButtonRef.current?.focus() 
+		}
 	}
 
 	const handleClose = () => {
 		setIsOpen(false)
+		setPassKey("")
 		router.push(generateUrl([Route.HOME]))
 	}
 
@@ -111,7 +118,7 @@ export default function PassKeyDialog({
 					</AlertDialogHeader>
 					<div className="mb-2 mt-8">
 						<InputOTP
-							maxLength={6}
+							maxLength={passKeyMaxLength}
 							value={passKey}
 							onChange={(value) => handleChange(value)}
 							autoFocus
@@ -142,6 +149,7 @@ export default function PassKeyDialog({
 						<AlertDialogAction
 							onClick={(e) => handleValidate(e)}
 							className="shad-primary-btn w-full mb-2 hover:bg-red-500"
+							ref={validateButtonRef}
 						>
 							Enter admin passkey
 						</AlertDialogAction>
