@@ -9,9 +9,8 @@ import {
 	NEXT_PUBLIC_APPWRITE_ENDPOINT,
 	APPWRITE_DB_PATIENT_COLLECTION_ID,
 	APPWRITE_IDENTIFICATION_DOCUMENTS_BUCKET_ID,
-	storage,
-	databases,
 	APPWRITE_DB_IDENTIFICATION_DOCUMENT_COLLECTION_ID,
+	createAdminClient,
 } from '@/lib/appwrite.config'
 import { ID, Query } from 'node-appwrite'
 // lib
@@ -20,6 +19,8 @@ import { deepClone, formatDateToYMD } from '@/lib/utils'
 
 // Get patient
 export const getPatient = async (userId: string) => {
+	const { databases } = await createAdminClient()
+
 	try {
 		const patients = await databases.listDocuments(
 			APPWRITE_DB_ID!,
@@ -40,6 +41,8 @@ export const getPatient = async (userId: string) => {
 export async function registerPatient(
 	registerPatientData: RegisterPatientData
 ) {
+	const { databases, storage } = await createAdminClient()
+
 	try {
 		// Check if the patient has FormData with files in identificationDocument
 		if (

@@ -3,11 +3,13 @@
 // modules
 import { ID, Query } from 'node-appwrite'
 // lib
-import { users } from '@/lib/appwrite.config'
+import { createAdminClient } from '@/lib/appwrite.config'
 import { deepClone } from '@/lib/utils'
 
 // Create user in appwrite users auth
 export async function createUser(userFormValues: CreateUserData) {
+	const { users } = await createAdminClient()
+
 	try {
 		const createdUser: UserData = await users.create(
 			ID.unique(),
@@ -32,13 +34,13 @@ export async function createUser(userFormValues: CreateUserData) {
 }
 
 export async function getUser(userId: string) {
+	const { users } = await createAdminClient()
+	
 	try {
 		const user = await users.get(userId)
 
 		return deepClone(user)
 	} catch (err) {
-		console.error("An error occurred while retrieving the user details:", err)
+		console.error('An error occurred while retrieving the user details:', err)
 	}
 }
-
-
