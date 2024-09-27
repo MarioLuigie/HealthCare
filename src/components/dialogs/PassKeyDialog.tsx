@@ -70,6 +70,7 @@ export default function PassKeyDialog({
 	const handleClose = () => {
 		setIsOpen(false)
 		setPassKey("")
+		setError('')
 		router.push(generateUrl([Route.HOME]))
 	}
 
