@@ -17,6 +17,11 @@ export const config = {
 	matcher: ['/dashboard'],
 }
 
+// export const config = {
+// 	matcher: ['/dashboard/:path*'], - save all routes witch params too
+// }
+
+
 // Middleware is running!
 // const req = {
 //   cookies: {}, // RequestCookies object
