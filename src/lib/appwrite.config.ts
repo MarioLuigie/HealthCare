@@ -109,16 +109,8 @@ export const createSessionClient = async (session: any) => {
 			return new sdk.Account(client)
 		},
 
-		get users() {
-			return new sdk.Users(client)
-		},
-
 		get databases() {
 			return new sdk.Databases(client)
-		},
-
-		get messaging() {
-			return new sdk.Messaging(client)
 		},
 
 		get storage() {
