@@ -18,30 +18,17 @@ export default function SignUpPage({
 }: {
 	searchParams?: SearchParams
 }) {
-	{
-		/* TODO: OTP Verification | PassKey Modal  */
-	}
-
 	return (
 		<FormPageTemplate image={Images.HOME_PAGE_IMAGE} classes="max-w-[480px]">
 			{/* <PassKeyDialog searchParams={searchParams} /> */}
 			<LogoFull />
 			<PageTitle
-				title="Hi there !"
-				description="Get started with appointments."
+				title="Sign Up"
+				description="Feel free to register for the app."
 				classes="my-12"
 			/>
 			<UserForm />
-			<Copyright>
-				{/* <Link
-					href={generateUrl([Route.HOME], {
-						admin: SearchParamsString.TRUE,
-					})}
-					className="text-green-500"
-				>
-					Admin
-				</Link> */}
-			</Copyright>
+			<Copyright />
 		</FormPageTemplate>
 	)
 }

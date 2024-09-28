@@ -35,7 +35,7 @@ export default function HomePage({
           />
           <div className="flex gap-4">
             <Link
-              href={generateUrl([Route.SIGN_UP])}
+              href={generateUrl([Route.SIGN_IN])}
               className="text-white px-4 py-2 rounded-lg bg-green-500 flex-center min-w-[100px]"
             >
               Sign In
