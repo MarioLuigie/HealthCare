@@ -1,6 +1,6 @@
 import { Gender, Status } from '@/lib/types/enums'
 import { PatientFormValues } from '@/lib/types/zod'
-import { ImagePath, IconPath, DoctorPath } from '@/lib/constants/paths'
+import { ImagePath, IconPath, DoctorPath, VideoPath } from '@/lib/constants/paths'
 
 // PatientForm default data
 export const PatientFormDefaultValues: PatientFormValues = {
@@ -156,6 +156,13 @@ export const Images = {
 	NEW_APPOINTMENT_PAGE_IMAGE: {
 		path: ImagePath.NEW_APPOINTMENT_PAGE,
 		alt: 'New appointment page image',
+	},
+}
+
+// Kinde of videos
+export const Videos = {
+	HOME_PAGE_VIDEO: {
+		path: VideoPath.HOME_PAGE,
 	},
 }
 

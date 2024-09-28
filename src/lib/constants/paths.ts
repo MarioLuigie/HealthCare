@@ -33,6 +33,10 @@ export const ImagePath = {
 	NEW_APPOINTMENT_PAGE: '/assets/images/appointment-img.jpg',
 }
 
+export const VideoPath = {
+	HOME_PAGE: 'https://cloud.appwrite.io/v1/storage/buckets/66d9d9fd00319d398b25/files/66f804e80038ec98f59e/view?project=66d9d5c5000d0b96a418&project=66d9d5c5000d0b96a418&mode=admin',
+}
+
 export const DoctorPath = {
 	GREEN: '/assets/images/dr-green.png',
 	CAMERON: '/assets/images/dr-cameron.png',

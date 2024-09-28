@@ -1,7 +1,7 @@
 // modules
 import Link from "next/link"
 // lib
-import { Images } from "@/lib/constants"
+import { Images, Videos } from "@/lib/constants"
 import { Route } from "@/lib/constants/paths"
 import { generateUrl } from "@/lib/utils"
 import { SearchParamsString } from "@/lib/types/enums"
@@ -23,7 +23,7 @@ export default function HomePage({
   }
 
   return (
-    <FormPageTemplate image={Images.HOME_PAGE_IMAGE} classes="max-w-[480px]">
+    <FormPageTemplate video={Videos.HOME_PAGE_VIDEO} classes="max-w-[480px]" isVideo>
       <PassKeyDialog searchParams={searchParams} />
       <div className="flex flex-col justify-between grow">
         <LogoFull />
