@@ -263,11 +263,11 @@
   }
 
   .side-img {
-    @apply hidden md:block h-full object-cover;
+    @apply h-full object-cover;
   }
 
   .side-video {
-    @apply hidden md:block h-full object-cover;
+    @apply h-full object-cover;
   }
 
   .copyright {

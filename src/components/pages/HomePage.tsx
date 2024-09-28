@@ -36,13 +36,13 @@ export default function HomePage({
           <div className="flex gap-4">
             <Link
               href={generateUrl([Route.SIGN_IN])}
-              className="text-white px-4 py-2 rounded-lg bg-green-500 flex-center min-w-[100px]"
+              className="text-white px-4 py-2 rounded-lg bg-green-500 flex-center min-w-[110px]"
             >
               Sign In
             </Link>
             <Link
               href={generateUrl([Route.SIGN_UP])}
-              className="text-white px-4 py-2 rounded-lg bg-transparent flex-center border border-gray-500 min-w-[100px]"
+              className="text-white px-4 py-2 rounded-lg bg-transparent flex-center border border-gray-500 min-w-[110px]"
             >
               Sign Up
             </Link>

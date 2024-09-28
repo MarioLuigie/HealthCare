@@ -22,11 +22,11 @@ export default function FormPageTemplate({
           {children}
         </div>
       </section>
-      <section className="max-w-[33%]">
+      <section className="w-[50%] hidden md:block">
         {isVideo
           ? video && (
               <div className="flex justify-center h-full">
-                <video autoPlay loop muted className="side-video">
+                <video autoPlay loop muted className="side-video w-full">
                   <source src={video.path} type="video/mp4" />
                 </video>
               </div>
