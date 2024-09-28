@@ -16,7 +16,11 @@ import { Form } from '@/components/ui/form'
 import { generateUrl } from '@/lib/utils'
 import { Route } from '@/lib/constants/paths'
 
-export default function UserForm() {
+type AuthFormProps = {
+	actionType: string
+}
+
+export default function AuthForm({ actionType }: AuthFormProps) {
 	const router = useRouter()
 
 	const form = useForm<UserFormValues>({

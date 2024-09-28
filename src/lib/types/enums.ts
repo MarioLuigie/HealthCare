@@ -28,6 +28,11 @@ export enum ActionTypes {
 	CANCEL = 'cancel',
 }
 
+export enum AuthTypes {
+	SIGN_IN = 'sign-in',
+	SIGN_UP = 'sign-up',
+}
+
 export enum Roles {
 	DOCTOR = 'doctor',
 	PATIENT = 'patient',
