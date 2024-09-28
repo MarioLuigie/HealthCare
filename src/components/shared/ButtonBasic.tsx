@@ -1,7 +1,7 @@
 // components
 import { Button } from '@/components/ui/button'
 
-interface SubmitButtonProps {
+interface ButtonBasicProps {
   type?: "submit" | "reset" | "button" | undefined
 	className?: string
 	children: React.ReactNode
@@ -13,7 +13,7 @@ export default function ButtonBasic({
 	className,
 	children,
 	isDanger=false
-}: SubmitButtonProps) {
+}: ButtonBasicProps) {
 	return (
 		<Button
 			type={type}
