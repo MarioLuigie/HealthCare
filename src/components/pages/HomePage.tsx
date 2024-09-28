@@ -7,7 +7,7 @@ import { generateUrl } from '@/lib/utils'
 import { SearchParamsString } from '@/lib/types/enums'
 // components
 import PageTitle from '@/components/shared/PageTitle'
-import UserForm from '@/components/forms/UserForm'
+// import UserForm from '@/components/forms/UserForm'
 import LogoFull from '@/components/content/LogoFull'
 import Copyright from '@/components/content/Copyright'
 import FormPageTemplate from '@/components/shared/FormPageTemplate'
@@ -31,7 +31,7 @@ export default function HomePage({
 				description="Get started with appointments."
 				classes="my-12"
 			/>
-			<UserForm />
+			{/* <UserForm /> */}
 			<Copyright>
 				<Link
 					href={generateUrl([Route.HOME], {
