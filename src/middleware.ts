@@ -7,7 +7,7 @@ export async function middleware(req: NextRequest) {
 	if (!user) {
 		console.log('Middleware is running!')
 
-		return NextResponse.redirect(new URL(Route.SIGN_IN, req.url))
+		return NextResponse.redirect(new URL(Route.HOME, req.url))
 	}
 
 	return NextResponse.next()
