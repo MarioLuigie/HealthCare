@@ -1,4 +1,4 @@
-import { signUp } from '@/lib/actions/auth.actions'
+import { signIn, signUp } from '@/lib/actions/auth.actions'
 import { SignInAuthFormValues, SignUpAuthFormValues } from '@/lib/types/zod'
 
 export const handleSignUp = async (authFormValues: SignUpAuthFormValues) => {
@@ -22,7 +22,9 @@ export const handleSignIn = async (authFormValues: SignInAuthFormValues) => {
 			setTimeout(resolve, 2000)
 		})
 
+		const session = await signIn(authFormValues)
 
+		return session
 	} catch (err) {
 		console.error(err)
 	}

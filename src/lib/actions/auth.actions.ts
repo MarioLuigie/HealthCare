@@ -7,7 +7,7 @@ import { createAdminClient } from '@/lib/appwrite.config'
 import { deepClone } from '@/lib/utils'
 import { SignInAuthFormValues, SignUpAuthFormValues } from '@/lib/types/zod'
 
-// Create user in appwrite users auth
+// Sign Up and return created user
 export async function signUp(authFormValues: SignUpAuthFormValues) {
 	const { users } = await createAdminClient()
 
@@ -34,6 +34,7 @@ export async function signUp(authFormValues: SignUpAuthFormValues) {
 	}
 }
 
+// Sign In and return session with secret/accessToken
 export async function signIn(authFormValues: SignInAuthFormValues) {
 	const { users } = await createAdminClient()
 

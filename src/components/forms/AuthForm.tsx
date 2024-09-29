@@ -57,7 +57,7 @@ export default function AuthForm({ authType }: AuthFormProps) {
           )
         }
       } else if (authType === AuthTypes.SIGN_IN) {
-        const createdUser = await handleSignIn(
+        const session = await handleSignIn(
           authFormValues as SignInAuthFormValues
         )
       }
