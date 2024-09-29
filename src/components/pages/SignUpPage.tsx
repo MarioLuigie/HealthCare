@@ -15,7 +15,7 @@ export default function SignUpPage({
   searchParams?: SearchParams
 }) {
   return (
-    <FormPageTemplate image={Images.HOME_PAGE_IMAGE} classes="max-w-[480px]">
+    <FormPageTemplate image={Images.SIGN_UP_PAGE_IMAGE} classes="max-w-[480px]">
       {/* <PassKeyDialog searchParams={searchParams} /> */}
       <div className="flex flex-col justify-between grow">
         <LogoFull />

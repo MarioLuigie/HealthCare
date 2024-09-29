@@ -25,9 +25,9 @@ export default function FormPageTemplate({
       <section className="w-[50%] hidden md:block">
         {isVideo
           ? video && (
-              <div className="flex justify-center h-full">
+              <div className="flex justify-center h-full w-full">
                 <video autoPlay loop muted className="side-video w-full">
-                  <source src={video.path} type="video/mp4" />
+                  <source src={video.path} type="video/mp4"/>
                 </video>
               </div>
             )
@@ -37,7 +37,7 @@ export default function FormPageTemplate({
                 height={1000}
                 width={1000}
                 alt={image.alt}
-                className="side-img"
+                className="side-img w-full"
               />
             )}
       </section>

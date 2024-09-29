@@ -145,9 +145,13 @@ export const Icons = {
 
 // Kinde of images
 export const Images = {
-	HOME_PAGE_IMAGE: {
-		path: ImagePath.HOME_PAGE,
-		alt: 'Home page image',
+	SIGN_UP_PAGE_IMAGE: {
+		path: ImagePath.SIGN_UP,
+		alt: 'Sign Up page image',
+	},
+	SIGN_IN_PAGE_IMAGE: {
+		path: ImagePath.SIGN_IN,
+		alt: 'Sign In page image',
 	},
 	REGISTER_PAGE_IMAGE: {
 		path: ImagePath.REGISTER_PAGE,

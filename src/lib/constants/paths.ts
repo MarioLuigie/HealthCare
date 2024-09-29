@@ -28,13 +28,14 @@ export const IconPath = {
 }
 
 export const ImagePath = {
-	HOME_PAGE: '/assets/images/onboarding-img.png',
+	SIGN_IN: '/assets/images/onboarding3-img.jpg',
+	SIGN_UP: '/assets/images/onboarding1-img.jpg',
 	REGISTER_PAGE: '/assets/images/register-img.jpg',
 	NEW_APPOINTMENT_PAGE: '/assets/images/appointment-img.jpg',
 }
 
 export const VideoPath = {
-	HOME_PAGE: 'https://cloud.appwrite.io/v1/storage/buckets/66d9d9fd00319d398b25/files/66f804e80038ec98f59e/view?project=66d9d5c5000d0b96a418&project=66d9d5c5000d0b96a418&mode=admin',
+	HOME_PAGE: 'https://cloud.appwrite.io/v1/storage/buckets/66d9d9fd00319d398b25/files/66f8afa4003cc648d6f9/view?project=66d9d5c5000d0b96a418&project=66d9d5c5000d0b96a418&mode=admin',
 }
 
 export const DoctorPath = {
