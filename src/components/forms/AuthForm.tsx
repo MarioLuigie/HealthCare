@@ -64,23 +64,6 @@ export default function AuthForm({ authType }: AuthFormProps) {
     }
   }
 
-  // const onSubmit: SubmitHandler<z.infer<typeof AuthFormSchema>> = async (
-  // 	userFormValues: z.infer<typeof AuthFormSchema>
-  // ) => {
-  // 	try {
-  // 		const user = await handleCreateUser(userFormValues)
-
-  // 		if (user!) {
-  // 			router.push(generateUrl([Route.PATIENTS, user.$id, Route.REGISTER]))
-  // 			form.reset()
-  // 		} else {
-  // 			console.log('Something went wrong with creating user.')
-  // 		}
-  // 	} catch (err) {
-  // 		console.error('Error from onSubmit for UserForm', err)
-  // 	}
-  // }
-
   return (
     <Form {...form}>
       <form
