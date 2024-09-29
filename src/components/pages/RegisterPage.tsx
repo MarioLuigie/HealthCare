@@ -12,7 +12,7 @@ export default async function RegisterPage({ params }: { params: SingleSlugParam
 	const userId = params.userId
 	const user = await getUser(userId)
 
-	console.log('User from RegistrationPage:', user)
+	console.log('User from RegisterPage:', user)
 	return (
 		<FormPageTemplate image={Images.REGISTER_PAGE_IMAGE} classes='max-w-[780px]'>
 			<LogoFull />

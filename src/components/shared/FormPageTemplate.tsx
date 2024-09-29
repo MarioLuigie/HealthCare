@@ -17,12 +17,12 @@ export default function FormPageTemplate({
 }: FormPageTemplateProps) {
   return (
     <div className="flex h-screen max-h-screen">
-      <section className="remove-scrollbar container my-auto min-h-screen overflow-y-auto">
+      <div id="100" className="remove-scrollbar container my-auto h-screen overflow-y-auto">
         <div className={`sub-container ${classes} min-h-screen`}>
           {children}
         </div>
-      </section>
-      <section className="w-[50%] hidden md:block">
+      </div>
+      <div id="200" className="w-[50%] hidden md:block">
         {isVideo
           ? video && (
               <div className="flex justify-center h-full w-full">
@@ -40,7 +40,7 @@ export default function FormPageTemplate({
                 className="side-img w-full"
               />
             )}
-      </section>
+      </div>
     </div>
   )
 }
