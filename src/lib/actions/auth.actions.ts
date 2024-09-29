@@ -5,18 +5,19 @@ import { ID, Query } from 'node-appwrite'
 // lib
 import { createAdminClient } from '@/lib/appwrite.config'
 import { deepClone } from '@/lib/utils'
+import { SignInAuthFormValues, SignUpAuthFormValues } from '@/lib/types/zod'
 
 // Create user in appwrite users auth
-export async function createUser(userFormValues: CreateUserData) {
+export async function signUp(authFormValues: SignUpAuthFormValues) {
 	const { users } = await createAdminClient()
 
 	try {
 		const createdUser: UserData = await users.create(
 			ID.unique(),
-			userFormValues.email,
-			userFormValues.phone,
+			authFormValues.email,
+			authFormValues.phone,
 			undefined,
-			userFormValues.name
+			authFormValues.name
 		)
 
 		return deepClone(createdUser)
@@ -24,12 +25,22 @@ export async function createUser(userFormValues: CreateUserData) {
 		// Check existing user
 		if (err && err?.code === 409) {
 			const documents = await users.list([
-				Query.equal('email', [userFormValues.email]),
+				Query.equal('email', [authFormValues.email]),
 			])
 
 			return documents.users[0]
 		}
 		console.error('An error occurred while creating a new user:', err)
+	}
+}
+
+export async function signIn(authFormValues: SignInAuthFormValues) {
+	const { users } = await createAdminClient()
+
+	try {
+
+	} catch (err: any) {
+		console.error('An error occurred while loging:', err)
 	}
 }
 

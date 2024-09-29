@@ -5,10 +5,15 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { useRouter } from "next/navigation"
 // lib
-import { getAuthFormDefaultValues, getAuthFormSchema } from "@/lib/types/zod"
+import {
+  getAuthFormDefaultValues,
+  getAuthFormSchema,
+  SignUpAuthFormValues,
+  SignInAuthFormValues,
+} from "@/lib/types/zod"
 import { AuthTypes, FormFieldType } from "@/lib/types/enums"
 import { Icons } from "@/lib/constants"
-import { handleCreateUser } from "@/lib/handlers/auth.handlers"
+import { handleSignUp, handleSignIn } from "@/lib/handlers/auth.handlers"
 import { generateUrl } from "@/lib/utils"
 import { Route } from "@/lib/constants/paths"
 // components
@@ -33,15 +38,26 @@ export default function AuthForm({ authType }: AuthFormProps) {
   const { isSubmitting } = form.formState
 
   const onSubmit: SubmitHandler<z.infer<typeof AuthFormSchema>> = async (
-    userFormValues: z.infer<typeof AuthFormSchema>
+    authFormValues: z.infer<typeof AuthFormSchema>
   ) => {
     try {
       if (authType === AuthTypes.SIGN_UP) {
+        const createdUser = await handleSignUp(
+          authFormValues as SignUpAuthFormValues
+        )
 
-
+        if (createdUser!) {
+          router.push(
+            generateUrl([Route.PATIENTS, createdUser.$id, Route.REGISTER])
+          )
+          form.reset()
+        } else {
+          console.log("Something went wrong with creating user while registering.")
+        }
       } else if (authType === AuthTypes.SIGN_IN) {
-
-
+        const createdUser = await handleSignIn(
+          authFormValues as SignInAuthFormValues
+        )
       }
     } catch (err) {
       console.error("Error from onSubmit for AuthForm", err)

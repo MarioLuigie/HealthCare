@@ -1,12 +1,13 @@
-import { createUser } from '@/lib/actions/auth.actions'
+import { signUp } from '@/lib/actions/auth.actions'
+import { SignInAuthFormValues, SignUpAuthFormValues } from '@/lib/types/zod'
 
-export const handleCreateUser = async (userFormValues: CreateUserData) => {
+export const handleSignUp = async (authFormValues: SignUpAuthFormValues) => {
 	try {
 		await new Promise((resolve) => {
 			setTimeout(resolve, 2000)
 		})
 
-		const createdUser = await createUser(userFormValues)
+		const createdUser = await signUp(authFormValues)
 
 		return createdUser
 
@@ -14,5 +15,32 @@ export const handleCreateUser = async (userFormValues: CreateUserData) => {
 		console.error(err)
 	}
 }
+
+export const handleSignIn = async (authFormValues: SignInAuthFormValues) => {
+	try {
+		await new Promise((resolve) => {
+			setTimeout(resolve, 2000)
+		})
+
+
+	} catch (err) {
+		console.error(err)
+	}
+}
+
+// export const handleCreateUser = async (userFormValues: CreateUserData) => {
+// 	try {
+// 		await new Promise((resolve) => {
+// 			setTimeout(resolve, 2000)
+// 		})
+
+// 		const createdUser = await createUser(userFormValues)
+
+// 		return createdUser
+
+// 	} catch (err) {
+// 		console.error(err)
+// 	}
+// }
 
 
