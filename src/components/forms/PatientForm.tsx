@@ -320,7 +320,7 @@ export default function PatientForm({ user }: { user: UserData }) {
             privacy policy"
           />
         </section>
-        <div className="mt-8">
+        <div className="my-8">
           <SubmitButton isLoading={isSubmitting} className="w-full">
             Register and Continue
           </SubmitButton>

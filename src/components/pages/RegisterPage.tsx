@@ -18,7 +18,7 @@ export default async function RegisterPage({ params }: { params: SingleSlugParam
 			<LogoFull />
 			<PageTitle
 				title="Welcome !"
-				description="Here you can create your patient profile, from which you will be able to create and manage your appointments to your chosen doctors"
+				description="Here you can create your patient profile, from which you will be able to create and manage your appointments."
 				classes='my-12'
 			/>
 			<PatientForm user={user} />
