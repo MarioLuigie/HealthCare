@@ -5,7 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 // lib
-import { UserFormSchema, UserFormValues } from '@/lib/types/zod'
+import { SignUpAuthFormSchema, SignUpAuthFormValues } from '@/lib/types/zod'
 import { FormFieldType } from '@/lib/types/enums'
 import { Icons } from '@/lib/constants'
 import { handleCreateUser } from '@/lib/handlers/user.handlers'
@@ -23,8 +23,8 @@ type AuthFormProps = {
 export default function AuthForm({ authType }: AuthFormProps) {
 	const router = useRouter()
 
-	const form = useForm<UserFormValues>({
-		resolver: zodResolver(UserFormSchema),
+	const form = useForm<SignUpAuthFormValues>({
+		resolver: zodResolver(SignUpAuthFormSchema),
 		defaultValues: {
 			name: '',
 			email: '',
@@ -34,8 +34,8 @@ export default function AuthForm({ authType }: AuthFormProps) {
 
 	const { isSubmitting } = form.formState
 
-	const onSubmit: SubmitHandler<UserFormValues> = async (
-		userFormValues: UserFormValues
+	const onSubmit: SubmitHandler<SignUpAuthFormValues> = async (
+		userFormValues: SignUpAuthFormValues
 	) => {
 		try {
 			const user = await handleCreateUser(userFormValues)

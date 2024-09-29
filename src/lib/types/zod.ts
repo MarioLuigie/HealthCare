@@ -7,8 +7,8 @@ import { Appointment } from "@/lib/types/appwrite.types"
 // 	ScheduleAppointmentFormDefaultValues,
 // } from '@/lib/constants'
 
-// UserForm
-export const UserFormSchema = z.object({
+// AuthForm
+export const SignUpAuthFormSchema = z.object({
   name: z
     .string()
     .min(2, "Name must be at least 2 characters")
@@ -19,7 +19,24 @@ export const UserFormSchema = z.object({
     .refine((phone) => /^\+\d{10,15}$/.test(phone), "Invalid phone number"),
 })
 
-export type UserFormValues = z.infer<typeof UserFormSchema>
+export type SignUpAuthFormValues = z.infer<typeof SignUpAuthFormSchema>
+
+export const SignInAuthFormSchema = z.object({
+  email: z.string().email("Invalid email address"),
+  password: z
+    .string()
+    .min(8, "Password must be at least 8 characters long")
+    .max(64, "Password must be at most 64 characters long")
+    .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+    .regex(/[a-z]/, "Password must contain at least one lowercase letter")
+    .regex(/\d/, "Password must contain at least one number")
+    .regex(/[@$!%*?&#]/, "Password must contain at least one special character")
+    .refine((val) => !val.toLowerCase().includes("password"), {
+      message: "Password cannot contain the word 'password'",
+    }),
+})
+
+export type SignInAuthFormValues = z.infer<typeof SignInAuthFormSchema>
 
 // PatientForm
 export const PatientFormSchema = z.object({
@@ -146,7 +163,10 @@ export function getAppointmentFormSchema(actionType: ActionTypes) {
 
 // AppointmentForm default values
 
-export function getAppointmentFormDefaultValues(actionType: ActionTypes, appointment?: Appointment) {
+export function getAppointmentFormDefaultValues(
+  actionType: ActionTypes,
+  appointment?: Appointment
+) {
   switch (actionType) {
     case ActionTypes.CREATE:
       return {
@@ -157,14 +177,16 @@ export function getAppointmentFormDefaultValues(actionType: ActionTypes, appoint
       }
     case ActionTypes.CANCEL:
       return {
-        cancellationReason: "",// !!DO IT!! - Check value empty string or null || ""
+        cancellationReason: "", // !!DO IT!! - Check value empty string or null || ""
       }
     case ActionTypes.SCHEDULE:
       return {
-				primaryPhysician: appointment ? appointment.primaryPhysician : "",
-				schedule: appointment ? new Date(appointment.schedule) : new Date(Date.now()),
-				reason: appointment ? appointment.reason : "",
-				note: appointment ? appointment.note : "",
+        primaryPhysician: appointment ? appointment.primaryPhysician : "",
+        schedule: appointment
+          ? new Date(appointment.schedule)
+          : new Date(Date.now()),
+        reason: appointment ? appointment.reason : "",
+        note: appointment ? appointment.note : "",
       }
   }
 }
