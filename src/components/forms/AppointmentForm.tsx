@@ -111,7 +111,7 @@ export default function AppointmentForm({
             {/* Select doctor */}
             <CustomFormField
               control={form.control}
-              type={FormFieldType.SELECT}
+              typeField={FormFieldType.SELECT}
               name="primaryPhysician"
               label="Doctor"
               placeholder="Select a doctor"
@@ -138,7 +138,7 @@ export default function AppointmentForm({
             {/* Select date and time of appointment */}
             <CustomFormField
               control={form.control}
-              type={FormFieldType.DATE_PICKER}
+              typeField={FormFieldType.DATE_PICKER}
               name="schedule"
               placeholder="Select date of appointment"
               label="Expected appointment date and time"
@@ -150,14 +150,14 @@ export default function AppointmentForm({
             <div className="flex flex-col xl:flex-row gap-4">
               <CustomFormField
                 control={form.control}
-                type={FormFieldType.TEXTAREA}
+                typeField={FormFieldType.TEXTAREA}
                 name="reason"
                 label="Reason for appointment "
                 placeholder="ex: Annual montly check-up"
               />
               <CustomFormField
                 control={form.control}
-                type={FormFieldType.TEXTAREA}
+                typeField={FormFieldType.TEXTAREA}
                 name="note"
                 label="Additional comments/notes"
                 placeholder="ex: Prefer afternoon appointments, if possible"
@@ -169,7 +169,7 @@ export default function AppointmentForm({
         {actionType === ActionTypes.CANCEL && (
           <CustomFormField
             control={form.control}
-            type={FormFieldType.TEXTAREA}
+            typeField={FormFieldType.TEXTAREA}
             name="cancellationReason"
             label="Reason for cancellation"
             placeholder="ex: Sudden unexpected situation"

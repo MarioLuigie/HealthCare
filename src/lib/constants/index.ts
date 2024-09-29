@@ -141,6 +141,10 @@ export const Icons = {
 		path: IconPath.FINISHED,
 		alt: 'Finished Appointment',
 	},
+	PASSWORD_ICON: {
+		path: IconPath.PASSWORD,
+		alt: 'Password',
+	},
 }
 
 // Kinde of images

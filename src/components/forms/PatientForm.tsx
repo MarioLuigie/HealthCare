@@ -83,7 +83,7 @@ export default function PatientForm({ user }: { user: UserData }) {
 				{/* Name */}
 				<CustomFormField
 					control={form.control}
-					type={FormFieldType.INPUT}
+					typeField={FormFieldType.INPUT}
 					name="name"
 					label="Full name"
 					placeholder="ex: James Smith"
@@ -94,7 +94,7 @@ export default function PatientForm({ user }: { user: UserData }) {
 				<div className="flex flex-col lg:flex-row gap-4">
 					<CustomFormField
 						control={form.control}
-						type={FormFieldType.INPUT}
+						typeField={FormFieldType.INPUT}
 						name="email"
 						label="Email address"
 						iconSrc={Icons.EMAIL_ICON.path}
@@ -102,7 +102,7 @@ export default function PatientForm({ user }: { user: UserData }) {
 					/>
 					<CustomFormField
 						control={form.control}
-						type={FormFieldType.INPUT}
+						typeField={FormFieldType.INPUT}
 						name="phone"
 						label="Phone number"
 						iconSrc={Icons.PHONE_ICON.path}
@@ -113,14 +113,14 @@ export default function PatientForm({ user }: { user: UserData }) {
 				<div className="flex flex-col lg:flex-row gap-4">
 					<CustomFormField
 						control={form.control}
-						type={FormFieldType.DATE_PICKER}
+						typeField={FormFieldType.DATE_PICKER}
 						name="birthDate"
 						label="Date of birth"
 						placeholder="Select your birth"
 					/>
 					<CustomFormField
 						control={form.control}
-						type={FormFieldType.SKELETON}
+						typeField={FormFieldType.SKELETON}
 						name="gender"
 						label="Gender"
 						renderSkeleton={(field) => (
@@ -155,14 +155,14 @@ export default function PatientForm({ user }: { user: UserData }) {
 				<div className="flex flex-col lg:flex-row gap-4">
 					<CustomFormField
 						control={form.control}
-						type={FormFieldType.INPUT}
+						typeField={FormFieldType.INPUT}
 						name="address"
 						label="Address"
 						placeholder="ex: 12th Street, New York"
 					/>
 					<CustomFormField
 						control={form.control}
-						type={FormFieldType.INPUT}
+						typeField={FormFieldType.INPUT}
 						name="occupation"
 						label="Occupation"
 						placeholder="ex: Architect"
@@ -172,14 +172,14 @@ export default function PatientForm({ user }: { user: UserData }) {
 				<div className="flex flex-col lg:flex-row gap-4">
 					<CustomFormField
 						control={form.control}
-						type={FormFieldType.INPUT}
+						typeField={FormFieldType.INPUT}
 						name="emergencyContactName"
 						label="Emergency contact name"
 						placeholder="Guardian's name"
 					/>
 					<CustomFormField
 						control={form.control}
-						type={FormFieldType.PHONE_INPUT}
+						typeField={FormFieldType.PHONE_INPUT}
 						name="emergencyContactNumber"
 						label="Emergency contact number"
 					/>
@@ -193,7 +193,7 @@ export default function PatientForm({ user }: { user: UserData }) {
 				{/* Primary care physician */}
 				<CustomFormField
 					control={form.control}
-					type={FormFieldType.SELECT}
+					typeField={FormFieldType.SELECT}
 					name="primaryPhysician"
 					label="Primary physician"
 					placeholder="Select a physician"
@@ -212,14 +212,14 @@ export default function PatientForm({ user }: { user: UserData }) {
 				<div className="flex flex-col lg:flex-row gap-4">
 					<CustomFormField
 						control={form.control}
-						type={FormFieldType.INPUT}
+						typeField={FormFieldType.INPUT}
 						name="insuranceProvider"
 						label="Insurance provider"
 						placeholder="ex: Nationale Nederlanden"
 					/>
 					<CustomFormField
 						control={form.control}
-						type={FormFieldType.INPUT}
+						typeField={FormFieldType.INPUT}
 						name="insurancePolicyNumber"
 						label="Insurance policy number"
 						placeholder="ex: ABC123456789"
@@ -229,14 +229,14 @@ export default function PatientForm({ user }: { user: UserData }) {
 				<div className="flex flex-col lg:flex-row gap-4">
 					<CustomFormField
 						control={form.control}
-						type={FormFieldType.TEXTAREA}
+						typeField={FormFieldType.TEXTAREA}
 						name="allergies"
 						label="Allergies (if any)"
 						placeholder="ex: Peanuts, Penicilin, Pollen..."
 					/>
 					<CustomFormField
 						control={form.control}
-						type={FormFieldType.TEXTAREA}
+						typeField={FormFieldType.TEXTAREA}
 						name="currentMedications"
 						label="Current madications"
 						placeholder="ex: Ibuprofen 200mg, Paracetamol 500mg"
@@ -246,14 +246,14 @@ export default function PatientForm({ user }: { user: UserData }) {
 				<div className="flex flex-col lg:flex-row gap-4">
 					<CustomFormField
 						control={form.control}
-						type={FormFieldType.TEXTAREA}
+						typeField={FormFieldType.TEXTAREA}
 						name="familyMedicalHistory"
 						label="Family medical history"
 						placeholder="ex: Grandmother had cancer"
 					/>
 					<CustomFormField
 						control={form.control}
-						type={FormFieldType.TEXTAREA}
+						typeField={FormFieldType.TEXTAREA}
 						name="pastMedicalHistory"
 						label="Past medical history"
 						placeholder="ex: Asthma diagnosis in childhood"
@@ -270,7 +270,7 @@ export default function PatientForm({ user }: { user: UserData }) {
 				{/* Identification type */}
 				<CustomFormField
 					control={form.control}
-					type={FormFieldType.SELECT}
+					typeField={FormFieldType.SELECT}
 					name="identificationType"
 					label="Identification type"
 					placeholder="Select an identification type"
@@ -288,7 +288,7 @@ export default function PatientForm({ user }: { user: UserData }) {
 				{/* Identification number */}
 				<CustomFormField
 					control={form.control}
-					type={FormFieldType.INPUT}
+					typeField={FormFieldType.INPUT}
 					name="identificationNumber"
 					label="Identification number"
 					placeholder="ex: 123456789"
@@ -296,7 +296,7 @@ export default function PatientForm({ user }: { user: UserData }) {
 				{/* Scanned copy of identification document */}
 				<CustomFormField
 					control={form.control}
-					type={FormFieldType.SKELETON}
+					typeField={FormFieldType.SKELETON}
 					name="identificationDocuments"
 					label="Scanned copy of identification document"
 					renderSkeleton={(field) => (
@@ -314,20 +314,20 @@ export default function PatientForm({ user }: { user: UserData }) {
 						<h2 className="sub-header">Consent and Privacy</h2>
 					</div>
 					<CustomFormField
-						type={FormFieldType.CHECKBOX}
+						typeField={FormFieldType.CHECKBOX}
 						control={form.control}
 						name="treatmentConsent"
 						label="I consent to receive treatment for my health condition."
 					/>
 					<CustomFormField
-						type={FormFieldType.CHECKBOX}
+						typeField={FormFieldType.CHECKBOX}
 						control={form.control}
 						name="disclosureConsent"
 						label="I consent to the use and disclosure of my health
             information for treatment purposes."
 					/>
 					<CustomFormField
-						type={FormFieldType.CHECKBOX}
+						typeField={FormFieldType.CHECKBOX}
 						control={form.control}
 						name="privacyConsent"
 						label="I acknowledge that I have reviewed and agree to the

@@ -52,7 +52,9 @@ export default function AuthForm({ authType }: AuthFormProps) {
           )
           form.reset()
         } else {
-          console.log("Something went wrong with creating user while registering.")
+          console.log(
+            "Something went wrong with creating user while registering."
+          )
         }
       } else if (authType === AuthTypes.SIGN_IN) {
         const createdUser = await handleSignIn(
@@ -70,31 +72,62 @@ export default function AuthForm({ authType }: AuthFormProps) {
         onSubmit={form.handleSubmit(onSubmit)}
         className="flex flex-col gap-8"
       >
-        <CustomFormField
-          control={form.control}
-          type={FormFieldType.INPUT}
-          name="name"
-          label="Name"
-          placeholder="James Smith"
-          iconSrc={Icons.USER_ICON.path}
-          iconAlt={Icons.USER_ICON.alt}
-        />
-        <CustomFormField
-          control={form.control}
-          type={FormFieldType.INPUT}
-          name="email"
-          label="Email"
-          placeholder="jamessmith@healthcare.com"
-          iconSrc={Icons.EMAIL_ICON.path}
-          iconAlt={Icons.EMAIL_ICON.alt}
-        />
-        <CustomFormField
-          control={form.control}
-          type={FormFieldType.PHONE_INPUT}
-          name="phone"
-          label="Phone number"
-          placeholder="500 600 700"
-        />
+        {/* Sign Up Form */}
+        {authType === AuthTypes.SIGN_UP && (
+          <>
+            <CustomFormField
+              control={form.control}
+              typeField={FormFieldType.INPUT}
+              name="name"
+              label="Name"
+              placeholder="James Smith"
+              iconSrc={Icons.USER_ICON.path}
+              iconAlt={Icons.USER_ICON.alt}
+            />
+            <CustomFormField
+              control={form.control}
+              typeField={FormFieldType.INPUT}
+              name="email"
+              label="Email"
+              placeholder="jamessmith@healthcare.com"
+              iconSrc={Icons.EMAIL_ICON.path}
+              iconAlt={Icons.EMAIL_ICON.alt}
+            />
+            <CustomFormField
+              control={form.control}
+              typeField={FormFieldType.PHONE_INPUT}
+              name="phone"
+              label="Phone number"
+              placeholder="500 600 700"
+            />
+          </>
+        )}
+
+        {/* Sign In Form */}
+        {authType === AuthTypes.SIGN_IN && (
+          <>
+            <CustomFormField
+              control={form.control}
+              typeField={FormFieldType.INPUT}
+              name="email"
+              label="Email"
+              placeholder="jamessmith@healthcare.com"
+              iconSrc={Icons.EMAIL_ICON.path}
+              iconAlt={Icons.EMAIL_ICON.alt}
+            />
+            <CustomFormField
+              control={form.control}
+              typeField={FormFieldType.INPUT}
+              name="password"
+              label="Password"
+              placeholder="Enter your password"
+              type='password'
+              iconSrc={Icons.PASSWORD_ICON.path}
+              iconAlt={Icons.PASSWORD_ICON.alt}
+            />
+          </>
+        )}
+
         <div className="mt-8">
           <SubmitButton isLoading={isSubmitting} className="w-full">
             Get started!

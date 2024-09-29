@@ -25,6 +25,7 @@ export const IconPath = {
 	PENDING: '/assets/icons/pending.svg',
 	CANCELLED: '/assets/icons/cancelled.svg',
 	FINISHED: '/assets/icons/finished.svg',
+	PASSWORD: '/assets/icons/password.svg',
 }
 
 export const ImagePath = {
