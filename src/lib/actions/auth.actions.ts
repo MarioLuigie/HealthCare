@@ -20,6 +20,8 @@ export async function signUp(authFormValues: SignUpAuthFormValues) {
 			authFormValues.name,
 		)
 
+		await account.createVerification('http://localhost:3000/verify-account')
+
 		return deepClone(createdUser)
 	} catch (err: any) {
 		// Check existing user
