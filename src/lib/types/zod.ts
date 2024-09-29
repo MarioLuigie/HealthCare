@@ -12,12 +12,6 @@ export const SignUpAuthFormSchema = z.object({
   phone: z
     .string()
     .refine((phone) => /^\+\d{10,15}$/.test(phone), "Invalid phone number"),
-})
-
-export type SignUpAuthFormValues = z.infer<typeof SignUpAuthFormSchema>
-
-export const SignInAuthFormSchema = z.object({
-  email: z.string().email("Invalid email address"),
   password: z
     .string()
     .min(8, "Password must be at least 8 characters long")
@@ -29,6 +23,13 @@ export const SignInAuthFormSchema = z.object({
     .refine((val) => !val.toLowerCase().includes("password"), {
       message: "Password cannot contain the word 'password'",
     }),
+})
+
+export type SignUpAuthFormValues = z.infer<typeof SignUpAuthFormSchema>
+
+export const SignInAuthFormSchema = z.object({
+  email: z.string().email("Invalid email address"),
+  password: z.string().nonempty("Password is required"),
 })
 
 export type SignInAuthFormValues = z.infer<typeof SignInAuthFormSchema>
@@ -49,6 +50,7 @@ export function getAuthFormDefaultValues(authType: AuthTypes) {
         name: "",
         email: "",
         phone: "",
+        password: "",
       }
     case AuthTypes.SIGN_IN:
       return {

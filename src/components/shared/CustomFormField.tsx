@@ -38,6 +38,7 @@ interface CustomFormFieldProps {
   label?: string
   placeholder?: string
   type?: string
+  autoFocus?: boolean
   description?: string
   disabled?: boolean
   iconSrc?: string
@@ -77,6 +78,7 @@ const RenderField = ({
               className="shad-input border-0"
               disabled={props.disabled}
               type={isPasswordHidden ? 'text' : props.type}
+              autoFocus={props.autoFocus}
             />
           </FormControl>
           {props.name === "password" && (

@@ -16,7 +16,7 @@ export async function signUp(authFormValues: SignUpAuthFormValues) {
 			ID.unique(),
 			authFormValues.email,
 			authFormValues.phone,
-			undefined,
+			authFormValues.password,
 			authFormValues.name
 		)
 

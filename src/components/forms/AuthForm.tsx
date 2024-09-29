@@ -81,6 +81,7 @@ export default function AuthForm({ authType }: AuthFormProps) {
               name="name"
               label="Name"
               placeholder="James Smith"
+              autoFocus
               iconSrc={Icons.USER_ICON.path}
               iconAlt={Icons.USER_ICON.alt}
             />
@@ -92,6 +93,16 @@ export default function AuthForm({ authType }: AuthFormProps) {
               placeholder="jamessmith@healthcare.com"
               iconSrc={Icons.EMAIL_ICON.path}
               iconAlt={Icons.EMAIL_ICON.alt}
+            />
+            <CustomFormField
+              control={form.control}
+              typeField={FormFieldType.INPUT}
+              name="password"
+              label="Password"
+              placeholder="Enter your password"
+              type="password"
+              iconSrc={Icons.PASSWORD_ICON.path}
+              iconAlt={Icons.PASSWORD_ICON.alt}
             />
             <CustomFormField
               control={form.control}
@@ -112,6 +123,7 @@ export default function AuthForm({ authType }: AuthFormProps) {
               name="email"
               label="Email"
               placeholder="jamessmith@healthcare.com"
+              autoFocus
               iconSrc={Icons.EMAIL_ICON.path}
               iconAlt={Icons.EMAIL_ICON.alt}
             />
@@ -121,7 +133,7 @@ export default function AuthForm({ authType }: AuthFormProps) {
               name="password"
               label="Password"
               placeholder="Enter your password"
-              type='password'
+              type="password"
               iconSrc={Icons.PASSWORD_ICON.path}
               iconAlt={Icons.PASSWORD_ICON.alt}
             />
