@@ -6,7 +6,7 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 // lib
 import { SignUpAuthFormSchema, SignUpAuthFormValues } from '@/lib/types/zod'
-import { FormFieldType } from '@/lib/types/enums'
+import { AuthTypes, FormFieldType } from '@/lib/types/enums'
 import { Icons } from '@/lib/constants'
 import { handleCreateUser } from '@/lib/handlers/user.handlers'
 // components
@@ -17,7 +17,7 @@ import { generateUrl } from '@/lib/utils'
 import { Route } from '@/lib/constants/paths'
 
 type AuthFormProps = {
-	authType: string
+	authType: AuthTypes
 }
 
 export default function AuthForm({ authType }: AuthFormProps) {

@@ -1,11 +1,6 @@
 import { z } from "zod"
 import { ActionTypes, AuthTypes } from "@/lib/types/enums"
 import { Appointment } from "@/lib/types/appwrite.types"
-// import {
-// 	CreateAppointmentFormDefaultValues,
-// 	CancelAppointmentFormDefaultValues,
-// 	ScheduleAppointmentFormDefaultValues,
-// } from '@/lib/constants'
 
 // AuthForm
 export const SignUpAuthFormSchema = z.object({
@@ -171,7 +166,6 @@ export function getAppointmentFormSchema(actionType: ActionTypes) {
 }
 
 // AppointmentForm default values
-
 export function getAppointmentFormDefaultValues(
   actionType: ActionTypes,
   appointment?: Appointment
