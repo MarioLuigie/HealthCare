@@ -1,5 +1,5 @@
 import { z } from "zod"
-import { ActionTypes } from "@/lib/types/enums"
+import { ActionTypes, AuthTypes } from "@/lib/types/enums"
 import { Appointment } from "@/lib/types/appwrite.types"
 // import {
 // 	CreateAppointmentFormDefaultValues,
@@ -37,6 +37,15 @@ export const SignInAuthFormSchema = z.object({
 })
 
 export type SignInAuthFormValues = z.infer<typeof SignInAuthFormSchema>
+
+export function getAuthFormSchema(authType: AuthTypes) {
+  switch (authType) {
+    case AuthTypes.SIGN_UP:
+      return SignUpAuthFormSchema
+    case AuthTypes.SIGN_IN:
+      return SignInAuthFormSchema
+  }
+}
 
 // PatientForm
 export const PatientFormSchema = z.object({
