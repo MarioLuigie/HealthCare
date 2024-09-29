@@ -42,6 +42,22 @@ export function getAuthFormSchema(authType: AuthTypes) {
   }
 }
 
+export function getAuthFormDefaultValues(authType: AuthTypes) {
+  switch (authType) {
+    case AuthTypes.SIGN_UP:
+      return {
+        name: "",
+        email: "",
+        phone: "",
+      }
+    case AuthTypes.SIGN_IN:
+      return {
+        email: "",
+        password: "",
+      }
+  }
+}
+
 // PatientForm
 export const PatientFormSchema = z.object({
   name: z

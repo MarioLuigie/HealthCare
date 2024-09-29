@@ -1,20 +1,20 @@
 'use client'
-
 // modules
+import { z } from "zod"
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
 // lib
-import { SignUpAuthFormSchema, SignUpAuthFormValues } from '@/lib/types/zod'
+import { getAuthFormDefaultValues, getAuthFormSchema } from '@/lib/types/zod'
 import { AuthTypes, FormFieldType } from '@/lib/types/enums'
 import { Icons } from '@/lib/constants'
 import { handleCreateUser } from '@/lib/handlers/user.handlers'
+import { generateUrl } from '@/lib/utils'
+import { Route } from '@/lib/constants/paths'
 // components
 import SubmitButton from '@/components/shared/SubmitButton'
 import CustomFormField from '@/components/shared/CustomFormField'
 import { Form } from '@/components/ui/form'
-import { generateUrl } from '@/lib/utils'
-import { Route } from '@/lib/constants/paths'
 
 type AuthFormProps = {
 	authType: AuthTypes
@@ -23,33 +23,41 @@ type AuthFormProps = {
 export default function AuthForm({ authType }: AuthFormProps) {
 	const router = useRouter()
 
-	const form = useForm<SignUpAuthFormValues>({
-		resolver: zodResolver(SignUpAuthFormSchema),
-		defaultValues: {
-			name: '',
-			email: '',
-			phone: '',
-		},
+	const AuthFormSchema = getAuthFormSchema(authType)
+
+	const form = useForm<z.infer<typeof AuthFormSchema>>({
+		resolver: zodResolver(AuthFormSchema),
+		defaultValues: getAuthFormDefaultValues(authType),
 	})
 
 	const { isSubmitting } = form.formState
 
-	const onSubmit: SubmitHandler<SignUpAuthFormValues> = async (
-		userFormValues: SignUpAuthFormValues
+	const onSubmit: SubmitHandler<z.infer<typeof AuthFormSchema>> = async (
+		userFormValues: z.infer<typeof AuthFormSchema>
 	) => {
 		try {
-			const user = await handleCreateUser(userFormValues)
 
-			if (user!) {
-				router.push(generateUrl([Route.PATIENTS, user.$id, Route.REGISTER]))
-				form.reset()
-			} else {
-				console.log('Something went wrong with creating user.')
-			}
 		} catch (err) {
 			console.error('Error from onSubmit for UserForm', err)
 		}
 	}
+
+	// const onSubmit: SubmitHandler<z.infer<typeof AuthFormSchema>> = async (
+	// 	userFormValues: z.infer<typeof AuthFormSchema>
+	// ) => {
+	// 	try {
+	// 		const user = await handleCreateUser(userFormValues)
+
+	// 		if (user!) {
+	// 			router.push(generateUrl([Route.PATIENTS, user.$id, Route.REGISTER]))
+	// 			form.reset()
+	// 		} else {
+	// 			console.log('Something went wrong with creating user.')
+	// 		}
+	// 	} catch (err) {
+	// 		console.error('Error from onSubmit for UserForm', err)
+	// 	}
+	// }
 
 	return (
 		<Form {...form}>
