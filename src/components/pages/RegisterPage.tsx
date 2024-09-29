@@ -1,6 +1,6 @@
 // lib
 import { Images } from '@/lib/constants'
-import { getUser } from '@/lib/actions/user.actions'
+import { getUser } from '@/lib/actions/auth.actions'
 // components
 import PatientForm from '@/components/forms/PatientForm'
 import PageTitle from '@/components/shared/PageTitle'

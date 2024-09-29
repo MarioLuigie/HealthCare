@@ -1,4 +1,4 @@
-import { createUser } from '@/lib/actions/user.actions'
+import { createUser } from '@/lib/actions/auth.actions'
 
 export const handleCreateUser = async (userFormValues: CreateUserData) => {
 	try {
