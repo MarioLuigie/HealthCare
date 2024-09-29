@@ -25,7 +25,7 @@ export default function SignUpPage({
             description="Feel free to register for the app."
             classes="my-12"
           />
-          <AuthForm actionType={AuthTypes.SIGN_UP}/>
+          <AuthForm authType={AuthTypes.SIGN_UP}/>
         </div>
         <Copyright />
       </div>

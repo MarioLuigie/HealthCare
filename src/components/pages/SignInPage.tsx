@@ -25,7 +25,7 @@ export default function SignInPage({
             description="Feel free to login for the app."
             classes="my-12"
           />
-          <AuthForm actionType={AuthTypes.SIGN_IN}/>
+          <AuthForm authType={AuthTypes.SIGN_IN}/>
         </div>
         <Copyright />
       </div>

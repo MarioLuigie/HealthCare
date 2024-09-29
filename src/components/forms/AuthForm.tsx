@@ -17,10 +17,10 @@ import { generateUrl } from '@/lib/utils'
 import { Route } from '@/lib/constants/paths'
 
 type AuthFormProps = {
-	actionType: string
+	authType: string
 }
 
-export default function AuthForm({ actionType }: AuthFormProps) {
+export default function AuthForm({ authType }: AuthFormProps) {
 	const router = useRouter()
 
 	const form = useForm<UserFormValues>({
