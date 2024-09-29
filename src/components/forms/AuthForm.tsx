@@ -78,6 +78,15 @@ export default function AuthForm({ authType }: AuthFormProps) {
             <CustomFormField
               control={form.control}
               typeField={FormFieldType.INPUT}
+              name="name"
+              label="Name*"
+              placeholder="James Smith"
+              iconSrc={Icons.USER_ICON.path}
+              iconAlt={Icons.USER_ICON.alt}
+            />
+            <CustomFormField
+              control={form.control}
+              typeField={FormFieldType.INPUT}
               name="email"
               label="Email*"
               placeholder="jamessmith@healthcare.com"
@@ -95,22 +104,13 @@ export default function AuthForm({ authType }: AuthFormProps) {
               iconSrc={Icons.PASSWORD_ICON.path}
               iconAlt={Icons.PASSWORD_ICON.alt}
             />
-            <CustomFormField
-              control={form.control}
-              typeField={FormFieldType.INPUT}
-              name="name"
-              label="Name*"
-              placeholder="James Smith"
-              iconSrc={Icons.USER_ICON.path}
-              iconAlt={Icons.USER_ICON.alt}
-            />
-            <CustomFormField
+            {/* <CustomFormField
               control={form.control}
               typeField={FormFieldType.PHONE_INPUT}
               name="phone"
-              label="Phone number*"
+              label="Phone*"
               placeholder="500 600 700"
-            />
+            /> */}
           </>
         )}
 

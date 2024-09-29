@@ -9,15 +9,15 @@ import { SignInAuthFormValues, SignUpAuthFormValues } from '@/lib/types/zod'
 
 // Sign Up and return created user
 export async function signUp(authFormValues: SignUpAuthFormValues) {
-	const { users } = await createAdminClient()
+	const { users, account } = await createAdminClient()
 
 	try {
-		const createdUser: UserData = await users.create(
+		const createdUser = await account.create(
 			ID.unique(),
 			authFormValues.email,
-			authFormValues.phone,
+			// authFormValues.phone,
 			authFormValues.password,
-			authFormValues.name
+			authFormValues.name,
 		)
 
 		return deepClone(createdUser)
