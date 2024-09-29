@@ -25,9 +25,12 @@ export default function SignInPage({
             description="Feel free to login for the app."
             classes="my-12"
           />
-          <AuthForm authType={AuthTypes.SIGN_IN}/>
+          <AuthForm authType={AuthTypes.SIGN_IN} />
         </div>
-        <Copyright />
+        <div className="flex justify-between">
+          <Copyright />
+          <p className="text-dark-600 text-xs">* required fields</p>
+        </div>
       </div>
     </FormPageTemplate>
   )

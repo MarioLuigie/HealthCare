@@ -27,7 +27,10 @@ export default function SignUpPage({
           />
           <AuthForm authType={AuthTypes.SIGN_UP}/>
         </div>
+        <div className="flex justify-between">
         <Copyright />
+        <p className="text-dark-600 text-xs">* required fields</p>
+        </div>
       </div>
     </FormPageTemplate>
   )
