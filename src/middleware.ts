@@ -6,11 +6,11 @@ import { Route } from '@/lib/constants/paths'
 import { Auth } from '@/lib/types/enums'
 
 export async function middleware(req: NextRequest) {
-	const user = await auth.getSessionUser()
+	const sessionUser = await auth.getSessionUser()
 
-	console.log("***User", user)
+	console.log("***User", sessionUser)
 
-	if (!user) {
+	if (!sessionUser) {
 		console.log('***Middleware is running!')
 		req.cookies.delete(Auth.SESSION)
 		return NextResponse.redirect(new URL(Route.HOME, req.url))

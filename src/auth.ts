@@ -6,24 +6,24 @@ import { createSessionClient } from '@/lib/appwrite.config'
 import { Auth } from '@/lib/types/enums'
 
 const auth = {
-	user: null as any,
-	sessionCookie: null as RequestCookie | null | undefined,
+	sessionUser: null as any,
+	sessionSecretFromCookie: null as RequestCookie | null | undefined,
 
 	getSessionUser: async () => {
-		auth.sessionCookie = cookies().get(Auth.SESSION)
+		auth.sessionSecretFromCookie = cookies().get(Auth.SESSION)
 
 		try {
 			const { account } = await createSessionClient(
-				auth.sessionCookie!.value
+				auth.sessionSecretFromCookie!.value
 			)
-			auth.user = await account.get()
+			auth.sessionUser = await account.get()
 		} catch (err) {
 			console.error(err)
-      auth.user = null
-      auth.sessionCookie = null
+      auth.sessionUser = null
+      auth.sessionSecretFromCookie = null
 		}
 
-    return auth.user
+    return auth.sessionUser
 	},
 }
 

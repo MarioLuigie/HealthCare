@@ -65,6 +65,7 @@ export async function signIn(authFormValues: SignInAuthFormValues) {
 	try {
 		const session = await account.createEmailPasswordSession(email, password)
 
+    // Save session secret to cookies under the key 'session' - read in auth.ts
 		cookies().set(Auth.SESSION, session.secret, {
 			httpOnly: true,
 			sameSite: 'strict',
