@@ -8,6 +8,7 @@ import { deepClone, generateUrl } from '@/lib/utils'
 import { SignInAuthFormValues, SignUpAuthFormValues } from '@/lib/types/zod'
 import { Route } from '@/lib/constants/paths'
 import { cookies } from 'next/headers'
+import { Auth } from '@/lib/types/enums'
 
 // Sign Up and return created user
 export async function signUp(authFormValues: SignUpAuthFormValues) {
@@ -64,7 +65,7 @@ export async function signIn(authFormValues: SignInAuthFormValues) {
 	try {
 		const session = await account.createEmailPasswordSession(email, password)
 
-		cookies().set('session', session.secret, {
+		cookies().set(Auth.SESSION, session.secret, {
 			httpOnly: true,
 			sameSite: 'strict',
 			secure: true,

@@ -1,15 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Route } from '@/lib/constants/paths'
+import auth from '@/auth'
+import { Auth } from '@/lib/types/enums'
 
 export async function middleware(req: NextRequest) {
-	const user = false
+	const user = await auth.getSessionUser()
 
 	if (!user) {
 		console.log('Middleware is running!')
-
+		req.cookies.delete(Auth.SESSION)
 		return NextResponse.redirect(new URL(Route.HOME, req.url))
 	}
-
 	return NextResponse.next()
 }
 
@@ -20,7 +21,6 @@ export const config = {
 // export const config = {
 // 	matcher: ['/dashboard/:path*'], - save all routes witch params too
 // }
-
 
 // Middleware is running!
 // const req = {

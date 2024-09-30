@@ -4,7 +4,6 @@ export enum Gender {
 	OTHER = 'Other',
 }
 
-
 export enum FormFieldType {
 	INPUT = 'input',
 	TEXTAREA = 'textarea',
@@ -13,6 +12,10 @@ export enum FormFieldType {
 	CHECKBOX = 'checkbox',
 	DATE_PICKER = 'datePicker',
 	SKELETON = 'skeleton',
+}
+
+export enum Auth {
+	SESSION = 'session'
 }
 
 export enum Status {
