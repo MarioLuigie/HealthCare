@@ -1,5 +1,7 @@
+// modules
 import { RequestCookie } from 'next/dist/compiled/@edge-runtime/cookies'
 import { cookies } from 'next/headers'
+// lib
 import { createSessionClient } from '@/lib/appwrite.config'
 import { Auth } from '@/lib/types/enums'
 

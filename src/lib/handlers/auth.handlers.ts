@@ -1,3 +1,4 @@
+// lib
 import { signIn, signUp } from '@/lib/actions/auth.actions'
 import { SignInAuthFormValues, SignUpAuthFormValues } from '@/lib/types/zod'
 

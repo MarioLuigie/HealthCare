@@ -1,13 +1,17 @@
+// modules
 import { NextRequest, NextResponse } from 'next/server'
-import { Route } from '@/lib/constants/paths'
 import auth from '@/auth'
+// lib
+import { Route } from '@/lib/constants/paths'
 import { Auth } from '@/lib/types/enums'
 
 export async function middleware(req: NextRequest) {
 	const user = await auth.getSessionUser()
 
+	console.log("***User", user)
+
 	if (!user) {
-		console.log('Middleware is running!')
+		console.log('***Middleware is running!')
 		req.cookies.delete(Auth.SESSION)
 		return NextResponse.redirect(new URL(Route.HOME, req.url))
 	}
