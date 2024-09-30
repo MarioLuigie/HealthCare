@@ -3,38 +3,39 @@
 // modules
 import { ID, Query } from "node-appwrite"
 // lib
-import { createAdminClient } from "@/lib/appwrite.config"
+import { createAdminClient, createClient } from "@/lib/appwrite.config"
 import { deepClone } from "@/lib/utils"
 import { SignInAuthFormValues, SignUpAuthFormValues } from "@/lib/types/zod"
 
 // Sign Up and return created user
 export async function signUp(authFormValues: SignUpAuthFormValues) {
-  const { users, account } = await createAdminClient()
+  // const { users, account } = await createAdminClient()
+  const { account } = await createClient()
 
 	console.log(authFormValues)
 
   try {
-    const createdUser = await users.create(
+    const createdUser = await account.create(
       ID.unique(),
       authFormValues.email,
       // authFormValues.phone,
-			undefined, // do usuniecia przy account.create
+			// undefined, // do usuniecia przy account.create
       authFormValues.password,
       authFormValues.name
     )
 
-    // await account.createVerification("http://localhost:3000/verify-account")
+    // await account.createVerification("http://localhost:3000/verify-account") // nie moze byc na serwerze weryfikacja tylko na kliencie - dostep do sesji
 
     return deepClone(createdUser)
   } catch (err: any) {
     // Check existing user
-    if (err && err?.code === 409) {
-      const documents = await users.list([
-        Query.equal("email", [authFormValues.email]),
-      ])
+    // if (err && err?.code === 409) {
+    //   const documents = await users.list([
+    //     Query.equal("email", [authFormValues.email]),
+    //   ])
 
-      return documents.users[0]
-    }
+    //   return documents.users[0]
+    // }
     console.error("An error occurred while creating a new user:", err)
   }
 }
