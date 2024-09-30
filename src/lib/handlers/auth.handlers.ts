@@ -7,6 +7,8 @@ export const handleSignUp = async (authFormValues: SignUpAuthFormValues) => {
 			setTimeout(resolve, 2000)
 		})
 
+		console.log(authFormValues)
+
 		const createdUser = await signUp(authFormValues)
 
 		return createdUser

@@ -1,73 +1,85 @@
-import * as sdk from 'node-appwrite'
+import * as sdk from "node-appwrite"
 
 export const {
-	// Main
-	APPWRITE_API_KEY,
-	NEXT_PUBLIC_APPWRITE_ENDPOINT,
-	APPWRITE_PROJECT_ID,
-	APPWRITE_DB_ID,
-	// Collection
-	APPWRITE_DB_PATIENT_COLLECTION_ID,
-	APPWRITE_DB_DOCTOR_COLLECTION_ID,
-	APPWRITE_DB_APPOINTMENT_COLLECTION_ID,
-	APPWRITE_DB_CHANGE_STATUS_COLLECTION_ID,
-	APPWRITE_DB_IDENTIFICATION_DOCUMENT_COLLECTION_ID,
-	// Storage
-	APPWRITE_PUBLIC_BUCKET_ID,
-	APPWRITE_IDENTIFICATION_DOCUMENTS_BUCKET_ID,
+  // Main
+  APPWRITE_API_KEY,
+  NEXT_PUBLIC_APPWRITE_ENDPOINT,
+  APPWRITE_PROJECT_ID,
+  APPWRITE_DB_ID,
+  // Collection
+  APPWRITE_DB_PATIENT_COLLECTION_ID,
+  APPWRITE_DB_DOCTOR_COLLECTION_ID,
+  APPWRITE_DB_APPOINTMENT_COLLECTION_ID,
+  APPWRITE_DB_CHANGE_STATUS_COLLECTION_ID,
+  APPWRITE_DB_IDENTIFICATION_DOCUMENT_COLLECTION_ID,
+  // Storage
+  APPWRITE_PUBLIC_BUCKET_ID,
+  APPWRITE_IDENTIFICATION_DOCUMENTS_BUCKET_ID,
 } = process.env
 
 export const createAdminClient = async () => {
-	const client = new sdk.Client()
-		.setEndpoint(NEXT_PUBLIC_APPWRITE_ENDPOINT!)
-		.setProject(APPWRITE_PROJECT_ID!)
-		.setKey(APPWRITE_API_KEY!)
+  const client = new sdk.Client()
+    .setEndpoint(NEXT_PUBLIC_APPWRITE_ENDPOINT!)
+    .setProject(APPWRITE_PROJECT_ID!)
+    .setKey(APPWRITE_API_KEY!)
 
-	return {
-		get account() {
-			return new sdk.Account(client)
-		},
+  return {
+    get account() {
+      return new sdk.Account(client)
+    },
 
-		get users() {
-			return new sdk.Users(client)
-		},
+    get users() {
+      return new sdk.Users(client)
+    },
 
-		get databases() {
-			return new sdk.Databases(client)
-		},
+    get databases() {
+      return new sdk.Databases(client)
+    },
 
-		get messaging() {
-			return new sdk.Messaging(client)
-		},
- 
-		get storage() {
-			return new sdk.Storage(client)
-		},
-	}
+    get messaging() {
+      return new sdk.Messaging(client)
+    },
+
+    get storage() {
+      return new sdk.Storage(client)
+    },
+  }
 }
 
 export const createSessionClient = async (session: any) => {
-	const client = new sdk.Client()
-		.setEndpoint(NEXT_PUBLIC_APPWRITE_ENDPOINT!)
-		.setProject(APPWRITE_PROJECT_ID!)
+  const client = new sdk.Client()
+    .setEndpoint(NEXT_PUBLIC_APPWRITE_ENDPOINT!)
+    .setProject(APPWRITE_PROJECT_ID!)
 
-	if (session) {
-		client.setSession(session)
-	}
+  if (session) {
+    client.setSession(session)
+  }
 
-	return {
-		get account() {
-			return new sdk.Account(client)
-		},
+  return {
+    get account() {
+      return new sdk.Account(client)
+    },
 
-		get databases() {
-			return new sdk.Databases(client)
-		},
+    get databases() {
+      return new sdk.Databases(client)
+    },
 
-		get storage() {
-			return new sdk.Storage(client)
-		},
-	}
+    get storage() {
+      return new sdk.Storage(client)
+    },
+  }
+}
+
+export const createClient = async () => {
+  const client = new sdk.Client()
+    .setEndpoint(NEXT_PUBLIC_APPWRITE_ENDPOINT!)
+    .setProject(APPWRITE_PROJECT_ID!)
+
+  return {
+    get account() {
+      return new sdk.Account(client)
+    },
+  }
 }
 
 // Creating one global client with full sdk permissions
@@ -85,7 +97,6 @@ export const createSessionClient = async (session: any) => {
 // export const users = new sdk.Users(client)
 // export const messaging = new sdk.Messaging(client)
 // export const storage = new sdk.Storage(client)
-
 
 // interface Session {
 // 	$id: string; // Session ID.
