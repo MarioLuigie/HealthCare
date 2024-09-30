@@ -11,6 +11,10 @@ const nextConfig = {
         protocol: "https",
         hostname: "lh3.googleusercontent.com"
       },
+      {
+        protocol: "https",
+        hostname: "healthcare-clinic.s3.eu-north-1.amazonaws.com"
+      },
     ]
   },
   async redirects() {
