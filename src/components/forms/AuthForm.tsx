@@ -20,6 +20,7 @@ import { Route } from "@/lib/constants/paths"
 import SubmitButton from "@/components/shared/SubmitButton"
 import CustomFormField from "@/components/shared/CustomFormField"
 import { Form } from "@/components/ui/form"
+import { Session } from "inspector/promises"
 
 type AuthFormProps = {
   authType: AuthTypes
@@ -40,6 +41,7 @@ export default function AuthForm({ authType }: AuthFormProps) {
   const onSubmit: SubmitHandler<z.infer<typeof AuthFormSchema>> = async (
     authFormValues: z.infer<typeof AuthFormSchema>
   ) => {
+    let session = null
     try {
       if (authType === AuthTypes.SIGN_UP) {
         const createdUser = await handleSignUp(
@@ -57,9 +59,17 @@ export default function AuthForm({ authType }: AuthFormProps) {
           )
         }
       } else if (authType === AuthTypes.SIGN_IN) {
-        const session = await handleSignIn(
+        session = await handleSignIn(
           authFormValues as SignInAuthFormValues
         )
+
+        // console.log('!!!', session)
+
+        if(session) {
+          router.push(
+            generateUrl([`/dashboard/admin/${session.userId}`])
+          )
+        }
       }
     } catch (err) {
       console.error("Error from onSubmit for AuthForm", err)

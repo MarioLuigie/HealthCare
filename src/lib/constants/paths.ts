@@ -7,6 +7,7 @@ export const Route = {
 	REGISTER: '/register',
 	CREATE_APPOINTMENT: '/create-appointment',
 	SUCCESS: '/success',
+	VERIFY_ACCOUNT: '/verify-account',
 }
 
 export const IconPath = {
