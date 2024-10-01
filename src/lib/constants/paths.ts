@@ -37,7 +37,7 @@ export const ImagePath = {
 }
 
 export const VideoPath = {
-	HOME_PAGE: 'https://healthcare-clinic.s3.eu-north-1.amazonaws.com/doctors.mp4',
+	HOME_PAGE: 'https://healthcare-clinic.s3.eu-north-1.amazonaws.com/doctors_qhd.mp4',
 }
 
 export const DoctorPath = {
