@@ -36,7 +36,7 @@ export const ImagePath = {
 }
 
 export const VideoPath = {
-	HOME_PAGE: 'https://cloud.appwrite.io/v1/storage/buckets/66d9d9fd00319d398b25/files/66f8afa4003cc648d6f9/view?project=66d9d5c5000d0b96a418&project=66d9d5c5000d0b96a418&mode=admin',
+	HOME_PAGE: 'https://healthcare-clinic.s3.eu-north-1.amazonaws.com/doctors_qhd.mp4',
 }
 
 export const DoctorPath = {
