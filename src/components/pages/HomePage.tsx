@@ -30,7 +30,7 @@ export default function HomePage({
         <div>
           <PageTitle
             title="Hi there !"
-            description="Get started with your HealthCare app."
+            description="Get started with your HealthCare application."
             classes="my-12"
           />
           <div className="flex gap-4">
