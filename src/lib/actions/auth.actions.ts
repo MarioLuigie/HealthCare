@@ -81,6 +81,14 @@ export async function signIn(authFormValues: SignInAuthFormValues) {
 	}
 }
 
+export async function Logout() {
+	try {
+		
+	} catch (err) {
+		console.error(err)
+	}
+}
+
 export async function verifyAccount(userId: string, secret: string) {
 	const { account } = await createAdminClient()
 	try {
