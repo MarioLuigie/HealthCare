@@ -40,9 +40,13 @@ export async function signUp(authFormValues: SignUpAuthFormValues) {
 
 		console.log('***session', session)
 
-		// if (session) {
-		// 	const result = await account.createVerification(generateUrl([Route.VERIFY_ACCOUNT]))
-		// }
+		if (session) {
+			const sessionCookie: RequestCookie | null | undefined = cookies().get(
+				Auth.SESSION
+			)
+			const { account } = await createSessionClient(sessionCookie?.value)
+			const result = await account.createVerification(generateUrl([Route.VERIFY_ACCOUNT]))
+		}
 
 		// await account.createVerification("http://localhost:3000/verify-account") // nie moze byc na serwerze weryfikacja tylko na kliencie - dostep do sesji
 
@@ -117,7 +121,10 @@ export async function logout() {
 }
 
 export async function verifyAccount(userId: string, secret: string) {
-	const { account } = await createAdminClient()
+	const sessionCookie: RequestCookie | null | undefined = cookies().get(
+		Auth.SESSION
+	)
+	const { account } = await createSessionClient(sessionCookie?.value)
 	try {
 		await account.updateVerification(userId, secret)
 		return { success: true, message: 'Weryfikacja zakończona pomyślnie.' }

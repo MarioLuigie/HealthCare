@@ -15,7 +15,7 @@ export enum FormFieldType {
 }
 
 export enum Auth {
-	SESSION = 'session'
+	SESSION = 'healthcare-sc'
 }
 
 export enum Status {
