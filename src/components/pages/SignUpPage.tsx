@@ -1,22 +1,31 @@
+//modules
+import { redirect } from 'next/navigation'
+import Link from "next/link"
 // lib
 import { Images } from "@/lib/constants"
+import { AuthTypes } from "@/lib/types/enums"
+import { generateUrl } from "@/lib/utils"
+import { Route } from "@/lib/constants/paths"
+import auth from "@/auth"
 // components
 import PageTitle from "@/components/shared/PageTitle"
 import AuthForm from "@/components/forms/AuthForm"
 import LogoFull from "@/components/content/LogoFull"
 import Copyright from "@/components/content/Copyright"
 import FormPageTemplate from "@/components/shared/FormPageTemplate"
-import { AuthTypes } from "@/lib/types/enums"
-import Link from "next/link"
-import { generateUrl } from "@/lib/utils"
-import { Route } from "@/lib/constants/paths"
 // import PassKeyDialog from '@/components/dialogs/PassKeyDialog'
 
-export default function SignUpPage({
+export default async function SignUpPage({
   searchParams,
 }: {
   searchParams?: SearchParams
 }) {
+  const sessionUser = await auth.getSessionUser()
+
+	if (sessionUser && sessionUser.$id) {
+		redirect(generateUrl([Route.DASHBOARD_PATIENT, sessionUser.$id]))
+	}
+
   return (
     <FormPageTemplate image={Images.SIGN_UP_PAGE_IMAGE} classes="max-w-[480px]">
       {/* <PassKeyDialog searchParams={searchParams} /> */}

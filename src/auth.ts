@@ -12,6 +12,12 @@ const auth = {
 	getSessionUser: async () => {
 		auth.sessionSecretFromCookie = cookies().get(Auth.SESSION)
 
+		if (!auth.sessionSecretFromCookie || !auth.sessionSecretFromCookie.value) {
+			console.error("Session cookie is missing or invalid.")
+			auth.sessionUser = null
+			return auth.sessionUser
+		}
+
 		try {
 			const { account } = await createSessionClient(
 				auth.sessionSecretFromCookie!.value

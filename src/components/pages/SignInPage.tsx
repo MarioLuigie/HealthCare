@@ -1,22 +1,29 @@
 // lib
+import auth from '@/auth'
 import { Images } from "@/lib/constants"
+import { AuthTypes } from "@/lib/types/enums"
+import Link from "next/link"
+import { generateUrl } from "@/lib/utils"
+import { Route } from "@/lib/constants/paths"
+import { redirect } from 'next/navigation'
 // components
 import PageTitle from "@/components/shared/PageTitle"
 import AuthForm from "@/components/forms/AuthForm"
 import LogoFull from "@/components/content/LogoFull"
 import Copyright from "@/components/content/Copyright"
 import FormPageTemplate from "@/components/shared/FormPageTemplate"
-import { AuthTypes } from "@/lib/types/enums"
-import Link from "next/link"
-import { generateUrl } from "@/lib/utils"
-import { Route } from "@/lib/constants/paths"
-// import PassKeyDialog from '@/components/dialogs/PassKeyDialog'
 
-export default function SignInPage({
+export default async function SignInPage({
   searchParams,
 }: {
   searchParams?: SearchParams
 }) {
+  const sessionUser = await auth.getSessionUser()
+
+  if(sessionUser && sessionUser.$id) {
+    redirect(generateUrl([Route.DASHBOARD_PATIENT, sessionUser.$id]))
+  }
+
   return (
     <FormPageTemplate image={Images.SIGN_IN_PAGE_IMAGE} classes="max-w-[480px]">
       {/* <PassKeyDialog searchParams={searchParams} /> */}
@@ -47,3 +54,33 @@ export default function SignInPage({
     </FormPageTemplate>
   )
 }
+
+// ***User {
+//   $id: '66fa86960008afbcb5b7',
+//   $createdAt: '2024-09-30T11:07:39.083+00:00',
+//   $updatedAt: '2024-09-30T11:07:39.083+00:00',
+//   name: 'Dawid Lotocki',
+//   registration: '2024-09-30T11:07:39.077+00:00',
+//   status: true,
+//   labels: [],
+//   passwordUpdate: '2024-09-30T11:07:39.077+00:00',
+//   email: 'dawid@gmail.com',
+//   phone: '',
+//   emailVerification: false,
+//   phoneVerification: false,
+//   mfa: false,
+//   prefs: {},
+//   targets: [
+//   {
+//   $id: '66fa867b25bad00553b3',
+//   $createdAt: '2024-09-30T11:07:39.154+00:00',
+//   $updatedAt: '2024-09-30T11:07:39.154+00:00',
+//   name: '',
+//   userId: '66fa86960008afbcb5b7',
+//   providerId: null,
+//   providerType: 'email',
+//   identifier: 'dawid@gmail.com'
+// }
+// ],
+//   accessedAt: '2024-09-30T11:07:39.077+00:00'
+// }
