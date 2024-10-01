@@ -141,7 +141,7 @@ export async function createAppointment(
 				createdAppointment.$id,
 			]
 
-			// Update patient appointments list - overwrite appointments of patient with updatedAppointments
+			// Update patient appointments list - overwrite appointments of patient with updatedAppointments list
 			await databases.updateDocument(
 				APPWRITE_DB_ID!,
 				APPWRITE_DB_PATIENT_COLLECTION_ID!,

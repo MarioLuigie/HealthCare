@@ -18,7 +18,7 @@ export default async function RegisterPage({ params }: { params: SingleSlugParam
 			<LogoFull />
 			<PageTitle
 				title="Welcome !"
-				description="Here you can create your patient profile, from which you will be able to create and manage your appointments to your chosen doctors"
+				description="Here you can create your patient profile, from which you will be able to create and manage your appointments."
 				classes='my-12'
 			/>
 			<PatientForm user={user} />
@@ -26,3 +26,37 @@ export default async function RegisterPage({ params }: { params: SingleSlugParam
 		</FormPageTemplate>
 	)
 }
+
+
+{/* User from RegisterPage: {
+  '$id': '66fc4cc7000626833f30',
+  '$createdAt': '2024-10-01T19:24:25.458+00:00',
+  '$updatedAt': '2024-10-01T19:24:25.458+00:00',
+  name: 'Renata Lotocka',
+  password: '$argon2id$v=19$m=65536,t=4,p=3$bW9xU0FqUTZXaFAxMUE3Nw$8+ggXorYYtOj8nAIga+osPp0RyyRKoiLSEE97z+cTik',
+  hash: 'argon2',
+  hashOptions: { type: 'argon2', memoryCost: 2048, timeCost: 4, threads: 3 },
+  registration: '2024-10-01T19:24:25.456+00:00',
+  status: true,
+  labels: [],
+  passwordUpdate: '2024-10-01T19:24:25.456+00:00',
+  email: 'renata@gmail.com',
+  phone: '',
+  emailVerification: false,
+  phoneVerification: false,
+  mfa: false,
+  prefs: {},
+  targets: [
+    {
+      '$id': '66fc4c697ebd742fa238',
+      '$createdAt': '2024-10-01T19:24:25.519+00:00',
+      '$updatedAt': '2024-10-01T19:24:25.519+00:00',
+      name: '',
+      userId: '66fc4cc7000626833f30',
+      providerId: null,
+      providerType: 'email',
+      identifier: 'renata@gmail.com'
+    }
+  ],
+  accessedAt: '2024-10-01T19:24:25.456+00:00'
+}*/}

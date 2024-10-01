@@ -37,7 +37,7 @@ export default function SubmitButton({
 					Loading...
 				</div>
 			) : (
-				children
+				<p className='text-[16px]'>{children}</p>
 			)}
 		</Button>
 	)

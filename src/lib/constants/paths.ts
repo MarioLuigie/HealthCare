@@ -3,10 +3,14 @@ export const Route = {
 	SIGN_IN: '/sign-in',
 	SIGN_UP: '/sign-up',
 	DASHBOARD: '/dashboard',
+	DASHBOARD_PATIENT: '/dashboard/patient',
+	DASHBOARD_DOCTOR: '/dashboard/doctor',
+	DASHBOARD_ADMIN: '/dashboard/admin',
 	PATIENTS: '/patients',
 	REGISTER: '/register',
 	CREATE_APPOINTMENT: '/create-appointment',
 	SUCCESS: '/success',
+	VERIFY_ACCOUNT: 'http://localhost:3000/verify-account',
 }
 
 export const IconPath = {

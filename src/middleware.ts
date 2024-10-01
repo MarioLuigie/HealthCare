@@ -1,20 +1,26 @@
+// modules
 import { NextRequest, NextResponse } from 'next/server'
+import auth from '@/auth'
+// lib
 import { Route } from '@/lib/constants/paths'
+import { Auth } from '@/lib/types/enums'
 
 export async function middleware(req: NextRequest) {
-	const user = false
+	const sessionUser = await auth.getSessionUser()
 
-	if (!user) {
-		console.log('Middleware is running!')
+	console.log("***User", sessionUser)
 
+	if (!sessionUser) {
+		console.log('***Middleware is running!')
+		req.cookies.delete(Auth.SESSION)
 		return NextResponse.redirect(new URL(Route.HOME, req.url))
 	}
-
 	return NextResponse.next()
 }
 
 export const config = {
-	matcher: ['/dashboard'],
+	matcher: ['/dashboard/:path*'],
+	// matcher: [],
 }
 
 // export const config = {
@@ -78,3 +84,34 @@ export const config = {
 // };
 
 // console.log(req);
+
+// SESSION USER
+// ***User {
+//   $id: '66fa86960008afbcb5b7',
+//   $createdAt: '2024-09-30T11:07:39.083+00:00',
+//   $updatedAt: '2024-10-01T11:34:54.007+00:00',
+//   name: 'Dawid Lotocki',
+//   registration: '2024-09-30T11:07:39.077+00:00',
+//   status: true,
+//   labels: [],
+//   passwordUpdate: '2024-09-30T11:07:39.077+00:00',
+//   email: 'dawid@gmail.com',
+//   phone: '',
+//   emailVerification: false,
+//   phoneVerification: false,
+//   mfa: false,
+//   prefs: {},
+//   targets: [
+//   {
+//   $id: '66fa867b25bad00553b3',
+//   $createdAt: '2024-09-30T11:07:39.154+00:00',
+//   $updatedAt: '2024-09-30T11:07:39.154+00:00',
+//   name: '',
+//   userId: '66fa86960008afbcb5b7',
+//   providerId: null,
+//   providerType: 'email',
+//   identifier: 'dawid@gmail.com'
+// }
+// ],
+//   accessedAt: '2024-10-01T11:34:54.004+00:00'
+// }
