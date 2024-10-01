@@ -3,7 +3,11 @@
 // modules
 import { ID, Query } from 'node-appwrite'
 // lib
-import { createAdminClient, createClient, createSessionClient } from '@/lib/appwrite.config'
+import {
+	createAdminClient,
+	createClient,
+	createSessionClient,
+} from '@/lib/appwrite.config'
 import { deepClone, generateUrl } from '@/lib/utils'
 import { SignInAuthFormValues, SignUpAuthFormValues } from '@/lib/types/zod'
 import { Route } from '@/lib/constants/paths'
@@ -14,6 +18,7 @@ import { RequestCookie } from 'next/dist/compiled/@edge-runtime/cookies'
 // Sign Up and return created user
 export async function signUp(authFormValues: SignUpAuthFormValues) {
 	// const { users, account } = await createAdminClient()
+	const { email, password, name } = authFormValues
 	const { account } = await createClient()
 	let session = null
 
@@ -22,18 +27,15 @@ export async function signUp(authFormValues: SignUpAuthFormValues) {
 	try {
 		const createdUser = await account.create(
 			ID.unique(),
-			authFormValues.email,
+			email,
 			// authFormValues.phone,
 			// undefined, // do usuniecia przy account.create
-			authFormValues.password,
-			authFormValues.name
+			password,
+			name
 		)
 
 		if (createdUser) {
-			session = await account.createEmailPasswordSession(
-				authFormValues.email,
-				authFormValues.password
-			)
+			session = await signIn({ email, password })
 		}
 
 		console.log('***session', session)
@@ -68,7 +70,7 @@ export async function signIn(authFormValues: SignInAuthFormValues) {
 
 		console.log('***SESSION', session)
 
-    // Save session secret to cookies under the key 'session' - read in auth.ts
+		// Save session secret to cookies under the key 'session' - read in auth.ts
 		cookies().set(Auth.SESSION, session.secret, {
 			httpOnly: true,
 			sameSite: 'strict',
@@ -77,36 +79,40 @@ export async function signIn(authFormValues: SignInAuthFormValues) {
 			path: Route.HOME,
 		})
 
-    return session
-
+		return session
 	} catch (err: any) {
 		console.error('An error occurred while loging:', err)
 	}
 }
 
 export async function logout() {
-	let sessionCookie: RequestCookie | null | undefined = cookies().get(Auth.SESSION)
+	let sessionCookie: RequestCookie | null | undefined = cookies().get(
+		Auth.SESSION
+	)
 
-	if(!sessionCookie) {
+	if (!sessionCookie) {
 		cookies().delete(Auth.SESSION)
-		sessionCookie = null 
+		sessionCookie = null
 		return { success: false }
 	}
 
 	try {
 		const { account } = await createSessionClient(sessionCookie.value)
-		const result = await account.deleteSession('current')
+		await account.deleteSession('current')
 
 		cookies().set(Auth.SESSION, '', { expires: new Date(0) })
 
-		console.log('***DELETE SESSION RESULT - from server action', result)
-		return result
+		console.log('***DELETE SESSION RESULT - from server action')
+		return { success: true, message: 'User logged out with successfully' }
 	} catch (err) {
 		cookies().set(Auth.SESSION, '', { expires: new Date(0) })
-
 		// cookies().delete(Auth.SESSION)
-		sessionCookie = null 
+		sessionCookie = null
 		console.error('***Error from server action', err)
+		return {
+			success: false,
+			message: 'Something went wrong while logout user',
+		}
 	}
 }
 
