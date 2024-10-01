@@ -1,5 +1,5 @@
 // lib
-import { signIn, signUp } from '@/lib/actions/auth.actions'
+import { signIn, signUp, logout } from '@/lib/actions/auth.actions'
 import { SignInAuthFormValues, SignUpAuthFormValues } from '@/lib/types/zod'
 
 export const handleSignUp = async (authFormValues: SignUpAuthFormValues) => {
@@ -28,6 +28,15 @@ export const handleSignIn = async (authFormValues: SignInAuthFormValues) => {
 		const session = await signIn(authFormValues)
 
 		return session
+	} catch (err) {
+		console.error(err)
+	}
+}
+
+export const handleLogout = async () => {
+	try {
+		const result = await logout()
+		console.log('User logged out with successfully - from handleLogout', result)
 	} catch (err) {
 		console.error(err)
 	}
