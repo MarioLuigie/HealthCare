@@ -13,13 +13,13 @@ export default function RedirectWithDelay({
 	delay: number
 }) {
 	const router = useRouter()
-	// useEffect(() => {
-	// 	const timer = setTimeout(() => {
-	// 		router.push(path)
-	// 	}, delay)
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			router.push(path)
+		}, delay)
 
-	// 	return () => clearTimeout(timer)
-	// }, [router, path, delay])
+		return () => clearTimeout(timer)
+	}, [router, path, delay])
 
 	return children
 }
