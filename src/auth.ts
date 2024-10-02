@@ -31,6 +31,20 @@ const auth = {
 
     return auth.sessionUser
 	},
+
+	isUserVerified: async () => {
+		try {
+			const sessionUser = await auth.getSessionUser()
+			if(sessionUser.emailVerification) {
+				return true
+			} else {
+				return false
+			}
+		} catch (err) {
+			console.error('', err)
+			return false
+		}
+	},
 }
 
 export default auth

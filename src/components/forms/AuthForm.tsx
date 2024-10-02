@@ -20,7 +20,6 @@ import { Route } from '@/lib/constants/paths'
 import SubmitButton from '@/components/shared/SubmitButton'
 import CustomFormField from '@/components/shared/CustomFormField'
 import { Form } from '@/components/ui/form'
-import { Session } from 'inspector/promises'
 
 type AuthFormProps = {
 	authType: AuthTypes
