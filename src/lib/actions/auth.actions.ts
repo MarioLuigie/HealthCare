@@ -89,7 +89,7 @@ export async function signIn(authFormValues: SignInAuthFormValues) {
 	}
 }
 
-export async function logout() {
+export async function signout() {
 	let sessionCookie: RequestCookie | null | undefined = cookies().get(
 		Auth.SESSION
 	)

@@ -3,7 +3,7 @@ import auth from '@/auth'
 // components
 import LogoFull from '@/components/content/LogoFull'
 import PersonAvatar from '@/components/shared/PersonAvatar'
-import Logout from '@/components/shared/Logout'
+import Signout from '@/components/shared/Signout'
 
 export default async function Header({ params }: { params: SingleSlugParams }) {
 	const dummyData = {
@@ -11,7 +11,6 @@ export default async function Header({ params }: { params: SingleSlugParams }) {
 		image: '/assets/images/dr-lee.png',
 		alt: 'Dr Lee',
 	}
-
 	const sessionUser = await auth.getSessionUser()
 
 	return (
@@ -22,7 +21,7 @@ export default async function Header({ params }: { params: SingleSlugParams }) {
 				<div>Welcome 👋,</div>
 				<PersonAvatar person={dummyData} />
 				<div className='pl-4'>
-					<Logout />
+					<Signout />
 				</div>
 			</div>
 		</header>

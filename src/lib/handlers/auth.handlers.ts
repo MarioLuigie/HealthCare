@@ -1,5 +1,5 @@
 // lib
-import { signIn, signUp, logout } from '@/lib/actions/auth.actions'
+import { signIn, signUp, signout } from '@/lib/actions/auth.actions'
 import { SignInAuthFormValues, SignUpAuthFormValues } from '@/lib/types/zod'
 import { generateUrl } from '../utils'
 import { Route } from '../constants/paths'
@@ -35,9 +35,9 @@ export const handleSignIn = async (authFormValues: SignInAuthFormValues) => {
 	}
 }
 
-export const handleLogout = async (router: any) => {
+export const handleSignout = async (router: any) => {
 	try {
-		const { success } = await logout()
+		const { success } = await signout()
 
 		if(success) {
 			router.push(generateUrl([Route.SIGN_IN]))
