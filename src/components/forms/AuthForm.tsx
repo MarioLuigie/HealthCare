@@ -48,8 +48,11 @@ export default function AuthForm({ authType }: AuthFormProps) {
 				)
 
 				if (createdUser!) {
+					// router.push(
+					// 	generateUrl([Route.PATIENTS, createdUser.$id, Route.REGISTER])
+					// )
 					router.push(
-						generateUrl([Route.PATIENTS, createdUser.$id, Route.REGISTER])
+						generateUrl([Route.VERIFY_ACCOUNT])
 					)
 					form.reset()
 				} else {

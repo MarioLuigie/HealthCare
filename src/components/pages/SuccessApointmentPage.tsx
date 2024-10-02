@@ -10,7 +10,7 @@ import { IconPath, Route } from '@/lib/constants/paths'
 import { Button } from '@/components/ui/button'
 import Copyright from '@/components/content/Copyright'
 import LogoFull from '@/components/content/LogoFull'
-import SuccessRes from '@/components/shared/SuccessRes'
+import SuccessResponse from '@/components/shared/SuccessResponse'
 
 export default async function SuccessApointmentPage({
 	params,
@@ -32,7 +32,7 @@ export default async function SuccessApointmentPage({
 		<div className=" flex h-screen max-h-screen px-[5%]">
 			<div className="success-img">
 				<LogoFull />
-				<SuccessRes
+				<SuccessResponse
 					imageSrc={IconPath.SUCCESS_ANIM}
 					entity="appointment request"
 					msg="We'll be in touch shortly to confirm."

@@ -10,7 +10,8 @@ export const Route = {
 	REGISTER: '/register',
 	CREATE_APPOINTMENT: '/create-appointment',
 	SUCCESS: '/success',
-	VERIFY_ACCOUNT: 'http://localhost:3000/verify-account',
+	VERIFIED_ACCOUNT: 'http://localhost:3000/verified-account',
+	VERIFY_ACCOUNT: '/verify-account',
 }
 
 export const IconPath = {
@@ -23,6 +24,7 @@ export const IconPath = {
 	UPLOAD: '/assets/icons/upload.svg',
 	UPLOAD_ANIM: '/assets/gifs/upload.gif',
 	SUCCESS_ANIM: '/assets/gifs/success.gif',
+	LOADING_ANIM: '/assets/gifs/loading2.gif',
 	FAILED_ANIM: '/assets/gifs/failed.gif',
 	CALENDAR: '/assets/icons/calendar.svg',
 	CLOSE: '/assets/icons/close.svg',

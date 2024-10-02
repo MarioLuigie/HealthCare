@@ -45,7 +45,7 @@ export async function signUp(authFormValues: SignUpAuthFormValues) {
 				Auth.SESSION
 			)
 			const { account } = await createSessionClient(sessionCookie?.value)
-			const result = await account.createVerification(generateUrl([Route.VERIFY_ACCOUNT]))
+			const result = await account.createVerification(generateUrl([Route.VERIFIED_ACCOUNT]))
 		}
 
 		// await account.createVerification("http://localhost:3000/verify-account") // nie moze byc na serwerze weryfikacja tylko na kliencie - dostep do sesji

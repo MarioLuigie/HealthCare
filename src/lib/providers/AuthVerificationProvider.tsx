@@ -1,7 +1,9 @@
-//lib
+// modules
+import { redirect } from 'next/navigation'
 import auth from '@/auth'
-import FailedRes from '@/components/shared/FailedRes'
-import { IconPath } from '@/lib/constants/paths'
+// lib
+import { generateUrl } from '@/lib/utils'
+import { Route } from '@/lib/constants/paths'
 
 export default async function AuthVerificationProvider({
 	children,
@@ -10,16 +12,9 @@ export default async function AuthVerificationProvider({
 }) {
 	const isUserVerified = await auth.isUserVerified()
 
-	if (isUserVerified) {
-		return children
-	} else {
-		return (
-			<FailedRes
-				imageSrc={IconPath.FAILED_ANIM}
-				entity="account"
-				action="verified"
-				msg="Currently, you can only use the minimal functionality of your HealthCare account. Open your dashboard below."
-			/>
-		)
+	if (!isUserVerified) {
+		redirect(generateUrl([Route.VERIFY_ACCOUNT]))
 	}
+
+	return <>{children}</> 
 }

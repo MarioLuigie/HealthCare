@@ -1,13 +1,13 @@
 import Image from 'next/image'
 
-type FailedResProps = {
+type FailedResponseProps = {
 	imageSrc: string
 	entity: string
   msg?: string
 	action?: string
 }
 
-export default function FailedRes({ imageSrc, entity, msg, action }: FailedResProps) {
+export default function FailedResponse({ imageSrc, entity, msg, action }: FailedResponseProps) {
 	return (
 		<section className="flex flex-col items-center">
 			<Image src={imageSrc} height={250} width={190} alt="failed" />

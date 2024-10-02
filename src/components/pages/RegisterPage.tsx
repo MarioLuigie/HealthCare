@@ -7,28 +7,38 @@ import PageTitle from '@/components/shared/PageTitle'
 import LogoFull from '@/components/content/LogoFull'
 import Copyright from '@/components/content/Copyright'
 import FormPageTemplate from '@/components/shared/FormPageTemplate'
+import AuthVerificationProvider from '@/lib/providers/AuthVerificationProvider'
 
-export default async function RegisterPage({ params }: { params: SingleSlugParams}) {
+export default async function RegisterPage({
+	params,
+}: {
+	params: SingleSlugParams
+}) {
 	const userId = params.userId
 	const user = await getUser(userId)
 
 	console.log('User from RegisterPage:', user)
 	return (
-		<FormPageTemplate image={Images.REGISTER_PAGE_IMAGE} classes='max-w-[780px]'>
-			<LogoFull />
-			<PageTitle
-				title="Welcome !"
-				description="Here you can create your patient profile, from which you will be able to create and manage your appointments."
-				classes='my-12'
-			/>
-			<PatientForm user={user} />
-			<Copyright />
-		</FormPageTemplate>
+		<AuthVerificationProvider>
+			<FormPageTemplate
+				image={Images.REGISTER_PAGE_IMAGE}
+				classes="max-w-[780px]"
+			>
+				<LogoFull />
+				<PageTitle
+					title="Welcome !"
+					description="Here you can create your patient profile, from which you will be able to create and manage your appointments."
+					classes="my-12"
+				/>
+				<PatientForm user={user} />
+				<Copyright />
+			</FormPageTemplate>
+		</AuthVerificationProvider>
 	)
 }
 
-
-{/* User from RegisterPage: {
+{
+	/* User from RegisterPage: {
   '$id': '66fc4cc7000626833f30',
   '$createdAt': '2024-10-01T19:24:25.458+00:00',
   '$updatedAt': '2024-10-01T19:24:25.458+00:00',
@@ -59,4 +69,5 @@ export default async function RegisterPage({ params }: { params: SingleSlugParam
     }
   ],
   accessedAt: '2024-10-01T19:24:25.456+00:00'
-}*/}
+}*/
+}

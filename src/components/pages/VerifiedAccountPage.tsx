@@ -8,10 +8,10 @@ import Loader from '@/components/shared/Loader'
 import RedirectWithDelay from '@/components/shared/RedirectWithDelay'
 import Copyright from '@/components/content/Copyright'
 import LogoFull from '@/components/content/LogoFull'
-import SuccessRes from '@/components/shared/SuccessRes'
-import FailedRes from '@/components/shared/FailedRes'
+import SuccessResponse from '@/components/shared/SuccessResponse'
+import FailedResponse from '@/components/shared/FailedResponse'
 
-export default async function VerifyAccountPage({
+export default async function VerifiedAccountPage({
 	searchParams,
 }: {
 	searchParams: SearchParams
@@ -43,14 +43,14 @@ export default async function VerifyAccountPage({
 					delay={3000}
 				>
 					{success ? (
-						<SuccessRes
+						<SuccessResponse
 							imageSrc={IconPath.SUCCESS_ANIM}
 							entity="account"
 							action="verified"
 							msg="In a few seconds you will be able to use the full functionality of your HealthCare account."
 						/>
 					) : (
-						<FailedRes
+						<FailedResponse
 							imageSrc={IconPath.FAILED_ANIM}
 							entity="account"
 							action="verified"
