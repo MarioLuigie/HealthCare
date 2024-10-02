@@ -36,6 +36,7 @@ export default async function SuccessApointmentPage({
 					imageSrc={IconPath.SUCCESS_ANIM}
 					entity="appointment request"
 					msg="We'll be in touch shortly to confirm."
+					action='submitted'
 				/>
 				<section className="request-details">
 					<p>Requested appointment details: </p>

@@ -23,6 +23,7 @@ export const IconPath = {
 	UPLOAD: '/assets/icons/upload.svg',
 	UPLOAD_ANIM: '/assets/gifs/upload.gif',
 	SUCCESS_ANIM: '/assets/gifs/success.gif',
+	FAILED_ANIM: '/assets/gifs/failed.gif',
 	CALENDAR: '/assets/icons/calendar.svg',
 	CLOSE: '/assets/icons/close.svg',
 	SCHEDULED: '/assets/icons/scheduled.svg',
