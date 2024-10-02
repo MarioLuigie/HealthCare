@@ -20,27 +20,37 @@ export default async function VerifyAccountPage({
 	searchParams: SearchParams
 }) {
 	const { userId, secret } = searchParams
-	const { success } = await verifyAccount(userId as string, secret as string)
-
 	const { name } = await auth.getSessionUser()
+	const { success } = await verifyAccount(userId as string, secret as string)
 
 	return (
 		<div className=" flex h-screen max-h-screen px-[5%]">
 			<div className="success-img">
 				<LogoFull />
-				<p className="mt-16 text-2xl font-bold">Welcome aboard {name} !</p>
-				<SuccessRes
-					imageSrc={IconPath.SUCCESS_ANIM}
-					entity="account"
-					action="verified"
-					msg="In a few seconds you will be able to use the full functionality of your HealthCare account."
-				/>
-				<FailedRes
-					imageSrc={IconPath.FAILED_ANIM}
-					entity="account"
-					action="verified"
-					msg="Currently, you can only use the minimal functionality of your HealthCare account."
-				/>
+				<p className="mt-16 text-2xl font-bold text-center">
+					Welcome aboard {name} !
+				</p>
+				<RedirectWithDelay
+					path={generateUrl([Route.SIGN_IN])}
+					delay={60000}
+				>
+					{true && (
+						<SuccessRes
+							imageSrc={IconPath.SUCCESS_ANIM}
+							entity="account"
+							action="verified"
+							msg="In a few seconds you will be able to use the full functionality of your HealthCare account."
+						/>
+					)}
+					{false && (
+						<FailedRes
+							imageSrc={IconPath.FAILED_ANIM}
+							entity="account"
+							action="verified"
+							msg="Currently, you can only use the minimal functionality of your HealthCare account."
+						/>
+					)}
+				</RedirectWithDelay>
 				<div className="my-20">
 					<Loader />
 				</div>

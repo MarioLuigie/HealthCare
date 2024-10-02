@@ -14,7 +14,7 @@ export default function FailedRes({ imageSrc, entity, msg, action }: FailedResPr
 			<h2 className="header mb-6 max-w-[650px] text-center">
 				Your <span className="text-red-400">{entity}</span> could not be {action} successfully!
 			</h2>
-			{msg && <p className='text-red-400'>{msg}</p>}
+			{msg && <p className='text-red-400 text-center'>{msg}</p>}
 		</section>
 	)
 }

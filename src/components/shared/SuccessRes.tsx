@@ -15,7 +15,7 @@ export default function SuccessRes({ imageSrc, entity, msg, action }: SuccessRes
 				Your <span className="text-green-500">{entity}</span> has
 				been successfully {action}!
 			</h2>
-			{msg && <p className='text-dark-700'>{msg}</p>}
+			{msg && <p className='text-dark-700 text-center'>{msg}</p>}
 		</section>
 	)
 }
