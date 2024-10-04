@@ -40,7 +40,7 @@ export default async function VerifiedAccountPage({
 				</p>
 				<RedirectWithDelay
 					path={generateUrl([Route.SIGN_IN])}
-					delay={3000}
+					delay={15000}
 				>
 					{success ? (
 						<SuccessResponse
