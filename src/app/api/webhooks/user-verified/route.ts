@@ -13,7 +13,8 @@ export async function POST(req: Request) {
 		if (!body.secret) {
 			console.error('Token not found in body')
 			return NextResponse.json(
-				{ message: 'Token not found' },
+				{ success: false,
+          message: 'Token not found' },
 				{ status: 400 }
 			)
 		}
@@ -21,13 +22,15 @@ export async function POST(req: Request) {
 		// Twoja logika przetwarzania...
 
 		return NextResponse.json(
-			{ message: 'user-verified webhook processed' },
+			{ success: true,
+        message: 'user-verified webhook processed with successfully' },
 			{ status: 200 }
 		)
 	} catch (err) {
 		console.error('Error processing webhook:', err)
 		return NextResponse.json(
-			{ message: 'Something went wrong with user-verified webhook' },
+			{ success: false,
+        message: 'Something went wrong with user-verified webhook' },
 			{ status: 500 }
 		)
 	}
