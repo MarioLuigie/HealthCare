@@ -17,7 +17,7 @@ export default async function VerifiedAccountPage({
 	searchParams: SearchParams
 }) {
 	const { userId, secret } = searchParams
-	const { name } = await auth.getSessionUser()
+	const sessionUser = await auth.getSessionUser()
 
 	const success: boolean =
 		userId && secret
@@ -36,10 +36,10 @@ export default async function VerifiedAccountPage({
 			<div className="success-img">
 				<LogoFull />
 				<p className="mt-16 text-2xl font-bold text-center">
-					Welcome aboard {name && name} !
+					Welcome aboard {sessionUser?.name && sessionUser?.name} !
 				</p>
 				<RedirectWithDelay
-					path={generateUrl([Route.SIGN_IN])}
+					path={generateUrl([Route.DASHBOARD_PATIENT, sessionUser.$id])}
 					delay={15000}
 				>
 					{success ? (
