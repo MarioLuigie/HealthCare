@@ -30,6 +30,7 @@ export default async function RegisterPage({
 					description="Here you can create your patient profile, from which you will be able to create and manage your appointments."
 					classes="my-12"
 				/>
+        <p></p>
 				<PatientForm user={user} />
 				<Copyright />
 			</FormPageTemplate>

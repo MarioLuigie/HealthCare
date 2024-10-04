@@ -35,6 +35,7 @@ const auth = {
 	isUserVerified: async () => {
 		try {
 			const sessionUser = await auth.getSessionUser()
+			
 			if(sessionUser.emailVerification) {
 				return true
 			} else {
