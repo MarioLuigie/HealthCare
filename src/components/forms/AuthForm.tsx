@@ -56,6 +56,7 @@ export default function AuthForm({ authType }: AuthFormProps) {
 					router.push(
 						generateUrl([Route.VERIFY_ACCOUNT])
 					)
+					if(error) setError('')
 					form.reset()
 				} else {
 					if(result) {
