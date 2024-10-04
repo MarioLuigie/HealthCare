@@ -38,26 +38,38 @@ export default async function VerifiedAccountPage({
 				<p className="mt-16 text-2xl font-bold text-center">
 					Welcome aboard {sessionUser?.name && sessionUser?.name} !
 				</p>
-				<RedirectWithDelay
-					path={generateUrl([Route.DASHBOARD_PATIENT, sessionUser?.$id])}
-					delay={15000}
-				>
-					{success ? (
+				{success ? (
+					<RedirectWithDelay
+						path={generateUrl([
+							Route.PATIENTS,
+							sessionUser?.$id,
+							Route.REGISTER,
+						])}
+						delay={15000}
+					>
 						<SuccessResponse
 							imageSrc={IconPath.SUCCESS_ANIM}
 							entity="account"
 							action="verified"
 							msg="In a few seconds you will be able to use the full functionality of your HealthCare account."
 						/>
-					) : (
+					</RedirectWithDelay>
+				) : (
+					<RedirectWithDelay
+						path={generateUrl([
+							Route.DASHBOARD_PATIENT,
+							sessionUser?.$id,
+						])}
+						delay={15000}
+					>
 						<FailedResponse
 							imageSrc={IconPath.FAILED_ANIM}
 							entity="account"
 							action="verified"
 							msg="Currently, you can only use the minimal functionality of your HealthCare account."
 						/>
-					)}
-				</RedirectWithDelay>
+					</RedirectWithDelay>
+				)}
 				<div className="my-20">
 					<Loader />
 				</div>

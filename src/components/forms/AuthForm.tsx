@@ -4,7 +4,7 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 // lib
 import {
 	getAuthFormDefaultValues,
@@ -28,7 +28,7 @@ type AuthFormProps = {
 
 export default function AuthForm({ authType }: AuthFormProps) {
 	const router = useRouter()
-	const [ error, setError ] = useState<string | undefined>('')
+	const [error, setError] = useState<string | undefined>('')
 
 	const AuthFormSchema = getAuthFormSchema(authType)
 
@@ -37,7 +37,16 @@ export default function AuthForm({ authType }: AuthFormProps) {
 		defaultValues: getAuthFormDefaultValues(authType),
 	})
 
-	const { isSubmitting } = form.formState
+	const { watch, formState } = form
+	const { isSubmitting } = formState
+
+	const email = watch('email')
+
+	useEffect(() => {
+		if (email) {
+			setError('')
+		}
+	}, [email])
 
 	const onSubmit: SubmitHandler<z.infer<typeof AuthFormSchema>> = async (
 		authFormValues: z.infer<typeof AuthFormSchema>
@@ -50,16 +59,11 @@ export default function AuthForm({ authType }: AuthFormProps) {
 				)
 
 				if (result && result.success) {
-					// router.push(
-					// 	generateUrl([Route.PATIENTS, createdUser.$id, Route.REGISTER])
-					// )
-					router.push(
-						generateUrl([Route.VERIFY_ACCOUNT])
-					)
-					if(error) setError('')
+					router.push(generateUrl([Route.VERIFY_ACCOUNT]))
+					if (error) setError('')
 					form.reset()
 				} else {
-					if(result) {
+					if (result) {
 						setError(result.error)
 					}
 					console.log(
@@ -69,10 +73,10 @@ export default function AuthForm({ authType }: AuthFormProps) {
 			} else if (authType === AuthTypes.SIGN_IN) {
 				session = await handleSignIn(authFormValues as SignInAuthFormValues)
 
-				// console.log('!!!', session)
-
 				if (session) {
-					router.push(generateUrl([Route.DASHBOARD_PATIENT, session.userId]))
+					router.push(
+						generateUrl([Route.DASHBOARD_PATIENT, session.userId])
+					)
 				}
 			}
 		} catch (err) {
@@ -118,7 +122,9 @@ export default function AuthForm({ authType }: AuthFormProps) {
 							iconSrc={Icons.PASSWORD_ICON.path}
 							iconAlt={Icons.PASSWORD_ICON.alt}
 						/>
-						{error && <p className='text-red-500 text-sm text-center'>{error}</p>}
+						{error && (
+							<p className="text-red-500 text-sm text-center">{error}</p>
+						)}
 						{/* <CustomFormField
               control={form.control}
               typeField={FormFieldType.PHONE_INPUT}
