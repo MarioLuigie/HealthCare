@@ -39,7 +39,7 @@ export default async function VerifiedAccountPage({
 					Welcome aboard {sessionUser?.name && sessionUser?.name} !
 				</p>
 				<RedirectWithDelay
-					path={generateUrl([Route.DASHBOARD_PATIENT, sessionUser.$id])}
+					path={generateUrl([Route.DASHBOARD_PATIENT, sessionUser?.$id])}
 					delay={15000}
 				>
 					{success ? (

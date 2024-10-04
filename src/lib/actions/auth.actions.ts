@@ -39,28 +39,34 @@ export async function signUp(authFormValues: SignUpAuthFormValues) {
 		}
 
 		console.log('***session', session)
+		console.log('***createdUser', createdUser)
 
 		if (session) {
 			const sessionCookie: RequestCookie | null | undefined = cookies().get(
 				Auth.SESSION
 			)
 			const { account } = await createSessionClient(sessionCookie?.value)
-			const result = await account.createVerification(generateUrl([Route.VERIFIED_ACCOUNT]))
+			await account.createVerification(
+				generateUrl([Route.VERIFIED_ACCOUNT])
+			)
 		}
 
-		// await account.createVerification("http://localhost:3000/verify-account") // nie moze byc na serwerze weryfikacja tylko na kliencie - dostep do sesji
+		return {
+			success: true,
+			data: createdUser,
+		}
 
-		return deepClone(createdUser)
 	} catch (err: any) {
-		// Check existing user
-		// if (err && err?.code === 409) {
-		//   const documents = await users.list([
-		//     Query.equal("email", [authFormValues.email]),
-		//   ])
+		if (err.code === 409) {
+			console.error('User with this email already exists.')
+			return {
+				success: false,
+				error: 'User already exists. Please use a different email or Sign In.',
+			}
+		}
 
-		//   return documents.users[0]
-		// }
 		console.error('An error occurred while creating a new user:', err)
+		return { success: false, error: 'An error occurred. Please try again later.' }
 	}
 }
 
@@ -77,7 +83,7 @@ export async function signIn(authFormValues: SignInAuthFormValues) {
 		// Save session secret to cookies under the key 'session' - read in auth.ts
 		cookies().set(Auth.SESSION, session.secret, {
 			httpOnly: true,
-			sameSite: 'strict',
+			sameSite: 'none',
 			secure: true,
 			expires: new Date(session.expire),
 			path: Route.HOME,

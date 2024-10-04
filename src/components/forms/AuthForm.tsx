@@ -4,6 +4,7 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useRouter } from 'next/navigation'
+import { useState } from 'react'
 // lib
 import {
 	getAuthFormDefaultValues,
@@ -27,6 +28,7 @@ type AuthFormProps = {
 
 export default function AuthForm({ authType }: AuthFormProps) {
 	const router = useRouter()
+	const [ error, setError ] = useState<string | undefined>('')
 
 	const AuthFormSchema = getAuthFormSchema(authType)
 
@@ -43,11 +45,11 @@ export default function AuthForm({ authType }: AuthFormProps) {
 		let session = null
 		try {
 			if (authType === AuthTypes.SIGN_UP) {
-				const createdUser = await handleSignUp(
+				const result = await handleSignUp(
 					authFormValues as SignUpAuthFormValues
 				)
 
-				if (createdUser!) {
+				if (result && result.success) {
 					// router.push(
 					// 	generateUrl([Route.PATIENTS, createdUser.$id, Route.REGISTER])
 					// )
@@ -56,6 +58,9 @@ export default function AuthForm({ authType }: AuthFormProps) {
 					)
 					form.reset()
 				} else {
+					if(result) {
+						setError(result.error)
+					}
 					console.log(
 						'Something went wrong with creating user while registering.'
 					)
@@ -112,6 +117,7 @@ export default function AuthForm({ authType }: AuthFormProps) {
 							iconSrc={Icons.PASSWORD_ICON.path}
 							iconAlt={Icons.PASSWORD_ICON.alt}
 						/>
+						{error && <p className='text-red-500 text-sm text-center'>{error}</p>}
 						{/* <CustomFormField
               control={form.control}
               typeField={FormFieldType.PHONE_INPUT}
