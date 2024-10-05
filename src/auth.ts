@@ -32,7 +32,7 @@ const auth = {
     return auth.sessionUser
 	},
 
-	isUserVerified: async () => {
+	checkIsUserVerified: async () => {
 		try {
 			const sessionUser = await auth.getSessionUser()
 			

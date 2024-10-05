@@ -10,7 +10,7 @@ export default async function AuthVerificationProvider({
 }: {
 	children: React.ReactNode
 }) {
-	const isUserVerified = await auth.isUserVerified()
+	const isUserVerified = await auth.checkIsUserVerified()
 	// const isUserVerified = await auth.isUserVerified()
 
 	if (!isUserVerified) {
