@@ -127,18 +127,27 @@ export async function signout() {
 }
 
 export async function verifyUser(userId: string, secret: string) {
-  const sessionCookie: RequestCookie | null | undefined = cookies().get(
-    Auth.SESSION
-  )
-  const { account } = await createSessionClient(sessionCookie?.value)
+  // const sessionCookie: RequestCookie | null | undefined = cookies().get(
+  //   Auth.SESSION
+  // )
+
+  // if (!sessionCookie) {
+  //   return {
+  //     success: false,
+  //     message: "User must be signed in to verify the account."
+  //   }
+  // }
+
+  // const { account } = await createSessionClient(sessionCookie?.value)
+
+  const { account } = await createClient()
+
   try {
     const result = await account.updateVerification(userId, secret)
 
     console.log("***updateVerification", result)
     return { success: true, message: "Verification completed successfully." }
-
   } catch (err: any) {
-
     if (err.code === 401) {
       console.log("***updateVerification-401", err)
       return {
@@ -146,7 +155,7 @@ export async function verifyUser(userId: string, secret: string) {
         message: "Your verification link has expired.",
       }
     }
-    
+
     if (err.code === 429) {
       console.log("***updateVerification-429", err)
       return {
