@@ -91,13 +91,13 @@ export async function signIn(authFormValues: SignInAuthFormValues) {
 
     return { success: true, data: session }
   } catch (err: any) {
-    // Logowanie błędu dla programisty
+    // Error logging 
     console.error("An error occurred while logging in:", err)
 
-    // Obsługa specyficznych kodów błędów
+    // Handling specific error codes
     const { code, response } = err
 
-    // Zwrócenie odpowiedniego komunikatu dla użytkownika
+    // Returning the appropriate message to the user
     if (code === 401) {
       return {
         success: false,
@@ -115,7 +115,7 @@ export async function signIn(authFormValues: SignInAuthFormValues) {
       }
     }
 
-    // Domyślny komunikat dla innych kodów błędów
+    // Default message for other error codes
     return {
       success: false,
       message:
@@ -150,7 +150,7 @@ export async function signout() {
     console.error("***Error from server action", err)
     return {
       success: false,
-      message: "Something went wrong while logout user",
+      message: "Something went wrong while sign out user",
     }
   }
 }
