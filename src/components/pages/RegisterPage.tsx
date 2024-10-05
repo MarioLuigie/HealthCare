@@ -7,7 +7,7 @@ import PageTitle from '@/components/shared/PageTitle'
 import LogoFull from '@/components/content/LogoFull'
 import Copyright from '@/components/content/Copyright'
 import FormPageTemplate from '@/components/shared/FormPageTemplate'
-import AuthVerificationProvider from '@/lib/providers/AuthVerificationProvider'
+import UserVerificationProvider from '@/lib/providers/UserVerificationProvider'
 
 export default async function RegisterPage({
 	params,
@@ -19,7 +19,7 @@ export default async function RegisterPage({
 
 	console.log('User from RegisterPage:', user)
 	return (
-		<AuthVerificationProvider>
+		<UserVerificationProvider>
 			<FormPageTemplate
 				image={Images.REGISTER_PAGE_IMAGE}
 				classes="max-w-[780px]"
@@ -34,7 +34,7 @@ export default async function RegisterPage({
 				<PatientForm user={user} />
 				<Copyright />
 			</FormPageTemplate>
-		</AuthVerificationProvider>
+		</UserVerificationProvider>
 	)
 }
 
