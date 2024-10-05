@@ -58,14 +58,14 @@ export async function signUp(authFormValues: SignUpAuthFormValues) {
       console.error("User with this email already exists.")
       return {
         success: false,
-        error: "User already exists. Please use a different email or Sign In.",
+        message: "User already exists. Please use a different email or Sign In.",
       }
     }
 
     console.error("An error occurred while creating a new user:", err)
     return {
       success: false,
-      error: "An error occurred. Please try again later.",
+      message: "An error occurred. Please try again later.",
     }
   }
 }
@@ -89,9 +89,38 @@ export async function signIn(authFormValues: SignInAuthFormValues) {
       path: Route.HOME,
     })
 
-    return session
+    return { success: true, data: session }
   } catch (err: any) {
-    console.error("An error occurred while loging:", err)
+    // Logowanie błędu dla programisty
+    console.error("An error occurred while logging in:", err)
+
+    // Obsługa specyficznych kodów błędów
+    const { code, response } = err
+
+    // Zwrócenie odpowiedniego komunikatu dla użytkownika
+    if (code === 401) {
+      return {
+        success: false,
+        message: "Invalid credentials. Please check the email and password.",
+      }
+    } else if (code === 403) {
+      return {
+        success: false,
+        message: "Your account is blocked. Please contact support.",
+      }
+    } else if (code === 429) {
+      return {
+        success: false,
+        message: "Too many login attempts. Please try again later.",
+      }
+    }
+
+    // Domyślny komunikat dla innych kodów błędów
+    return {
+      success: false,
+      message:
+        response?.message || "An unknown error occurred. Please try again.",
+    }
   }
 }
 

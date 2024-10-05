@@ -10,6 +10,7 @@ import Copyright from "@/components/content/Copyright"
 import LogoFull from "@/components/content/LogoFull"
 import SuccessResponse from "@/components/shared/SuccessResponse"
 import FailedResponse from "@/components/shared/FailedResponse"
+import Link from "next/link"
 
 export default async function UserVerifiedPage({
   searchParams,
@@ -46,7 +47,7 @@ export default async function UserVerifiedPage({
         {success && (
           <>
             <p className="mt-16 text-2xl font-bold text-center">
-              Welcome aboard {sessionUser?.name || "User"}!
+              Welcome aboard {sessionUser?.name}!
             </p>
             <RedirectWithDelay path={successRedirectPath} delay={15000}>
               <SuccessResponse
@@ -74,9 +75,23 @@ export default async function UserVerifiedPage({
                   your dashboard where you can request a new verification link.
                 </p>
               )}
-              <p>
-                In a few seconds you will be redirected to{" "}
-                {sessionUser ? "Dashboard Page" : "Sign In Page"}
+              <p className="flex-center">
+                In a few seconds you will be redirected to
+                {sessionUser ? (
+                  <Link
+                    href={failureRedirectPath}
+                    className="text-green-500 px-2 py-2 flex-center"
+                  >
+                    Dashboard Page
+                  </Link>
+                ) : (
+                  <Link
+                    href={failureRedirectPath}
+                    className="text-green-500 px-2 py-2 flex-center"
+                  >
+                    Sign In Page
+                  </Link>
+                )}
               </p>
             </RedirectWithDelay>
           </>

@@ -27,9 +27,9 @@ export const handleSignIn = async (authFormValues: SignInAuthFormValues) => {
 			setTimeout(resolve, 2000)
 		})
 
-		const session = await signIn(authFormValues)
+		const result = await signIn(authFormValues)
 
-		return session
+		return result
 	} catch (err) {
 		console.error(err)
 	}
