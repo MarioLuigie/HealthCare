@@ -47,7 +47,7 @@ export async function signUp(authFormValues: SignUpAuthFormValues) {
 			)
 			const { account } = await createSessionClient(sessionCookie?.value)
 			await account.createVerification(
-				generateUrl([Route.VERIFIED_ACCOUNT])
+				generateUrl([Route.USER_VERIFIED])
 			)
 		}
 
