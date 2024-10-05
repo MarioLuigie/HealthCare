@@ -11,7 +11,7 @@ type PendingResponseProps = {
 export default function PendingResponse({ imageSrc, entity, msg, action }: PendingResponseProps) {
 	return (
 		<section className="flex flex-col items-center">
-			<Image src={imageSrc} height={250} width={190} alt="success" unoptimized/>
+			<Image src={imageSrc} height={220} width={150} alt="success" unoptimized/>
 			<h2 className="header mb-6 max-w-[650px] text-center">
 				Your <span className="text-green-500">{entity}</span> is waiting for {action}!
 			</h2>
