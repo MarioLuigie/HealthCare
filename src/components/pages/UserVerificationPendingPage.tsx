@@ -8,7 +8,7 @@ import PendingResponse from "@/components/shared/PendingResponse"
 import { generateUrl } from "@/lib/utils"
 import LinkButton from "../shared/buttons/LinkButton"
 
-export default async function UseVerifyPage({
+export default async function UserVerificationPendingPage({
   searchParams,
 }: {
   searchParams: SearchParams

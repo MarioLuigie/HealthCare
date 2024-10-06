@@ -71,7 +71,7 @@ export default async function UserVerificationResultPage({
     )
   }
 
-  // Check account verification if userId and secret exist
+  // Make success verification account if userId and secret exist and correct
   const verificationResult: VerificationResult =
     userId && secret
       ? await updateUserVerification(userId as string, secret as string)
@@ -113,6 +113,11 @@ export default async function UserVerificationResultPage({
                 {errorCode &&
                   errorCode === 401 &&
                   "Your verification link has expired.In your dashboard you can request a new verification link."}
+              </p>
+              <p className="text-red-500">
+                {errorCode &&
+                  errorCode === 404 &&
+                  "User not found. User with the requested ID could not exist."}
               </p>
               <p className="text-red-500">
                 {errorCode &&

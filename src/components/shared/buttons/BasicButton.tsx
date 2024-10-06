@@ -1,3 +1,5 @@
+// modules
+import clsx from 'clsx'
 // components
 import { Button } from '@/components/ui/button'
 
@@ -17,7 +19,7 @@ export default function BasicButton({
 	return (
 		<Button
 			type={type}
-			className={`${isDanger ? 'shad-danger-btn' : 'shad-primary-btn'} ${className}`}
+			className={clsx(isDanger ? 'shad-danger-btn' : 'shad-primary-btn', className)}
 		>
       {children}
 		</Button>

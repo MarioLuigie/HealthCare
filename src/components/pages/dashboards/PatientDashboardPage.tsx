@@ -1,4 +1,9 @@
+// modules
 import auth from "@/auth"
+// lib
+import { createUserVerification } from '@/lib/actions/auth.actions'
+// components
+import BasicButton from "@/components/shared/buttons/BasicButton"
 
 export default async function PatientDashboardPage({
   params,
@@ -17,7 +22,12 @@ export default async function PatientDashboardPage({
         </div>
       )}
       {!isSessionUserVerified && sessionUser && (
-        <div className="text-red-400 text-3xl">User not verified!</div>
+        <>
+          <div className="text-red-400 text-3xl">User not verified!</div>
+          <form className="mt-8" action={createUserVerification}>
+            <BasicButton>Verify your Account</BasicButton>
+          </form>
+        </>
       )}
     </div>
   )

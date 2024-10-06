@@ -15,12 +15,69 @@ import { cookies } from "next/headers"
 import { Auth } from "@/lib/types/enums"
 import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies"
 
-export default async function createUserVerification() {
+// Server action for start user account verification - send link to email
+export async function createUserVerification() {
   const sessionCookie: RequestCookie | null | undefined = cookies().get(
     Auth.SESSION
   )
   const { account } = await createSessionClient(sessionCookie?.value)
   await account.createVerification(generateUrl([Route.USER_VERIFICATION_RESULT]))
+}
+
+// Server action for change user verification email to true - after clicked email link
+export async function updateUserVerification(userId: string, secret: string) {
+  // const sessionCookie: RequestCookie | null | undefined = cookies().get(
+  //   Auth.SESSION
+  // )
+
+  // if (!sessionCookie) {
+  //   return {
+  //     success: false,
+  //     message: "User must be signed in to verify the account."
+  //   }
+  // }
+
+  // const { account } = await createSessionClient(sessionCookie?.value)
+
+  const { account } = await createClient()
+
+  try {
+    const result = await account.updateVerification(userId, secret)
+
+    console.log("***updateVerification-result", result)
+    return { success: true, message: "Verification completed successfully." }
+  } catch (err: any) {
+    if (err.code === 401) {
+      console.log("***updateVerification-401", err)
+      return {
+        success: false,
+        message: "Your verification link has expired.",
+        code: err.code,
+      }
+    }
+
+    if (err.code === 404) {
+      console.log("***updateVerification-404", err)
+      return {
+        success: false,
+        message: "User not found.",
+        code: err.code,
+      }
+    }
+
+    if (err.code === 429) {
+      console.log("***updateVerification-429", err)
+      return {
+        success: false,
+        message:
+          "Rate limit for using your verification link has been exceeded.",
+        code: err.code,
+      }
+    }
+
+    console.log("***updateVerification", err)
+    return { success: false, message: "User verification failed." }
+  }
 }
 
 // Sign Up and return created user
@@ -162,52 +219,6 @@ export async function signOut() {
       success: false,
       message: "Something went wrong while sign out user",
     }
-  }
-}
-
-export async function updateUserVerification(userId: string, secret: string) {
-  // const sessionCookie: RequestCookie | null | undefined = cookies().get(
-  //   Auth.SESSION
-  // )
-
-  // if (!sessionCookie) {
-  //   return {
-  //     success: false,
-  //     message: "User must be signed in to verify the account."
-  //   }
-  // }
-
-  // const { account } = await createSessionClient(sessionCookie?.value)
-
-  const { account } = await createClient()
-
-  try {
-    const result = await account.updateVerification(userId, secret)
-
-    console.log("***updateVerification-result", result)
-    return { success: true, message: "Verification completed successfully." }
-  } catch (err: any) {
-    if (err.code === 401) {
-      console.log("***updateVerification-401", err)
-      return {
-        success: false,
-        message: "Your verification link has expired.",
-        code: err.code,
-      }
-    }
-
-    if (err.code === 429) {
-      console.log("***updateVerification-429", err)
-      return {
-        success: false,
-        message:
-          "Rate limit for using your verification link has been exceeded.",
-        code: err.code,
-      }
-    }
-
-    console.log("***updateVerification", err)
-    return { success: false, message: "User verification failed." }
   }
 }
 
