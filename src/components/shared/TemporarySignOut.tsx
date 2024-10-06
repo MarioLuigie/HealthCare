@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation"
 // lib
 import { handleSignOut } from "@/lib/handlers/auth.handlers"
 
-export default function Signout() {
+export default function TemporarySignOut() {
   const router = useRouter()
 	return (
 		<div
