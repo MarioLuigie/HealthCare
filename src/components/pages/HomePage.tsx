@@ -1,74 +1,68 @@
 // modules
-import Link from 'next/link'
-import { redirect } from 'next/navigation'
+import { redirect } from "next/navigation"
 // lib
-import { Videos } from '@/lib/constants'
-import { Route } from '@/lib/constants/paths'
-import { generateUrl } from '@/lib/utils'
-import { SearchParamsString } from '@/lib/types/enums'
-import auth from '@/auth'
+import { Videos } from "@/lib/constants"
+import { Route } from "@/lib/constants/paths"
+import { generateUrl } from "@/lib/utils"
+import { SearchParamsString } from "@/lib/types/enums"
+import auth from "@/auth"
 // components
-import PageTitle from '@/components/shared/PageTitle'
-import LogoFull from '@/components/content/LogoFull'
-import Copyright from '@/components/content/Copyright'
-import FormPageTemplate from '@/components/shared/FormPageTemplate'
-import PassKeyDialog from '@/components/dialogs/PassKeyDialog'
+import PageTitle from "@/components/shared/PageTitle"
+import LogoFull from "@/components/content/LogoFull"
+import Copyright from "@/components/content/Copyright"
+import FormPageTemplate from "@/components/shared/FormPageTemplate"
+import PassKeyDialog from "@/components/dialogs/PassKeyDialog"
+import LinkButton from "@/components/shared/buttons/LinkButton"
 
 export default async function HomePage({
-	searchParams,
+  searchParams,
 }: {
-	searchParams?: SearchParams
+  searchParams?: SearchParams
 }) {
-	{
-		/* TODO: OTP Verification | PassKey Modal  */
-	}
-	const sessionUser = await auth.getSessionUser()
+  {
+    /* TODO: OTP Verification | PassKey Modal  */
+  }
+  const sessionUser = await auth.getSessionUser()
 
-	if (sessionUser && sessionUser.$id) {
-		redirect(generateUrl([Route.DASHBOARD_PATIENT, sessionUser.$id]))
-	}
+  if (sessionUser && sessionUser.$id) {
+    redirect(generateUrl([Route.DASHBOARD_PATIENT, sessionUser.$id]))
+  }
 
-	return (
-		<FormPageTemplate
-			video={Videos.HOME_PAGE_VIDEO}
-			classes="max-w-[480px]"
-			isVideo
-		>
-			<PassKeyDialog searchParams={searchParams} />
-			<div className="flex flex-col justify-between grow">
-				<LogoFull />
-				<div>
-					<PageTitle
-						title="Hi there !"
-						description="Get started with your HealthCare application."
-						classes="my-12"
-					/>
-					<div className="flex gap-4">
-						<Link
-							href={generateUrl([Route.SIGN_IN])}
-							className="text-white px-4 py-2 rounded-lg bg-green-500 flex-center min-w-[110px]"
-						>
-							Sign In
-						</Link>
-						<Link
-							href={generateUrl([Route.SIGN_UP])}
-							className="text-white px-4 py-2 rounded-lg bg-transparent flex-center border border-gray-500 min-w-[110px]"
-						>
-							Sign Up
-						</Link>
-					</div>
-				</div>
-				<Copyright>
-					<Link
-						href={generateUrl([Route.HOME], {
-							admin: SearchParamsString.TRUE,
-						})}
-						className="text-green-500"
-					>
-						Admin
-					</Link>
-				</Copyright>
-			</div>
-		</FormPageTemplate>
-	)
+  return (
+    <FormPageTemplate
+      video={Videos.HOME_PAGE_VIDEO}
+      classes="max-w-[480px]"
+      isVideo
+    >
+      <PassKeyDialog searchParams={searchParams} />
+      <div className="flex flex-col justify-between grow">
+        <LogoFull />
+        <div>
+          <PageTitle
+            title="Hi there !"
+            description="Get started with your HealthCare application."
+            classes="my-12"
+          />
+          <div className="flex gap-4">
+            <LinkButton href={generateUrl([Route.SIGN_IN])} variant="fill">
+              Sign In
+            </LinkButton>
+            <LinkButton href={generateUrl([Route.SIGN_UP])} variant="outline">
+              Sign Up
+            </LinkButton>
+          </div>
+        </div>
+        <Copyright>
+          <LinkButton
+            href={generateUrl([Route.HOME], {
+              admin: SearchParamsString.TRUE,
+            })}
+            variant="text"
+          >
+            Admin
+          </LinkButton>
+        </Copyright>
+      </div>
+    </FormPageTemplate>
+  )
 }

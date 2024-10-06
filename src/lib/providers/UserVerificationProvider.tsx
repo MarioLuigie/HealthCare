@@ -10,7 +10,7 @@ export default async function AuthVerificationProvider({
 }: {
 	children: React.ReactNode
 }) {
-	const isUserVerified = await auth.checkIsUserVerified()
+	const isUserVerified = await auth.checkIsSessionUserVerified()
 	// const isUserVerified = await auth.isUserVerified()
 
 	if (!isUserVerified) {
@@ -19,3 +19,10 @@ export default async function AuthVerificationProvider({
 
 	return <>{children}</> 
 }
+
+// Trasy nie chronione nie wymagaja sprawdzania czy user jest zweryfikowany
+
+// Trasy chronione najpierw weryfikuje middleware czy trasa jest chroniona i czy jest session a wiec i user
+// jesli tak to puszcza dalej i wowczas AuthVerificationProvider sprawdza czy user jest zweryfikowany i ma co sprawdzic bo jesli
+// middleware przepuscil zadanie to znaczy ze jest session a wiec i jest sessionUser a wiec checkIsUserVerified bedzie dzialac bo pracuje na 
+// zalogowanym userze

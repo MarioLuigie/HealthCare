@@ -5,8 +5,8 @@ import auth from "@/auth"
 import Copyright from "@/components/content/Copyright"
 import LogoFull from "@/components/content/LogoFull"
 import PendingResponse from "@/components/shared/PendingResponse"
-import Link from "next/link"
 import { generateUrl } from "@/lib/utils"
+import LinkButton from "../shared/buttons/LinkButton"
 
 export default async function UseVerifyPage({
   searchParams,
@@ -55,13 +55,12 @@ export default async function UseVerifyPage({
             visit your dashboard click the button below.
           </p>
         </div>
-
-        <Link
+        <LinkButton
           href={generateUrl([Route.DASHBOARD_PATIENT, sessionUser?.$id])}
-          className="text-white px-4 py-2 rounded-lg bg-green-500 flex-center min-w-[110px]"
+          variant="fill"
         >
           Enter to dashboard
-        </Link>
+        </LinkButton>
         <Copyright />
       </div>
     </div>

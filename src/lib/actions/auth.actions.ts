@@ -58,7 +58,8 @@ export async function signUp(authFormValues: SignUpAuthFormValues) {
       console.error("User with this email already exists.")
       return {
         success: false,
-        message: "User already exists. Please use a different email or Sign In.",
+        message:
+          "User already exists. Please use a different email or Sign In.",
       }
     }
 
@@ -91,7 +92,7 @@ export async function signIn(authFormValues: SignInAuthFormValues) {
 
     return { success: true, data: session }
   } catch (err: any) {
-    // Error logging 
+    // Error logging
     console.error("An error occurred while logging in:", err)
 
     // Handling specific error codes
@@ -124,7 +125,7 @@ export async function signIn(authFormValues: SignInAuthFormValues) {
   }
 }
 
-export async function signout() {
+export async function signOut() {
   let sessionCookie: RequestCookie | null | undefined = cookies().get(
     Auth.SESSION
   )
@@ -142,7 +143,7 @@ export async function signout() {
     cookies().set(Auth.SESSION, "", { expires: new Date(0) })
 
     console.log("***DELETE SESSION RESULT - from server action")
-    return { success: true, message: "User logged out with successfully" }
+    return { success: true, message: "User signed out with successfully" }
   } catch (err) {
     cookies().set(Auth.SESSION, "", { expires: new Date(0) })
     // cookies().delete(Auth.SESSION)
@@ -182,6 +183,7 @@ export async function verifyUser(userId: string, secret: string) {
       return {
         success: false,
         message: "Your verification link has expired.",
+        code: err.code,
       }
     }
 
@@ -191,6 +193,7 @@ export async function verifyUser(userId: string, secret: string) {
         success: false,
         message:
           "Rate limit for using your verification link has been exceeded.",
+        code: err.code,
       }
     }
 

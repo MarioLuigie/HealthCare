@@ -18,7 +18,7 @@ import { handleSignUp, handleSignIn } from "@/lib/handlers/auth.handlers"
 import { generateUrl } from "@/lib/utils"
 import { Route } from "@/lib/constants/paths"
 // components
-import SubmitButton from "@/components/shared/SubmitButton"
+import SubmitButton from "@/components/shared/buttons/SubmitButton"
 import CustomFormField from "@/components/shared/CustomFormField"
 import { Form } from "@/components/ui/form"
 

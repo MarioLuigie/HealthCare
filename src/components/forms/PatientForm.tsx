@@ -17,7 +17,7 @@ import {
 } from "@/lib/constants"
 // components
 import { Form, FormControl } from "@/components/ui/form"
-import SubmitButton from "@/components/shared/SubmitButton"
+import SubmitButton from "@/components/shared/buttons/SubmitButton"
 import CustomFormField from "@/components/shared/CustomFormField"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"

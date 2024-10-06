@@ -2,14 +2,14 @@
 // modules
 import { useRouter } from "next/navigation"
 // lib
-import { handleSignout } from "@/lib/handlers/auth.handlers"
+import { handleSignOut } from "@/lib/handlers/auth.handlers"
 
 export default function Signout() {
   const router = useRouter()
 	return (
 		<div
 			className="text-zinc-200 text-lg cursor-pointer"
-			onClick={() => handleSignout(router)}
+			onClick={() => handleSignOut(router)}
 		>
 			Log out
 		</div>

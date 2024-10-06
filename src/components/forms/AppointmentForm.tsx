@@ -22,7 +22,7 @@ import { doctors } from "@/lib/constants"
 import { ActionTypes } from "@/lib/types/enums"
 // components
 import { Form } from "@/components/ui/form"
-import SubmitButton from "@/components/shared/SubmitButton"
+import SubmitButton from "@/components/shared/buttons/SubmitButton"
 import CustomFormField from "@/components/shared/CustomFormField"
 import { SelectItem } from "@/components/ui/select"
 // Styles

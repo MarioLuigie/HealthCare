@@ -3,7 +3,7 @@ import auth from '@/auth'
 // components
 import LogoFull from '@/components/content/LogoFull'
 import PersonAvatar from '@/components/shared/PersonAvatar'
-import Signout from '@/components/shared/Signout'
+import Signout from '@/components/shared/SignOut'
 
 export default async function Header({ params }: { params: SingleSlugParams }) {
 	const dummyData = {

@@ -11,6 +11,13 @@ import LogoFull from "@/components/content/LogoFull"
 import SuccessResponse from "@/components/shared/SuccessResponse"
 import FailedResponse from "@/components/shared/FailedResponse"
 import Link from "next/link"
+import LinkButton from "@/components/shared/buttons/LinkButton"
+
+type VerificationResult = {
+  success: boolean
+  message?: string
+  code?: number
+}
 
 export default async function UserVerifiedPage({
   searchParams,
@@ -21,12 +28,14 @@ export default async function UserVerifiedPage({
   const sessionUser = await auth.getSessionUser()
 
   // Sprawdź weryfikację konta, jeśli userId i secret są obecne
-  const verificationResult =
+  const verificationResult: VerificationResult =
     userId && secret
       ? await verifyUser(userId as string, secret as string)
       : { success: false }
 
   const success = verificationResult.success
+  const errorCode = verificationResult.code
+
   const successRedirectPath = sessionUser
     ? generateUrl([Route.PATIENTS, sessionUser?.$id, Route.REGISTER])
     : generateUrl([Route.SIGN_IN])
@@ -75,28 +84,31 @@ export default async function UserVerifiedPage({
                   your dashboard where you can request a new verification link.
                 </p>
               )}
+              <p className="text-red-500">
+                {errorCode &&
+                  errorCode === 401 &&
+                  "Your verification link has expired."}
+              </p>
+              <p className="text-red-500">
+                {errorCode &&
+                  errorCode === 429 &&
+                  "Rate limit for using your verification link has been exceeded."}
+              </p>
               <p className="flex-center">
-                In a few seconds you will be redirected to
+                In a few seconds you will be redirected to the&nbsp;
                 {sessionUser ? (
-                  <Link
-                    href={failureRedirectPath}
-                    className="text-green-500 px-2 py-2 flex-center"
-                  >
+                  <LinkButton href={failureRedirectPath} variant="text">
                     Dashboard Page
-                  </Link>
+                  </LinkButton>
                 ) : (
-                  <Link
-                    href={failureRedirectPath}
-                    className="text-green-500 px-2 py-2 flex-center"
-                  >
+                  <LinkButton href={failureRedirectPath} variant="text">
                     Sign In Page
-                  </Link>
+                  </LinkButton>
                 )}
               </p>
             </RedirectWithDelay>
           </>
         )}
-
         <div className="my-20">
           <Loader />
         </div>
@@ -105,119 +117,3 @@ export default async function UserVerifiedPage({
     </div>
   )
 }
-
-// 	return (
-// 		<div className="flex flex-col items-center justify-center min-h-screen grow">
-// 			<Loader />
-// 			{true && (
-// 				<RedirectWithDelay
-// 					path={generateUrl([Route.SIGN_IN])}
-// 					delay={60000}
-// 				>
-// 					<p className='text-5xl font-bold text-green-500'>Your account has been successfully verified!</p>
-// 					<p>
-// 						You will be able to use the full functionality of your
-// 						HealthCare account shortly.
-// 					</p>
-// 				</RedirectWithDelay>
-// 			)}
-// 			{(false) && (
-// 				<p>Invalid verification link. Please, try again.</p>
-// 			)}
-// 		</div>
-// 	)
-// }
-
-// // lib
-// import { verifyUser } from "@/lib/actions/auth.actions"
-// import { Route, IconPath } from "@/lib/constants/paths"
-// import { generateUrl, prepareSearchParam } from "@/lib/utils"
-// import auth from "@/auth"
-// // components
-// import Loader from "@/components/shared/Loader"
-// import RedirectWithDelay from "@/components/shared/RedirectWithDelay"
-// import Copyright from "@/components/content/Copyright"
-// import LogoFull from "@/components/content/LogoFull"
-// import SuccessResponse from "@/components/shared/SuccessResponse"
-// import FailedResponse from "@/components/shared/FailedResponse"
-// import { redirect } from "next/navigation"
-// import Link from "next/link"
-
-// export default async function UserVerifiedPage({
-//   searchParams,
-// }: {
-//   searchParams: SearchParams
-// }) {
-//   const { userId, secret } = searchParams
-//   const sessionUser = await auth.getSessionUser()
-
-//   const success: boolean =
-//     userId && secret
-//       ? (await verifyUser(userId as string, secret as string)).success
-//       : false
-
-//   // if (!userId || !secret) {
-//   // 	success = false
-//   // } else {
-//   // 	const result = await verifyAccount(userId as string, secret as string)
-//   // 	success = result.success
-//   // }
-
-//   return (
-//     <div className=" flex h-screen max-h-screen px-[5%]">
-//       <div className="success-img">
-//         <LogoFull />
-//         {success && (
-//           <p className="mt-16 text-2xl font-bold text-center">
-//             Welcome aboard {sessionUser && sessionUser.name} !
-//           </p>
-//         )}
-//         {success && sessionUser ? (
-//           <RedirectWithDelay
-//             path={generateUrl([
-//               Route.PATIENTS,
-//               sessionUser?.$id,
-//               Route.REGISTER,
-//             ])}
-//             delay={15000}
-//           >
-//             <SuccessResponse
-//               imageSrc={IconPath.SUCCESS_ANIM}
-//               entity="account"
-//               action="verified"
-//               msg="In a few seconds you will be able to use the full functionality of your HealthCare account."
-//             />
-//           </RedirectWithDelay>
-//         ) : (
-//           <RedirectWithDelay
-//             path={generateUrl([Route.DASHBOARD_PATIENT, sessionUser?.$id])}
-//             delay={15000}
-//           >
-//             <FailedResponse
-//               imageSrc={IconPath.FAILED_ANIM}
-//               entity="account"
-//               action="verified"
-//               msg="Currently, you can only use the minimal functionality of your HealthCare account."
-//             />
-//             {!secret && (
-//               <p>
-//                 Your verification link has expired, in a few seconds you will be
-//                 redirected to your dashboard page where you will be able to send
-//                 a request to verify your account again.
-//               </p>
-//             )}
-//             {userId && secret && (
-//               <p>
-//                 In a few seconds you will be redirected to your dashboard page.
-//               </p>
-//             )}
-//           </RedirectWithDelay>
-//         )}
-//         <div className="my-20">
-//           <Loader />
-//         </div>
-//         <Copyright />
-//       </div>
-//     </div>
-//   )
-// }
