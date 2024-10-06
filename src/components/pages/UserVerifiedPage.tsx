@@ -1,5 +1,5 @@
 // lib
-import { verifyUser } from "@/lib/actions/auth.actions"
+import { updateUserVerification } from "@/lib/actions/auth.actions"
 import { Route, IconPath } from "@/lib/constants/paths"
 import { generateUrl } from "@/lib/utils"
 import auth from "@/auth"
@@ -10,7 +10,6 @@ import Copyright from "@/components/content/Copyright"
 import LogoFull from "@/components/content/LogoFull"
 import SuccessResponse from "@/components/shared/SuccessResponse"
 import FailedResponse from "@/components/shared/FailedResponse"
-import Link from "next/link"
 import LinkButton from "@/components/shared/buttons/LinkButton"
 
 type VerificationResult = {
@@ -30,7 +29,7 @@ export default async function UserVerifiedPage({
   // Sprawdź weryfikację konta, jeśli userId i secret są obecne
   const verificationResult: VerificationResult =
     userId && secret
-      ? await verifyUser(userId as string, secret as string)
+      ? await updateUserVerification(userId as string, secret as string)
       : { success: false }
 
   const success = verificationResult.success

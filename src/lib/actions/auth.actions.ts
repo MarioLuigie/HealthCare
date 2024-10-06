@@ -15,6 +15,14 @@ import { cookies } from "next/headers"
 import { Auth } from "@/lib/types/enums"
 import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies"
 
+export default async function createUserVerification() {
+  const sessionCookie: RequestCookie | null | undefined = cookies().get(
+    Auth.SESSION
+  )
+  const { account } = await createSessionClient(sessionCookie?.value)
+  await account.createVerification(generateUrl([Route.USER_VERIFIED]))
+}
+
 // Sign Up and return created user
 export async function signUp(authFormValues: SignUpAuthFormValues) {
   // const { users, account } = await createAdminClient()
@@ -42,11 +50,12 @@ export async function signUp(authFormValues: SignUpAuthFormValues) {
     console.log("***createdUser", createdUser)
 
     if (session) {
-      const sessionCookie: RequestCookie | null | undefined = cookies().get(
-        Auth.SESSION
-      )
-      const { account } = await createSessionClient(sessionCookie?.value)
-      await account.createVerification(generateUrl([Route.USER_VERIFIED]))
+      // const sessionCookie: RequestCookie | null | undefined = cookies().get(
+      //   Auth.SESSION
+      // )
+      // const { account } = await createSessionClient(sessionCookie?.value)
+      // await account.createVerification(generateUrl([Route.USER_VERIFIED]))
+      await createUserVerification()
     }
 
     return {
@@ -156,7 +165,7 @@ export async function signOut() {
   }
 }
 
-export async function verifyUser(userId: string, secret: string) {
+export async function updateUserVerification(userId: string, secret: string) {
   // const sessionCookie: RequestCookie | null | undefined = cookies().get(
   //   Auth.SESSION
   // )
