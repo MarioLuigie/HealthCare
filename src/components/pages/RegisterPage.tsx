@@ -1,46 +1,53 @@
 // lib
-import { Images } from '@/lib/constants'
-import { getUser } from '@/lib/actions/auth.actions'
+import { Images } from "@/lib/constants"
+import { getUser } from "@/lib/actions/auth.actions"
 // components
-import PatientForm from '@/components/forms/PatientForm'
-import PageTitle from '@/components/shared/PageTitle'
-import LogoFull from '@/components/content/LogoFull'
-import Copyright from '@/components/content/Copyright'
-import FormPageTemplate from '@/components/shared/FormPageTemplate'
-import UserVerificationProvider from '@/lib/providers/UserVerificationProvider'
+import PatientForm from "@/components/forms/PatientForm"
+import PageTitle from "@/components/shared/PageTitle"
+import LogoFull from "@/components/content/LogoFull"
+import Copyright from "@/components/content/Copyright"
+import FormPageTemplate from "@/components/shared/FormPageTemplate"
+import UserVerificationProvider from "@/lib/providers/UserVerificationProvider"
+import LinkButton from "../shared/buttons/LinkButton"
+import { generateUrl } from "@/lib/utils"
+import { Route } from "@/lib/constants/paths"
 
 export default async function RegisterPage({
-	params,
+  params,
 }: {
-	params: SingleSlugParams
+  params: SingleSlugParams
 }) {
-	const userId = params.userId
-	const result = await getUser(userId)
+  const userId = params.userId
+  const result = await getUser(userId)
   const user = result.data // !! Is well inject user from adminClient to PatientForm or get sessionUser in PatientForm directly?
 
-	console.log('User from RegisterPage:', result)
-	return (
-		<UserVerificationProvider>
-			<FormPageTemplate
-				image={Images.REGISTER_PAGE_IMAGE}
-				classes="max-w-[780px]"
-			>
-				<LogoFull />
-				<PageTitle
-					title="Welcome !"
-					description="Here you can create your patient profile, from which you will be able to create and manage your appointments."
-					classes="my-12"
-				/>
-        <p></p>
-				<PatientForm user={user} />
-				<Copyright />
-			</FormPageTemplate>
-		</UserVerificationProvider>
-	)
+  console.log("User from RegisterPage:", result)
+  return (
+    <UserVerificationProvider>
+      <FormPageTemplate
+        image={Images.REGISTER_PAGE_IMAGE}
+        classes="max-w-[780px]"
+      >
+        <LogoFull />
+        <PageTitle
+          title="Welcome !"
+          description="Here you can create your patient profile, from which you will be able to create and manage your appointments. You can skip it, and do it later."
+          classes="my-12"
+        />
+        <div className="pb-10">
+          <LinkButton href={generateUrl([Route.DASHBOARD_PATIENT, userId])}>
+            Skip and fill form later
+          </LinkButton>
+        </div>
+        <PatientForm user={user} />
+        <Copyright />
+      </FormPageTemplate>
+    </UserVerificationProvider>
+  )
 }
 
 {
-	/*User - result.data from RegisterPage: {
+  /*User - result.data from RegisterPage: {
   '$id': '66fc4cc7000626833f30',
   '$createdAt': '2024-10-01T19:24:25.458+00:00',
   '$updatedAt': '2024-10-01T19:24:25.458+00:00',
