@@ -1,6 +1,8 @@
 // lib
 import { Images } from "@/lib/constants"
 import { getUser } from "@/lib/actions/auth.actions"
+import { generateUrl } from "@/lib/utils"
+import { Route } from "@/lib/constants/paths"
 // components
 import PatientForm from "@/components/forms/PatientForm"
 import PageTitle from "@/components/shared/PageTitle"
@@ -8,9 +10,7 @@ import LogoFull from "@/components/content/LogoFull"
 import Copyright from "@/components/content/Copyright"
 import FormPageTemplate from "@/components/shared/FormPageTemplate"
 import UserVerificationProvider from "@/lib/providers/UserVerificationProvider"
-import LinkButton from "../shared/buttons/LinkButton"
-import { generateUrl } from "@/lib/utils"
-import { Route } from "@/lib/constants/paths"
+import LinkButton from "@/components/shared/buttons/LinkButton"
 
 export default async function RegisterPage({
   params,
