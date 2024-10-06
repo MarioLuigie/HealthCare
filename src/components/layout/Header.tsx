@@ -3,7 +3,7 @@ import auth from '@/auth'
 // components
 import LogoFull from '@/components/content/LogoFull'
 import PersonAvatar from '@/components/shared/PersonAvatar'
-import TemporarySignOut from '@/components/shared/TemporarySignOut'
+import SignOut from '@/components/shared/SignOut'
 
 export default async function Header({ params }: { params: SingleSlugParams }) {
 	const dummyData = {
@@ -20,7 +20,7 @@ export default async function Header({ params }: { params: SingleSlugParams }) {
 				<div>Welcome 👋,</div>
 				<PersonAvatar person={dummyData} />
 				<div className='pl-4'>
-					<TemporarySignOut />
+					<SignOut />
 				</div>
 			</div>
 		</header>
