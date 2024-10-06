@@ -8,7 +8,8 @@ export default async function DoctorDashboardPage({
 }) {
 	const { role, id } = params
 	const sessionUser = await auth.getSessionUser()
-	
+  // const doctor = await getDoctor(sessionUser.userId) or (sessionUser.$id)
+
 	return (
 		<div className="flex flex-col items-center justify-center grow">
 			<p>{role.toUpperCase()} DASHBOARD PAGE.</p>
