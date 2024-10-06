@@ -26,15 +26,6 @@ export default async function UserVerifiedPage({
   const { userId, secret } = searchParams
   const sessionUser = await auth.getSessionUser()
 
-  // Sprawdź weryfikację konta, jeśli userId i secret są obecne
-  const verificationResult: VerificationResult =
-    userId && secret
-      ? await updateUserVerification(userId as string, secret as string)
-      : { success: false }
-
-  const success = verificationResult.success
-  const errorCode = verificationResult.code
-
   const successRedirectPath = sessionUser
     ? generateUrl([Route.PATIENTS, sessionUser?.$id, Route.REGISTER])
     : generateUrl([Route.SIGN_IN])
@@ -47,6 +38,43 @@ export default async function UserVerifiedPage({
     "In a few seconds you will be able to use the full functionality of your HealthCare account."
   const failureMessage =
     "Currently, you can only use the minimal functionality of your HealthCare account."
+
+  if (sessionUser && sessionUser.emailVerification) {
+    return (
+      <div className="flex h-screen max-h-screen px-[5%]">
+        <div className="success-img">
+          <LogoFull />
+          <>
+            <RedirectWithDelay path={failureRedirectPath} delay={15000}>
+              <p>
+                Your account has already been verified, you can freely use the
+                full functionality of HealthCare.
+              </p>
+              <p className="flex-center">
+                In a few seconds you will be redirected to the&nbsp;
+                <LinkButton href={failureRedirectPath} variant="text">
+                  Dashboard Page
+                </LinkButton>
+              </p>
+            </RedirectWithDelay>
+          </>
+          <div className="my-20">
+            <Loader />
+          </div>
+          <Copyright />
+        </div>
+      </div>
+    )
+  }
+
+  // Sprawdź weryfikację konta, jeśli userId i secret są obecne
+  const verificationResult: VerificationResult =
+    userId && secret
+      ? await updateUserVerification(userId as string, secret as string)
+      : { success: false }
+
+  const success = verificationResult.success
+  const errorCode = verificationResult.code
 
   return (
     <div className="flex h-screen max-h-screen px-[5%]">

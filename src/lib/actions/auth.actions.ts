@@ -184,7 +184,7 @@ export async function updateUserVerification(userId: string, secret: string) {
   try {
     const result = await account.updateVerification(userId, secret)
 
-    console.log("***updateVerification", result)
+    console.log("***updateVerification-result", result)
     return { success: true, message: "Verification completed successfully." }
   } catch (err: any) {
     if (err.code === 401) {
@@ -222,6 +222,15 @@ export async function getUser(userId: string) {
     console.error("An error occurred while retrieving the user details:", err)
   }
 }
+
+// ***updateVerification-result {
+//   '$id': '6701ecee5732866affd3',
+//   '$createdAt': '2024-10-06T01:50:38.358+00:00',
+//   userId: '6701eced000bce0160ef',
+//   secret: 'c90791237ba16a1e8fb3c520556884b35472b7d8999c24756b0bd8e07a0d3ce1',
+//   expire: '2024-10-06T02:50:38.357+00:00',
+//   phrase: ''
+// }
 
 // ***SESSION {
 //   '$id': '66fc455e0d9202867346',
