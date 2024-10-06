@@ -23,14 +23,14 @@ export async function POST(req: Request) {
 
 		return NextResponse.json(
 			{ success: true,
-        message: 'user-verified webhook processed with successfully' },
+        message: 'user-verification webhook processed with successfully' },
 			{ status: 200 }
 		)
 	} catch (err) {
 		console.error('Error processing webhook:', err)
 		return NextResponse.json(
 			{ success: false,
-        message: 'Something went wrong with user-verified webhook' },
+        message: 'Something went wrong with user-verification webhook' },
 			{ status: 500 }
 		)
 	}
