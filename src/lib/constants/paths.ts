@@ -10,8 +10,8 @@ export const Route = {
 	REGISTER: '/register',
 	CREATE_APPOINTMENT: '/create-appointment',
 	SUCCESS: '/success',
-	USER_VERIFIED: 'http://localhost:3000/user-verified',
-	USER_VERIFY: '/user-verify',
+	USER_VERIFICATION_RESULT: 'http://localhost:3000/user-verification-result',
+	USER_VERIFICATION_PENDING: '/user-verification-pending',
 }
 
 export const IconPath = {

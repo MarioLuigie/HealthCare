@@ -61,7 +61,7 @@ export default function AuthForm({ authType }: AuthFormProps) {
         )
 
         if (result && result.success) {
-          router.push(generateUrl([Route.USER_VERIFY]))
+          router.push(generateUrl([Route.USER_VERIFICATION_PENDING]))
           setError("")
           form.reset()
         }

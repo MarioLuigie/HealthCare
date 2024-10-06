@@ -18,7 +18,7 @@ type VerificationResult = {
   code?: number
 }
 
-export default async function UserVerifiedPage({
+export default async function UserVerificationResultPage({
   searchParams,
 }: {
   searchParams: SearchParams

@@ -14,7 +14,7 @@ export default async function AuthVerificationProvider({
 	// const isUserVerified = await auth.isUserVerified()
 
 	if (!isUserVerified) {
-		redirect(generateUrl([Route.USER_VERIFY]))
+		redirect(generateUrl([Route.USER_VERIFICATION_PENDING]))
 	}
 
 	return <>{children}</> 

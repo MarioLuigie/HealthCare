@@ -20,7 +20,7 @@ export default async function createUserVerification() {
     Auth.SESSION
   )
   const { account } = await createSessionClient(sessionCookie?.value)
-  await account.createVerification(generateUrl([Route.USER_VERIFIED]))
+  await account.createVerification(generateUrl([Route.USER_VERIFICATION_RESULT]))
 }
 
 // Sign Up and return created user
