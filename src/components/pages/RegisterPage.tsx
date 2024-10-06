@@ -31,7 +31,7 @@ export default async function RegisterPage({
         <LogoFull />
         <PageTitle
           title="Welcome !"
-          description="Here you can create your patient profile, from which you will be able to create and manage your appointments. You can skip it, and do it later."
+          description="Here you can fill form to create your patient profile, from which you will be able to create and manage your appointments. You can skip this and do it later in your dashboard."
           classes="my-12"
         />
         <div className="pb-10">
