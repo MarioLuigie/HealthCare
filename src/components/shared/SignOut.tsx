@@ -8,10 +8,10 @@ export default function SignOut() {
   const router = useRouter()
 	return (
 		<div
-			className="text-zinc-200 text-lg cursor-pointer"
+			className="text-zinc-200 text-sm font-semibold cursor-pointer"
 			onClick={() => handleSignOut(router)}
 		>
-			Log out
+			Sign Out
 		</div>
 	)
 }
