@@ -1,9 +1,14 @@
-export default function DoctorDashboardPage({
+// modules
+import auth from "@/auth"
+
+export default async function DoctorDashboardPage({
 	params,
 }: {
 	params: SingleSlugParams
 }) {
 	const { role, id } = params
+	const sessionUser = await auth.getSessionUser()
+	
 	return (
 		<div className="flex flex-col items-center justify-center grow">
 			<p>{role.toUpperCase()} DASHBOARD PAGE.</p>

@@ -16,7 +16,7 @@ export default function UserAvatar({ user }: { user: any }) {
           {user?.name?.charAt(0)}
         </div>
       )}
-      <p>{user.name}</p>
+      <p>{user?.name}</p>
     </div>
   )
 }
