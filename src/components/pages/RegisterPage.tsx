@@ -15,9 +15,10 @@ export default async function RegisterPage({
 	params: SingleSlugParams
 }) {
 	const userId = params.userId
-	const user = await getUser(userId)
+	const result = await getUser(userId)
+  const user = result.data // !! Is well inject user from adminClient to PatientForm or get sessionUser in PatientForm directly?
 
-	console.log('User from RegisterPage:', user)
+	console.log('User from RegisterPage:', result)
 	return (
 		<UserVerificationProvider>
 			<FormPageTemplate
@@ -39,7 +40,7 @@ export default async function RegisterPage({
 }
 
 {
-	/* User from RegisterPage: {
+	/*User - result.data from RegisterPage: {
   '$id': '66fc4cc7000626833f30',
   '$createdAt': '2024-10-01T19:24:25.458+00:00',
   '$updatedAt': '2024-10-01T19:24:25.458+00:00',

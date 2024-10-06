@@ -4,7 +4,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm, SubmitHandler } from "react-hook-form"
 import { useRouter } from "next/navigation"
-import Image from "next/image"
 // lib
 import { PatientFormSchema, PatientFormValues } from "@/lib/types/zod"
 import { FormFieldType, Gender } from "@/lib/types/enums"
@@ -29,7 +28,7 @@ import { Route } from "@/lib/constants/paths"
 import { generateUrl } from "@/lib/utils"
 import PersonAvatar from "../shared/PersonAvatar"
 
-export default function PatientForm({ user }: { user: UserData }) {
+export default function PatientForm({ user }: { user: any }) {
   const router = useRouter()
 
   const form = useForm<PatientFormValues>({
