@@ -1,5 +1,5 @@
 // lib
-import { updateUserVerification } from "@/lib/actions/auth.actions"
+import { getUser, updateUserVerification } from "@/lib/actions/auth.actions"
 import { Route, IconPath } from "@/lib/constants/paths"
 import { generateUrl } from "@/lib/utils"
 import auth from "@/auth"
@@ -25,7 +25,10 @@ export default async function UserVerificationResultPage({
 }) {
   const { userId, secret } = searchParams
   const sessionUser = await auth.getSessionUser()
+  const result = await getUser(userId as string)
+  const user = result.data
 
+  // Variables
   const successRedirectPath = sessionUser
     ? generateUrl([Route.PATIENTS, sessionUser?.$id, Route.REGISTER])
     : generateUrl([Route.SIGN_IN])
@@ -39,7 +42,8 @@ export default async function UserVerificationResultPage({
   const failureMessage =
     "Currently, you can only use the minimal functionality of your HealthCare account."
 
-  if (sessionUser && sessionUser.emailVerification) {
+  // Check if user is verified
+  if (user && user.emailVerification) {
     return (
       <div className="flex h-screen max-h-screen px-[5%]">
         <div className="success-img">
@@ -53,7 +57,7 @@ export default async function UserVerificationResultPage({
               <p className="flex-center">
                 In a few seconds you will be redirected to the&nbsp;
                 <LinkButton href={failureRedirectPath} variant="text">
-                  Dashboard Page
+                  {sessionUser ? "Dashboard Page" : "Sign In"}
                 </LinkButton>
               </p>
             </RedirectWithDelay>
@@ -67,7 +71,7 @@ export default async function UserVerificationResultPage({
     )
   }
 
-  // Sprawdź weryfikację konta, jeśli userId i secret są obecne
+  // Check account verification if userId and secret exist
   const verificationResult: VerificationResult =
     userId && secret
       ? await updateUserVerification(userId as string, secret as string)
@@ -105,33 +109,21 @@ export default async function UserVerificationResultPage({
                 action="verified"
                 msg={failureMessage}
               />
-              {!secret && (
-                <p>
-                  Your verification link has expired. You will be redirected to
-                  your dashboard where you can request a new verification link.
-                </p>
-              )}
               <p className="text-red-500">
                 {errorCode &&
                   errorCode === 401 &&
-                  "Your verification link has expired."}
+                  "Your verification link has expired.In your dashboard you can request a new verification link."}
               </p>
               <p className="text-red-500">
                 {errorCode &&
                   errorCode === 429 &&
-                  "Rate limit for using your verification link has been exceeded."}
+                  "Rate limit for using your verification link has been exceeded. Try again a few moment later."}
               </p>
               <p className="flex-center">
                 In a few seconds you will be redirected to the&nbsp;
-                {sessionUser ? (
-                  <LinkButton href={failureRedirectPath} variant="text">
-                    Dashboard Page
-                  </LinkButton>
-                ) : (
-                  <LinkButton href={failureRedirectPath} variant="text">
-                    Sign In Page
-                  </LinkButton>
-                )}
+                <LinkButton href={failureRedirectPath} variant="text">
+                  {sessionUser ? "Dashboard Page" : "Sign In"}
+                </LinkButton>
               </p>
             </RedirectWithDelay>
           </>

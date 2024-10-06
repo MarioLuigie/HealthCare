@@ -217,9 +217,10 @@ export async function getUser(userId: string) {
   try {
     const user = await users.get(userId)
 
-    return deepClone(user)
+    return { success: true, data: user }
   } catch (err) {
     console.error("An error occurred while retrieving the user details:", err)
+    return { success: false }
   }
 }
 
