@@ -7,9 +7,9 @@ export async function POST(req: Request) {
 
 	try {
 		const body = await req.json()
-		console.log('Request Body:', body) // Zobacz, co przychodzi w body
+		console.log('Request Body:', body) 
 
-		// Sprawdź, czy token jest obecny
+		// Check is token existing
 		if (!body.secret) {
 			console.error('Token not found in body')
 			return NextResponse.json(
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
 			)
 		}
 
-		// Twoja logika przetwarzania...
+		// Instructions...
 
 		return NextResponse.json(
 			{ success: true,
