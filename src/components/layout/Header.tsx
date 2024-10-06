@@ -3,7 +3,7 @@ import auth from '@/auth'
 // components
 import LogoFull from '@/components/content/LogoFull'
 import PersonAvatar from '@/components/shared/PersonAvatar'
-import Signout from '@/components/shared/SignOut'
+import SignOut from '@/components/shared/SignOut'
 
 export default async function Header({ params }: { params: SingleSlugParams }) {
 	const dummyData = {
@@ -21,7 +21,7 @@ export default async function Header({ params }: { params: SingleSlugParams }) {
 				<div>Welcome 👋,</div>
 				<PersonAvatar person={dummyData} />
 				<div className='pl-4'>
-					<Signout />
+					<SignOut />
 				</div>
 			</div>
 		</header>
