@@ -15,10 +15,10 @@ export default async function Header({ params }: { params: SingleSlugParams }) {
 	}
 
 	const sessionUser = await auth.getSessionUser()
-	// roleUser =>
-	// if role === patient => const roleUser = await getPatient(sessionUser.userId) or (sessionUser.$id)
+	// let roleUser =>
+	// if role === patient => roleUser = await getPatient(sessionUser.userId) or (sessionUser.$id)
 	// or
-	// if role === doctor => const roleUser = await getDoctor(sessionUser.userId) or (sessionUser.$id)
+	// if role === doctor => roleUser = await getDoctor(sessionUser.userId) or (sessionUser.$id)
 
 	// <UserAvatar user={roleUser || sessionUser} />
 
