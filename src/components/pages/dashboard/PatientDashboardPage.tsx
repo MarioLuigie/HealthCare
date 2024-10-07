@@ -25,7 +25,7 @@ export default async function PatientDashboardPage({
 		await auth.checkIsSessionUserVerified()
 
 	const sessionUser = await auth.getSessionUser()
-	const { data: patient } = await getPatient('66f9aea2003c91bccb49')
+	const { data: patient } = await getPatient('66f9aea2003c91bccb49+')
 
 	console.log('***PATIENT FROM DASHBOARD', patient)
 
