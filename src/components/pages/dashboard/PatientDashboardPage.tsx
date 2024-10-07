@@ -10,6 +10,7 @@ import { getPatient } from '@/lib/actions/patient.actions'
 import BasicButton from '@/components/shared/buttons/BasicButton'
 import LinkButton from '@/components/shared/buttons/LinkButton'
 import { Images } from '@/lib/constants'
+import AppointmentDialog from "@/components/dialogs/AppointmentDialog"
 
 export default async function PatientDashboardPage({
 	params,

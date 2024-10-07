@@ -31,7 +31,7 @@ import { Route } from "@/lib/constants/paths"
 import { Appointment } from "@/lib/types/appwrite.types"
 
 type AppointmentFormProps = {
-  userId: string
+  userId: string | undefined
   patientId: string | undefined
   actionType: ActionTypes
   appointment?: Appointment

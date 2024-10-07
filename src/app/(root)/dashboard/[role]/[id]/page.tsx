@@ -1,9 +1,9 @@
 // lib
 import { Roles } from '@/lib/types/enums'
 // components
-import AdminDashboard from '@/components/pages/dashboards/AdminDashboardPage'
-import PatientDashboard from '@/components/pages/dashboards/PatientDashboardPage'
-import DoctorDashboard from '@/components/pages/dashboards/DoctorDashboardPage'
+import AdminDashboard from '@/components/pages/dashboard/AdminDashboardPage'
+import PatientDashboard from '@/components/pages/dashboard/PatientDashboardPage'
+import DoctorDashboard from '@/components/pages/dashboard/DoctorDashboardPage'
 
 export default function Page({ params }: SingleSlugPageProps) {
 	const { role } = params

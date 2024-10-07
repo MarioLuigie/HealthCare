@@ -24,7 +24,6 @@ type AppointmentDialogProps = {
   isOpen: boolean
   actionType: ActionTypes
   userId?: string
-  patientId?: string
 }
 
 export default function AppointmentDialog({
@@ -34,7 +33,6 @@ export default function AppointmentDialog({
   isOpen,
   actionType,
   userId,
-  patientId,
 }: AppointmentDialogProps) {
   return (
     <Dialog open={isOpen} onOpenChange={handleCloseDialog}>
@@ -53,7 +51,7 @@ export default function AppointmentDialog({
           </DialogDescription>
         </DialogHeader>
         <AppointmentForm
-          userId={appointment.patient.userId}
+          userId={appointment.patient.userId || userId}
           patientId={appointment.patient.$id}
           actionType={actionType}
           appointment={appointment}
