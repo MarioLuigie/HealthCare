@@ -151,19 +151,27 @@ export const Icons = {
 export const Images = {
 	SIGN_UP_PAGE_IMAGE: {
 		path: ImagePath.SIGN_UP,
-		alt: 'Sign Up page image',
+		alt: 'Sign Up page',
 	},
 	SIGN_IN_PAGE_IMAGE: {
 		path: ImagePath.SIGN_IN,
-		alt: 'Sign In page image',
+		alt: 'Sign In page',
 	},
 	REGISTER_PAGE_IMAGE: {
 		path: ImagePath.REGISTER_PAGE,
-		alt: 'Registration page image',
+		alt: 'Registration page',
 	},
 	NEW_APPOINTMENT_PAGE_IMAGE: {
 		path: ImagePath.NEW_APPOINTMENT_PAGE,
-		alt: 'New appointment page image',
+		alt: 'New appointment page',
+	},
+	USER_NOT_VERIFIED_IMAGE: {
+		path: ImagePath.USER_NOT_VERIFIED,
+		alt: 'User not verified',
+	},
+	PATIENT_CREATE_IMAGE: {
+		path: ImagePath.PATIENT_CREATE,
+		alt: 'Create patient',
 	},
 }
 

@@ -40,6 +40,8 @@ export const ImagePath = {
 	SIGN_UP: '/assets/images/onboarding1-img.jpg',
 	REGISTER_PAGE: '/assets/images/register-img.jpg',
 	NEW_APPOINTMENT_PAGE: '/assets/images/appointment-img.jpg',
+	USER_NOT_VERIFIED: '/assets/images/user-not-verified.png',
+	PATIENT_CREATE: '/assets/images/patient-create.png',
 }
 
 export const VideoPath = {
