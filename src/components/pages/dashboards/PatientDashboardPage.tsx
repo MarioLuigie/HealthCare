@@ -19,6 +19,7 @@ export default async function PatientDashboardPage({
 	const { role, id } = params
 	const isSessionUserVerified: boolean =
 		await auth.checkIsSessionUserVerified()
+
 	const sessionUser = await auth.getSessionUser()
 	const result = await getPatient('66f9aea2003c91bccb49')
 
