@@ -23,6 +23,8 @@ type AppointmentDialogProps = {
   handleCloseDialog: () => void
   isOpen: boolean
   actionType: ActionTypes
+  userId?: string
+  patientId?: string
 }
 
 export default function AppointmentDialog({
@@ -31,6 +33,8 @@ export default function AppointmentDialog({
   handleCloseDialog,
   isOpen,
   actionType,
+  userId,
+  patientId,
 }: AppointmentDialogProps) {
   return (
     <Dialog open={isOpen} onOpenChange={handleCloseDialog}>

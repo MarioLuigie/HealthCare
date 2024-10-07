@@ -52,7 +52,7 @@ export default async function PatientDashboardPage({
 							href={generateUrl([
 								Route.PATIENTS,
 								sessionUser.$id,
-								Route.REGISTER,
+								Route.CREATE_APPOINTMENT,
 							])}
 							variant="fill"
 						>
