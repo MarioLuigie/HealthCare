@@ -173,6 +173,10 @@ export const Images = {
 		path: ImagePath.PATIENT_CREATE,
 		alt: 'Create patient',
 	},
+	APPOINTMENT_CREATE_IMAGE: {
+		path: ImagePath.APPOINTMENT_CREATE,
+		alt: 'Create appointment',
+	},
 }
 
 // Kinde of videos

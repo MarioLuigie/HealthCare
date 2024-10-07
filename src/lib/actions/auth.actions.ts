@@ -12,7 +12,7 @@ import { deepClone, generateUrl } from "@/lib/utils"
 import { SignInAuthFormValues, SignUpAuthFormValues } from "@/lib/types/zod"
 import { Route } from "@/lib/constants/paths"
 import { cookies } from "next/headers"
-import { Auth } from "@/lib/types/enums"
+import { Auth, Roles } from "@/lib/types/enums"
 import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies"
 
 // Server action for start user account verification - send link to email
@@ -84,8 +84,9 @@ export async function updateUserVerification(userId: string, secret: string) {
 export async function signUp(authFormValues: SignUpAuthFormValues) {
   // const { users, account } = await createAdminClient()
   const { email, password, name } = authFormValues
-  const { account } = await createClient()
+  const { account, users } = await createAdminClient()
   let session = null
+  let updatedUser = null
 
   console.log(authFormValues)
 
@@ -99,12 +100,17 @@ export async function signUp(authFormValues: SignUpAuthFormValues) {
       name
     )
 
-    if (createdUser) {
+    if(createdUser) {
+      updatedUser = await users.updateLabels(createdUser.$id, [Roles.PATIENT])
+    }
+
+    if (updatedUser) {
       session = await signIn({ email, password })
     }
 
     console.log("***session", session)
     console.log("***createdUser", createdUser)
+    console.log("***updatedUser", updatedUser)
 
     if (session) {
       // const sessionCookie: RequestCookie | null | undefined = cookies().get(

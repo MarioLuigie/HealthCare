@@ -42,6 +42,7 @@ export const ImagePath = {
 	NEW_APPOINTMENT_PAGE: '/assets/images/appointment-img.jpg',
 	USER_NOT_VERIFIED: '/assets/images/user-not-verified.png',
 	PATIENT_CREATE: '/assets/images/patient-create.png',
+	APPOINTMENT_CREATE: '/assets/images/appointment-create.png',
 }
 
 export const VideoPath = {

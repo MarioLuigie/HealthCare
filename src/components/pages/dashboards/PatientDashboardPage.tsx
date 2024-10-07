@@ -21,11 +21,10 @@ export default async function PatientDashboardPage({
 		await auth.checkIsSessionUserVerified()
 
 	const sessionUser = await auth.getSessionUser()
-	const result = await getPatient('66f9aea2003c91bccb49')
+	const { data: patient } = await getPatient('66f9aea2003c91bccb49')
 
-	console.log('***PATIENT FROM DASHBOARD', result)
+	console.log('***PATIENT FROM DASHBOARD', patient)
 
-	// const patient = await getPatient(sessionUser.userId) or (sessionUser.$id)
 	// LinkButton with create patient profile action visible when patient not exist
 	if (!sessionUser) {
 		return null
@@ -33,7 +32,36 @@ export default async function PatientDashboardPage({
 
 	return (
 		<div className="flex flex-col items-center justify-center grow p-4">
-			{isSessionUserVerified ? (
+			{patient && (
+				<div className="flex flex-col items-center gap-6">
+					<Image
+						src={Images.APPOINTMENT_CREATE_IMAGE.path}
+						alt={Images.APPOINTMENT_CREATE_IMAGE.alt}
+						width={500}
+						height={500}
+					/>
+					<p className="text-green-400 text-5xl font-bold text-center">
+						Create Appointment with Doctor!
+					</p>
+					<p className="max-w-[500px] text-center text-dark-600 text-xs">
+						You can choose a doctor, date and time of your planned
+						appointment. Don&lsquo;t forget to describe what ails you.
+					</p>
+					<div className="flex-center mt-8">
+						<LinkButton
+							href={generateUrl([
+								Route.PATIENTS,
+								sessionUser.$id,
+								Route.REGISTER,
+							])}
+							variant="fill"
+						>
+							Create Appointment
+						</LinkButton>
+					</div>
+				</div>
+			)}
+			{isSessionUserVerified && !patient && (
 				<div className="flex flex-col items-center gap-6">
 					<Image
 						src={Images.PATIENT_CREATE_IMAGE.path}
@@ -61,7 +89,8 @@ export default async function PatientDashboardPage({
 						</LinkButton>
 					</div>
 				</div>
-			) : (
+			)}
+			{!isSessionUserVerified && (
 				<>
 					<Image
 						src={Images.USER_NOT_VERIFIED_IMAGE.path}
@@ -70,7 +99,7 @@ export default async function PatientDashboardPage({
 						height={320}
 					/>
 					<div className="text-dark-500 text-6xl font-bold">
-						User is not verified
+						User not verified
 					</div>
 					<p className="max-w-[500px] text-center text-dark-600 text-xs">
 						After clicking the button, an activation link will be sent to
