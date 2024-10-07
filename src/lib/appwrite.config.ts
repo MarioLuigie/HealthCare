@@ -79,6 +79,10 @@ export const createClient = async () => {
     get account() {
       return new sdk.Account(client)
     },
+    
+    get databases() {
+      return new sdk.Databases(client)
+    },
   }
 }
 

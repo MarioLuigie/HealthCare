@@ -11,6 +11,7 @@ import {
 	APPWRITE_IDENTIFICATION_DOCUMENTS_BUCKET_ID,
 	APPWRITE_DB_IDENTIFICATION_DOCUMENT_COLLECTION_ID,
 	createAdminClient,
+	createClient,
 } from '@/lib/appwrite.config'
 import { ID, Query } from 'node-appwrite'
 // lib
@@ -22,18 +23,27 @@ export const getPatient = async (userId: string) => {
 	const { databases } = await createAdminClient()
 
 	try {
-		const patients = await databases.listDocuments(
+		const { documents } = await databases.listDocuments(
 			APPWRITE_DB_ID!,
 			APPWRITE_DB_PATIENT_COLLECTION_ID!,
 			[Query.equal('userId', [userId])]
 		)
 
-		return deepClone(patients.documents[0])
+		const patient = documents[0]
+
+		return {
+			success: true,
+			data: patient,
+		}
 	} catch (err) {
 		console.error(
-			'An error occurred while retrieving the patient details:',
+			'An error occurred while retrieving the patient details',
 			err
 		)
+		return {
+			success: false,
+			message: 'An error occurred while retrieving the patient details'
+		}
 	}
 }
 
