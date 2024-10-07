@@ -12,8 +12,8 @@ export default function UserAvatar({ user }: { user: any }) {
           className="rounded-full"
         />
       ) : (
-        <div className="w-[40px] aspect-square flex-center rounded-full bg-zinc-200 text-zinc-800 text-lg font-semibold">
-          {user?.name?.charAt(0)}
+        <div className="flex-center w-[40px] aspect-square rounded-full bg-zinc-200 text-zinc-800 text-lg font-semibold">
+          <p className="pr-[2px] pt-[2px]">{user?.name?.charAt(0)}</p>
         </div>
       )}
       <p>{user?.name}</p>
