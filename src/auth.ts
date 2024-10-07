@@ -13,7 +13,7 @@ const auth = {
 		auth.sessionSecretFromCookie = cookies().get(Auth.SESSION)
 
 		if (!auth.sessionSecretFromCookie || !auth.sessionSecretFromCookie.value) {
-			console.error("Session cookie is missing or invalid.")
+			console.error("auth.ts - Session cookie is missing or invalid.")
 			auth.sessionUser = null
 			return auth.sessionUser
 		}

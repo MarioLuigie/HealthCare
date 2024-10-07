@@ -15,7 +15,7 @@ export default async function CreateAppointmentPage({
 	params: SingleSlugParams
 }) {
 	const userId = params.userId
-	const patient = await getPatient(userId)
+	const result = await getPatient(userId)
 
 	return (
 		<FormPageTemplate image={Images.NEW_APPOINTMENT_PAGE_IMAGE} classes='max-w-[780px]'>
@@ -28,7 +28,7 @@ export default async function CreateAppointmentPage({
 			<AppointmentForm
 				actionType={ActionTypes.CREATE}
 				userId={userId}
-				patientId={patient.$id}
+				patientId={result?.data?.$id}
 			/>
 			<Copyright />
 		</FormPageTemplate>

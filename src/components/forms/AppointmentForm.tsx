@@ -32,7 +32,7 @@ import { Appointment } from "@/lib/types/appwrite.types"
 
 type AppointmentFormProps = {
   userId: string
-  patientId: string
+  patientId: string | undefined
   actionType: ActionTypes
   appointment?: Appointment
   handleCloseDialog?: () => void

@@ -23,14 +23,13 @@ export default async function PatientDashboardPage({
 	const result = await getPatient('66f9aea2003c91bccb49')
 
 	console.log('***PATIENT FROM DASHBOARD', result)
-	console.log('***SESSION USER FROM DASHBOARD', sessionUser)
 
 	// const patient = await getPatient(sessionUser.userId) or (sessionUser.$id)
 	// LinkButton with create patient profile action visible when patient not exist
 
 	return (
 		<div className="flex flex-col items-center justify-center grow p-4">
-			{isSessionUserVerified ? (
+			{isSessionUserVerified && (
 				<div className="flex flex-col items-center gap-6">
 					<Image
 						src={Images.PATIENT_CREATE_IMAGE.path}
@@ -58,7 +57,8 @@ export default async function PatientDashboardPage({
 						</LinkButton>
 					</div>
 				</div>
-			) : (
+			)}
+			{!isSessionUserVerified && sessionUser && (
 				<>
 					<Image
 						src={Images.USER_NOT_VERIFIED_IMAGE.path}
