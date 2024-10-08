@@ -21,7 +21,7 @@ export default async function SignInPage({
   const sessionUser = await auth.getSessionUser()
 
   if(sessionUser && sessionUser.$id) {
-    redirect(generateUrl([Route.DASHBOARD_PATIENT, sessionUser.$id]))
+    redirect(generateUrl([Route.DASHBOARD]))
   }
 
   return (

@@ -200,7 +200,7 @@ export async function updateAppointment(
 			}
 		) // !! Change statusUpdatesHistory to changeLogHistory
 
-		revalidatePath(generateUrl([Route.DASHBOARD, role, id]))
+		revalidatePath(generateUrl([Route.DASHBOARD]))
 
 		return deepClone(updatedAppointment)
 	} catch (err) {
@@ -240,7 +240,7 @@ export async function finishAppointment(
 			}
 		)
 
-		revalidatePath(generateUrl([Route.DASHBOARD, role, id]))
+		revalidatePath(generateUrl([Route.DASHBOARD]))
 
 		return deepClone(finihedAppointment)
 	} catch (err) {
@@ -279,7 +279,7 @@ export async function awaitAppointment(
 			}
 		)
 
-		revalidatePath(generateUrl([Route.DASHBOARD, role, id]))
+		revalidatePath(generateUrl([Route.DASHBOARD]))
 
 		return deepClone(awaitedAppointment)
 	} catch (err) {

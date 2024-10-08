@@ -76,7 +76,7 @@ export default function AuthForm({ authType }: AuthFormProps) {
 
         if (result && result.success && result.data) {
           router.push(
-            generateUrl([Route.DASHBOARD_PATIENT, result.data.userId])
+            generateUrl([Route.DASHBOARD])
           )
           setError("")
         } else if (result && !result.success) {

@@ -56,7 +56,7 @@ export default async function UserVerificationPendingPage({
           </p>
         </div>
         <LinkButton
-          href={generateUrl([Route.DASHBOARD_PATIENT, sessionUser?.$id])}
+          href={generateUrl([Route.DASHBOARD])}
           variant="fill"
         >
           Enter to dashboard

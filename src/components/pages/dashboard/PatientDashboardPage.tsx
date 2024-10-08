@@ -17,17 +17,20 @@ import VerifyUserRequest from '@/components/content/dashboard/patient/VerifyUser
 
 export default async function PatientDashboardPage({
 	params,
+	sessionUser,
 }: {
 	params: SingleSlugParams
+	sessionUser: any
 }) {
-	const { role, id } = params
+	// const { role, id } = params
 	const isSessionUserVerified: boolean =
 		await auth.checkIsSessionUserVerified()
 
-	const sessionUser = await auth.getSessionUser()
+	// const sessionUser = await auth.getSessionUser()
 	const { data: patient } = await getPatient('66f9aea2003c91bccb49+')
 
-	console.log('***PATIENT FROM DASHBOARD', patient)
+	console.log('***SESSION USER FROM PATIENT DASHBOARD', sessionUser)
+	console.log('***PATIENT FROM PATIENT DASHBOARD', patient)
 
 	// LinkButton with create patient profile action visible when patient not exist
 	if (!sessionUser) {

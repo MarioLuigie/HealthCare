@@ -32,7 +32,7 @@ export default async function CreateAppointmentPage({
 				classes="my-12"
 			/>
 			<div className="pb-10">
-				<LinkButton href={generateUrl([Route.DASHBOARD_PATIENT, userId])}>
+				<LinkButton href={generateUrl([Route.DASHBOARD])}>
 					Skip and fill form later
 				</LinkButton>
 			</div>

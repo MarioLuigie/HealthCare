@@ -86,7 +86,7 @@ export default function PassKeyDialog({
 			// !Only for test!
 			setTimeout(() => {
 				setIsOpen(false)
-				router.push(generateUrl([Route.DASHBOARD, Roles.ADMIN, '123']))
+				router.push(generateUrl([Route.DASHBOARD]))
 			}, 1000)
 		} else {
 			setError('Invalid passkey, try again.')

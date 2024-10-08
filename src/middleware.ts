@@ -8,7 +8,7 @@ import { Auth } from '@/lib/types/enums'
 export async function middleware(req: NextRequest) {
 	const sessionUser = await auth.getSessionUser()
 
-	console.log("***User", sessionUser)
+	console.log("***User from middleware", sessionUser)
 
 	if (!sessionUser) {
 		console.log('***Middleware is running!')

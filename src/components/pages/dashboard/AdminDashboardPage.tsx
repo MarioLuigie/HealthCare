@@ -16,10 +16,13 @@ interface AppointmentsOrderedByStatus extends InitialCounts {
 
 export default async function AdminDashboardPage({
 	params,
+	sessionUser,
 }: {
 	params: SingleSlugParams
+	sessionUser: any
 }) {
-	const { role, id } = params
+	// const { role, id } = params
+	const role = sessionUser.labels[0]
 
 	const appointments: AppointmentsOrderedByStatus =
 		await getAppointmentsOrderedByStatus()

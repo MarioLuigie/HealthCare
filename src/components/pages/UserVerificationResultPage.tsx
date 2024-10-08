@@ -34,7 +34,7 @@ export default async function UserVerificationResultPage({
     : generateUrl([Route.SIGN_IN])
 
   const failureRedirectPath = sessionUser
-    ? generateUrl([Route.DASHBOARD_PATIENT, sessionUser?.$id])
+    ? generateUrl([Route.DASHBOARD])
     : generateUrl([Route.SIGN_IN])
 
   const successMessage =
