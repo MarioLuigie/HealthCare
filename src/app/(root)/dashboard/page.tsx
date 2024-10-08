@@ -11,7 +11,7 @@ export default async function Page({ params }: SingleSlugPageProps) {
 	let sessionUserRole = null
 	
 	if(sessionUser && sessionUser.labels) {
-		sessionUserRole = sessionUser.labels[0]
+		sessionUserRole = sessionUser.labels[0] // !! Create func and use for get role
 	} else {
 		return
 	}

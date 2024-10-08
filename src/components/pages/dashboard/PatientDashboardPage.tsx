@@ -23,6 +23,10 @@ export default async function PatientDashboardPage({
 	sessionUser: any
 }) {
 	// const { role, id } = params
+	if (!sessionUser) {
+		return null
+	}
+	
 	const isSessionUserVerified: boolean =
 		await auth.checkIsSessionUserVerified()
 
@@ -33,9 +37,6 @@ export default async function PatientDashboardPage({
 	console.log('***PATIENT FROM PATIENT DASHBOARD', patient)
 
 	// LinkButton with create patient profile action visible when patient not exist
-	if (!sessionUser) {
-		return null
-	}
 
 	return (
 		<div className="flex flex-col items-center justify-center grow p-4">

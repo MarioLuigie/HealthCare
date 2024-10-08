@@ -19,7 +19,6 @@ import AppointmentForm from "@/components/forms/AppointmentForm"
 
 type AppointmentDialogProps = {
   appointment: Appointment
-  params: SingleSlugParams
   handleCloseDialog: () => void
   isOpen: boolean
   actionType: ActionTypes
@@ -28,7 +27,6 @@ type AppointmentDialogProps = {
 
 export default function AppointmentDialog({
   appointment,
-  params,
   handleCloseDialog,
   isOpen,
   actionType,
@@ -52,7 +50,6 @@ export default function AppointmentDialog({
         </DialogHeader>
         <AppointmentForm
           userId={appointment.patient.userId || userId}
-          patientId={appointment.patient.$id}
           actionType={actionType}
           appointment={appointment}
           handleCloseDialog={handleCloseDialog}

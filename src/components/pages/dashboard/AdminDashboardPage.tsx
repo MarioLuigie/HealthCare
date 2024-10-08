@@ -22,6 +22,10 @@ export default async function AdminDashboardPage({
 	sessionUser: any
 }) {
 	// const { role, id } = params
+	if (!sessionUser) {
+		return null
+	}
+
 	const role = sessionUser.labels[0]
 
 	const appointments: AppointmentsOrderedByStatus =

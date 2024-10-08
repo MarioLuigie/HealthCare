@@ -26,6 +26,7 @@ export default function AppointmentManipulation({ row }: { row: any }) {
   const appointment = row.original
 
   const params = useParams() as SingleSlugParams
+
   const [isAppointmentDialogOpen, setIsAppointmentDialogOpen] =
     useState<boolean>(false)
   const [actionType, setActionType] = useState<ActionTypes>(
@@ -77,14 +78,14 @@ export default function AppointmentManipulation({ row }: { row: any }) {
               </DropdownMenuItem>
               <DropdownMenuItem
                 className="cursor-pointer"
-                onClick={() => handleAwaitAppointment(appointment, params)}
+                onClick={() => handleAwaitAppointment(appointment)}
                 disabled={appointment.status === Status.PENDING}
               >
                 <StatusBadge status={Status.PENDING} />
               </DropdownMenuItem>
               <DropdownMenuItem
                 className="cursor-pointer"
-                onClick={() => handleFinishAppointment(appointment, params)}
+                onClick={() => handleFinishAppointment(appointment)}
                 disabled={appointment.status === Status.FINISHED}
               >
                 <StatusBadge status={Status.FINISHED} />
@@ -104,7 +105,6 @@ export default function AppointmentManipulation({ row }: { row: any }) {
       {isAppointmentDialogOpen && (
         <AppointmentDialog
           appointment={appointment}
-          params={params}
           isOpen={isAppointmentDialogOpen}
           handleCloseDialog={handleCloseDialog}
           actionType={actionType}

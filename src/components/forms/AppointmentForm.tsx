@@ -12,7 +12,7 @@ import {
   getAppointmentFormDefaultValues,
   getAppointmentFormSchema,
 } from "@/lib/types/zod"
-import { FormFieldType } from "@/lib/types/enums"
+import { FormFieldType, Roles } from "@/lib/types/enums"
 import { createButtonLabel, generateUrl } from "@/lib/utils"
 import {
   handleCreateAppointment,
@@ -32,7 +32,6 @@ import { Appointment } from "@/lib/types/appwrite.types"
 
 type AppointmentFormProps = {
   userId: string | undefined
-  patientId: string | undefined
   actionType: ActionTypes
   appointment?: Appointment
   handleCloseDialog?: () => void
@@ -40,7 +39,6 @@ type AppointmentFormProps = {
 
 export default function AppointmentForm({
   userId,
-  patientId,
   actionType,
   appointment,
   handleCloseDialog,
@@ -62,14 +60,12 @@ export default function AppointmentForm({
     appointmentFormValues: z.infer<typeof AppointmentFormSchema>
   ) => {
     try {
-      if (actionType === ActionTypes.CREATE && patientId && userId) {
+      if (actionType === ActionTypes.CREATE) {
         const createdAppointment = await handleCreateAppointment(
           appointmentFormValues as CreateAppointmentFormValues,
-          patientId,
-          userId
         )
 
-        if (createdAppointment!) {
+        if (createdAppointment! && userId) {
           router.push(
             generateUrl(
               [Route.PATIENTS, userId, Route.CREATE_APPOINTMENT, Route.SUCCESS],
@@ -84,8 +80,8 @@ export default function AppointmentForm({
         const updatedAppointment = await handleUpdateAppointment(
           appointment.$id,
           appointmentFormValues,
-          params,
-          actionType
+          actionType,
+          userId
         )
 
 				if(updatedAppointment && handleCloseDialog) {

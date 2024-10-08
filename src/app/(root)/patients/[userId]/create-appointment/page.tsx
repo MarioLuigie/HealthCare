@@ -1,5 +1,6 @@
 import CreateAppointmentPage from '@/components/pages/CreateAppointmentPage'
 
-export default function Page({ params }: SingleSlugPageProps) {
+export default async function Page({ params }: SingleSlugPageProps) {
+	
 	return <CreateAppointmentPage params={params} />
 }

@@ -9,7 +9,7 @@ export default async function DoctorDashboardPage({
 	sessionUser: any
 }) {
 	const role = sessionUser.labels[0]
-	const id = sessionUser.userId
+	const id = sessionUser.$id
 	// const { role, id } = params
 	// const sessionUser = await auth.getSessionUser()
   // const doctor = await getDoctor(sessionUser.userId) or (sessionUser.$id)

@@ -13,20 +13,16 @@ import {
   // ScheduleAppointmentFormValues,
 } from "@/lib/types/zod"
 import { Appointment } from "@/lib/types/appwrite.types"
-import { ActionTypes } from "@/lib/types/enums"
+import { ActionTypes, Roles } from "@/lib/types/enums"
 
 // Create Appointment
 export async function handleCreateAppointment(
   appointmentFormValues: CreateAppointmentFormValues,
-  patientId: string,
-  userId: string
 ) {
   try {
     // !!Type returned object by Appointment interface!!
     const createdAppointment = await createAppointment(
       appointmentFormValues,
-      patientId,
-      userId
     )
 
     return createdAppointment
@@ -40,11 +36,11 @@ export async function handleCreateAppointment(
 export async function handleUpdateAppointment(
   appointmentId: string,
   appointmentFormValues: any,
-  params: SingleSlugParams,
   actionType: ActionTypes,
+  userId: string | undefined,
 ) {
   try {
-    const updatedAppointment = await updateAppointment(appointmentId, appointmentFormValues, params, actionType)
+    const updatedAppointment = await updateAppointment(appointmentId, appointmentFormValues, actionType, userId)
 
     return updatedAppointment
 
@@ -54,39 +50,12 @@ export async function handleUpdateAppointment(
   }
 }
 
-// // Cancel Appointment but not delete
-// export async function handleCancelAppointment(
-//   appointment: Appointment,
-//   params: SingleSlugParams
-// ) {
-//   try {
-//     const cancelledAppointment = await cancelAppointment(appointment, params)
-
-//     // console.log('Cancelled Appointment:', cancelledAppointment)
-//   } catch (err) {
-//     console.error(err)
-//   }
-// }
-
-// // Schedule Appointment
-// export async function handleScheduleAppointment(
-//   appointment: Appointment,
-//   params: SingleSlugParams,
-// ) {
-//   try {
-//     const scheduledAppointment = await scheduleAppointment(appointment, params)
-//   } catch (err) {
-//     console.error(err)
-//   }
-// }
-
 // Finish Appointment but not delete
 export async function handleFinishAppointment(
   appointment: Appointment,
-  params: SingleSlugParams,
 ) {
   try {
-    const finishedAppointment = await finishAppointment(appointment, params)
+    const finishedAppointment = await finishAppointment(appointment)
   } catch (err) {
     console.error(err)
   }
@@ -95,10 +64,9 @@ export async function handleFinishAppointment(
 // Await Appointment 
 export async function handleAwaitAppointment(
   appointment: Appointment,
-  params: SingleSlugParams,
 ) {
   try {
-    const awaitedAppointment = await awaitAppointment(appointment, params)
+    const awaitedAppointment = await awaitAppointment(appointment)
   } catch (err) {
     console.error(err)
   }

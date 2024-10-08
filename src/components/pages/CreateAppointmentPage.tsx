@@ -11,13 +11,15 @@ import { ActionTypes } from '@/lib/types/enums'
 import LinkButton from '../shared/buttons/LinkButton'
 import { generateUrl } from '@/lib/utils'
 import { Route } from '@/lib/constants/paths'
+import auth from '@/auth'
 
 export default async function CreateAppointmentPage({
 	params,
 }: {
 	params: SingleSlugParams
 }) {
-	const userId = params.userId
+	const sessionUser = await auth.getSessionUser()
+	const userId = sessionUser?.$id
 	const result = await getPatient(userId)
 
 	return (
@@ -39,7 +41,7 @@ export default async function CreateAppointmentPage({
 			<AppointmentForm
 				actionType={ActionTypes.CREATE}
 				userId={userId}
-				patientId={result?.data?.$id}
+				// patientId={result?.data?.$id}
 			/>
 			<Copyright />
 		</FormPageTemplate>

@@ -12,7 +12,7 @@ import {
 	APPWRITE_DB_CHANGE_STATUS_COLLECTION_ID,
 	createAdminClient,
 } from '@/lib/appwrite.config'
-import { ActionTypes, Status } from '@/lib/types/enums'
+import { ActionTypes, Roles, Status } from '@/lib/types/enums'
 import { Route } from '@/lib/constants/paths'
 import {
 	CreateAppointmentFormValues,
@@ -21,6 +21,8 @@ import {
 } from '@/lib/types/zod'
 import { deepClone, generateUrl } from '@/lib/utils'
 import { Appointment } from '@/lib/types/appwrite.types'
+import auth from '@/auth'
+import { getPatient } from './patient.actions'
 
 export interface InitialCounts {
 	scheduledCount: number
@@ -99,11 +101,17 @@ export async function getAppointmentsOrderedByStatus() {
 // Create Appointment
 export async function createAppointment(
 	appointmentFormValues: CreateAppointmentFormValues,
-	patientId: string,
-	userId: string
 ) {
 	const status: Status = Status.PENDING
+	const sessionUser = await auth.getSessionUser()
 	const { databases } = await createAdminClient()
+	const result = await getPatient(sessionUser.$id)
+
+	if(!result.data) {
+		throw new Error('Missing session user data')
+	}
+
+	const patientId = result.data.$id
 
 	try {
 		if (
@@ -115,7 +123,7 @@ export async function createAppointment(
 		}
 
 		const appointmentData: CreateAppointmentData = {
-			userId,
+			userId: sessionUser.$id,
 			patient: patientId, // relation ship to patient collection
 			primaryPhysician: appointmentFormValues.primaryPhysician,
 			schedule: new Date(appointmentFormValues.schedule),
@@ -160,10 +168,13 @@ export async function createAppointment(
 export async function updateAppointment(
 	appointmentId: string,
 	appointmentFormValues: any,
-	params: SingleSlugParams,
-	actionType: ActionTypes
+	actionType: ActionTypes,
+	userId: string | undefined
 ) {
-	const { role, id } = params
+
+	const sessionUser = await auth.getSessionUser()
+	const sessionUserRole = sessionUser.labels[0]
+
 	let status = null
 	const { databases } = await createAdminClient()
 
@@ -180,7 +191,7 @@ export async function updateAppointment(
 			APPWRITE_DB_ID!,
 			APPWRITE_DB_CHANGE_STATUS_COLLECTION_ID!,
 			ID.unique(),
-			{ updaterId: id, role, updatedValue: status, updatedAt: new Date() }
+			{ updaterId: userId, sessionUserRole, updatedValue: status, updatedAt: new Date() }
 		)
 
 		const appointmentToUpdate = await getAppointment(appointmentId)
@@ -211,10 +222,10 @@ export async function updateAppointment(
 // Finish Appointment - change appointment status to 'Finished'
 export async function finishAppointment(
 	appointment: Appointment,
-	params: SingleSlugParams
 ) {
 	const status: Status = Status.FINISHED
-	const { role, id } = params
+	const sessionUser = await auth.getSessionUser()
+	const sessionUserRole = sessionUser.labels[0]
 	const { databases } = await createAdminClient()
 
 	try {
@@ -222,7 +233,7 @@ export async function finishAppointment(
 			APPWRITE_DB_ID!,
 			APPWRITE_DB_CHANGE_STATUS_COLLECTION_ID!,
 			ID.unique(),
-			{ updaterId: id, role, updatedValue: status, updatedAt: new Date() }
+			{ updaterId: sessionUser.$id, sessionUserRole, updatedValue: status, updatedAt: new Date() }
 		)
 
 		console.log('***', Object.keys(appointment))
@@ -251,10 +262,10 @@ export async function finishAppointment(
 // Await Appointment - change appointment status to 'Pending'
 export async function awaitAppointment(
 	appointment: Appointment,
-	params: SingleSlugParams
 ) {
 	const status: Status = Status.PENDING
-	const { role, id } = params
+	const sessionUser = await auth.getSessionUser()
+	const sessionUserRole = sessionUser.labels[0]
 	const { databases } = await createAdminClient()
 
 	try {
@@ -263,7 +274,7 @@ export async function awaitAppointment(
 			APPWRITE_DB_ID!,
 			APPWRITE_DB_CHANGE_STATUS_COLLECTION_ID!,
 			ID.unique(),
-			{ updaterId: id, role, updatedValue: status, updatedAt: new Date() }
+			{ updaterId: sessionUser.$id, sessionUserRole, updatedValue: status, updatedAt: new Date() }
 		)
 
 		const awaitedAppointment = await databases.updateDocument(
