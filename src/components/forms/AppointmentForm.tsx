@@ -5,14 +5,13 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm, SubmitHandler } from "react-hook-form"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import { useParams } from "next/navigation"
 // lib
 import {
   CreateAppointmentFormValues,
   getAppointmentFormDefaultValues,
   getAppointmentFormSchema,
 } from "@/lib/types/zod"
-import { FormFieldType, Roles } from "@/lib/types/enums"
+import { FormFieldType } from "@/lib/types/enums"
 import { createButtonLabel, generateUrl } from "@/lib/utils"
 import {
   handleCreateAppointment,
@@ -44,16 +43,12 @@ export default function AppointmentForm({
   handleCloseDialog,
 }: AppointmentFormProps) {
   const router = useRouter()
-
   const AppointmentFormSchema = getAppointmentFormSchema(actionType)
-
-  const params = useParams() as SingleSlugParams
 
   const form = useForm<z.infer<typeof AppointmentFormSchema>>({
     resolver: zodResolver(AppointmentFormSchema),
     defaultValues: getAppointmentFormDefaultValues(actionType, appointment),
   })
-
   const { isSubmitting } = form.formState
 
   const onSubmit: SubmitHandler<z.infer<typeof AppointmentFormSchema>> = async (
@@ -65,7 +60,7 @@ export default function AppointmentForm({
           appointmentFormValues as CreateAppointmentFormValues,
         )
 
-        if (createdAppointment! && userId) {
+        if (createdAppointment && userId) {
           router.push(
             generateUrl(
               [Route.PATIENTS, userId, Route.CREATE_APPOINTMENT, Route.SUCCESS],

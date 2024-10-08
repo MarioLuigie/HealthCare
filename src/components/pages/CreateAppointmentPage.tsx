@@ -1,6 +1,5 @@
 // lib
 import { Images } from '@/lib/constants'
-import { getPatient } from '@/lib/actions/patient.actions'
 // components
 import AppointmentForm from '@/components/forms/AppointmentForm'
 import PageTitle from '@/components/shared/PageTitle'
@@ -20,7 +19,6 @@ export default async function CreateAppointmentPage({
 }) {
 	const sessionUser = await auth.getSessionUser()
 	const userId = sessionUser?.$id
-	const result = await getPatient(userId)
 
 	return (
 		<FormPageTemplate
@@ -41,7 +39,6 @@ export default async function CreateAppointmentPage({
 			<AppointmentForm
 				actionType={ActionTypes.CREATE}
 				userId={userId}
-				// patientId={result?.data?.$id}
 			/>
 			<Copyright />
 		</FormPageTemplate>
