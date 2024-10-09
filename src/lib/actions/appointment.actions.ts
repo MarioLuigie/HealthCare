@@ -14,9 +14,7 @@ import {
 import { ActionTypes, Status } from '@/lib/types/enums'
 import { InitialCounts, AppointmentsOrderedByStatus } from '@/lib/types/types'
 import { Route } from '@/lib/constants/paths'
-import {
-	CreateAppointmentFormValues,
-} from '@/lib/types/zod'
+import { CreateAppointmentFormValues } from '@/lib/types/zod'
 import { deepClone, generateUrl } from '@/lib/utils'
 import { Appointment } from '@/lib/types/appwrite.types'
 import { getPatient } from './patient.actions'
@@ -32,9 +30,17 @@ export async function getAppointment(appointmentId: string) {
 			appointmentId
 		)
 
-		return deepClone(appointment)
+		return {
+			success: true,
+			data: appointment,
+			message: 'Data downloaded with successfully.',
+		}
 	} catch (err) {
-		console.error(err)
+		console.error('Error fetching appointment:', err)
+		return {
+			success: false,
+			message: 'An error occurred while downloading data.',
+		}
 	}
 }
 
@@ -199,7 +205,12 @@ export async function updateAppointment(
 			}
 		)
 
-		const appointmentToUpdate = await getAppointment(appointmentId)
+		const { data: appointmentToUpdate, success } = await getAppointment(appointmentId)
+
+		// Check if appointmentToUpdate exists
+		if (!appointmentToUpdate || !success) {
+			throw new Error('Appointment not found or invalid appointmentId.')
+		}
 
 		// Save to DB and Return appointment with status changed to 'Cancelled' or 'Scheduled'
 		const updatedAppointment = await databases.updateDocument(
@@ -219,8 +230,16 @@ export async function updateAppointment(
 		revalidatePath(generateUrl([Route.DASHBOARD]))
 
 		return deepClone(updatedAppointment)
-	} catch (err) {
-		console.error(err)
+	} catch (err: any) {
+		// Logowanie błędów
+		console.error('Error while updating appointment:', err)
+
+		// Możemy też zwrócić bardziej opisowy błąd lub odpowiedź do klienta
+		return {
+			success: false,
+			message:
+				err.message || 'An error occurred while updating the appointment.',
+		}
 	}
 }
 

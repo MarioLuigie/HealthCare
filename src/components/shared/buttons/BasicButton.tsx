@@ -8,18 +8,21 @@ interface BasicButtonProps {
 	className?: string
 	children: React.ReactNode
 	isDanger?: boolean
+	onClick: () => void
 }
 
 export default function BasicButton({
   type='submit',
 	className,
 	children,
-	isDanger=false
+	isDanger=false,
+	onClick
 }: BasicButtonProps) {
 	return (
 		<Button
 			type={type}
 			className={clsx(isDanger ? 'shad-danger-btn' : 'shad-primary-btn', className)}
+			onClick={onClick}
 		>
       {children}
 		</Button>

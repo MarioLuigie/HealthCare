@@ -6,14 +6,14 @@ import { Icons } from '@/lib/constants'
 import { Button } from '@/components/ui/button'
 
 interface SubmitButtonProps {
-	isLoading: boolean
+	isLoading?: boolean
 	className?: string
 	children: React.ReactNode
 	isDanger?: boolean
 }
 
 export default function SubmitButton({
-	isLoading,
+	isLoading=false,
 	className,
 	children,
 	isDanger=false

@@ -22,7 +22,11 @@ export default async function SuccessApointmentPage({
 	const userId: string = params.userId
 	const appointmentId: string = prepareSearchParam(searchParams.appointmentId)
 
-	const appointment = await getAppointment(appointmentId)
+	const { data: appointment, success } = await getAppointment(appointmentId)
+
+	if(!appointment || !success) {
+		throw new Error('Appointment not found or invalid appointmentId.')
+	}
 
 	const doctor = doctors.find(
 		(doctor) => doctor.name === appointment.primaryPhysician

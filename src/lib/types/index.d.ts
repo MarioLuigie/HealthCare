@@ -47,13 +47,6 @@ declare type CreateAppointmentData = {
     cancellationReason: string 
 }
 
-// declare type UpdateAppointmentData = {
-// 	appointmentId: string
-// 	userId: string
-// 	appointment: Appointment
-// 	type: string
-// }
-
 // Url params, route query, page params
 declare interface SingleSlugParams {
 	[key: string]: string

@@ -1,4 +1,4 @@
-import BasicButton from '@/components/shared/buttons/BasicButton'
+import SubmitButton from '@/components/shared/buttons/SubmitButton'
 import { createUserVerification } from '@/lib/actions/auth.actions'
 import { Images } from '@/lib/constants'
 import Image from 'next/image'
@@ -22,7 +22,7 @@ export default function VerifyUserRequest() {
 				account.
 			</p>
 			<form className="my-8" action={createUserVerification}>
-				<BasicButton>Send Activation Link</BasicButton>
+				<SubmitButton>Send Activation Link</SubmitButton>
 			</form>
 		</>
 	)
