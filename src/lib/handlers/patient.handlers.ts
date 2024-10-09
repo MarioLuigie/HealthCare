@@ -23,9 +23,9 @@ export const handleRegisterPatient = async (
 		}
 
 		if (patientFormValues.identificationDocuments.length === 0) {
-			const registeredPatient = await registerPatient(registerPatientData)
+			const result = await registerPatient(registerPatientData)
 
-			return registeredPatient
+			return result
 		} else {
 			// Create FormData files from files - File[]
 			const formData = prepareFormDataFiles(
@@ -33,12 +33,13 @@ export const handleRegisterPatient = async (
 			)
 			// Overwrite identificationDocuments with fotmData - FormData
 			registerPatientData.identificationDocuments = formData
-			const registeredPatient = await registerPatient(registerPatientData)
+			const result = await registerPatient(registerPatientData)
 
-			return registeredPatient
+			return result
 		}
-	} catch (err) {
+	} catch (err: any) {
 		console.error(err)
+		throw new Error('An error occured while registering patient.')
 	}
 }
 

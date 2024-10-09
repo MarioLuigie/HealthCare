@@ -70,5 +70,6 @@ export async function handleAwaitAppointment(appointment: Appointment) {
 		const awaitedAppointment = await awaitAppointment(appointment)
 	} catch (err: any) {
 		console.error(err)
+    throw new Error('An error occured while awaiting appointment.')
 	}
 }

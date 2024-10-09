@@ -20,9 +20,8 @@ import { deepClone, formatDateToYMD } from '@/lib/utils'
 
 // Get patient
 export const getPatient = async (userId: string) => {
-	const { databases } = await createAdminClient()
-
 	try {
+		const { databases } = await createAdminClient()
 		const { documents } = await databases.listDocuments(
 			APPWRITE_DB_ID!,
 			APPWRITE_DB_PATIENT_COLLECTION_ID!,
@@ -34,6 +33,7 @@ export const getPatient = async (userId: string) => {
 		return {
 			success: true,
 			data: patient,
+			message: 'Patient loaded successfully.'
 		}
 	} catch (err) {
 		console.error(
@@ -51,9 +51,8 @@ export const getPatient = async (userId: string) => {
 export async function registerPatient(
 	registerPatientData: RegisterPatientData
 ) {
-	const { databases, storage } = await createAdminClient()
-
 	try {
+		const { databases, storage } = await createAdminClient()
 		// Check if the patient has FormData with files in identificationDocument
 		if (
 			registerPatientData.identificationDocuments &&
@@ -146,10 +145,18 @@ export async function registerPatient(
 
 			console.log('***Registered Patient', registeredPatient)
 
-			return deepClone(registeredPatient)
+			return {
+				success: true,
+				data: registeredPatient,
+				message: 'Patient registered successfully.'
+			}
 		}
-	} catch (err) {
+	} catch (err: any) {
 		console.error('An error occurred while registering a new patient:', err)
+		return {
+			success: false,
+			message: 'An error occurred while registering a new patient.'
+		}
 	}
 }
 

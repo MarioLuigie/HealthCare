@@ -15,38 +15,39 @@ import { cookies } from 'next/headers'
 import { Auth, Roles } from '@/lib/types/enums'
 import { RequestCookie } from 'next/dist/compiled/@edge-runtime/cookies'
 
-// Server action for start user account verification - send link to email
+// Start user verification on Appwrite
 export async function createUserVerification() {
-	const sessionCookie: RequestCookie | null | undefined = cookies().get(
-		Auth.SESSION
-	)
-	const { account } = await createSessionClient(sessionCookie?.value)
-	await account.createVerification(
-		generateUrl([Route.USER_VERIFICATION_RESULT])
-	)
+	try {
+		const sessionCookie: RequestCookie | null | undefined = cookies().get(
+			Auth.SESSION
+		)
+
+		if (!sessionCookie || !sessionCookie.value) {
+			throw new Error('Session cookie not found or invalid.')
+		}
+
+		const { account } = await createSessionClient(sessionCookie.value)
+
+		// Call the user verification function by passing the appropriate URL
+		await account.createVerification(
+			generateUrl([Route.USER_VERIFICATION_RESULT])
+		)
+
+		return { success: true, message: 'Verification email sent successfully.' }
+	} catch (err: any) {
+		console.error('Error creating user verification:', err)
+		return { success: false, message: 'Failed to send verification email.' }
+	}
 }
 
 // Server action for change user verification email to true - after clicked email link
 export async function updateUserVerification(userId: string, secret: string) {
-	// const sessionCookie: RequestCookie | null | undefined = cookies().get(
-	//   Auth.SESSION
-	// )
-
-	// if (!sessionCookie) {
-	//   return {
-	//     success: false,
-	//     message: "User must be signed in to verify the account."
-	//   }
-	// }
-
-	// const { account } = await createSessionClient(sessionCookie?.value)
-
-	const { account } = await createClient()
-
 	try {
+		const { account } = await createClient()
 		const result = await account.updateVerification(userId, secret)
 
 		console.log('***updateVerification-result', result)
+
 		return { success: true, message: 'Verification completed successfully.' }
 	} catch (err: any) {
 		if (err.code === 401) {
@@ -117,17 +118,13 @@ export async function signUp(authFormValues: SignUpAuthFormValues) {
 		console.log('***updatedUser', updatedUser)
 
 		if (session) {
-			// const sessionCookie: RequestCookie | null | undefined = cookies().get(
-			//   Auth.SESSION
-			// )
-			// const { account } = await createSessionClient(sessionCookie?.value)
-			// await account.createVerification(generateUrl([Route.USER_VERIFIED]))
 			await createUserVerification()
 		}
 
 		return {
 			success: true,
 			data: createdUser,
+			message: 'User created successfully.',
 		}
 	} catch (err: any) {
 		if (err.code === 409) {
@@ -165,7 +162,11 @@ export async function signIn(authFormValues: SignInAuthFormValues) {
 			path: Route.HOME,
 		})
 
-		return { success: true, data: session }
+		return {
+			success: true,
+			data: session,
+			message: 'User signed in successfully.',
+		}
 	} catch (err: any) {
 		// Error logging to console
 		console.error('An error occurred while logging in:', err)
@@ -229,15 +230,17 @@ export async function signOut() {
 }
 
 export async function getUser(userId: string) {
-	const { users } = await createAdminClient()
-
 	try {
+		const { users } = await createAdminClient()
 		const user = await users.get(userId)
 
-		return { success: true, data: user }
-	} catch (err) {
+		return { success: true, data: user, message: 'User loaded successfully.' }
+	} catch (err: any) {
 		console.error('An error occurred while retrieving the user details:', err)
-		return { success: false }
+		return {
+			success: false,
+			message: 'An error occured while retrieving user.',
+		}
 	}
 }
 
