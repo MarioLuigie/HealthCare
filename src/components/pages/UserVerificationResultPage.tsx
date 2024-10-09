@@ -80,6 +80,21 @@ export default async function UserVerificationResultPage({
 	const success = verificationResult.success
 	const errorCode = verificationResult.code
 
+	const getErrorMessage = (errorCode: number) => {
+		switch (errorCode) {
+			case 400:
+				return 'Invalid secret general argument.'
+			case 401:
+				return 'Your verification link has expired. In your dashboard you can request a new verification link.'
+			case 404:
+				return 'User not found. User with the requested ID may not exist.'
+			case 429:
+				return 'Rate limit for using your verification link has been exceeded. Try again a few moments later.'
+			default:
+				return 'An unknown error occurred.'
+		}
+	}
+
 	return (
 		<div className="flex h-screen max-h-screen px-[5%]">
 			<div className="success-img">
@@ -109,32 +124,22 @@ export default async function UserVerificationResultPage({
 								action="verified"
 								msg={failureMessage}
 							/>
-							<p className="text-red-500">
-								{errorCode &&
-									errorCode === 400 &&
-									'Invalid secret general argument.'}
-							</p>
-							<p className="text-red-500">
-								{errorCode &&
-									errorCode === 401 &&
-									'Your verification link has expired.In your dashboard you can request a new verification link.'}
-							</p>
-							<p className="text-red-500">
-								{errorCode &&
-									errorCode === 404 &&
-									'User not found. User with the requested ID could not exist.'}
-							</p>
-							<p className="text-red-500">
-								{errorCode &&
-									errorCode === 429 &&
-									'Rate limit for using your verification link has been exceeded. Try again a few moment later.'}
-							</p>
-							<p className="text-red-500">
-								{!errorCode &&
-									'An error occured with user verification. Try again later.'}
-							</p>
+
+							{errorCode && (
+								<p className="text-red-500">
+									{getErrorMessage(errorCode)}
+								</p>
+							)}
+
+							{!errorCode && (
+								<p className="text-red-500">
+									An error occurred with user verification. Try again
+									later.
+								</p>
+							)}
+
 							<p className="flex-center">
-								In a few seconds you will be redirected to the&nbsp;
+								In a few seconds, you will be redirected to the&nbsp;
 								<LinkButton href={failureRedirectPath} variant="text">
 									{sessionUser ? 'Dashboard Page' : 'Sign In'}
 								</LinkButton>
