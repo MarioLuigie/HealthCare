@@ -35,7 +35,7 @@ export async function getAppointment(appointmentId: string) {
 			data: appointment,
 			message: 'Data downloaded with successfully.',
 		}
-	} catch (err) {
+	} catch (err: any) {
 		console.error('Error fetching appointment:', err)
 		return {
 			success: false,
@@ -91,7 +91,7 @@ export async function getAppointmentsOrderedByStatus() {
 			data,
 			message: 'Data downloaded successfully.',
 		}
-	} catch (err) {
+	} catch (err: any) {
 		console.error(err)
 		return {
 			success: false,
@@ -112,13 +112,13 @@ export async function createAppointment(
 	const status: Status = Status.PENDING
 	const sessionUser = await auth.getSessionUser()
 	const { databases } = await createAdminClient()
-	const result = await getPatient(sessionUser.$id)
+	const { data: patient, success} = await getPatient(sessionUser.$id)
 
-	if (!result.data) {
+	if (!patient || !success) {
 		throw new Error('Missing session user data')
 	}
 
-	const patientId = result.data.$id
+	const patientId = patient.$id
 
 	try {
 		if (
@@ -165,9 +165,17 @@ export async function createAppointment(
 			)
 		}
 
-		return deepClone(createdAppointment)
-	} catch (err) {
+		return {
+			success: true,
+			data: createdAppointment,
+			message: 'Appointment created with successfully.'
+		}
+	} catch (err: any) {
 		console.error(err)
+		return {
+			success: false,
+			message: 'An error occured while creating appointment.'
+		}
 	}
 }
 

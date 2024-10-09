@@ -56,9 +56,13 @@ export default function AppointmentForm({
   ) => {
     try {
       if (actionType === ActionTypes.CREATE) {
-        const createdAppointment = await handleCreateAppointment(
+        const { data: createdAppointment, success } = await handleCreateAppointment(
           appointmentFormValues as CreateAppointmentFormValues,
         )
+
+        if(!createdAppointment || !success) {
+          throw new Error('An error occured while creating appointment.')
+        }
 
         if (createdAppointment && userId) {
           router.push(

@@ -21,13 +21,14 @@ export async function handleCreateAppointment(
 ) {
   try {
     // !!Type returned object by Appointment interface!!
-    const createdAppointment = await createAppointment(
+    const result = await createAppointment(
       appointmentFormValues,
     )
 
-    return createdAppointment
-  } catch (err) {
+    return result
+  } catch (err: any) {
     console.error(err)
+    throw new Error('An error occured while creating appointment')
   }
 }
 
