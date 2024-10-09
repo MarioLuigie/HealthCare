@@ -1,9 +1,8 @@
 'use server'
-
 // modules
 import { revalidatePath } from 'next/cache'
 import { ID, Query } from 'node-appwrite'
-
+import auth from '@/auth'
 // lib
 import {
 	APPWRITE_DB_ID,
@@ -12,24 +11,15 @@ import {
 	APPWRITE_DB_CHANGE_STATUS_COLLECTION_ID,
 	createAdminClient,
 } from '@/lib/appwrite.config'
-import { ActionTypes, Roles, Status } from '@/lib/types/enums'
+import { ActionTypes, Status } from '@/lib/types/enums'
+import { InitialCounts, AppointmentsOrderedByStatus } from '@/lib/types/types'
 import { Route } from '@/lib/constants/paths'
 import {
 	CreateAppointmentFormValues,
-	CancelAppointmentFormValues,
-	ScheduleAppointmentFormValues,
 } from '@/lib/types/zod'
 import { deepClone, generateUrl } from '@/lib/utils'
 import { Appointment } from '@/lib/types/appwrite.types'
-import auth from '@/auth'
 import { getPatient } from './patient.actions'
-
-export interface InitialCounts {
-	scheduledCount: number
-	pendingCount: number
-	cancelledCount: number
-	finishedCount: number
-}
 
 // Get Appointment
 export async function getAppointment(appointmentId: string) {
@@ -51,20 +41,18 @@ export async function getAppointment(appointmentId: string) {
 // Get Appointments ordered by status and all unordered
 export async function getAppointmentsOrderedByStatus() {
 	const { databases } = await createAdminClient()
-
+	const initialCounts: InitialCounts = {
+		scheduledCount: 0,
+		pendingCount: 0,
+		cancelledCount: 0,
+		finishedCount: 0,
+	}
 	try {
 		const appointments = await databases.listDocuments(
 			APPWRITE_DB_ID!,
 			APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
 			[Query.orderDesc('$createdAt')]
 		)
-
-		const initialCounts: InitialCounts = {
-			scheduledCount: 0,
-			pendingCount: 0,
-			cancelledCount: 0,
-			finishedCount: 0,
-		}
 
 		const counts: InitialCounts = (
 			appointments.documents as Appointment[]
@@ -86,28 +74,41 @@ export async function getAppointmentsOrderedByStatus() {
 			return acc
 		}, initialCounts)
 
-		const data = {
+		const data: AppointmentsOrderedByStatus = {
 			...counts,
 			totalCount: appointments.total,
-			documents: appointments.documents,
+			documents: appointments.documents as Appointment[],
 		}
 
-		return deepClone(data)
+		return {
+			success: true,
+			data,
+			message: 'Data downloaded successfully.',
+		}
 	} catch (err) {
 		console.error(err)
+		return {
+			success: false,
+			data: {
+				...initialCounts,
+				totalCount: 0,
+				documents: [],
+			},
+			message: 'An error occurred while downloading data.',
+		}
 	}
 }
 
 // Create Appointment
 export async function createAppointment(
-	appointmentFormValues: CreateAppointmentFormValues,
+	appointmentFormValues: CreateAppointmentFormValues
 ) {
 	const status: Status = Status.PENDING
 	const sessionUser = await auth.getSessionUser()
 	const { databases } = await createAdminClient()
 	const result = await getPatient(sessionUser.$id)
 
-	if(!result.data) {
+	if (!result.data) {
 		throw new Error('Missing session user data')
 	}
 
@@ -131,7 +132,7 @@ export async function createAppointment(
 			note: appointmentFormValues.note,
 			status: status,
 			statusUpdatesHistory: [],
-			cancellationReason: ''
+			cancellationReason: '',
 		}
 
 		// !!Do it!! - Type returned object by Appointment interface
@@ -171,7 +172,6 @@ export async function updateAppointment(
 	actionType: ActionTypes,
 	userId: string | undefined
 ) {
-
 	const sessionUser = await auth.getSessionUser()
 	const sessionUserRole = sessionUser.labels[0]
 
@@ -183,7 +183,7 @@ export async function updateAppointment(
 	} else if (actionType === ActionTypes.SCHEDULE) {
 		status = Status.SCHEDULED
 	}
-	
+
 	try {
 		// Save to DB and return object with changes status infos
 		// !! Change to appointmentChangeLog name
@@ -191,7 +191,12 @@ export async function updateAppointment(
 			APPWRITE_DB_ID!,
 			APPWRITE_DB_CHANGE_STATUS_COLLECTION_ID!,
 			ID.unique(),
-			{ updaterId: userId, sessionUserRole, updatedValue: status, updatedAt: new Date() }
+			{
+				updaterId: userId,
+				sessionUserRole,
+				updatedValue: status,
+				updatedAt: new Date(),
+			}
 		)
 
 		const appointmentToUpdate = await getAppointment(appointmentId)
@@ -220,9 +225,7 @@ export async function updateAppointment(
 }
 
 // Finish Appointment - change appointment status to 'Finished'
-export async function finishAppointment(
-	appointment: Appointment,
-) {
+export async function finishAppointment(appointment: Appointment) {
 	const status: Status = Status.FINISHED
 	const sessionUser = await auth.getSessionUser()
 	const sessionUserRole = sessionUser.labels[0]
@@ -233,7 +236,12 @@ export async function finishAppointment(
 			APPWRITE_DB_ID!,
 			APPWRITE_DB_CHANGE_STATUS_COLLECTION_ID!,
 			ID.unique(),
-			{ updaterId: sessionUser.$id, sessionUserRole, updatedValue: status, updatedAt: new Date() }
+			{
+				updaterId: sessionUser.$id,
+				sessionUserRole,
+				updatedValue: status,
+				updatedAt: new Date(),
+			}
 		)
 
 		console.log('***', Object.keys(appointment))
@@ -260,9 +268,7 @@ export async function finishAppointment(
 }
 
 // Await Appointment - change appointment status to 'Pending'
-export async function awaitAppointment(
-	appointment: Appointment,
-) {
+export async function awaitAppointment(appointment: Appointment) {
 	const status: Status = Status.PENDING
 	const sessionUser = await auth.getSessionUser()
 	const sessionUserRole = sessionUser.labels[0]
@@ -274,7 +280,12 @@ export async function awaitAppointment(
 			APPWRITE_DB_ID!,
 			APPWRITE_DB_CHANGE_STATUS_COLLECTION_ID!,
 			ID.unique(),
-			{ updaterId: sessionUser.$id, sessionUserRole, updatedValue: status, updatedAt: new Date() }
+			{
+				updaterId: sessionUser.$id,
+				sessionUserRole,
+				updatedValue: status,
+				updatedAt: new Date(),
+			}
 		)
 
 		const awaitedAppointment = await databases.updateDocument(

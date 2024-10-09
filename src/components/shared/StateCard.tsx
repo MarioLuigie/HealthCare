@@ -5,7 +5,7 @@ import SVGImage from '@/components/shared/SvgImage'
 
 type StateCardProps = {
 	status: Status
-	count: number
+	count: number | null
 }
 
 export default function StateCard({ status, count }: StateCardProps) {

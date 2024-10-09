@@ -86,11 +86,7 @@ declare type Icons = {
     alt: string
 }
 
-
-
-
-{
-	/*
+{/*
 Tak, te dwa zapisy różnią się i mają różne zastosowania. Oto wyjaśnienie:
 1. declare interface
 

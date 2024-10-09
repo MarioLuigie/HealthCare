@@ -1,18 +1,11 @@
 // lib
 import { Status } from '@/lib/types/enums'
-import { Appointment } from '@/lib/types/appwrite.types'
-import { InitialCounts } from '@/lib/actions/appointment.actions'
 import { capitalizeFirstLetter } from '@/lib/utils'
+import { getAppointmentsOrderedByStatus } from '@/lib/actions/appointment.actions'
 // components
 import StateCard from '@/components/shared/StateCard'
-import { getAppointmentsOrderedByStatus } from '@/lib/actions/appointment.actions'
 import { DataTable } from '@/components/shared/DataTable'
 import { adminColumns } from '@/components/content/tables/admin/appointmentColumns'
-
-interface AppointmentsOrderedByStatus extends InitialCounts {
-	totalCount: number
-	documents: Appointment[]
-}
 
 export default async function AdminDashboardPage({
 	params,
@@ -21,15 +14,8 @@ export default async function AdminDashboardPage({
 	params: SingleSlugParams
 	sessionUser: any
 }) {
-	// const { role, id } = params
-	if (!sessionUser) {
-		return null
-	}
-
 	const role = sessionUser.labels[0]
-
-	const appointments: AppointmentsOrderedByStatus =
-		await getAppointmentsOrderedByStatus()
+	const { data: appointmentsOrderedByStatus } = await getAppointmentsOrderedByStatus()
 
 	return (
 		<div className="admin-main">
@@ -45,26 +31,26 @@ export default async function AdminDashboardPage({
 			<section className="admin-stat">
 				<StateCard
 					status={Status.SCHEDULED}
-					count={appointments.scheduledCount}
+					count={appointmentsOrderedByStatus.scheduledCount}
 				/>
 				<StateCard
 					status={Status.CANCELLED}
-					count={appointments.cancelledCount}
+					count={appointmentsOrderedByStatus.cancelledCount}
 				/>
 				<StateCard
 					status={Status.PENDING}
-					count={appointments.pendingCount}
+					count={appointmentsOrderedByStatus.pendingCount}
 				/>
 				<StateCard
 					status={Status.FINISHED}
-					count={appointments.finishedCount}
+					count={appointmentsOrderedByStatus.finishedCount}
 				/>
 			</section>
 
 			{/* Data Table */}
 			<section className="w-full">
-        <p className='mb-4 text-lg'>Appointments List</p>
-				<DataTable columns={adminColumns} data={appointments.documents} />
+				<p className="mb-4 text-lg">Appointments List</p>
+				<DataTable columns={adminColumns} data={appointmentsOrderedByStatus.documents} />
 			</section>
 		</div>
 	)
