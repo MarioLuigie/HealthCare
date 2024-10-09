@@ -80,7 +80,7 @@ export default async function UserVerificationResultPage({
 	const success = verificationResult.success
 	const errorCode = verificationResult.code
 
-	const getErrorMessage = (errorCode: number) => {
+	const getAuthErrorMessage = (errorCode: number) => {
 		switch (errorCode) {
 			case 400:
 				return 'Invalid secret general argument.'
@@ -127,7 +127,7 @@ export default async function UserVerificationResultPage({
 
 							{errorCode && (
 								<p className="text-red-500">
-									{getErrorMessage(errorCode)}
+									{getAuthErrorMessage(errorCode)}
 								</p>
 							)}
 
