@@ -17,7 +17,7 @@ export default async function DashboardPage({
 	if(sessionUser && sessionUser.labels) {
 		sessionUserRole = sessionUser.labels[0] // !! Create func and use for get role
 	} else {
-		return
+		return null
 	}
 
 	switch (sessionUserRole) {
