@@ -112,7 +112,7 @@ export async function createAppointment(
 	const status: Status = Status.PENDING
 	const sessionUser = await auth.getSessionUser()
 	const { databases } = await createAdminClient()
-	const { data: patient, success} = await getPatient(sessionUser.$id)
+	const { data: patient, success } = await getPatient(sessionUser.$id)
 
 	if (!patient || !success) {
 		throw new Error('Missing session user data')
@@ -168,13 +168,13 @@ export async function createAppointment(
 		return {
 			success: true,
 			data: createdAppointment,
-			message: 'Appointment created with successfully.'
+			message: 'Appointment created with successfully.',
 		}
 	} catch (err: any) {
 		console.error(err)
 		return {
 			success: false,
-			message: 'An error occured while creating appointment.'
+			message: 'An error occured while creating appointment.',
 		}
 	}
 }
@@ -213,7 +213,9 @@ export async function updateAppointment(
 			}
 		)
 
-		const { data: appointmentToUpdate, success } = await getAppointment(appointmentId)
+		const { data: appointmentToUpdate, success } = await getAppointment(
+			appointmentId
+		)
 
 		// Check if appointmentToUpdate exists
 		if (!appointmentToUpdate || !success) {
@@ -237,7 +239,11 @@ export async function updateAppointment(
 
 		revalidatePath(generateUrl([Route.DASHBOARD]))
 
-		return deepClone(updatedAppointment)
+		return {
+			success: true,
+			data: updatedAppointment,
+			message: 'Appointment updated with successfully.'
+		}
 	} catch (err: any) {
 		// Logowanie błędów
 		console.error('Error while updating appointment:', err)
