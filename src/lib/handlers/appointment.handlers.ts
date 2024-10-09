@@ -26,7 +26,7 @@ export async function handleCreateAppointment(
 		return result
 	} catch (err: any) {
 		console.error(err)
-		throw new Error('An error occured while creating appointment')
+		throw new Error('An error occured while creating appointment.')
 	}
 }
 
@@ -49,16 +49,18 @@ export async function handleUpdateAppointment(
 		// console.log('Cancelled Appointment:', cancelledAppointment)
 	} catch (err) {
 		console.error(err)
-		throw new Error('An error occured while creating appointment')
+		throw new Error('An error occured while creating appointment.')
 	}
 }
 
 // Finish Appointment but not delete
 export async function handleFinishAppointment(appointment: Appointment) {
 	try {
-		const finishedAppointment = await finishAppointment(appointment)
-	} catch (err) {
+		const result = await finishAppointment(appointment)
+
+	} catch (err: any) {
 		console.error(err)
+		throw new Error('An error occured while finishing appointment.')
 	}
 }
 
@@ -66,7 +68,7 @@ export async function handleFinishAppointment(appointment: Appointment) {
 export async function handleAwaitAppointment(appointment: Appointment) {
 	try {
 		const awaitedAppointment = await awaitAppointment(appointment)
-	} catch (err) {
+	} catch (err: any) {
 		console.error(err)
 	}
 }

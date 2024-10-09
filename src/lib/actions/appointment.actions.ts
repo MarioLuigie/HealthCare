@@ -15,7 +15,7 @@ import { ActionTypes, Status } from '@/lib/types/enums'
 import { InitialCounts, AppointmentsOrderedByStatus } from '@/lib/types/types'
 import { Route } from '@/lib/constants/paths'
 import { CreateAppointmentFormValues } from '@/lib/types/zod'
-import { deepClone, generateUrl } from '@/lib/utils'
+import { generateUrl } from '@/lib/utils'
 import { Appointment } from '@/lib/types/appwrite.types'
 import { getPatient } from './patient.actions'
 
@@ -245,14 +245,11 @@ export async function updateAppointment(
 			message: 'Appointment updated with successfully.'
 		}
 	} catch (err: any) {
-		// Logowanie błędów
 		console.error('Error while updating appointment:', err)
-
-		// Możemy też zwrócić bardziej opisowy błąd lub odpowiedź do klienta
 		return {
 			success: false,
 			message:
-				err.message || 'An error occurred while updating the appointment.',
+				err.message || 'An error occurred while updating appointment.',
 		}
 	}
 }
@@ -294,9 +291,18 @@ export async function finishAppointment(appointment: Appointment) {
 
 		revalidatePath(generateUrl([Route.DASHBOARD]))
 
-		return deepClone(finihedAppointment)
-	} catch (err) {
-		console.error(err)
+		return {
+			success: true,
+			data: finihedAppointment,
+			message: 'Appointment finished successfully.'
+		}
+	} catch (err: any) {
+		console.error('Error while finishing appointment:', err)
+		return {
+			success: false,
+			message:
+				err.message || 'An error occurred while finishing appointment.',
+		}
 	}
 }
 
@@ -336,83 +342,20 @@ export async function awaitAppointment(appointment: Appointment) {
 
 		revalidatePath(generateUrl([Route.DASHBOARD]))
 
-		return deepClone(awaitedAppointment)
-	} catch (err) {
-		console.error(err)
+		return {
+			success: true,
+			data: awaitedAppointment,
+			message: 'Appointment awaiting successfully.'
+		}
+	} catch (err: any) {
+		console.error('Error while awaiting appointment:', err)
+		return {
+			success: false,
+			message:
+				err.message || 'An error occurred while awaiting appointment.',
+		}
 	}
 }
 
-// // Cancel Appointment - change appointment status to 'Cancelled'
-// export async function cancelAppointment(
-// 	appointment: Appointment,
-// 	params: SingleSlugParams
-// ) {
-// 	const status: Status = Status.CANCELLED
-// 	const { role, id } = params
-// 	try {
-// 		// Save to DB and return object with changes status infos
-// 		const updatedStatusInfo = await databases.createDocument(
-// 			APPWRITE_DB_ID!,
-// 			APPWRITE_DB_CHANGE_STATUS_COLLECTION_ID!,
-// 			ID.unique(),
-// 			{ updaterId: id, role, updatedValue: status, updatedAt: new Date() }
-// 		)
 
-// 		// Save to DB and Return appointment with status changed to 'Cancelled'
-// 		const cancelledAppointment = await databases.updateDocument(
-// 			APPWRITE_DB_ID!,
-// 			APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
-// 			appointment.$id,
-// 			{
-// 				status,
-// 				statusUpdatesHistory: [
-// 					...appointment.statusUpdatesHistory,
-// 					updatedStatusInfo.$id,
-// 				],
-// 			}
-// 		)
 
-// 		revalidatePath(generateUrl([Route.DASHBOARD, role, id]))
-
-// 		return deepClone(cancelledAppointment)
-// 	} catch (err) {
-// 		console.error(err)
-// 	}
-// }
-
-// // Schedule Appointment - change appointment status to 'Scheduled'
-// export async function scheduleAppointment(
-// 	appointment: Appointment,
-// 	params: SingleSlugParams
-// ) {
-// 	const status: Status = Status.SCHEDULED
-// 	const { role, id } = params
-// 	try {
-// 		// Save to DB and return object with changes status infos
-// 		const updatedStatusInfo = await databases.createDocument(
-// 			APPWRITE_DB_ID!,
-// 			APPWRITE_DB_CHANGE_STATUS_COLLECTION_ID!,
-// 			ID.unique(),
-// 			{ updaterId: id, role, updatedValue: status, updatedAt: new Date() }
-// 		)
-
-// 		const scheduledAppointment = await databases.updateDocument(
-// 			APPWRITE_DB_ID!,
-// 			APPWRITE_DB_APPOINTMENT_COLLECTION_ID!,
-// 			appointment.$id,
-// 			{
-// 				status,
-// 				statusUpdatesHistory: [
-// 					...appointment.statusUpdatesHistory,
-// 					updatedStatusInfo.$id,
-// 				],
-// 			}
-// 		)
-
-// 		revalidatePath(generateUrl([Route.DASHBOARD, role, id]))
-
-// 		return deepClone(scheduledAppointment)
-// 	} catch (err) {
-// 		console.error(err)
-// 	}
-// }
