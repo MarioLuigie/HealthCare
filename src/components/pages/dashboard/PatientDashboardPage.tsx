@@ -18,7 +18,7 @@ export default async function PatientDashboardPage({
 	const isSessionUserVerified: boolean =
 		await auth.checkIsSessionUserVerified()
 
-	const { data: patient } = await getPatient('66f9aea2003c91bccb49')
+	const { data: patient } = await getPatient(sessionUser.$id)
 
 	// LinkButton with create patient profile action visible when patient not exist
 

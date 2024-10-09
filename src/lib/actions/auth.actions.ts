@@ -50,6 +50,15 @@ export async function updateUserVerification(userId: string, secret: string) {
 
 		return { success: true, message: 'Verification completed successfully.' }
 	} catch (err: any) {
+    if (err.code === 400) {
+			console.log('***updateVerification-400', err)
+			return {
+				success: false,
+				message: 'Invalid secret general value.',
+				code: err.code,
+			}
+		}
+
 		if (err.code === 401) {
 			console.log('***updateVerification-401', err)
 			return {
