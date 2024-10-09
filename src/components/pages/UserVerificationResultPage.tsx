@@ -3,6 +3,7 @@ import { getUser, updateUserVerification } from '@/lib/actions/auth.actions'
 import { Route, IconPath } from '@/lib/constants/paths'
 import { generateUrl } from '@/lib/utils'
 import auth from '@/auth'
+import { getAuthErrorMessageByCode } from '@/lib/utils'
 // components
 import Loader from '@/components/shared/Loader'
 import RedirectWithDelay from '@/components/shared/RedirectWithDelay'
@@ -80,21 +81,6 @@ export default async function UserVerificationResultPage({
 	const success = verificationResult.success
 	const errorCode = verificationResult.code
 
-	const getAuthErrorMessage = (errorCode: number) => {
-		switch (errorCode) {
-			case 400:
-				return 'Invalid secret general argument.'
-			case 401:
-				return 'Your verification link has expired. In your dashboard you can request a new verification link.'
-			case 404:
-				return 'User not found. User with the requested ID may not exist.'
-			case 429:
-				return 'Rate limit for using your verification link has been exceeded. Try again a few moments later.'
-			default:
-				return 'An unknown error occurred.'
-		}
-	}
-
 	return (
 		<div className="flex h-screen max-h-screen px-[5%]">
 			<div className="success-img">
@@ -127,7 +113,7 @@ export default async function UserVerificationResultPage({
 
 							{errorCode && (
 								<p className="text-red-500">
-									{getAuthErrorMessage(errorCode)}
+									{getAuthErrorMessageByCode(errorCode)}
 								</p>
 							)}
 

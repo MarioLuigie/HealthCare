@@ -176,6 +176,21 @@ export function createStatusUpdatedBy(role: string, id: string): string {
   return JSON.stringify(statusUpdatedBy)
 }
 
+export function getAuthErrorMessageByCode(errorCode: number) {
+  switch (errorCode) {
+    case 400:
+      return 'Invalid secret general argument.'
+    case 401:
+      return 'Your verification link has expired. In your dashboard you can request a new verification link.'
+    case 404:
+      return 'User not found. User with the requested ID may not exist.'
+    case 429:
+      return 'Rate limit for using your verification link has been exceeded. Try again a few moments later.'
+    default:
+      return 'An unknown error occurred.'
+  }
+}
+
 // export function prepareFileUploadData(fileUploadData: File[] | undefined) {
 // 	let data: FormData | undefined = undefined
 
