@@ -1,244 +1,244 @@
-"use server"
+'use server'
 
 // modules
-import { ID, Query } from "node-appwrite"
+import { ID, Query } from 'node-appwrite'
 // lib
 import {
-  createAdminClient,
-  createClient,
-  createSessionClient,
-} from "@/lib/appwrite.config"
-import { deepClone, generateUrl } from "@/lib/utils"
-import { SignInAuthFormValues, SignUpAuthFormValues } from "@/lib/types/zod"
-import { Route } from "@/lib/constants/paths"
-import { cookies } from "next/headers"
-import { Auth, Roles } from "@/lib/types/enums"
-import { RequestCookie } from "next/dist/compiled/@edge-runtime/cookies"
+	createAdminClient,
+	createClient,
+	createSessionClient,
+} from '@/lib/appwrite.config'
+import { deepClone, generateUrl } from '@/lib/utils'
+import { SignInAuthFormValues, SignUpAuthFormValues } from '@/lib/types/zod'
+import { Route } from '@/lib/constants/paths'
+import { cookies } from 'next/headers'
+import { Auth, Roles } from '@/lib/types/enums'
+import { RequestCookie } from 'next/dist/compiled/@edge-runtime/cookies'
 
 // Server action for start user account verification - send link to email
 export async function createUserVerification() {
-  const sessionCookie: RequestCookie | null | undefined = cookies().get(
-    Auth.SESSION
-  )
-  const { account } = await createSessionClient(sessionCookie?.value)
-  await account.createVerification(generateUrl([Route.USER_VERIFICATION_RESULT]))
+	const sessionCookie: RequestCookie | null | undefined = cookies().get(
+		Auth.SESSION
+	)
+	const { account } = await createSessionClient(sessionCookie?.value)
+	await account.createVerification(
+		generateUrl([Route.USER_VERIFICATION_RESULT])
+	)
 }
 
 // Server action for change user verification email to true - after clicked email link
 export async function updateUserVerification(userId: string, secret: string) {
-  // const sessionCookie: RequestCookie | null | undefined = cookies().get(
-  //   Auth.SESSION
-  // )
+	// const sessionCookie: RequestCookie | null | undefined = cookies().get(
+	//   Auth.SESSION
+	// )
 
-  // if (!sessionCookie) {
-  //   return {
-  //     success: false,
-  //     message: "User must be signed in to verify the account."
-  //   }
-  // }
+	// if (!sessionCookie) {
+	//   return {
+	//     success: false,
+	//     message: "User must be signed in to verify the account."
+	//   }
+	// }
 
-  // const { account } = await createSessionClient(sessionCookie?.value)
+	// const { account } = await createSessionClient(sessionCookie?.value)
 
-  const { account } = await createClient()
+	const { account } = await createClient()
 
-  try {
-    const result = await account.updateVerification(userId, secret)
+	try {
+		const result = await account.updateVerification(userId, secret)
 
-    console.log("***updateVerification-result", result)
-    return { success: true, message: "Verification completed successfully." }
-  } catch (err: any) {
-    if (err.code === 401) {
-      console.log("***updateVerification-401", err)
-      return {
-        success: false,
-        message: "Your verification link has expired.",
-        code: err.code,
-      }
-    }
+		console.log('***updateVerification-result', result)
+		return { success: true, message: 'Verification completed successfully.' }
+	} catch (err: any) {
+		if (err.code === 401) {
+			console.log('***updateVerification-401', err)
+			return {
+				success: false,
+				message: 'Your verification link has expired.',
+				code: err.code,
+			}
+		}
 
-    if (err.code === 404) {
-      console.log("***updateVerification-404", err)
-      return {
-        success: false,
-        message: "User not found.",
-        code: err.code,
-      }
-    }
+		if (err.code === 404) {
+			console.log('***updateVerification-404', err)
+			return {
+				success: false,
+				message: 'User not found.',
+				code: err.code,
+			}
+		}
 
-    if (err.code === 429) {
-      console.log("***updateVerification-429", err)
-      return {
-        success: false,
-        message:
-          "Rate limit for using your verification link has been exceeded.",
-        code: err.code,
-      }
-    }
+		if (err.code === 429) {
+			console.log('***updateVerification-429', err)
+			return {
+				success: false,
+				message:
+					'Rate limit for using your verification link has been exceeded.',
+				code: err.code,
+			}
+		}
 
-    console.log("***updateVerification", err)
-    return { success: false, message: "User verification failed." }
-  }
+		console.log('***updateVerification', err)
+		return { success: false, message: 'User verification failed.' }
+	}
 }
 
 // Sign Up and return created user
 export async function signUp(authFormValues: SignUpAuthFormValues) {
-  // const { users, account } = await createAdminClient()
-  const { email, password, name } = authFormValues
-  const { account, users } = await createAdminClient()
-  let session = null
-  let updatedUser = null
+	// const { users, account } = await createAdminClient()
+	const { email, password, name } = authFormValues
+	const { account, users } = await createAdminClient()
+	let session = null
+	let updatedUser = null
 
-  console.log(authFormValues)
+	console.log(authFormValues)
 
-  try {
-    const createdUser = await account.create(
-      ID.unique(),
-      email,
-      // authFormValues.phone,
-      // undefined, // do usuniecia przy account.create
-      password,
-      name
-    )
+	try {
+		const createdUser = await account.create(
+			ID.unique(),
+			email,
+			// authFormValues.phone,
+			// undefined, // do usuniecia przy account.create
+			password,
+			name
+		)
 
-    if(createdUser) {
-      updatedUser = await users.updateLabels(createdUser.$id, [Roles.PATIENT])
-    }
+		if (createdUser) {
+			updatedUser = await users.updateLabels(createdUser.$id, [
+				Roles.PATIENT,
+			])
+		}
 
-    if (updatedUser) {
-      session = await signIn({ email, password })
-    }
+		if (updatedUser) {
+			session = await signIn({ email, password })
+		}
 
-    console.log("***session", session)
-    console.log("***createdUser", createdUser)
-    console.log("***updatedUser", updatedUser)
+		console.log('***session', session)
+		console.log('***createdUser', createdUser)
+		console.log('***updatedUser', updatedUser)
 
-    if (session) {
-      // const sessionCookie: RequestCookie | null | undefined = cookies().get(
-      //   Auth.SESSION
-      // )
-      // const { account } = await createSessionClient(sessionCookie?.value)
-      // await account.createVerification(generateUrl([Route.USER_VERIFIED]))
-      await createUserVerification()
-    }
+		if (session) {
+			// const sessionCookie: RequestCookie | null | undefined = cookies().get(
+			//   Auth.SESSION
+			// )
+			// const { account } = await createSessionClient(sessionCookie?.value)
+			// await account.createVerification(generateUrl([Route.USER_VERIFIED]))
+			await createUserVerification()
+		}
 
-    return {
-      success: true,
-      data: createdUser,
-    }
-  } catch (err: any) {
-    if (err.code === 409) {
-      console.error("User with this email already exists.")
-      return {
-        success: false,
-        message:
-          "User already exists. Please use a different email or Sign In.",
-      }
-    }
-
-    console.error("An error occurred while creating a new user:", err)
-    return {
-      success: false,
-      message: "An error occurred. Please try again later.",
-    }
-  }
+		return {
+			success: true,
+			data: createdUser,
+		}
+	} catch (err: any) {
+		if (err.code === 409) {
+			console.error('User with this email already exists.')
+			return {
+				success: false,
+				message:
+					'User already exists. Please use a different email or Sign In.',
+			}
+		}
+		console.error('An error occurred while creating a new user:', err)
+		return {
+			success: false,
+			message: 'An unexpected error occurred. Please try again later.',
+		}
+	}
 }
 
 // Sign In and return session with secret/accessToken
 export async function signIn(authFormValues: SignInAuthFormValues) {
-  const { account } = await createAdminClient()
-  const { email, password } = authFormValues
+	const { account } = await createAdminClient()
+	const { email, password } = authFormValues
 
-  try {
-    const session = await account.createEmailPasswordSession(email, password)
+	try {
+		const session = await account.createEmailPasswordSession(email, password)
 
-    console.log("***SESSION", session)
+		console.log('***SESSION', session)
 
-    // Save session secret to cookies under the key 'session' - read in auth.ts
-    cookies().set(Auth.SESSION, session.secret, {
-      httpOnly: true,
-      sameSite: "none",
-      secure: true,
-      expires: new Date(session.expire),
-      path: Route.HOME,
-    })
+		// Save session secret to cookies under the key 'session' - read in auth.ts
+		cookies().set(Auth.SESSION, session.secret, {
+			httpOnly: true,
+			sameSite: 'none',
+			secure: true,
+			expires: new Date(session.expire),
+			path: Route.HOME,
+		})
 
-    return { success: true, data: session }
-  } catch (err: any) {
-    // Error logging
-    console.error("An error occurred while logging in:", err)
+		return { success: true, data: session }
+	} catch (err: any) {
+		// Error logging to console
+		console.error('An error occurred while logging in:', err)
 
-    // Handling specific error codes
-    const { code, response } = err
+		// Handling specific error codes
+		const { code, response } = err
 
-    // Returning the appropriate message to the user
-    if (code === 401) {
-      return {
-        success: false,
-        message: "Invalid credentials. Please check the email and password.",
-      }
-    } else if (code === 403) {
-      return {
-        success: false,
-        message: "Your account is blocked. Please contact support.",
-      }
-    } else if (code === 429) {
-      return {
-        success: false,
-        message: "Too many login attempts. Please try again later.",
-      }
-    }
-
-    // Default message for other error codes
-    return {
-      success: false,
-      message:
-        response?.message || "An unknown error occurred. Please try again.",
-    }
-  }
+		if (code === 401 || code === 403 || code === 404) {
+			// Return general error message
+			return {
+				success: false,
+				message:
+					'Invalid credentials. Please check the email and password.',
+			}
+		} else if (code === 429) {
+			return {
+				success: false,
+				message: 'Too many login attempts. Please try again later.',
+			}
+		} else {
+			// Default message for other error codes
+			return {
+				success: false,
+				message:
+					response?.message ||
+					'An unexpected error occurred. Please try again later.',
+			}
+		}
+	}
 }
 
 export async function signOut() {
-  let sessionCookie: RequestCookie | null | undefined = cookies().get(
-    Auth.SESSION
-  )
+	let sessionCookie: RequestCookie | null | undefined = cookies().get(
+		Auth.SESSION
+	)
 
-  if (!sessionCookie) {
-    cookies().delete(Auth.SESSION)
-    sessionCookie = null
-    return { success: false }
-  }
+	if (!sessionCookie) {
+		cookies().delete(Auth.SESSION)
+		sessionCookie = null
+		return { success: false }
+	}
 
-  try {
-    const { account } = await createSessionClient(sessionCookie.value)
-    await account.deleteSession("current")
+	try {
+		const { account } = await createSessionClient(sessionCookie.value)
+		await account.deleteSession('current')
 
-    cookies().set(Auth.SESSION, "", { expires: new Date(0) })
+		cookies().set(Auth.SESSION, '', { expires: new Date(0) })
 
-    console.log("***DELETE SESSION RESULT - from server action")
-    return { success: true, message: "User signed out with successfully" }
-  } catch (err) {
-    cookies().set(Auth.SESSION, "", { expires: new Date(0) })
-    // cookies().delete(Auth.SESSION)
-    sessionCookie = null
-    console.error("***Error from server action", err)
-    return {
-      success: false,
-      message: "Something went wrong while sign out user",
-    }
-  }
+		console.log('***DELETE SESSION RESULT - from server action')
+		return { success: true, message: 'User signed out with successfully' }
+	} catch (err) {
+		cookies().set(Auth.SESSION, '', { expires: new Date(0) })
+		// cookies().delete(Auth.SESSION)
+		sessionCookie = null
+		console.error('***Error from server action', err)
+		return {
+			success: false,
+			message: 'Something went wrong while sign out user',
+		}
+	}
 }
 
 export async function getUser(userId: string) {
-  const { users } = await createAdminClient()
+	const { users } = await createAdminClient()
 
-  try {
-    const user = await users.get(userId)
+	try {
+		const user = await users.get(userId)
 
-    return { success: true, data: user }
-  } catch (err) {
-    console.error("An error occurred while retrieving the user details:", err)
-    return { success: false }
-  }
+		return { success: true, data: user }
+	} catch (err) {
+		console.error('An error occurred while retrieving the user details:', err)
+		return { success: false }
+	}
 }
 
 // ***updateVerification-result {

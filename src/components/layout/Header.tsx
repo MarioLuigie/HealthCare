@@ -5,9 +5,7 @@ import LogoFull from '@/components/content/LogoFull'
 import UserAvatar from '@/components/shared/UserAvatar'
 import SignOut from '@/components/shared/SignOut'
 
-export default async function Header({ params }: { params: SingleSlugParams }) {
-	const { role, id } = params
-
+export default async function Header() {
 	const doctorDummyData = {
 		name: 'Jasmine Lee',
 		image: '/assets/images/dr-lee.png',

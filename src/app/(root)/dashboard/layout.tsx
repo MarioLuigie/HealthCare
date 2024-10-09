@@ -9,7 +9,7 @@ export default function Layout({
 }) {
   return (
     <div className="flex flex-col justify-between min-h-screen">
-      <Header params={params} />
+      <Header/>
       <Main>{children}</Main>
       <Footer />
     </div>
