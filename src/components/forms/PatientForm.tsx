@@ -28,7 +28,12 @@ import { Route } from '@/lib/constants/paths'
 import { generateUrl } from '@/lib/utils'
 import PersonAvatar from '../shared/UserAvatar'
 
-export default function PatientForm({ user }: { user: any }) {
+type PatientFormProps = {
+	user: any
+	handleCloseDialog?: () => void
+}
+
+export default function PatientForm({ user }: PatientFormProps) {
 	const router = useRouter()
 
 	const form = useForm<PatientFormValues>({

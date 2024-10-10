@@ -8,21 +8,13 @@ import {
 	createClient,
 	createSessionClient,
 } from '@/lib/appwrite.config'
-import { deepClone, generateUrl } from '@/lib/utils'
+import { generateUrl } from '@/lib/utils'
 import { SignInAuthFormValues, SignUpAuthFormValues } from '@/lib/types/zod'
 import { Route } from '@/lib/constants/paths'
 import { cookies } from 'next/headers'
 import { Auth, Roles } from '@/lib/types/enums'
 import { RequestCookie } from 'next/dist/compiled/@edge-runtime/cookies'
-import {
-	AuthErrorCodes,
-	BadRequestErrorCodes,
-	ResourceErrorCodes,
-	LimitationErrorCodes,
-	ProtocolErrorCodes,
-	InternalServerErrorCodes,
-	ResourceManagementErrorCodes,
-} from '@/lib/types/errorCodes.enums'
+import { getErrorByCode } from '../utils/errors'
 
 // Start user verification on Appwrite
 export async function createUserVerification() {
@@ -45,7 +37,14 @@ export async function createUserVerification() {
 		return { success: true, message: 'Verification email sent successfully.' }
 	} catch (err: any) {
 		console.error('Error creating user verification:', err)
-		return { success: false, message: 'Failed to send verification email.' }
+		if (err.code) {
+			return {
+				success: false,
+				message: getErrorByCode(err.code),
+				code: err.code,
+			}
+		}
+		return { success: false, message: 'Create user verification failed.' }
 	}
 }
 
@@ -59,44 +58,15 @@ export async function updateUserVerification(userId: string, secret: string) {
 
 		return { success: true, message: 'Verification completed successfully.' }
 	} catch (err: any) {
-		if (err.code === BadRequestErrorCodes.CODE_400) {
-			console.log('***updateVerification-400', err)
+		if (err.code) {
+			console.log('***updateVerification', err)
 			return {
 				success: false,
-				message: 'Invalid secret general value.',
+				message: getErrorByCode(err.code),
 				code: err.code,
 			}
 		}
 
-		if (err.code === AuthErrorCodes.CODE_401) {
-			console.log('***updateVerification-401', err)
-			return {
-				success: false,
-				message: 'Your verification link has expired.',
-				code: err.code,
-			}
-		}
-
-		if (err.code === ResourceErrorCodes.CODE_404) {
-			console.log('***updateVerification-404', err)
-			return {
-				success: false,
-				message: 'User not found.',
-				code: err.code,
-			}
-		}
-
-		if (err.code === LimitationErrorCodes.CODE_429) {
-			console.log('***updateVerification-429', err)
-			return {
-				success: false,
-				message:
-					'Rate limit for using your verification link has been exceeded.',
-				code: err.code,
-			}
-		}
-
-		console.log('***updateVerification', err)
 		return { success: false, message: 'User verification failed.' }
 	}
 }
@@ -145,12 +115,11 @@ export async function signUp(authFormValues: SignUpAuthFormValues) {
 			message: 'User created successfully.',
 		}
 	} catch (err: any) {
-		if (err.code === BadRequestErrorCodes.CODE_409) {
+		if (err.code) {
 			console.error('Conflict: User with this email already exists.')
 			return {
 				success: false,
-				message:
-					'User already exists. Please use a different email or Sign In.',
+				message: getErrorByCode(err.code),
 			}
 		}
 		console.error('An error occurred while creating a new user:', err)
@@ -192,21 +161,10 @@ export async function signIn(authFormValues: SignInAuthFormValues) {
 		// Handling specific error codes
 		const { code, response } = err
 
-		if (
-			code === AuthErrorCodes.CODE_401 ||
-			code === AuthErrorCodes.CODE_403 ||
-			code === ResourceErrorCodes.CODE_404
-		) {
-			// Return general error message
+		if (code) {
 			return {
 				success: false,
-				message:
-					'Invalid credentials. Please check the email and password.',
-			}
-		} else if (code === LimitationErrorCodes.CODE_429) {
-			return {
-				success: false,
-				message: 'Too many login attempts. Please try again later.',
+				message: getErrorByCode(code),
 			}
 		} else {
 			// Default message for other error codes

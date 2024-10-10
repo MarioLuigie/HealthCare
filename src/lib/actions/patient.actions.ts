@@ -11,7 +11,6 @@ import {
 	APPWRITE_IDENTIFICATION_DOCUMENTS_BUCKET_ID,
 	APPWRITE_DB_IDENTIFICATION_DOCUMENT_COLLECTION_ID,
 	createAdminClient,
-	createClient,
 } from '@/lib/appwrite.config'
 import { ID, Query } from 'node-appwrite'
 // lib

@@ -4,12 +4,6 @@ import auth from '@/auth'
 import { getUser, updateUserVerification } from '@/lib/actions/auth.actions'
 import { Route, IconPath } from '@/lib/constants/paths'
 import { generateUrl } from '@/lib/utils'
-import {
-	getAuthErrorMessageByCode,
-	getBadRequestErrorMessageByCode,
-	getResourceErrorMessageByCode,
-	getLimitationErrorMessageByCode,
-} from '@/lib/utils/errors'
 // components
 import LogoFull from '@/components/content/LogoFull'
 import Loader from '@/components/shared/Loader'
@@ -18,6 +12,7 @@ import SuccessResponse from '@/components/shared/SuccessResponse'
 import FailedResponse from '@/components/shared/FailedResponse'
 import LinkButton from '@/components/shared/buttons/LinkButton'
 import Copyright from '@/components/content/Copyright'
+import { getErrorByCode } from '@/lib/utils/errors'
 
 type VerificationResult = {
 	success: boolean
@@ -87,13 +82,6 @@ export default async function UserVerificationResultPage({
 	const success = verificationResult.success
 	const errorCode = verificationResult.code
 
-	const errorMessage = errorCode
-		? getAuthErrorMessageByCode(errorCode) ||
-		  getBadRequestErrorMessageByCode(errorCode) ||
-		  getResourceErrorMessageByCode(errorCode) ||
-		  getLimitationErrorMessageByCode(errorCode)
-		: 'An error occurred with user verification. Try again later.'
-
 	return (
 		<div className="flex h-screen max-h-screen px-[5%]">
 			<div className="success-img">
@@ -123,7 +111,11 @@ export default async function UserVerificationResultPage({
 								action="verified"
 								msg={failureMessage}
 							/>
-							<p className="text-red-500">{errorMessage}</p>
+							<p className="text-red-500">
+								{errorCode
+									? getErrorByCode(errorCode)
+									: 'An error ocured.'}
+							</p>
 							<p className="flex-center">
 								In a few seconds, you will be redirected to the&nbsp;
 								<LinkButton href={failureRedirectPath} variant="text">

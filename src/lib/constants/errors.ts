@@ -13,11 +13,11 @@ import {
 export const AuthErrors = {
 	[AuthErrorCodes.CODE_401]: {
 		message:
-			'Unauthorized: Authentication is required and has failed or has not been provided.',
+			'Unauthorized: Authentication is required and has failed or has not been provided. Invalid credentials. Please check the email and password.',
 	},
 	[AuthErrorCodes.CODE_403]: {
 		message:
-			'Forbidden: The server understood the request but refuses to authorize it.',
+			'Forbidden: The server understood the request but refuses to authorize it. Invalid credentials. Please check the email and password.',
 	},
 	[AuthErrorCodes.CODE_407]: {
 		message:
@@ -61,7 +61,7 @@ export const BadRequestErrors = {
 export const ResourceErrors = {
 	[ResourceErrorCodes.CODE_404]: {
 		message:
-			'Not Found: The requested resource could not be found on the server.',
+			'Invalid credentials. Please check the email and password. Not Found: The requested resource could not be found on the server.',
 	},
 	[ResourceErrorCodes.CODE_410]: {
 		message:

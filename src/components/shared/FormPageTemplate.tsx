@@ -17,11 +17,13 @@ export default function FormPageTemplate({
 }: FormPageTemplateProps) {
   return (
     <div className="flex h-screen max-h-screen">
+      {/* Text content section */}
       <div id="100" className="remove-scrollbar container my-auto h-screen overflow-y-auto">
         <div className={`sub-container ${classes} min-h-screen`}>
           {children}
         </div>
       </div>
+      {/* Graphic section */}
       <div id="200" className="w-[50%] hidden md:block">
         {isVideo
           ? video && (

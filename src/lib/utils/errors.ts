@@ -17,22 +17,18 @@ import {
 	InternalServerErrors,
 	ResourceManagementErrors,
 } from '@/lib/constants/errors'
+import { getFirstDigit } from '@/lib/utils'
 
-export function getAuthErrorMessageByCode(errorCode: number) {
+export function getClientErrorByCode(errorCode: number) {
 	switch (errorCode) {
+		// Auth error
 		case AuthErrorCodes.CODE_401:
 			return AuthErrors[AuthErrorCodes.CODE_401].message
 		case AuthErrorCodes.CODE_403:
 			return AuthErrors[AuthErrorCodes.CODE_403].message
 		case AuthErrorCodes.CODE_407:
 			return AuthErrors[AuthErrorCodes.CODE_407].message
-		default:
-			return 'An unknown authentication error occurred.'
-	}
-}
-
-export function getBadRequestErrorMessageByCode(errorCode: number) {
-	switch (errorCode) {
+		// Bad request error
 		case BadRequestErrorCodes.CODE_400:
 			return BadRequestErrors[BadRequestErrorCodes.CODE_400].message
 		case BadRequestErrorCodes.CODE_405:
@@ -47,24 +43,12 @@ export function getBadRequestErrorMessageByCode(errorCode: number) {
 			return BadRequestErrors[BadRequestErrorCodes.CODE_414].message
 		case BadRequestErrorCodes.CODE_415:
 			return BadRequestErrors[BadRequestErrorCodes.CODE_415].message
-		default:
-			return 'An unknown bad request error occurred.'
-	}
-}
-
-export function getResourceErrorMessageByCode(errorCode: number) {
-	switch (errorCode) {
+		// Resource error
 		case ResourceErrorCodes.CODE_404:
 			return ResourceErrors[ResourceErrorCodes.CODE_404].message
 		case ResourceErrorCodes.CODE_410:
 			return ResourceErrors[ResourceErrorCodes.CODE_410].message
-		default:
-			return 'An unknown resource error occurred.'
-	}
-}
-
-export function getLimitationErrorMessageByCode(errorCode: number) {
-	switch (errorCode) {
+		// Limitation error
 		case LimitationErrorCodes.CODE_408:
 			return LimitationErrors[LimitationErrorCodes.CODE_408].message
 		case LimitationErrorCodes.CODE_413:
@@ -73,13 +57,7 @@ export function getLimitationErrorMessageByCode(errorCode: number) {
 			return LimitationErrors[LimitationErrorCodes.CODE_416].message
 		case LimitationErrorCodes.CODE_429:
 			return LimitationErrors[LimitationErrorCodes.CODE_429].message
-		default:
-			return 'An unknown limitation error occurred.'
-	}
-}
-
-export function getProtocolErrorMessageByCode(errorCode: number) {
-	switch (errorCode) {
+		// Protocol error
 		case ProtocolErrorCodes.CODE_412:
 			return ProtocolErrors[ProtocolErrorCodes.CODE_412].message
 		case ProtocolErrorCodes.CODE_417:
@@ -103,12 +81,13 @@ export function getProtocolErrorMessageByCode(errorCode: number) {
 		case ProtocolErrorCodes.CODE_451:
 			return ProtocolErrors[ProtocolErrorCodes.CODE_451].message
 		default:
-			return 'An unknown protocol error occurred.'
+			return 'An error occured on client side.'
 	}
 }
 
-export function getInternalServerErrorMessageByCode(errorCode: number) {
+export function getServerErrorByCode(errorCode: number) {
 	switch (errorCode) {
+		// Internal server error
 		case InternalServerErrorCodes.CODE_500:
 			return InternalServerErrors[InternalServerErrorCodes.CODE_500].message
 		case InternalServerErrorCodes.CODE_501:
@@ -121,13 +100,7 @@ export function getInternalServerErrorMessageByCode(errorCode: number) {
 			return InternalServerErrors[InternalServerErrorCodes.CODE_504].message
 		case InternalServerErrorCodes.CODE_505:
 			return InternalServerErrors[InternalServerErrorCodes.CODE_505].message
-		default:
-			return 'An unknown internal server error occurred.'
-	}
-}
-
-export function getResourceManagementErrorMessageByCode(errorCode: number) {
-	switch (errorCode) {
+		// Rosource Managment error
 		case ResourceManagementErrorCodes.CODE_507:
 			return ResourceManagementErrors[ResourceManagementErrorCodes.CODE_507]
 				.message
@@ -141,6 +114,18 @@ export function getResourceManagementErrorMessageByCode(errorCode: number) {
 			return ResourceManagementErrors[ResourceManagementErrorCodes.CODE_511]
 				.message
 		default:
-			return 'An unknown resource management error occurred.'
+			return 'An error occured on server side.'
+	}
+}
+
+export function getErrorByCode(errorCode: number) {
+	const groupNumb = getFirstDigit(errorCode)
+	switch (groupNumb) {
+		case 4:
+			return getClientErrorByCode(errorCode)
+		case 5:
+			return getServerErrorByCode(errorCode)
+		default:
+			return 'A general error occured. Try again later.'
 	}
 }

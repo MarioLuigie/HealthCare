@@ -18,17 +18,17 @@ export default async function PatientDashboardPage({
 	const isSessionUserVerified: boolean =
 		await auth.checkIsSessionUserVerified()
 
-	const { data: patient } = await getPatient(sessionUser.$id)
+	const { data: patient } = await getPatient(sessionUser.$id + '+')
 
 	// LinkButton with create patient profile action visible when patient not exist
 
 	return (
 		<div className="flex flex-col items-center justify-center grow p-4">
-			{patient && <CreateAppointment sessionUser={sessionUser} />}
+			{!isSessionUserVerified && <VerifyUserRequest />}
 			{isSessionUserVerified && !patient && (
 				<CreatePatient sessionUser={sessionUser} />
 			)}
-			{!isSessionUserVerified && <VerifyUserRequest />}
+			{patient && <CreateAppointment sessionUser={sessionUser} />}
 		</div>
 	)
 }
