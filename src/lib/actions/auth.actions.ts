@@ -59,7 +59,7 @@ export async function updateUserVerification(userId: string, secret: string) {
 
 		return { success: true, message: 'Verification completed successfully.' }
 	} catch (err: any) {
-    if (err.code === BadRequestErrorCodes.CODE_400) {
+		if (err.code === BadRequestErrorCodes.CODE_400) {
 			console.log('***updateVerification-400', err)
 			return {
 				success: false,
@@ -145,8 +145,8 @@ export async function signUp(authFormValues: SignUpAuthFormValues) {
 			message: 'User created successfully.',
 		}
 	} catch (err: any) {
-		if (err.code === 409) {
-			console.error('User with this email already exists.')
+		if (err.code === BadRequestErrorCodes.CODE_409) {
+			console.error('Conflict: User with this email already exists.')
 			return {
 				success: false,
 				message:
@@ -192,14 +192,18 @@ export async function signIn(authFormValues: SignInAuthFormValues) {
 		// Handling specific error codes
 		const { code, response } = err
 
-		if (code === 401 || code === 403 || code === 404) {
+		if (
+			code === AuthErrorCodes.CODE_401 ||
+			code === AuthErrorCodes.CODE_403 ||
+			code === ResourceErrorCodes.CODE_404
+		) {
 			// Return general error message
 			return {
 				success: false,
 				message:
 					'Invalid credentials. Please check the email and password.',
 			}
-		} else if (code === 429) {
+		} else if (code === LimitationErrorCodes.CODE_429) {
 			return {
 				success: false,
 				message: 'Too many login attempts. Please try again later.',
