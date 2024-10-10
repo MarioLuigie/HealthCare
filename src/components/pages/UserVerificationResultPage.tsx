@@ -11,13 +11,13 @@ import {
 	getLimitationErrorMessageByCode,
 } from '@/lib/utils/errors'
 // components
+import LogoFull from '@/components/content/LogoFull'
 import Loader from '@/components/shared/Loader'
 import RedirectWithDelay from '@/components/shared/RedirectWithDelay'
-import Copyright from '@/components/content/Copyright'
-import LogoFull from '@/components/content/LogoFull'
 import SuccessResponse from '@/components/shared/SuccessResponse'
 import FailedResponse from '@/components/shared/FailedResponse'
 import LinkButton from '@/components/shared/buttons/LinkButton'
+import Copyright from '@/components/content/Copyright'
 
 type VerificationResult = {
 	success: boolean
