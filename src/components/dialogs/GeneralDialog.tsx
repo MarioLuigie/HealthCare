@@ -7,19 +7,18 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog"
-import PatientForm from "@/components/forms/PatientForm"
 
-type PatientDialogProps = {
+type GeneralDialogProps = {
   handleCloseDialog: () => void
   isOpen: boolean
-  user: any
+  children: React.ReactNode
 }
 
-export default function PatientDialog({
+export default function GeneralDialog({
   handleCloseDialog,
   isOpen,
-  user,
-}: PatientDialogProps) {
+  children,
+}: GeneralDialogProps) {
   return (
     <Dialog open={isOpen} onOpenChange={handleCloseDialog}>
       <DialogContent className="shad-dialog sm:msx-w-md">
@@ -31,21 +30,7 @@ export default function PatientDialog({
             Fill the form below and create your patient profile. Once you have created your profile, you will be able to set up your first appointment with a doctor.
           </DialogDescription>
         </DialogHeader>
-        <PatientForm
-          user={user}
-          handleCloseDialog={handleCloseDialog}
-        />
-        {/* <Button
-					variant="outline"
-					onClick={handleConfirm}
-					className={clsx(
-						actionType === ActionTypes.CANCEL
-							? 'shad-danger-btn'
-							: 'shad-primary-btn'
-					)}
-				>
-					{createButtonLabel(actionType, 'Appointment')}
-				</Button> */}
+        {children}
       </DialogContent>
     </Dialog>
   )

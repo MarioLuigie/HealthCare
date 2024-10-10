@@ -26,7 +26,6 @@ export const getPatient = async (userId: string) => {
 			APPWRITE_DB_PATIENT_COLLECTION_ID!,
 			[Query.equal('userId', [userId])]
 		)
-
 		const patient = documents[0]
 
 		return {

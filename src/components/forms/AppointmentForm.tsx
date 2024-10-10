@@ -190,6 +190,7 @@ export default function AppointmentForm({
 						isDanger={actionType === ActionTypes.CANCEL}
 						isLoading={isSubmitting}
 						className="w-full"
+						variant="fill"
 					>
 						{createButtonLabel(actionType, 'Appointment')}
 					</SubmitButton>
