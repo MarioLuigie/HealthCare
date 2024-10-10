@@ -159,7 +159,7 @@ export default function AuthForm({ authType }: AuthFormProps) {
         )}
 
         <div className="mt-8">
-          <SubmitButton isLoading={isSubmitting} className="w-full">
+          <SubmitButton isLoading={isSubmitting} className="w-full" variant='fill'>
             {authType === AuthTypes.SIGN_UP && "Get started!"}
             {authType === AuthTypes.SIGN_IN && "Sign In"}
           </SubmitButton>
