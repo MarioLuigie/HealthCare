@@ -15,8 +15,8 @@ export default function LinkButton({
 }: LinkButtonProps) {
   const variants = {
     outline:
-      "text-white px-4 py-2 rounded-lg bg-transparent flex-center border border-gray-500 min-w-[110px]",
-    fill: "text-white px-4 py-2 rounded-lg bg-green-500 flex-center min-w-[110px]",
+      "text-white px-4 py-2 rounded-md bg-transparent flex-center border border-gray-500 min-w-[110px]",
+    fill: "text-white px-4 py-2 rounded-md bg-green-500 flex-center min-w-[110px]",
     text: "text-green-500",
   }
 

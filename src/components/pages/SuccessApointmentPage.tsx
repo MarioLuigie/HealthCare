@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button'
 import Copyright from '@/components/content/Copyright'
 import LogoFull from '@/components/content/LogoFull'
 import SuccessResponse from '@/components/shared/SuccessResponse'
+import LinkButton from '../shared/buttons/LinkButton'
 
 export default async function SuccessApointmentPage({
 	params,
@@ -24,7 +25,7 @@ export default async function SuccessApointmentPage({
 
 	const { data: appointment, success } = await getAppointment(appointmentId)
 
-	if(!appointment || !success) {
+	if (!appointment || !success) {
 		throw new Error('Appointment not found or invalid appointmentId.')
 	}
 
@@ -40,7 +41,7 @@ export default async function SuccessApointmentPage({
 					imageSrc={IconPath.SUCCESS_ANIM}
 					entity="appointment request"
 					msg="We'll be in touch shortly to confirm."
-					action='submitted'
+					action="submitted"
 				/>
 				<section className="request-details">
 					<p>Requested appointment details: </p>
@@ -64,8 +65,9 @@ export default async function SuccessApointmentPage({
 						<p> {formatDateTime(appointment.schedule).dateTime}</p>
 					</div>
 				</section>
-				<Button variant="outline" className="shad-primary-btn" asChild>
-					<Link
+				<div className='flex flex-col gap-8'>
+					<LinkButton
+						variant="fill"
 						href={generateUrl([
 							Route.PATIENTS,
 							userId,
@@ -73,8 +75,11 @@ export default async function SuccessApointmentPage({
 						])}
 					>
 						Create Next Appointment
-					</Link>
-				</Button>
+					</LinkButton>
+					<LinkButton variant="outline" href={generateUrl([Route.DASHBOARD])}>
+						Redirect to Dashboard
+					</LinkButton>
+				</div>
 				<Copyright />
 			</div>
 		</div>
