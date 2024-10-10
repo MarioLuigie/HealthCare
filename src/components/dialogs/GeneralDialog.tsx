@@ -1,37 +1,39 @@
-"use client"
+'use client'
 // components
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog"
+	Dialog,
+	DialogContent,
+	DialogDescription,
+	DialogHeader,
+	DialogTitle,
+  DialogFooter
+} from '@/components/ui/dialog'
+import PatientForm from '../forms/PatientForm'
 
 type GeneralDialogProps = {
-  handleCloseDialog: () => void
-  isOpen: boolean
-  children: React.ReactNode
+	handleCloseDialog: () => void
+	isOpen: boolean
+	children: React.ReactNode
+	title: string
+	description: string
 }
 
 export default function GeneralDialog({
-  handleCloseDialog,
-  isOpen,
-  children,
+	handleCloseDialog,
+	isOpen,
+	children,
+	title,
+	description,
 }: GeneralDialogProps) {
-  return (
-    <Dialog open={isOpen} onOpenChange={handleCloseDialog}>
-      <DialogContent className="shad-dialog sm:msx-w-md">
-        <DialogHeader className="mb-4 space-y-3">
-          <DialogTitle className="mb-4">
-            Create Patient Profile
-          </DialogTitle>
-          <DialogDescription>
-            Fill the form below and create your patient profile. Once you have created your profile, you will be able to set up your first appointment with a doctor.
-          </DialogDescription>
-        </DialogHeader>
-        {children}
-      </DialogContent>
-    </Dialog>
-  )
+	return (
+		<Dialog open={isOpen} onOpenChange={handleCloseDialog}>
+			<DialogContent className="border-dark-500 bg-background h-full w-full max-w-none p-0 sm:msx-w-md grid-rows-[auto,1fr]">
+				<DialogHeader className="border-dark-500 border-b p-8">
+					<DialogTitle className="mb-4">{title}</DialogTitle>
+					<DialogDescription>{description}</DialogDescription>
+				</DialogHeader>
+				<div className="p-8 w-full flex justify-center overflow-auto">{children}</div>
+			</DialogContent>
+		</Dialog>
+	)
 }

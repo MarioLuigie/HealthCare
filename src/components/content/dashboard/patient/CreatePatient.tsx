@@ -3,6 +3,7 @@ import { Images } from '@/lib/constants'
 import { Route } from '@/lib/constants/paths'
 import { generateUrl } from '@/lib/utils'
 import Image from 'next/image'
+import CreatePatientButton from './CreatePatientButton'
 
 type CreatePatientProps = {
 	sessionUser?: any
@@ -25,7 +26,13 @@ export default function CreatePatient({ sessionUser }: CreatePatientProps) {
 				create and manage your appointments with our doctors.
 			</p>
 			<div className="flex-center mt-8">
-				<LinkButton
+				<CreatePatientButton
+					sessionUser={sessionUser}
+				>
+					Create Patient Profile
+				</CreatePatientButton>
+
+				{/* <LinkButton
 					href={generateUrl([
 						Route.PATIENTS,
 						sessionUser.$id,
@@ -34,7 +41,7 @@ export default function CreatePatient({ sessionUser }: CreatePatientProps) {
 					variant="fill"
 				>
 					Create Patient Profile
-				</LinkButton>
+				</LinkButton> */}
 			</div>
 		</div>
 	)
