@@ -22,7 +22,7 @@ export default function Error({
 			<h2 className="text-lg mt-12">Something went wrong.</h2>
 			<p className='text-md text-dark-600'>{error.message}</p>
 			<div className="flex flex-col gap-4 mt-6">
-				<BasicButton onClick={() => reset()}>Try again</BasicButton>
+				<BasicButton onClick={() => reset()} variant='fill'>Try again</BasicButton>
 				<LinkButton href={generateUrl([Route.DASHBOARD])}>
 					Redirect to Dashboard
 				</LinkButton>
