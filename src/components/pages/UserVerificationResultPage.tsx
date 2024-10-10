@@ -3,7 +3,12 @@ import { getUser, updateUserVerification } from '@/lib/actions/auth.actions'
 import { Route, IconPath } from '@/lib/constants/paths'
 import { generateUrl } from '@/lib/utils'
 import auth from '@/auth'
-import { getAuthErrorMessageByCode } from '@/lib/utils'
+import {
+	getAuthErrorMessageByCode,
+	getBadRequestErrorMessageByCode,
+	getResourceErrorMessageByCode,
+	getLimitationErrorMessageByCode,
+} from '@/lib/utils/errors'
 // components
 import Loader from '@/components/shared/Loader'
 import RedirectWithDelay from '@/components/shared/RedirectWithDelay'
@@ -81,6 +86,13 @@ export default async function UserVerificationResultPage({
 	const success = verificationResult.success
 	const errorCode = verificationResult.code
 
+	const errorMessage = errorCode
+		? getAuthErrorMessageByCode(errorCode) ||
+		  getBadRequestErrorMessageByCode(errorCode) ||
+		  getResourceErrorMessageByCode(errorCode) ||
+		  getLimitationErrorMessageByCode(errorCode)
+		: 'An error occurred with user verification. Try again later.'
+
 	return (
 		<div className="flex h-screen max-h-screen px-[5%]">
 			<div className="success-img">
@@ -110,20 +122,7 @@ export default async function UserVerificationResultPage({
 								action="verified"
 								msg={failureMessage}
 							/>
-
-							{errorCode && (
-								<p className="text-red-500">
-									{getAuthErrorMessageByCode(errorCode)}
-								</p>
-							)}
-
-							{!errorCode && (
-								<p className="text-red-500">
-									An error occurred with user verification. Try again
-									later.
-								</p>
-							)}
-
+							<p className="text-red-500">{errorMessage}</p>
 							<p className="flex-center">
 								In a few seconds, you will be redirected to the&nbsp;
 								<LinkButton href={failureRedirectPath} variant="text">
