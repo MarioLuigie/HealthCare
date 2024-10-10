@@ -30,7 +30,7 @@ export default function SubmitButton({
 
 	const primaryVariants = {
     outline:
-      "text-white px-4 py-2 rounded-md bg-transparent flex-center border border-green-500 min-w-[110px]",
+      "text-white px-4 py-2 rounded-md bg-transparent flex-center border border-green-500 min-w-[110px] hover:bg-transparent !important",
     fill: "text-white px-4 py-2 rounded-md bg-green-500 flex-center min-w-[110px] hover:bg-green-400 !important",
     text: "text-green-500 hover:text-green-400 bg-transparent hover:bg-transparent !important",
   }
