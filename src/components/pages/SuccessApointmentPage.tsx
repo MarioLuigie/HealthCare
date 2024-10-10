@@ -74,7 +74,7 @@ export default async function SuccessApointmentPage({
 							Route.CREATE_APPOINTMENT,
 						])}
 					>
-						Create Next Appointment
+						Create next Appointment
 					</LinkButton>
 					<LinkButton variant="outline" href={generateUrl([Route.DASHBOARD])}>
 						Redirect to Dashboard
