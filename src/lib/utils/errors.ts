@@ -1,3 +1,4 @@
+// lib
 import {
 	AuthErrorCodes,
 	BadRequestErrorCodes,
@@ -7,7 +8,6 @@ import {
 	InternalServerErrorCodes,
 	ResourceManagementErrorCodes,
 } from '@/lib/types/errorCodes.enums'
-
 import {
 	BadRequestErrors,
 	AuthErrors,

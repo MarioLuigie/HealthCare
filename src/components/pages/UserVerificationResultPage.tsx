@@ -1,8 +1,9 @@
+// modules
+import auth from '@/auth'
 // lib
 import { getUser, updateUserVerification } from '@/lib/actions/auth.actions'
 import { Route, IconPath } from '@/lib/constants/paths'
 import { generateUrl } from '@/lib/utils'
-import auth from '@/auth'
 import {
 	getAuthErrorMessageByCode,
 	getBadRequestErrorMessageByCode,
