@@ -65,7 +65,7 @@ export default async function SuccessApointmentPage({
 						<p> {formatDateTime(appointment.schedule).dateTime}</p>
 					</div>
 				</section>
-				<div className='flex flex-col gap-8'>
+				<div className="flex flex-col gap-8">
 					<LinkButton
 						variant="fill"
 						href={generateUrl([
@@ -76,7 +76,10 @@ export default async function SuccessApointmentPage({
 					>
 						Create next Appointment
 					</LinkButton>
-					<LinkButton variant="outline" href={generateUrl([Route.DASHBOARD])}>
+					<LinkButton
+						variant="outline"
+						href={generateUrl([Route.DASHBOARD])}
+					>
 						Redirect to Dashboard
 					</LinkButton>
 				</div>
