@@ -39,6 +39,8 @@ export function getBadRequestErrorMessageByCode(errorCode: number) {
 			return BadRequestErrors[BadRequestErrorCodes.CODE_405].message
 		case BadRequestErrorCodes.CODE_406:
 			return BadRequestErrors[BadRequestErrorCodes.CODE_406].message
+		case BadRequestErrorCodes.CODE_409:
+			return BadRequestErrors[BadRequestErrorCodes.CODE_409].message
 		case BadRequestErrorCodes.CODE_411:
 			return BadRequestErrors[BadRequestErrorCodes.CODE_411].message
 		case BadRequestErrorCodes.CODE_414:

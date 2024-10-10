@@ -14,6 +14,15 @@ import { Route } from '@/lib/constants/paths'
 import { cookies } from 'next/headers'
 import { Auth, Roles } from '@/lib/types/enums'
 import { RequestCookie } from 'next/dist/compiled/@edge-runtime/cookies'
+import {
+	AuthErrorCodes,
+	BadRequestErrorCodes,
+	ResourceErrorCodes,
+	LimitationErrorCodes,
+	ProtocolErrorCodes,
+	InternalServerErrorCodes,
+	ResourceManagementErrorCodes,
+} from '@/lib/types/errorCodes.enums'
 
 // Start user verification on Appwrite
 export async function createUserVerification() {
@@ -50,7 +59,7 @@ export async function updateUserVerification(userId: string, secret: string) {
 
 		return { success: true, message: 'Verification completed successfully.' }
 	} catch (err: any) {
-    if (err.code === 400) {
+    if (err.code === BadRequestErrorCodes.CODE_400) {
 			console.log('***updateVerification-400', err)
 			return {
 				success: false,
@@ -59,7 +68,7 @@ export async function updateUserVerification(userId: string, secret: string) {
 			}
 		}
 
-		if (err.code === 401) {
+		if (err.code === AuthErrorCodes.CODE_401) {
 			console.log('***updateVerification-401', err)
 			return {
 				success: false,
@@ -68,7 +77,7 @@ export async function updateUserVerification(userId: string, secret: string) {
 			}
 		}
 
-		if (err.code === 404) {
+		if (err.code === ResourceErrorCodes.CODE_404) {
 			console.log('***updateVerification-404', err)
 			return {
 				success: false,
@@ -77,7 +86,7 @@ export async function updateUserVerification(userId: string, secret: string) {
 			}
 		}
 
-		if (err.code === 429) {
+		if (err.code === LimitationErrorCodes.CODE_429) {
 			console.log('***updateVerification-429', err)
 			return {
 				success: false,

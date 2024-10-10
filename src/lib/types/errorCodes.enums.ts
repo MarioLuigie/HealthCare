@@ -8,6 +8,7 @@ export enum BadRequestErrorCodes {
   CODE_400 = 400, // Bad Request
   CODE_405 = 405, // Method Not Allowed
   CODE_406 = 406, // Not Acceptable
+  CODE_409 = 409, // Conflict
   CODE_411 = 411, // Length Required
   CODE_414 = 414, // URI Too Long
   CODE_415 = 415, // Unsupported Media Type

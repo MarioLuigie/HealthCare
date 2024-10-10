@@ -39,6 +39,10 @@ export const BadRequestErrors = {
 		message:
 			'Not Acceptable: The requested resource is capable of generating only content not acceptable according to the Accept headers sent in the request.',
 	},
+  [BadRequestErrorCodes.CODE_409]: {
+		message:
+			'Conflict. The request could not be completed due to a conflict with the current state of the resource.',
+	},
 	[BadRequestErrorCodes.CODE_411]: {
 		message:
 			'Length Required: The server refuses to accept the request without a defined Content-Length.',
