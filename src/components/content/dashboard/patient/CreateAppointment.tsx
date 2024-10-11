@@ -2,10 +2,7 @@
 import Image from 'next/image'
 // lib
 import { Images } from '@/lib/constants'
-import { Route } from '@/lib/constants/paths'
-import { generateUrl } from '@/lib/utils'
 // components
-import LinkButton from '@/components/shared/buttons/LinkButton'
 import CreateAppointmentButton from '@/components/content/dashboard/patient/CreateAppointmentButton'
 
 type CreateAppointmentProps = {
