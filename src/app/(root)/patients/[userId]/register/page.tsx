@@ -1,5 +1,5 @@
-import RegisterPage from '@/components/pages/RegisterPage'
+import CreatePatientPage from '@/components/pages/CreatePatientPage'
 
 export default function Page({ params }: SingleSlugPageProps) {
-	return <RegisterPage params={params} />
+	return <CreatePatientPage params={params} />
 }

@@ -12,7 +12,7 @@ import Copyright from "@/components/content/Copyright"
 import FormPageTemplate from "@/components/shared/FormPageTemplate"
 import LinkButton from "@/components/shared/buttons/LinkButton"
 
-export default async function RegisterPage({
+export default async function CreatePatientPage({
   params,
 }: {
   params: SingleSlugParams
