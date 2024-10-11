@@ -39,7 +39,7 @@ export default function CreatePatientButton({
 					description="Fill the form below and create your patient profile. Once you have created your profile, you will be able to set up your first appointment with a doctor."
 				>
 					<div className="w-full max-w-3xl">
-						<PatientForm user={sessionUser} />
+						<PatientForm user={sessionUser} handleCloseDialog={handleCloseDialog}/>
 					</div>
 				</GeneralDialog>
 			)}

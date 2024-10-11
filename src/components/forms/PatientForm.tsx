@@ -33,7 +33,10 @@ type PatientFormProps = {
 	handleCloseDialog?: () => void
 }
 
-export default function PatientForm({ user }: PatientFormProps) {
+export default function PatientForm({
+	user,
+	handleCloseDialog,
+}: PatientFormProps) {
 	const router = useRouter()
 	const pathname = usePathname()
 
@@ -72,6 +75,11 @@ export default function PatientForm({ user }: PatientFormProps) {
 						])
 					)
 				}
+
+				if (handleCloseDialog) {
+					handleCloseDialog()
+				}
+
 				form.reset()
 			} else {
 				console.error('Something went wrong with registering patient.')
