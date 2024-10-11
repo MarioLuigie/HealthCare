@@ -34,7 +34,7 @@ export default function CreatePatientButton({
 				<GeneralDialog
 					handleCloseDialog={handleCloseDialog}
 					isOpen={isDialogOpen}
-					header
+					isHeader
 					title="Create Patient Profile"
 					description="Fill the form below and create your patient profile. Once you have created your profile, you will be able to set up your first appointment with a doctor."
 				>

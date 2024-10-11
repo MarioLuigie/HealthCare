@@ -16,7 +16,7 @@ type GeneralDialogProps = {
 	handleCloseDialog: () => void
 	isOpen: boolean
 	children: React.ReactNode
-	header?: boolean
+	isHeader?: boolean
 	title?: string
 	description?: string
 	headerClasses?: string
@@ -28,7 +28,7 @@ export default function GeneralDialog({
 	handleCloseDialog,
 	isOpen,
 	children,
-	header,
+	isHeader,
 	title,
 	description,
 	headerClasses,
@@ -48,7 +48,7 @@ export default function GeneralDialog({
 				>
 					<div className='flex items-center gap-4'>
 						<Logo />
-						{header && (
+						{isHeader && (
 							<div>
 								<DialogTitle className="mb-3 text-xl">
 									{title}

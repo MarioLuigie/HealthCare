@@ -1,11 +1,12 @@
 'use client'
 // modules
 import React, { useState } from 'react'
+// lib
+import { ActionTypes } from '@/lib/types/enums'
 // components
 import BasicButton from '@/components/shared/buttons/BasicButton'
 import GeneralDialog from '@/components/dialogs/GeneralDialog'
 import AppointmentForm from '@/components/forms/AppointmentForm'
-import { ActionTypes } from '@/lib/types/enums'
 
 type CreateAppointmentButtonProps = {
 	children: React.ReactNode
@@ -35,7 +36,7 @@ export default function CreateAppointmentButton({
 				<GeneralDialog
 					handleCloseDialog={handleCloseDialog}
 					isOpen={isDialogOpen}
-					header
+					isHeader
 					title="Create Appointment"
 					description="Fill the form below and create your appointment with selected doctor in 10 seconds."
 				>
