@@ -122,7 +122,7 @@ const RenderField = ({
 
     case FormFieldType.DATE_PICKER:
       return (
-        <div className="flex rounded-md border border-dark-500 bg-dark-400">
+        <div className="flex rounded-md border border-dark-500 bg-input">
           <Image
             src="/assets/icons/calendar.svg"
             height={24}

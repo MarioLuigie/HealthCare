@@ -32,10 +32,10 @@
   }
 
   :root {
-    --background: 0 0% 97%; /* Biały */
+    --background: 0 0% 98%; /* Biały */
     --foreground: 0 0% 99%; /* Ciemny szary */
-    --badge: 0 0% 85%;
-    --card: 0 0% 100%; /* Biały */
+    --badge: 0 0% 85%; /* Jasny biały */
+    --card: 0 0% 99%; /* Biały */
     --card-foreground: 0 0% 5%; /* Ciemny szary */
     --popover: 0 0% 100%; /* Biały */
     --popover-foreground: 0 0% 5%; /* Ciemny szary */
@@ -59,6 +59,7 @@
     --chart-5: 27 87% 67%; /* Brązowy */
     --radius: 0.5rem;
     --font-sans: "Plus Jakarta Sans", sans-serif;
+    --textGeneral: 0 0% 2%;
   }
 
   .dark {
@@ -80,7 +81,7 @@
     --destructive: 0 62.8% 30.6%; /* Ciemny czerwony */
     --destructive-foreground: 0 0% 98%; /* Prawie biały */
     --border: 0 0% 17.5%; /* Ciemny szary */
-    --input: 0 0% 17.5%; /* Ciemny szary */
+    --input: 214 11.9% 11.6%; /* Ciemny szary */
     --ring: 0 0% 83.9%; /* Bardzo jasny szary */
     --chart-1: 0 0% 50%; /* Średni szary */
     --chart-2: 0 0% 45%; /* Średni szary */
@@ -88,6 +89,7 @@
     --chart-4: 280 65% 60%; /* Fioletowy */
     --chart-5: 340 75% 55%; /* Różowy */
     --font-sans: "Plus Jakarta Sans", sans-serif;
+    --textGeneral: 0 0% 99%;
   }
 }
 
@@ -403,15 +405,15 @@
   }
 
   .shad-input {
-    @apply bg-dark-400 placeholder:text-dark-600 border-dark-500 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
+    @apply bg-input placeholder:text-dark-600 border-dark-500 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
   }
 
   .shad-input-icon {
-    @apply bg-dark-400 placeholder:text-dark-600 border-dark-500 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
+    @apply bg-input placeholder:text-dark-600 border-dark-500 h-11 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
   }
 
   .shad-textArea {
-    @apply bg-dark-400 placeholder:text-dark-600 border-dark-500 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
+    @apply bg-input placeholder:text-dark-600 border-dark-500 focus-visible:ring-0 focus-visible:ring-offset-0 !important;
   }
 
   .shad-combobox-item {
@@ -427,15 +429,15 @@
 	} */
 
   .shad-select-trigger {
-    @apply bg-dark-400 data-[placeholder]:text-dark-600 border-dark-500 h-11 focus:ring-0 focus:ring-offset-0 !important;
+    @apply bg-input data-[placeholder]:text-dark-600 border-dark-500 h-11 focus:ring-0 focus:ring-offset-0 !important;
   }
 
   .shad-select-content {
-    @apply bg-dark-400 border-dark-500 !important;
+    @apply bg-input border-dark-500 !important;
   }
 
   .shad-dialog {
-    @apply bg-dark-400 border-dark-500 !important;
+    @apply bg-input border-dark-500 !important;
   }
 
   .shad-dropDownMenu {
@@ -484,7 +486,7 @@
 
   /* =====  REACT PHONE NUMBER INPUT OVERRIDES */
   .input-phone {
-    @apply mt-2 h-11 rounded-md px-3 text-sm border bg-dark-400 placeholder:text-dark-600 border-dark-500 !important;
+    @apply mt-2 h-11 rounded-md px-3 text-sm border bg-input placeholder:text-dark-600 border-dark-500 !important;
   }
 
   /* =====  REACT DATE PICKER OVERRIDES */
@@ -506,36 +508,37 @@
 .react-datepicker__day-name,
 .react-datepicker__day,
 .react-datepicker-time__header {
-  background-color: #1a1d21 !important;
+  background-color: hsl(var(--input)) !important;
   border-color: #363a3d !important;
-  color: #abb8c4 !important;
+  color: hsl(var(--textGeneral)) !important;
 }
 
 .react-datepicker__current-month,
 .react-datepicker__day-name,
 .react-datepicker-time__header {
-  color: #ffffff !important;
+  color: hsl(var(--textGeneral)) !important;
 }
 
 .react-datepicker__triangle {
-  fill: #1a1d21 !important;
-  color: #1a1d21 !important;
+  fill: hsl(var(--input)) !important;
+  color: hsl(var(--input)) !important;
   stroke: #1a1d21 !important;
+  /* stroke: #1a1d21 !important; */
 }
 
 .react-datepicker__time-list-item:hover {
-  background-color: #363a3d !important;
+  background-color: hsl(var(--input)) !important;
 }
 
 .react-datepicker__input-container input {
-  background-color: #1a1d21 !important;
+  background-color: hsl(var(--input)) !important;
   width: 100%;
   outline: none;
 }
 
 .react-datepicker__day--selected {
   background-color: #24ae7c !important;
-  color: #ffffff !important;
+  color: hsl(var(--textGeneral)) !important;
   border-radius: 4px;
 }
 
@@ -556,13 +559,13 @@
 .PhoneInputInput {
   outline: none;
   margin-left: 4px;
-  background: #1a1d21;
+  background: hsl(var(--input));
   font-size: 14px;
   font-weight: 500;
 }
 
 .PhoneInputInput::placeholder {
-  color: #1a1d21;
+  color: hsl(var(--input));
 }
 
 @layer components {
