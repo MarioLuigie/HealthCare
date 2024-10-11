@@ -4,6 +4,7 @@ import auth from '@/auth'
 import LogoFull from '@/components/content/LogoFull'
 import UserAvatar from '@/components/shared/UserAvatar'
 import SignOut from '@/components/shared/SignOut'
+import UserDropDownMenu from '@/components/content/manipulations/UserDropDownMenu'
 
 export default async function Header() {
 	const doctorDummyData = {
@@ -26,8 +27,8 @@ export default async function Header() {
 			<div className="flex"></div>
 			<div className="flex-end gap-3">
 				<div>Welcome 👋,</div>
-				<UserAvatar user={sessionUser} />
-				<div className='pl-4'>
+				<UserDropDownMenu sessionUser={sessionUser} />
+				<div className="pl-4">
 					<SignOut />
 				</div>
 			</div>

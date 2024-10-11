@@ -8,7 +8,7 @@ import { Roles, TableCells, TableColumns } from '@/lib/types/enums'
 import { truncateText } from '@/lib/utils/index'
 // components
 import { StatusBadge } from '@/components/shared/StatusBadge'
-import AppointmentManipulation from '@/components/content/tables/admin/AppointmentManipulation'
+import AppointmentManipulation from '@/components/content/manipulations/AppointmentDropDownMenu'
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.

@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 import AppointmentDialog from "@/components/dialogs/AppointmentDialog"
 
-export default function AppointmentManipulation({ row }: { row: any }) {
+export default function AppointmentDropDownMenu({ row }: { row: any }) {
   const appointment = row.original
 
   const params = useParams() as SingleSlugParams
