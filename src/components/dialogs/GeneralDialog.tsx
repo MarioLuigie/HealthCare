@@ -10,6 +10,7 @@ import {
 	DialogTitle,
 	DialogFooter,
 } from '@/components/ui/dialog'
+import Logo from '@/components/content/Logo'
 
 type GeneralDialogProps = {
 	handleCloseDialog: () => void
@@ -20,6 +21,7 @@ type GeneralDialogProps = {
 	description?: string
 	headerClasses?: string
 	contentClasses?: string
+	logo?: boolean
 }
 
 export default function GeneralDialog({
@@ -31,6 +33,7 @@ export default function GeneralDialog({
 	description,
 	headerClasses,
 	contentClasses,
+	logo,
 }: GeneralDialogProps) {
 	return (
 		<Dialog open={isOpen} onOpenChange={handleCloseDialog}>
@@ -43,14 +46,23 @@ export default function GeneralDialog({
 				<DialogHeader
 					className={clsx('border-dark-500 border-b p-8', headerClasses)}
 				>
-					{header && (
-						<>
-							<DialogTitle className="mb-3 text-xl">{title}</DialogTitle>
-							<DialogDescription>{description}</DialogDescription>
-						</>
-					)}
+					<div className='flex items-center gap-4'>
+						<Logo />
+						{header && (
+							<div>
+								<DialogTitle className="mb-3 text-xl">
+									{title}
+								</DialogTitle>
+								<DialogDescription>{description}</DialogDescription>
+							</div>
+						)}
+					</div>
 				</DialogHeader>
-				<div className={clsx("p-6 pb-20 w-full flex flex-col flex-grow items-center overflow-auto")}>
+				<div
+					className={clsx(
+						'p-6 pb-20 w-full flex flex-col flex-grow items-center overflow-auto'
+					)}
+				>
 					{children}
 				</div>
 			</DialogContent>
