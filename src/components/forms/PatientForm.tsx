@@ -3,7 +3,7 @@
 // modules
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { useRouter, useParams, usePathname } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 // lib
 import { PatientFormSchema, PatientFormValues } from '@/lib/types/zod'
 import { FormFieldType, Gender } from '@/lib/types/enums'
