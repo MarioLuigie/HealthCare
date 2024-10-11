@@ -26,7 +26,7 @@ import FileUploader from '@/components/shared/FileUploader'
 import 'react-datepicker/dist/react-datepicker.css'
 import { Route } from '@/lib/constants/paths'
 import { generateUrl } from '@/lib/utils'
-import PersonAvatar from '../shared/UserAvatar'
+import UserAvatar from '@/components/shared/UserAvatar'
 
 type PatientFormProps = {
 	user: any
@@ -238,7 +238,7 @@ export default function PatientForm({
 							value={doctor.name}
 							className="cursor-pointer"
 						>
-							<PersonAvatar user={doctor} />
+							<UserAvatar sessionUser={doctor} />
 						</SelectItem>
 					))}
 				</CustomFormField>
