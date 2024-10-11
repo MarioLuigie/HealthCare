@@ -4,7 +4,7 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 // lib
 import {
 	CreateAppointmentFormValues,
@@ -43,6 +43,7 @@ export default function AppointmentForm({
 	handleCloseDialog,
 }: AppointmentFormProps) {
 	const router = useRouter()
+	const pathname = usePathname()
 	const AppointmentFormSchema = getAppointmentFormSchema(actionType)
 
 	const form = useForm<z.infer<typeof AppointmentFormSchema>>({
@@ -66,17 +67,21 @@ export default function AppointmentForm({
 				}
 
 				if (createdAppointment && userId) {
-					router.push(
-						generateUrl(
-							[
-								Route.PATIENTS,
-								userId,
-								Route.CREATE_APPOINTMENT,
-								Route.SUCCESS,
-							],
-							{ appointmentId: createdAppointment.$id }
+					if (pathname === Route.DASHBOARD) {
+						router.push(generateUrl([Route.DASHBOARD]))
+					} else {
+						router.push(
+							generateUrl(
+								[
+									Route.PATIENTS,
+									userId,
+									Route.CREATE_APPOINTMENT,
+									Route.SUCCESS,
+								],
+								{ appointmentId: createdAppointment.$id }
+							)
 						)
-					)
+					}
 				}
 			} else if (
 				(actionType === ActionTypes.CANCEL ||

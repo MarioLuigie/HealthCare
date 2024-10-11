@@ -1,8 +1,12 @@
-import LinkButton from '@/components/shared/buttons/LinkButton'
+// modules
+import Image from 'next/image'
+// lib
 import { Images } from '@/lib/constants'
 import { Route } from '@/lib/constants/paths'
 import { generateUrl } from '@/lib/utils'
-import Image from 'next/image'
+// components
+import LinkButton from '@/components/shared/buttons/LinkButton'
+import CreateAppointmentButton from '@/components/content/dashboard/patient/CreateAppointmentButton'
 
 type CreateAppointmentProps = {
 	sessionUser?: any
@@ -27,16 +31,9 @@ export default function CreateAppointment({
 				Don&lsquo;t forget to describe what ails you.
 			</p>
 			<div className="flex-center mt-8">
-				<LinkButton
-					href={generateUrl([
-						Route.PATIENTS,
-						sessionUser?.$id,
-						Route.CREATE_APPOINTMENT,
-					])}
-					variant="fill"
-				>
+				<CreateAppointmentButton sessionUser={sessionUser}>
 					Create Appointment
-				</LinkButton>
+				</CreateAppointmentButton>
 			</div>
 		</div>
 	)

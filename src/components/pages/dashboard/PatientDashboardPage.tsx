@@ -17,7 +17,7 @@ export default async function PatientDashboardPage({
 	const isSessionUserVerified: boolean =
 		await auth.checkIsSessionUserVerified()
 
-	const { data: patient } = await getPatient(sessionUser.$id + '+')
+	const { data: patient } = await getPatient(sessionUser.$id)
 
 	return (
 		<div className="flex flex-col items-center justify-center grow p-4">
