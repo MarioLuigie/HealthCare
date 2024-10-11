@@ -33,6 +33,8 @@ export const IconPath = {
 	CANCELLED: '/assets/icons/cancelled.svg',
 	FINISHED: '/assets/icons/finished.svg',
 	PASSWORD: '/assets/icons/password.svg',
+	SUN: '/assets/icons/sun.svg',
+	MOON: '/assets/icons/moon.svg',
 }
 
 export const ImagePath = {

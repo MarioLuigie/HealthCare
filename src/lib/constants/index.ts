@@ -145,6 +145,14 @@ export const Icons = {
 		path: IconPath.PASSWORD,
 		alt: 'Password',
 	},
+	SUN_ICON: {
+		path: IconPath.SUN,
+		alt: 'Sun',
+	},
+	MOON_ICON: {
+		path: IconPath.MOON,
+		alt: 'Moon',
+	},
 }
 
 // Kinde of images

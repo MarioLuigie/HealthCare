@@ -32,8 +32,9 @@
   }
 
   :root {
-    --background: 0 0% 100%; /* Biały */
-    --foreground: 0 0% 5%; /* Ciemny szary */
+    --background: 0 0% 97%; /* Biały */
+    --foreground: 0 0% 99%; /* Ciemny szary */
+    --badge: 0 0% 85%;
     --card: 0 0% 100%; /* Biały */
     --card-foreground: 0 0% 5%; /* Ciemny szary */
     --popover: 0 0% 100%; /* Biały */
@@ -62,8 +63,9 @@
 
   .dark {
     --background: 0 0% 5%; /* Bardzo ciemny szary */
-    --foreground: 0 0% 98%; /* Prawie biały */
-    --card: 0 0% 5%; /* Bardzo ciemny szary */
+    --foreground: 0 0% 8%; /* Prawie biały */
+    --badge: 0 0% 15%;
+    --card: 0 0% 9%; /* Bardzo ciemny szary */
     --card-foreground: 0 0% 98%; /* Prawie biały */
     --popover: 0 0% 5%; /* Bardzo ciemny szary */
     --popover-foreground: 0 0% 98%; /* Prawie biały */
@@ -437,7 +439,7 @@
   }
 
   .shad-dropDownMenu {
-    @apply bg-dark-400 border-dark-500 !important;
+    @apply bg-card border-dark-500 !important;
   }
 
   .shad-dialog button {

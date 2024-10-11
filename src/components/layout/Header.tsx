@@ -26,7 +26,7 @@ export default async function Header() {
 			<LogoFull redirect />
 			<div className="flex"></div>
 			<div className="flex-end gap-3">
-				<div>Welcome 👋,</div>
+				<div>Welcome!</div>
 				<UserDropDownMenu sessionUser={sessionUser} />
 			</div>
 		</header>
