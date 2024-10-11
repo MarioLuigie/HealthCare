@@ -128,7 +128,11 @@ export async function registerPatient(
 
 			console.log('***Registered Patient', registeredPatient)
 
-			return deepClone(registeredPatient)
+			return {
+				success: true,
+				data: registeredPatient,
+				message: 'Patient registered successfully.'
+			}
 		} else {
 			// Create a new patient in patient collection with empty array of identificationDocuments
 			const registeredPatient = await databases.createDocument(

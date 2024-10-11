@@ -51,7 +51,7 @@ export default function GeneralDialog({
 						</>
 					)}
 				</DialogHeader>
-				<div className="p-6 pb-20 w-full flex flex-col flex-grow items-center overflow-auto">
+				<div className={clsx("p-6 pb-20 w-full flex flex-col flex-grow items-center overflow-auto")}>
 					{children}
 				</div>
 			</DialogContent>

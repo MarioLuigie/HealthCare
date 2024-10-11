@@ -3,7 +3,7 @@
 // modules
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { useRouter } from 'next/navigation'
+import { useRouter, useParams, usePathname } from 'next/navigation'
 // lib
 import { PatientFormSchema, PatientFormValues } from '@/lib/types/zod'
 import { FormFieldType, Gender } from '@/lib/types/enums'
@@ -35,6 +35,9 @@ type PatientFormProps = {
 
 export default function PatientForm({ user }: PatientFormProps) {
 	const router = useRouter()
+	const pathname = usePathname()
+
+	console.log('*** PATHANAME', pathname)
 
 	const form = useForm<PatientFormValues>({
 		resolver: zodResolver(PatientFormSchema),
@@ -58,9 +61,17 @@ export default function PatientForm({ user }: PatientFormProps) {
 			)
 
 			if (patient && success) {
-				router.push(
-					generateUrl([Route.PATIENTS, user.$id, Route.CREATE_APPOINTMENT])
-				)
+				if (pathname === Route.DASHBOARD) {
+					router.push(generateUrl([Route.DASHBOARD]))
+				} else {
+					router.push(
+						generateUrl([
+							Route.PATIENTS,
+							user.$id,
+							Route.CREATE_APPOINTMENT,
+						])
+					)
+				}
 				form.reset()
 			} else {
 				console.error('Something went wrong with registering patient.')
