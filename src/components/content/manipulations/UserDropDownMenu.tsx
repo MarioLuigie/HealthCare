@@ -29,7 +29,7 @@ export default function UserDropDownMenu({
 						variant="ghost"
 						className="p-0 rounded-l-full rounded-r-[3000px] pr-6 bg-dark-400"
 					>
-						<UserAvatar sessionUser={sessionUser} />
+						<UserAvatar user={sessionUser} />
 					</Button>
 				</DropdownMenuTrigger>
 				<DropdownMenuContent

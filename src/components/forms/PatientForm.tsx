@@ -238,7 +238,7 @@ export default function PatientForm({
 							value={doctor.name}
 							className="cursor-pointer"
 						>
-							<UserAvatar sessionUser={doctor} />
+							<UserAvatar user={doctor} />
 						</SelectItem>
 					))}
 				</CustomFormField>
