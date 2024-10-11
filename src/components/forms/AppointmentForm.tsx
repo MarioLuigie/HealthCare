@@ -83,6 +83,11 @@ export default function AppointmentForm({
 						)
 					}
 				}
+
+				if (handleCloseDialog) {
+					handleCloseDialog()
+				}
+				
 			} else if (
 				(actionType === ActionTypes.CANCEL ||
 					actionType === ActionTypes.SCHEDULE) &&

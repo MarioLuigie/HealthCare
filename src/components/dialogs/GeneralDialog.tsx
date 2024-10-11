@@ -10,7 +10,6 @@ import {
 	DialogTitle,
 	DialogFooter,
 } from '@/components/ui/dialog'
-import PatientForm from '../forms/PatientForm'
 
 type GeneralDialogProps = {
 	handleCloseDialog: () => void

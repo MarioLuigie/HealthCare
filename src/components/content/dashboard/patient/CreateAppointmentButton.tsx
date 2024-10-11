@@ -40,7 +40,7 @@ export default function CreateAppointmentButton({
 					description="Fill the form below and create your appointment with selected doctor in 10 seconds."
 				>
 					<div className="w-full max-w-3xl">
-						<AppointmentForm userId={sessionUser.$id} actionType={ActionTypes.CREATE} />
+						<AppointmentForm userId={sessionUser.$id} actionType={ActionTypes.CREATE} handleCloseDialog={handleCloseDialog}/>
 					</div>
 				</GeneralDialog>
 			)}
