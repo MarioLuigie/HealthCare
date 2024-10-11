@@ -1,9 +1,9 @@
-import LinkButton from '@/components/shared/buttons/LinkButton'
-import { Images } from '@/lib/constants'
-import { Route } from '@/lib/constants/paths'
-import { generateUrl } from '@/lib/utils'
+// modules
 import Image from 'next/image'
-import CreatePatientButton from './CreatePatientButton'
+// lib
+import { Images } from '@/lib/constants'
+// components
+import CreatePatientButton from '@/components/content/dashboard/patient/CreatePatientButton'
 
 type CreatePatientProps = {
 	sessionUser?: any
@@ -26,22 +26,9 @@ export default function CreatePatient({ sessionUser }: CreatePatientProps) {
 				create and manage your appointments with our doctors.
 			</p>
 			<div className="flex-center mt-8">
-				<CreatePatientButton
-					sessionUser={sessionUser}
-				>
+				<CreatePatientButton sessionUser={sessionUser}>
 					Create Patient Profile
 				</CreatePatientButton>
-
-				{/* <LinkButton
-					href={generateUrl([
-						Route.PATIENTS,
-						sessionUser.$id,
-						Route.REGISTER,
-					])}
-					variant="fill"
-				>
-					Create Patient Profile
-				</LinkButton> */}
 			</div>
 		</div>
 	)
