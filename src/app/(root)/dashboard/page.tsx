@@ -1,6 +1,6 @@
 // components
-import DashboardPage from '@/components/pages/dashboard/DashboardPage'
+import GeneralDashboardPage from '@/components/pages/dashboard/GeneralDashboardPage'
 
 export default async function Page({ params }: SingleSlugPageProps) {
-	return <DashboardPage params={params} />
+	return <GeneralDashboardPage params={params} />
 }
