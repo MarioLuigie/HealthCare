@@ -36,6 +36,7 @@ export default function CreateAppointmentButton({
 				<GeneralDialog
 					handleCloseDialog={handleCloseDialog}
 					isOpen={isDialogOpen}
+					isLogo
 					isHeader
 					title="Create Appointment"
 					description="Fill the form below and create your appointment with selected doctor in 10 seconds."

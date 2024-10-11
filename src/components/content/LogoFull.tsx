@@ -5,16 +5,21 @@ import Link from 'next/link'
 import { Icons } from '@/lib/constants'
 import { Route } from '@/lib/constants/paths'
 
-export default function LogoFull() {
+export default function LogoFull({ redirect = false }: { redirect?: boolean }) {
+	const logoFull = (
+		<Image
+			src={Icons.LOGO_FULL_ICON.path}
+			height={1000}
+			width={1000}
+			alt={Icons.LOGO_FULL_ICON.alt}
+			className="h-10 w-fit"
+			priority
+		/>
+	)
+
 	return (
-		<Link href={Route.HOME}>
-			<Image
-				src={Icons.LOGO_FULL_ICON.path}
-				height={1000}
-				width={1000}
-				alt={Icons.LOGO_FULL_ICON.alt}
-				className="h-10 w-fit"
-			/>
-		</Link>
+		<div className="h-10 w-fit">
+			{redirect ? <Link href={Route.HOME}>{logoFull}</Link> : logoFull}
+		</div>
 	)
 }

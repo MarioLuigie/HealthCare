@@ -36,7 +36,7 @@ export default async function SuccessApointmentPage({
 	return (
 		<div className=" flex h-screen max-h-screen px-[5%]">
 			<div className="success-img">
-				<LogoFull />
+				<LogoFull redirect />
 				<SuccessResponse
 					imageSrc={IconPath.SUCCESS_ANIM}
 					entity="appointment request"

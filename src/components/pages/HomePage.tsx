@@ -36,7 +36,7 @@ export default async function HomePage({
     >
       <PassKeyDialog searchParams={searchParams} />
       <div className="flex flex-col justify-between grow">
-        <LogoFull />
+        <LogoFull redirect />
         <div>
           <PageTitle
             title="Hi there !"

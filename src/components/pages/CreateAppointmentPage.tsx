@@ -25,7 +25,7 @@ export default async function CreateAppointmentPage({
 			image={Images.NEW_APPOINTMENT_PAGE_IMAGE}
 			classes="max-w-[780px]"
 		>
-			<LogoFull />
+			<LogoFull redirect />
 			<PageTitle
 				title="New appointment"
 				description="Request a new appointment in 10 seconds"

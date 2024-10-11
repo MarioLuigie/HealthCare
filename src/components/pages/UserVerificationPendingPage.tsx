@@ -19,7 +19,7 @@ export default async function UserVerificationPendingPage({
   return (
     <div className=" flex h-screen max-h-screen px-[5%]">
       <div className="success-img">
-        <LogoFull />
+        <LogoFull redirect />
         <div className="flex flex-col gap-3">
           <p className="mt-16 text-2xl font-bold text-center">
             Thank you {sessionUser?.name && sessionUser?.name} for creating your

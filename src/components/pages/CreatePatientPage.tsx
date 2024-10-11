@@ -28,7 +28,7 @@ export default async function CreatePatientPage({
         image={Images.REGISTER_PAGE_IMAGE}
         classes="max-w-[780px]"
       >
-        <LogoFull />
+        <LogoFull redirect />
         <PageTitle
           title="Welcome !"
           description="Here you can fill form to create your patient profile, from which you will be able to create and manage your appointments. You can skip this and do it later in your dashboard."

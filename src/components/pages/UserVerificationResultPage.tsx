@@ -49,7 +49,7 @@ export default async function UserVerificationResultPage({
 		return (
 			<div className="flex h-screen max-h-screen px-[5%]">
 				<div className="success-img">
-					<LogoFull />
+					<LogoFull redirect />
 					<>
 						<RedirectWithDelay path={failureRedirectPath} delay={15000}>
 							<p>
@@ -85,7 +85,7 @@ export default async function UserVerificationResultPage({
 	return (
 		<div className="flex h-screen max-h-screen px-[5%]">
 			<div className="success-img">
-				<LogoFull />
+				<LogoFull redirect />
 				{success && (
 					<>
 						<p className="mt-16 text-2xl font-bold text-center">

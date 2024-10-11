@@ -30,7 +30,7 @@ export default async function SignUpPage({
     <FormPageTemplate image={Images.SIGN_UP_PAGE_IMAGE} classes="max-w-[480px]">
       {/* <PassKeyDialog searchParams={searchParams} /> */}
       <div className="flex flex-col justify-between grow">
-        <LogoFull />
+        <LogoFull redirect />
         <div>
           <PageTitle
             title="Sign Up"

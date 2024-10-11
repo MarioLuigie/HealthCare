@@ -18,7 +18,7 @@ export default function Error({
 	const router = useRouter()
 	return (
 		<div className="flex flex-col gap-4 items-center justify-center min-h-screen grow">
-			<LogoFull />
+			<LogoFull redirect/>
 			<h2 className="text-lg mt-12">Something went wrong.</h2>
 			<p className='text-md text-dark-600'>{error.message}</p>
 			<div className="flex flex-col gap-4 mt-6">
