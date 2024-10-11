@@ -1,10 +1,5 @@
 'use client'
-// modules
-import { MoreHorizontal } from 'lucide-react'
-
-//lib
-
-//components
+// components
 import { Button } from '@/components/ui/button'
 import {
 	DropdownMenu,
@@ -22,36 +17,47 @@ export default function UserDropDownMenu({
 	sessionUser: any
 }) {
 	return (
-		<>
-			<DropdownMenu>
-				<DropdownMenuTrigger asChild>
-					<Button
-						variant="ghost"
-						className="p-0 rounded-l-full rounded-r-[3000px] pr-6 bg-dark-400"
-					>
-						<UserAvatar user={sessionUser} />
-					</Button>
-				</DropdownMenuTrigger>
-				<DropdownMenuContent
-					align="end"
-					className="shad-dropDownMenu min-w-[300px] p-6"
+		<DropdownMenu>
+			<DropdownMenuTrigger asChild>
+				<Button
+					variant="ghost"
+					className="p-0 rounded-l-full rounded-r-[3000px] pr-6 bg-dark-400"
 				>
-					<DropdownMenuItem className="cursor-pointer">
-						Copy appointment ID
-					</DropdownMenuItem>
-					<DropdownMenuSeparator />
-					<DropdownMenuItem className="cursor-pointer">
-						View appointment details
-					</DropdownMenuItem>
-					<DropdownMenuSeparator />
-					<DropdownMenuItem className="cursor-pointer">
-						View appointment details
-					</DropdownMenuItem>
-					<DropdownMenuItem className="cursor-pointer">
-						<SignOut />
-					</DropdownMenuItem>
-				</DropdownMenuContent>
-			</DropdownMenu>
-		</>
+					<UserAvatar user={sessionUser} />
+				</Button>
+			</DropdownMenuTrigger>
+
+			<DropdownMenuContent
+				align="end"
+				className="shad-dropDownMenu min-w-[270px] p-6 flex flex-col gap-2 items-start"
+			>
+				{/* Mode selection item */}
+				<div className="pl-2 text-sm">
+					<p>Mode</p>
+				</div>
+
+				{/* Separator */}
+				<DropdownMenuSeparator className="w-full h-[1px] bg-dark-500 my-2" />
+
+				{/* User options */}
+				<DropdownMenuItem className="cursor-pointer">
+					<p>Profile</p>
+				</DropdownMenuItem>
+				<DropdownMenuItem className="cursor-pointer">
+					<p>Account</p>
+				</DropdownMenuItem>
+				<DropdownMenuItem className="cursor-pointer">
+					<p>Settings</p>
+				</DropdownMenuItem>
+
+				{/* Separator */}
+				<DropdownMenuSeparator className="w-full h-[1px] bg-dark-500 my-2" />
+
+				{/* Sign out option */}
+				<DropdownMenuItem className="cursor-pointer flex justify-end mt-6">
+					<SignOut />
+				</DropdownMenuItem>
+			</DropdownMenuContent>
+		</DropdownMenu>
 	)
 }
