@@ -34,10 +34,11 @@ export default function CreatePatientButton({
 				<GeneralDialog
 					handleCloseDialog={handleCloseDialog}
 					isOpen={isDialogOpen}
+					header
 					title="Create Patient Profile"
 					description="Fill the form below and create your patient profile. Once you have created your profile, you will be able to set up your first appointment with a doctor."
 				>
-					<div className='w-full max-w-3xl'>
+					<div className="w-full max-w-3xl">
 						<PatientForm user={sessionUser} />
 					</div>
 				</GeneralDialog>

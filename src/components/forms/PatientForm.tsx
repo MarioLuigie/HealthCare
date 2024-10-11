@@ -349,11 +349,13 @@ export default function PatientForm({ user }: PatientFormProps) {
             privacy policy"
 					/>
 				</section>
-				<div className="my-8">
-					<SubmitButton isLoading={isSubmitting} className="w-full" variant='fill'>
-						Register and Continue
-					</SubmitButton>
-				</div>
+				<SubmitButton
+					isLoading={isSubmitting}
+					className="w-full"
+					variant="fill"
+				>
+					Register and Continue
+				</SubmitButton>
 			</form>
 		</Form>
 	)
