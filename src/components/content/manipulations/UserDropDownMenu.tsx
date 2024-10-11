@@ -14,6 +14,7 @@ import {
 	DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import UserAvatar from '@/components/shared/UserAvatar'
+import SignOut from '@/components/shared/SignOut'
 
 export default function UserDropDownMenu({
 	sessionUser,
@@ -24,11 +25,17 @@ export default function UserDropDownMenu({
 		<>
 			<DropdownMenu>
 				<DropdownMenuTrigger asChild>
-					<Button variant="ghost" className="p-0 rounded-full pr-6 bg-dark-400">
+					<Button
+						variant="ghost"
+						className="p-0 rounded-l-full rounded-r-[3000px] pr-6 bg-dark-400"
+					>
 						<UserAvatar sessionUser={sessionUser} />
 					</Button>
 				</DropdownMenuTrigger>
-				<DropdownMenuContent align="end" className="shad-dropDownMenu min-w-[300px]">
+				<DropdownMenuContent
+					align="end"
+					className="shad-dropDownMenu min-w-[300px] p-6"
+				>
 					<DropdownMenuItem className="cursor-pointer">
 						Copy appointment ID
 					</DropdownMenuItem>
@@ -41,7 +48,7 @@ export default function UserDropDownMenu({
 						View appointment details
 					</DropdownMenuItem>
 					<DropdownMenuItem className="cursor-pointer">
-						View patient details
+						<SignOut />
 					</DropdownMenuItem>
 				</DropdownMenuContent>
 			</DropdownMenu>

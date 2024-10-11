@@ -28,9 +28,6 @@ export default async function Header() {
 			<div className="flex-end gap-3">
 				<div>Welcome 👋,</div>
 				<UserDropDownMenu sessionUser={sessionUser} />
-				<div className="pl-4">
-					<SignOut />
-				</div>
 			</div>
 		</header>
 	)
