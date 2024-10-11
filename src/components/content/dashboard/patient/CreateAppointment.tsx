@@ -20,10 +20,10 @@ export default function CreateAppointment({
 			<Image
 				src={Images.APPOINTMENT_CREATE_IMAGE.path}
 				alt={Images.APPOINTMENT_CREATE_IMAGE.alt}
-				width={500}
-				height={500}
+				width={470}
+				height={470}
 			/>
-			<p className="text-green-400 text-5xl font-bold text-center">
+			<p className="text-green-400 text-4xl font-bold text-center">
 				Create Appointment with Doctor!
 			</p>
 			<p className="max-w-[500px] text-center text-dark-600 text-xs">

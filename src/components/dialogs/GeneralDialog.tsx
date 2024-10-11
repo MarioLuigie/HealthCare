@@ -46,7 +46,7 @@ export default function GeneralDialog({
 				<DialogHeader
 					className={clsx('border-dark-500 border-b p-8', headerClasses)}
 				>
-					<div className='flex items-center gap-4'>
+					<div className="flex items-center gap-4">
 						{isLogo && <Logo />}
 						{isHeader && (
 							<div>
