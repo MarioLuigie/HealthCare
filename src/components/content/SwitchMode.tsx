@@ -40,7 +40,7 @@ export default function SwitchMode() {
 				/>
 			)}
 			<SwitchButton
-				id="app-mode"
+				id="general-app-mode-changer"
 				checked={isDarkMode}
 				onCheckedChange={handleChangeMode}
 			/>
