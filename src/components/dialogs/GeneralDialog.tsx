@@ -21,7 +21,6 @@ type GeneralDialogProps = {
 	description?: string
 	headerClasses?: string
 	contentClasses?: string
-	isLogo?: boolean
 }
 
 export default function GeneralDialog({
@@ -33,7 +32,6 @@ export default function GeneralDialog({
 	description,
 	headerClasses,
 	contentClasses,
-	isLogo,
 }: GeneralDialogProps) {
 	return (
 		<Dialog open={isOpen} onOpenChange={handleCloseDialog}>
@@ -47,7 +45,6 @@ export default function GeneralDialog({
 					className={clsx('border-dark-500 border-b p-8', headerClasses)}
 				>
 					<div className="flex items-center gap-4">
-						{isLogo && <Logo />}
 						{isHeader && (
 							<div>
 								<DialogTitle className="mb-3 text-xl">

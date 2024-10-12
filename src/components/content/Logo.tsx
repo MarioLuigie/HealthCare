@@ -12,13 +12,13 @@ export default function Logo({ redirect = false }: { redirect?: boolean }) {
 			height={1000}
 			width={1000}
 			alt={Icons.LOGO_ICON.alt}
-			className="h-10 w-fit"
+			className="h-11 w-fit"
 			priority
 		/>
 	)
 
 	return (
-		<div className="h-10 w-fit">
+		<div className="h-10 w-fit sm:hidden">
 			{redirect ? <Link href={Route.HOME}>{logo}</Link> : logo}
 		</div>
 	)

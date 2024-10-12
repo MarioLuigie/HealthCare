@@ -18,7 +18,7 @@ export default function LogoFull({ redirect = false }: { redirect?: boolean }) {
 	)
 
 	return (
-		<div className="h-10 w-fit">
+		<div className="h-10 w-fit hidden sm:block">
 			{redirect ? <Link href={Route.HOME}>{logoFull}</Link> : logoFull}
 		</div>
 	)
