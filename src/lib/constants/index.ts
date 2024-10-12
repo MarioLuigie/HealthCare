@@ -153,6 +153,22 @@ export const Icons = {
 		path: IconPath.MOON,
 		alt: 'Moon',
 	},
+	SIGN_OUT_ICON: {
+		path: IconPath.SIGN_OUT,
+		alt: 'Sign out',
+	},
+	SETTINGS_ICON: {
+		path: IconPath.SETTINGS,
+		alt: 'Settings',
+	},
+	PROFILE_ICON: {
+		path: IconPath.PROFILE,
+		alt: 'Profile',
+	},
+	ACCOUNT_ICON: {
+		path: IconPath.ACCOUNT,
+		alt: 'Account',
+	},
 }
 
 // Kinde of images

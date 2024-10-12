@@ -35,6 +35,10 @@ export const IconPath = {
 	PASSWORD: '/assets/icons/password.svg',
 	SUN: '/assets/icons/sun.svg',
 	MOON: '/assets/icons/moon.svg',
+	SIGN_OUT: '/assets/icons/sign-out.svg',
+	SETTINGS: '/assets/icons/settings.svg',
+	PROFILE: '/assets/icons/profile.svg',
+	ACCOUNT: '/assets/icons/account.svg',
 }
 
 export const ImagePath = {
