@@ -33,7 +33,7 @@ export default function UserDropDownMenu({
 
       <DropdownMenuContent
         align="end"
-        className="shad-dropDownMenu min-w-[270px] p-6 flex flex-col gap-2 items-start"
+        className="shad-dropDownMenu min-w-[290px] p-6 pb-2 flex flex-col gap-2 items-start"
       >
         {/* Mode selection item */}
         <div className="pl-2 text-sm flex items-center justify-between w-full">
@@ -62,6 +62,9 @@ export default function UserDropDownMenu({
           <SVGImage src={Icons.SIGN_OUT_ICON.path} width={20} height={20} />
           <SignOut />
         </DropdownMenuItem>
+				<div className="w-full text-center">
+					<small className="text-dark-500 text-[12px]">© 2024 HealthCare by ARWcode</small>
+				</div>
       </DropdownMenuContent>
     </DropdownMenu>
   )
