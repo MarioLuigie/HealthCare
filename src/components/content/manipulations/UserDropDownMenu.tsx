@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import UserAvatar from '@/components/shared/UserAvatar'
 import SignOut from '@/components/shared/SignOut'
-import SwitchButton from '@/components/shared/buttons/SwitchButton'
+import SwitchMode from '@/components/content/SwitchMode'
 
 export default function UserDropDownMenu({
 	sessionUser,
@@ -35,7 +35,7 @@ export default function UserDropDownMenu({
 				{/* Mode selection item */}
 				<div className="pl-2 text-sm flex items-center justify-between w-full">
 					<p>Dark Mode</p>
-          <SwitchButton />
+          <SwitchMode />
 				</div>
 
 				{/* Separator */}
