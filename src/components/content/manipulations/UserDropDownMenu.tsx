@@ -34,7 +34,6 @@ export default function UserDropDownMenu({
 			>
 				{/* Mode selection item */}
 				<div className="pl-2 text-sm flex items-center justify-between w-full">
-					<p>Dark Mode</p>
           <SwitchMode />
 				</div>
 
