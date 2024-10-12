@@ -13,6 +13,7 @@ import SignOut from "@/components/shared/SignOut"
 import SwitchMode from "@/components/content/SwitchMode"
 import SVGImage from "@/components/shared/SvgImage"
 import { Icons } from "@/lib/constants"
+import { UserDropDownMenuItems } from "@/lib/constants"
 
 export default function UserDropDownMenu({
   sessionUser,
@@ -43,18 +44,15 @@ export default function UserDropDownMenu({
         <DropdownMenuSeparator className="w-full h-[1px] bg-dark-500 my-2" />
 
         {/* User options */}
-        <DropdownMenuItem className="cursor-pointer flex justify-end gap-2 items-center">
-          <SVGImage src={Icons.PROFILE_ICON.path} width={20} height={20} />
-          <p>Profile</p>
-        </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer flex justify-end gap-2 items-center">
-          <SVGImage src={Icons.ACCOUNT_ICON.path} width={20} height={20} />
-          <p>Account</p>
-        </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer flex justify-end gap-2 items-center">
-          <SVGImage src={Icons.SETTINGS_ICON.path} width={20} height={20} />
-          <p>Settings</p>
-        </DropdownMenuItem>
+        {UserDropDownMenuItems.map((item, i) => (
+          <DropdownMenuItem
+            key={item.title + i}
+            className="cursor-pointer flex justify-end gap-2 items-center"
+          >
+            <SVGImage src={item.image} width={20} height={20} />
+            <p>{item.title}</p>
+          </DropdownMenuItem>
+        ))}
 
         {/* Separator */}
         <DropdownMenuSeparator className="w-full h-[1px] bg-dark-500 my-2" />
