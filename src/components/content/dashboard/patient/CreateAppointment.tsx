@@ -13,12 +13,12 @@ export default function CreateAppointment({
 	sessionUser,
 }: CreateAppointmentProps) {
 	return (
-		<div className="flex flex-col items-center justify-center gap-2 h-full">
+		<div className="flex flex-col items-center justify-center gap-2 h-full grow">
 			<Image
 				src={Images.APPOINTMENT_CREATE_IMAGE.path}
 				alt={Images.APPOINTMENT_CREATE_IMAGE.alt}
-				width={440}
-				height={440}
+				width={380}
+				height={380}
 			/>
 			<p className="text-green-400 text-3xl font-bold text-center">
 				Create Appointment with Doctor!

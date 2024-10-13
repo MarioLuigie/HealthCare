@@ -3,7 +3,7 @@ import clsx from 'clsx'
 // lib
 import { Status } from '@/lib/types/enums'
 import { StatusConfig } from '@/lib/constants'
-import SVGImage from './SvgImage'
+import SVGImage from '@/components/shared/SvgImage'
 
 export const StatusBadge = ({
 	status,

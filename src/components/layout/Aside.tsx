@@ -17,7 +17,7 @@ export default function Aside({
       className={clsx(
         // position === positionRight && "border-l border-l-dark-500",
         // position === positionLeft && "border-r border-r-dark-500",
-        "p-4 flex flex-col gap-3",
+        "px-4 py-8 flex flex-col gap-3",
         className
       )}
     >
