@@ -1,3 +1,15 @@
-export default function Main({ children }: { children: React.ReactNode }) {
-	return <main className="grow flex flex-col">{children}</main>
+import clsx from "clsx"
+
+export default function Main({
+  children,
+  className,
+}: {
+  children: React.ReactNode
+  className?: string
+}) {
+  return (
+    <main className={clsx("flex flex-col", className)}>
+      {children}
+    </main>
+  )
 }

@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl" suppressHydrationWarning={true}>
-      <body className={cn("min-h-screen font-sans antialiased scroll-m-4 bg-background")}>
+      <body className={cn("font-sans antialiased scroll-m-4 bg-background")}>
         <div className="max-w-[1920px] mx-auto">
           <ThemeProvider attribute="class" defaultTheme="dark">
             {children}

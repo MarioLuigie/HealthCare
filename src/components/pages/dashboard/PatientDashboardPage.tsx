@@ -20,7 +20,7 @@ export default async function PatientDashboardPage({
 	const { data: patient } = await getPatient(sessionUser.$id)
 
 	return (
-		<div className="flex flex-col items-center justify-center grow p-4">
+		<div className="flex flex-col items-center justify-center grow px-4 py-8">
 			{!isSessionUserVerified && <VerifyUserRequest />}
 			{isSessionUserVerified && !patient && (
 				<CreatePatient sessionUser={sessionUser} />

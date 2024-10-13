@@ -11,7 +11,7 @@ type CreatePatientProps = {
 
 export default function CreatePatient({ sessionUser }: CreatePatientProps) {
 	return (
-		<div className="flex flex-col items-center gap-6">
+		<div className="flex flex-col items-center justify-center gap-2 h-full">
 			<Image
 				src={Images.PATIENT_CREATE_IMAGE.path}
 				alt={Images.PATIENT_CREATE_IMAGE.alt}
@@ -25,7 +25,7 @@ export default function CreatePatient({ sessionUser }: CreatePatientProps) {
 				Once you have created your patient profile, you will be able to
 				create and manage your appointments with our doctors.
 			</p>
-			<div className="flex-center mt-8">
+			<div className="flex-center mt-4">
 				<CreatePatientButton sessionUser={sessionUser}>
 					Create Patient Profile
 				</CreatePatientButton>
