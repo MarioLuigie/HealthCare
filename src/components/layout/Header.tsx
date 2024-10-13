@@ -21,7 +21,7 @@ export default async function Header() {
 	// <UserAvatar user={roleUser || sessionUser} />
 
 	return (
-		<header className="backdrop-blur-md bg-base-200/50 border-b-[1px] border-zinc-800 p-6 max-sm:p-4 z-40 min-h-[90px] sticky top-0 left-0 w-full grid grid-cols-3 items-center">
+		<header className="backdrop-blur-md bg-base-200/50 border-b-[1px] border-zinc-800 p-2 sm:p-6 max-sm:p-4 z-40 min-h-[90px] sticky top-0 left-0 w-full grid grid-cols-3 items-center">
 			<LogoFull redirect />
 			<Logo redirect />
 			<div className="flex"></div>
