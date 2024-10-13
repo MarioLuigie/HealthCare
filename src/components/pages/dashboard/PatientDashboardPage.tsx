@@ -33,6 +33,7 @@ export default async function PatientDashboardPage({
 						<StateCard status={Status.SCHEDULED} count={23}/>
 						<StateCard status={Status.SCHEDULED} count={23}/>
 						<StateCard status={Status.SCHEDULED} count={23}/>
+						<StateCard status={Status.SCHEDULED} count={23}/>
 					</div>
           <CreateAppointment sessionUser={sessionUser} />
         </div>
