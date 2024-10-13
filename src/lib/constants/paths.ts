@@ -16,6 +16,7 @@ export const Route = {
 
 export const IconPath = {
 	LOGO_FULL: '/assets/icons/logo-full.svg',
+	LOGO_FULL_BLACK: '/assets/icons/logo-full-black.svg',
 	LOGO: '/assets/icons/logo-icon.svg',
 	USER: '/assets/icons/user.svg',
 	EMAIL: '/assets/icons/email.svg',

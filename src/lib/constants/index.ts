@@ -94,6 +94,10 @@ export const Icons = {
     path: IconPath.LOGO_FULL,
     alt: "Logo",
   },
+  LOGO_FULL_BLACK_ICON: {
+    path: IconPath.LOGO_FULL_BLACK,
+    alt: "Logo",
+  },
   LOGO_ICON: {
     path: IconPath.LOGO,
     alt: "Logo",
