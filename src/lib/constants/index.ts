@@ -174,6 +174,50 @@ export const Icons = {
     path: IconPath.ACCOUNT,
     alt: "Account",
   },
+  DASHBOARD_ICON: {
+    path: IconPath.DASHBOARD,
+    alt: "Dashboard",
+  },
+  TEST_RESULT_ICON: {
+    path: IconPath.TEST_RESULT,
+    alt: "Test results",
+  },
+  TREATMENT_HISTORY_ICON: {
+    path: IconPath.TREATMENT_HISTORY,
+    alt: "Treatment history",
+  },
+  APPOINTMENT_ICON: {
+    path: IconPath.APPOINTMENT,
+    alt: "Appointment",
+  },
+  CHAT_ICON: {
+    path: IconPath.CHAT,
+    alt: "Chat",
+  },
+  DOC_MED_ICON: {
+    path: IconPath.DOC_MED,
+    alt: "Medical documentation",
+  },
+  BICYCLE_ICON: {
+    path: IconPath.BICYCLE,
+    alt: "Bicycle",
+  },
+  BELL_ICON: {
+    path: IconPath.BELL,
+    alt: "Bell",
+  },
+  DEVICE_ICON: {
+    path: IconPath.DEVICE,
+    alt: "Device",
+  },
+  CASH_ICON: {
+    path: IconPath.CASH,
+    alt: "Cash",
+  },
+  DOT_ICON: {
+    path: IconPath.DOT,
+    alt: "Dot",
+  },
 }
 
 // Kinde of images
@@ -246,8 +290,3 @@ export const StatusConfig = {
   },
 }
 
-export const UserDropDownMenuItems = [
-  { title: "Profile", image: Icons.PROFILE_ICON.path },
-  { title: "Account", image: Icons.ACCOUNT_ICON.path },
-  { title: "Settings", image: Icons.SETTINGS_ICON.path },
-]

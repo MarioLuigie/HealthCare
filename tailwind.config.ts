@@ -54,6 +54,7 @@ const config = {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				badge: 'hsl(var(--badge))',
+				hover: 'hsl(var(--hover))',
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))',

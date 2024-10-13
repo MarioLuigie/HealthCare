@@ -13,7 +13,7 @@ import SignOut from "@/components/shared/SignOut"
 import SwitchMode from "@/components/content/SwitchMode"
 import SVGImage from "@/components/shared/SvgImage"
 import { Icons } from "@/lib/constants"
-import { UserDropDownMenuItems } from "@/lib/constants"
+import { UserDropDownMenuItems } from "@/lib/constants/menu"
 
 export default function UserDropDownMenu({
   sessionUser,
@@ -25,7 +25,7 @@ export default function UserDropDownMenu({
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="p-0 rounded-l-full rounded-r-[3000px] pr-6 bg-badge"
+          className="p-0 rounded-l-full rounded-r-[3000px] pr-6 bg-card hover:bg-hover"
         >
           <UserAvatar user={sessionUser} />
         </Button>

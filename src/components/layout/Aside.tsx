@@ -22,7 +22,6 @@ export default function Aside({
       )}
     >
       {/* Menu {position === 'right' ? "right" : "left"} */}
-      <p className="text-md hidden sm:block">Menu</p>
       <Sidebar />
     </aside>
   )

@@ -35,7 +35,7 @@
     --background: 0 0% 98%; /* Biały */
     --foreground: 0 0% 99%; /* Ciemny szary */
     --badge: 0 0% 85%; /* Jasny biały */
-    --card: 0 0% 99%; /* Biały */
+    --card: 0 0% 90%; /* Biały */
     --card-foreground: 0 0% 5%; /* Ciemny szary */
     --popover: 0 0% 100%; /* Biały */
     --popover-foreground: 0 0% 5%; /* Ciemny szary */
@@ -60,6 +60,7 @@
     --radius: 0.5rem;
     --font-sans: "Plus Jakarta Sans", sans-serif;
     --textGeneral: 0 0% 2%;
+    --hover: 0 0% 85%;
   }
 
   .dark {
@@ -90,6 +91,7 @@
     --chart-5: 340 75% 55%; /* Różowy */
     --font-sans: "Plus Jakarta Sans", sans-serif;
     --textGeneral: 0 0% 99%;
+    --hover: 0 0% 20%;
   }
 }
 

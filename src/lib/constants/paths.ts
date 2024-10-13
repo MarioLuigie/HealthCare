@@ -39,6 +39,17 @@ export const IconPath = {
 	SETTINGS: '/assets/icons/settings.svg',
 	PROFILE: '/assets/icons/profile.svg',
 	ACCOUNT: '/assets/icons/account.svg',
+	DASHBOARD: '/assets/icons/dashboard.svg',
+	TEST_RESULT: '/assets/icons/test-result.svg',
+	TREATMENT_HISTORY: '/assets/icons/treatment-history.svg',
+	APPOINTMENT: '/assets/icons/appointment.svg',
+	CHAT: '/assets/icons/chat.svg',
+	DOC_MED: '/assets/icons/doc-med.svg',
+	BICYCLE: '/assets/icons/bicycle.svg',
+	BELL: '/assets/icons/bell.svg',
+	DEVICE: '/assets/icons/device.svg',
+	CASH: '/assets/icons/cash.svg',
+	DOT: '/assets/icons/dot.svg',
 }
 
 export const ImagePath = {
