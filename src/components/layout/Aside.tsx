@@ -15,8 +15,8 @@ export default function Aside({
   return (
     <aside
       className={clsx(
-        position === positionRight && "border-l border-l-dark-500",
-        position === positionLeft && "border-r border-r-dark-500",
+        // position === positionRight && "border-l border-l-dark-500",
+        // position === positionLeft && "border-r border-r-dark-500",
         "p-4 flex flex-col gap-3",
         className
       )}
