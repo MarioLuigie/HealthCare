@@ -6,7 +6,7 @@ import { getPatient } from "@/lib/actions/patient.actions"
 import CreatePatient from "@/components/content/dashboards/patient/CreatePatient"
 import CreateAppointment from "@/components/content/dashboards/patient/CreateAppointment"
 import VerifyUserRequest from "@/components/content/dashboards/patient/VerifyUserRequest"
-import StateCard from "@/components/shared/StateCard"
+import AppointmentsStateCard from "@/components/shared/AppointmentsStateCard"
 import { Status } from "@/lib/types/enums"
 
 
@@ -30,10 +30,10 @@ export default async function PatientDashboardPage({
       {isSessionUserVerified && patient && (
         <div className="flex flex-col grow w-full">
 					<div className="flex gap-4 w-full">
-						<StateCard status={Status.SCHEDULED} count={23}/>
-						<StateCard status={Status.SCHEDULED} count={23}/>
-						<StateCard status={Status.SCHEDULED} count={23}/>
-						<StateCard status={Status.SCHEDULED} count={23}/>
+						<AppointmentsStateCard status={Status.SCHEDULED} count={23}/>
+						<AppointmentsStateCard status={Status.SCHEDULED} count={23}/>
+						<AppointmentsStateCard status={Status.SCHEDULED} count={23}/>
+						<AppointmentsStateCard status={Status.SCHEDULED} count={23}/>
 					</div>
           <CreateAppointment sessionUser={sessionUser} />
         </div>
