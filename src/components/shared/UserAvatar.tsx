@@ -21,7 +21,7 @@ export default function UserAvatar({ user }: { user: any }) {
 					<p className="pr-[2px] pt-[2px]">{user.name.charAt(0)}</p>
 				</div>
 			)}
-			<p>{user.name}</p>
+			<p className='hidden lg:block'>{user.name}</p>
 		</div>
 	)
 }

@@ -3,7 +3,7 @@ import { Status } from '@/lib/types/enums'
 import { capitalizeFirstLetter } from '@/lib/utils'
 import { getAppointmentsOrderedByStatus } from '@/lib/actions/appointment.actions'
 // components
-import AppointmentsStateCard from '@/components/shared/AppointmentsStateCard'
+import AppointmentsStateCard from '@/components/content/dashboards/AppointmentsStateCard'
 import { DataTable } from '@/components/shared/DataTable'
 import { adminColumns } from '@/components/content/tables/admin/appointmentColumns'
 

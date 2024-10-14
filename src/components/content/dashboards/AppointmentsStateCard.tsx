@@ -1,15 +1,14 @@
 import { Status } from '@/lib/types/enums'
-import clsx from 'clsx'
 import { StatusConfig } from '@/lib/constants'
 import SVGImage from '@/components/shared/SvgImage'
 import Card from '@/components/shared/Card'
 
-type StateCardProps = {
+type AppointmentsStateCard = {
 	status: Status
 	count: number | null
 }
 
-export default function StateCard({ status, count }: StateCardProps) {
+export default function AppointmentsStateCard({ status, count }: AppointmentsStateCard) {
 	const { bgImage, textColor, icon } = StatusConfig[status]
 
 	// const statusBgImage: { [key in Status]: string } = {

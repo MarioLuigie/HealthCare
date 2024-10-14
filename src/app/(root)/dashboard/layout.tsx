@@ -1,27 +1,27 @@
-import { Header, Aside, Main, Footer } from "@/components/layout"
+import { Header, Aside, Main, Footer } from '@/components/layout'
 
 export default function Layout({
-  children,
-  params,
+	children,
+	params,
 }: {
-  children: React.ReactNode
-  params: SingleSlugParams
+	children: React.ReactNode
+	params: SingleSlugParams
 }) {
-  return (
-    <div className="flex flex-col justify-between h-screen border-x border-x-dark-500">
-      <Header />
-      <div className="flex overflow-hidden remove-scrollbar grow w-full">
-        <Aside
-          position="left"
-          className="overflow-auto remove-scrollbar h-full min-w-[60px] max-w-[300px] w-[10%] sm:w-[15%] md:w-[23%] lg:w-[25%]"
-        />
-        <Main className="order-2 sm:order-1 overflow-auto remove-scrollbar grow h-full">
-          {children}
-        </Main>
-      </div>
-      <Footer />
-    </div>
-  )
+	return (
+		<div className="flex flex-col justify-between h-screen border-x border-x-dark-500">
+			<Header />
+			<div className="flex overflow-hidden remove-scrollbar grow w-full">
+				<Aside
+					position="left"
+					className="hidden lg:flex h-full min-w-[60px] max-w-[300px] w-[10%] sm:w-[35%] md:w-[35%] lg:w-[35%]"
+				/>
+				<Main className="overflow-auto remove-scrollbar grow h-full">
+					{children}
+				</Main>
+			</div>
+			<Footer />
+		</div>
+	)
 }
 
 // ALTERNATIVE
