@@ -223,7 +223,7 @@ export const SidebarMenuItems = [
   },
   {
     icon: Icons.CASH_ICON.path,
-    name: "Billing and Insurance History",
+    name: "Billing and Insurance",
     path: "/billing",
     subMenu: [
       {

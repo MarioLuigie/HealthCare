@@ -4,7 +4,7 @@ import SidebarMenuItem from '@/components/content/dashboards/patient/menus/sideb
 
 export default function SidebarMenu() {
 	return (
-		<nav className="bg-card text-sm rounded-2xl p-4 overflow-auto remove-scrollbar">
+		<nav className="bg-card text-sm rounded-2xl p-6 overflow-auto remove-scrollbar">
 			<ul className="space-y-4">
 				{SidebarMenuItems.map((item, index) => (
 					<li key={index} className="flex flex-col">
