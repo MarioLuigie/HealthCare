@@ -10,7 +10,6 @@ import {
 	DialogTitle,
 	DialogFooter,
 } from '@/components/ui/dialog'
-import Logo from '@/components/content/Logo'
 
 type GeneralDialogProps = {
 	handleCloseDialog: () => void

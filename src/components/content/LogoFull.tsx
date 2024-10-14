@@ -56,57 +56,126 @@
 //   )
 // }
 
+// "use client"
+// // modules
+// import Image from "next/image"
+// import Link from "next/link"
+// import { useTheme } from "next-themes"
+// // lib
+// import { Icons } from "@/lib/constants"
+// import { Route } from "@/lib/constants/paths"
 
+// export default function LogoFull({
+//   redirect = false,
+// }: {
+//   redirect?: boolean
+// }) {
+//   const { theme } = useTheme()
+//   const isDarkTheme = theme === "dark"
 
-"use client"
+//   const logoFull = (
+//     <Image
+//       src={Icons.LOGO_FULL_ICON.path}
+//       height={1000}
+//       width={1000}
+//       alt={Icons.LOGO_FULL_ICON.alt}
+//       className="h-10 w-fit"
+//       priority
+//     />
+//   )
+//   const logoFullBlack = (
+//     <Image
+//       src={Icons.LOGO_FULL_BLACK_ICON.path}
+//       height={1000}
+//       width={1000}
+//       alt={Icons.LOGO_FULL_BLACK_ICON.alt}
+//       className="h-10 w-fit"
+//       priority
+//     />
+//   )
+
+//   return (
+//     <div className="h-10 w-fit hidden sm:block">
+//       {redirect ? (
+//         <Link href={Route.HOME}>
+//           {isDarkTheme ? logoFull : logoFullBlack}
+//         </Link>
+//       ) : isDarkTheme ? (
+//         logoFull
+//       ) : (
+//         logoFullBlack
+//       )}
+//     </div>
+//   )
+// }
+
+'use client'
 // modules
-import Image from "next/image"
-import Link from "next/link"
-import { useTheme } from "next-themes"
+import Image from 'next/image'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import { useTheme } from 'next-themes'
 // lib
-import { Icons } from "@/lib/constants"
-import { Route } from "@/lib/constants/paths"
+import { Icons } from '@/lib/constants'
+import { Route } from '@/lib/constants/paths'
 
-export default function LogoFull({
-  redirect = false,
-}: {
-  redirect?: boolean
-}) {
-  const { theme } = useTheme()
-  const isDarkTheme = theme === "dark"
+export default function LogoFull({ redirect = false, mini }: { redirect?: boolean, mini?: boolean }) {
+	const { theme } = useTheme()
+	const [isDarkTheme, setIsDarkTheme] = useState<boolean | null>(null)
 
-  const logoFull = (
-    <Image
-      src={Icons.LOGO_FULL_ICON.path}
-      height={1000}
-      width={1000}
-      alt={Icons.LOGO_FULL_ICON.alt}
-      className="h-10 w-fit"
-      priority
-    />
-  )
-  const logoFullBlack = (
-    <Image
-      src={Icons.LOGO_FULL_BLACK_ICON.path}
-      height={1000}
-      width={1000}
-      alt={Icons.LOGO_FULL_BLACK_ICON.alt}
-      className="h-10 w-fit"
-      priority
-    />
-  )
+	useEffect(() => {
+		setIsDarkTheme(theme === 'dark')
+	}, [theme])
 
-  return (
-    <div className="h-10 w-fit hidden sm:block">
-      {redirect ? (
-        <Link href={Route.HOME}>
-          {isDarkTheme ? logoFull : logoFullBlack}
-        </Link>
-      ) : isDarkTheme ? (
-        logoFull
-      ) : (
-        logoFullBlack
-      )}
-    </div>
-  )
+	const logo = (
+		<Image
+			src={Icons.LOGO_ICON.path}
+			height={1000}
+			width={1000}
+			alt={Icons.LOGO_ICON.alt}
+			className="h-11 w-fit"
+			priority
+		/>
+	)
+	const logoFull = (
+		<Image
+			src={Icons.LOGO_FULL_ICON.path}
+			height={1000}
+			width={1000}
+			alt={Icons.LOGO_FULL_ICON.alt}
+			className="h-10 w-fit"
+			priority
+		/>
+	)
+	const logoFullBlack = (
+		<Image
+			src={Icons.LOGO_FULL_BLACK_ICON.path}
+			height={1000}
+			width={1000}
+			alt={Icons.LOGO_FULL_BLACK_ICON.alt}
+			className="h-10 w-fit"
+			priority
+		/>
+	)
+
+	if (isDarkTheme === null) return <div></div>
+
+	return (
+		<>
+			<div className="h-10 w-fit hidden sm:block">
+				{redirect ? (
+					<Link href={Route.HOME}>
+						{isDarkTheme ? logoFull : logoFullBlack}
+					</Link>
+				) : isDarkTheme ? (
+					logoFull
+				) : (
+					logoFullBlack
+				)}
+			</div>
+      <div className="h-10 w-fit sm:hidden">
+			{redirect ? <Link href={Route.HOME}>{logo}</Link> : logo}
+		</div>
+		</>
+	)
 }
