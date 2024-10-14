@@ -3,7 +3,7 @@ import Image from 'next/image'
 // lib
 import { Images } from '@/lib/constants'
 // components
-import CreatePatientButton from '@/components/content/dashboard/patient/CreatePatientButton'
+import CreatePatientButton from '@/components/content/dashboards/patient/CreatePatientButton'
 
 type CreatePatientProps = {
 	sessionUser?: any

@@ -3,9 +3,9 @@ import auth from "@/auth"
 // lib
 import { getPatient } from "@/lib/actions/patient.actions"
 // components
-import CreatePatient from "@/components/content/dashboard/patient/CreatePatient"
-import CreateAppointment from "@/components/content/dashboard/patient/CreateAppointment"
-import VerifyUserRequest from "@/components/content/dashboard/patient/VerifyUserRequest"
+import CreatePatient from "@/components/content/dashboards/patient/CreatePatient"
+import CreateAppointment from "@/components/content/dashboards/patient/CreateAppointment"
+import VerifyUserRequest from "@/components/content/dashboards/patient/VerifyUserRequest"
 import StateCard from "@/components/shared/StateCard"
 import { Status } from "@/lib/types/enums"
 

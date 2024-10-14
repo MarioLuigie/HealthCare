@@ -1,7 +1,7 @@
 // modules
 import clsx from "clsx"
 // components
-import { Sidebar } from "@/components/content/dashboard/patient/menu/sidebar/Sidebar"
+import { Sidebar } from "@/components/content/dashboards/patient/navigations/sidebar/Sidebar"
 
 export default function Aside({
   className,
