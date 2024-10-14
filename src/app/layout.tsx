@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { cn } from "@/lib/utils"
-import { ThemeProvider } from "@/components/theme-provider"
+import { ThemeProvider } from "@/theme-provider"
 import "@/app/globals.css"
 
 export const metadata: Metadata = {
