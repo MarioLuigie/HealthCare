@@ -1,5 +1,6 @@
 // modules
 import clsx from 'clsx'
+import { VisuallyHidden } from '@radix-ui/react-visually-hidden'
 // components
 import {
 	Sheet,
@@ -32,9 +33,17 @@ export default function CustomSheet({
 			<SheetTrigger>{trigger}</SheetTrigger>
 			<SheetContent side={side} className={clsx(className)}>
 				<SheetHeader>
-					<SheetTitle className='text-textGeneral mb-6'>{title}</SheetTitle>
-					{description && (
-						<SheetDescription>{description}</SheetDescription>
+					<SheetTitle className="text-textGeneral">{title}</SheetTitle>
+					{description ? (
+						<SheetDescription className="pb-2">
+							{description}
+						</SheetDescription>
+					) : (
+						<VisuallyHidden>
+							<SheetDescription>
+								This sheet has no visible description.
+							</SheetDescription>
+						</VisuallyHidden>
 					)}
 				</SheetHeader>
 

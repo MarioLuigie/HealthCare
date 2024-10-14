@@ -16,6 +16,7 @@ export default function SideBarMenuMobil() {
 			<CustomSheet
 				trigger={<SheetTrigger />}
 				title="Menu"
+				description=''
 				className="overflow-auto remove-scrollbar bg-backgroundTransparent backdrop-blur-sm border-r-0 p-4 pt-6"
 			>
 				<Sidebar />
