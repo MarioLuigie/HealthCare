@@ -4,11 +4,9 @@ import { Sidebar } from '@/components/content/dashboards/patient/menus/sidebar/S
 
 function SheetTrigger() {
 	return (
-		<>
-			<div className={`relative z-50`}>
-				<div className="text-3xl p-2 focus:outline-none">&#9776;</div>
-			</div>
-		</>
+		<div className="relative z-50">
+			<div className="text-3xl p-2 focus:outline-none">&#9776;</div>
+		</div>
 	)
 }
 
