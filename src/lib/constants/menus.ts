@@ -108,7 +108,7 @@ export const SidebarMenuItems = [
   },
   {
     icon: Icons.CHAT_ICON.path,
-    name: "Communication with Doctor",
+    name: "Communication",
     path: "/communication",
     subMenu: [
       {
