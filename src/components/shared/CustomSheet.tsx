@@ -32,7 +32,7 @@ export default function CustomSheet({
 		<Sheet>
 			<SheetTrigger>{trigger}</SheetTrigger>
 			<SheetContent side={side} className={clsx(className)}>
-				<SheetHeader>
+				<SheetHeader className='mb-2'>
 					<SheetTitle className="text-textGeneral">{title}</SheetTitle>
 					{description ? (
 						<SheetDescription className="pb-2">

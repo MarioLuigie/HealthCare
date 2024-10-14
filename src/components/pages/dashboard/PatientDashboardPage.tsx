@@ -9,30 +9,31 @@ import VerifyUserRequest from '@/components/content/dashboards/patient/VerifyUse
 import Card from '@/components/shared/Card'
 
 export default async function PatientDashboardPage({
-  params,
-  sessionUser,
+	params,
+	sessionUser,
 }: {
-  params: SingleSlugParams;
-  sessionUser: any;
+	params: SingleSlugParams
+	sessionUser: any
 }) {
-  const isSessionUserVerified: boolean = await auth.checkIsSessionUserVerified();
-  const { data: patient } = await getPatient(sessionUser.$id);
+	const isSessionUserVerified: boolean =
+		await auth.checkIsSessionUserVerified()
+	const { data: patient } = await getPatient(sessionUser.$id)
 
-  return (
-    <div className="flex flex-col items-center justify-center grow px-4 py-8">
-      {!isSessionUserVerified && <VerifyUserRequest />}
-      {isSessionUserVerified && !patient && (
-        <CreatePatient sessionUser={sessionUser} />
-      )}
-      {isSessionUserVerified && patient && (
-        <div className="flex flex-col grow w-full">
-          <div className="flex gap-4 w-full">
-            <Card title="User Info" className="grow">
-              <div></div>
-            </Card>
-            {/* Usunięcie w-[50%] i zmiana na w-full */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
-              {/* <Card title="Health Alerts" className="grow min-h-[200px]">
+	return (
+		<div className="flex flex-col items-center justify-center grow">
+			{!isSessionUserVerified && <VerifyUserRequest />}
+			{isSessionUserVerified && !patient && (
+				<CreatePatient sessionUser={sessionUser} />
+			)}
+			{isSessionUserVerified && patient && (
+				<div className="flex flex-col grow w-full">
+					<div className="flex gap-4 w-full">
+						<Card title="User Info" className="grow">
+							<div></div>
+						</Card>
+						{/* Usunięcie w-[50%] i zmiana na w-full */}
+						<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
+							{/* <Card title="Health Alerts" className="grow min-h-[200px]">
                 <div></div>
               </Card>
               <Card title="Health Summary" className="grow min-h-[200px]">
@@ -44,12 +45,11 @@ export default async function PatientDashboardPage({
               <Card title="Charts" className="grow min-h-[200px]">
                 <div></div>
               </Card> */}
-            </div>
-          </div>
-          <CreateAppointment sessionUser={sessionUser} />
-        </div>
-      )}
-    </div>
-  );
+						</div>
+					</div>
+					<CreateAppointment sessionUser={sessionUser} />
+				</div>
+			)}
+		</div>
+	)
 }
-

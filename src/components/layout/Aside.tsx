@@ -5,7 +5,7 @@ import { Sidebar } from '@/components/content/dashboards/patient/menus/sidebar/S
 
 export default function Aside({ className }: { className?: string }) {
 	return (
-		<aside className={clsx('px-4 py-8 flex flex-col gap-2', className)}>
+		<aside className={clsx('p-4 flex flex-col gap-2', className)}>
 			<Sidebar />
 		</aside>
 	)

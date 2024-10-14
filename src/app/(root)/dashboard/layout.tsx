@@ -15,7 +15,7 @@ export default function Layout({
 				<Aside
 					className="hidden lg:flex h-full min-w-[60px] max-w-[310px] w-[10%] sm:w-[35%] md:w-[35%] lg:w-[35%]"
 				/>
-				<Main className="overflow-auto remove-scrollbar grow h-full">
+				<Main className="overflow-auto remove-scrollbar grow h-full p-4 lg:pt-10">
 					{children}
 				</Main>
 			</div>
