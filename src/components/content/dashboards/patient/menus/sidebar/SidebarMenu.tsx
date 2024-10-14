@@ -1,5 +1,7 @@
 'use client'
+// lib
 import { SidebarMenuItems } from '@/lib/constants/menus'
+// components
 import SidebarMenuItem from '@/components/content/dashboards/patient/menus/sidebar/SidebarMenuItem'
 
 export default function SidebarMenu() {

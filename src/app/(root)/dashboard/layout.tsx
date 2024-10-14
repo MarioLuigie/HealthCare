@@ -1,3 +1,4 @@
+// components
 import { Header, Aside, Main, Footer } from '@/components/layout'
 
 export default function Layout({
@@ -12,7 +13,7 @@ export default function Layout({
 			<Header />
 			<div className="flex overflow-hidden remove-scrollbar grow w-full">
 				<Aside
-					className="hidden lg:flex h-full min-w-[60px] max-w-[300px] w-[10%] sm:w-[35%] md:w-[35%] lg:w-[35%]"
+					className="hidden lg:flex h-full min-w-[60px] max-w-[310px] w-[10%] sm:w-[35%] md:w-[35%] lg:w-[35%]"
 				/>
 				<Main className="overflow-auto remove-scrollbar grow h-full">
 					{children}

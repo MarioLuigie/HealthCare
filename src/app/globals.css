@@ -33,6 +33,7 @@
 
   :root {
     --background: 0 0% 98%; /* Biały */
+    --backgroundTransparent: 0, 0%, 98%, 0.7; /* Biały */
     --foreground: 0 0% 99%; /* Ciemny szary */
     --badge: 0 0% 85%; /* Jasny biały */
     --card: 0 0% 90%; /* Biały */
@@ -65,6 +66,7 @@
 
   .dark {
     --background: 0 0% 5%; /* Bardzo ciemny szary */
+    --backgroundTransparent: 0, 0%, 5%, 0.7; /* Biały */
     --foreground: 0 0% 8%; /* Prawie biały */
     --badge: 0 0% 15%;
     --card: 0 0% 9%; /* Bardzo ciemny szary */

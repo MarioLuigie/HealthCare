@@ -1,3 +1,6 @@
+// modules
+import clsx from 'clsx'
+// components
 import {
 	Sheet,
 	SheetContent,
@@ -10,36 +13,36 @@ import {
 type CustomSheetProps = {
 	children: React.ReactNode
 	side?: 'left' | 'right' | 'top' | 'bottom'
-	isHeader?: boolean
-	title?: string
+	title: string
 	description?: string
 	trigger?: React.ReactNode | string
+	className?: string
 }
 
 export default function CustomSheet({
 	children,
 	side = 'left',
-	isHeader,
 	title,
 	description,
 	trigger = 'Open',
+	className,
 }: CustomSheetProps) {
 	return (
 		<Sheet>
 			<SheetTrigger>{trigger}</SheetTrigger>
-			<SheetContent side={side}>
-				{isHeader && (title || description) && (
-					<SheetHeader>
-						{title && <SheetTitle>{title}</SheetTitle>}
-						{description && <SheetDescription>{description}</SheetDescription>}
-					</SheetHeader>
-				)}
+			<SheetContent side={side} className={clsx(className)}>
+				<SheetHeader>
+					<SheetTitle className='text-textGeneral mb-6'>{title}</SheetTitle>
+					{description && (
+						<SheetDescription>{description}</SheetDescription>
+					)}
+				</SheetHeader>
+
 				{children}
 			</SheetContent>
 		</Sheet>
 	)
 }
-
 
 // import {
 // 	Sheet,

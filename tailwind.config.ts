@@ -52,6 +52,7 @@ const config = {
 					'700': '#ABB8C4',
 				},
 				background: 'hsl(var(--background))',
+				backgroundTransparent: 'hsl(var(--backgroundTransparent))',
 				foreground: 'hsl(var(--foreground))',
 				badge: 'hsl(var(--badge))',
 				hover: 'hsl(var(--hover))',
