@@ -5,7 +5,7 @@ import { getAppointmentsOrderedByStatus } from '@/lib/actions/appointment.action
 // components
 import AppointmentsStateCard from '@/components/content/dashboards/AppointmentsStateCard'
 import { DataTable } from '@/components/shared/DataTable'
-import { adminColumns } from '@/components/content/tables/admin/appointmentColumns'
+import { adminColumns } from '@/components/content/dashboards/admin/tables/appointmentColumns'
 
 export default async function AdminDashboardPage({
 	params,

@@ -8,7 +8,7 @@ import { Icons } from "@/lib/constants"
 import SwitchButton from "@/components/shared/buttons/SwitchButton"
 import SVGImage from "@/components/shared/SvgImage"
 
-export default function SwitchMode() {
+export default function SwitchModeButton() {
   const { theme, setTheme } = useTheme()
   const [isDarkMode, setIsDarkMode] = useState<boolean>(theme === "dark")
 

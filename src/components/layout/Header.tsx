@@ -3,7 +3,7 @@ import auth from '@/auth'
 // components
 import LogoFull from '@/components/content/LogoFull'
 import Logo from '@/components/content/Logo'
-import UserDropDownMenu from '@/components/content/manipulations/UserDropDownMenu'
+import UserDropDownMenu from '@/components/content/dashboards/manipulations/UserDropDownMenu'
 
 export default async function Header() {
 	const doctorDummyData = {
