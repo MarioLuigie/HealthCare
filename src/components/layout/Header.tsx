@@ -1,7 +1,7 @@
 // lib
 import auth from '@/auth'
 // components
-import LogoFull from '@/components/content/LogoFull'
+import LogoFull from '@/components/content/Logo'
 import UserDropDownMenu from '@/components/content/dashboards/manipulations/UserDropDownMenu'
 import SideBarMenuMobil from '@/components/content/dashboards/patient/menus/sidebar/SideBarMenuMobile'
 

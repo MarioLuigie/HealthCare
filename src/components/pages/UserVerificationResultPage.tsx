@@ -5,7 +5,7 @@ import { getUser, updateUserVerification } from '@/lib/actions/auth.actions'
 import { Route, IconPath } from '@/lib/constants/paths'
 import { generateUrl } from '@/lib/utils'
 // components
-import LogoFull from '@/components/content/LogoFull'
+import LogoFull from '@/components/content/Logo'
 import Loader from '@/components/shared/Loader'
 import RedirectWithDelay from '@/components/shared/RedirectWithDelay'
 import SuccessResponse from '@/components/shared/SuccessResponse'

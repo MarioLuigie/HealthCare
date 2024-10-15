@@ -7,7 +7,7 @@ import UserVerificationProvider from "@/lib/providers/UserVerificationProvider"
 // components
 import PatientForm from "@/components/forms/PatientForm"
 import PageTitle from "@/components/shared/PageTitle"
-import LogoFull from "@/components/content/LogoFull"
+import LogoFull from "@/components/content/Logo"
 import Copyright from "@/components/content/Copyright"
 import FormPageTemplate from "@/components/shared/FormPageTemplate"
 import LinkButton from "@/components/shared/buttons/LinkButton"

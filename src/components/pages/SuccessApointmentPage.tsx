@@ -9,7 +9,7 @@ import { IconPath, Route } from '@/lib/constants/paths'
 // components
 import { Button } from '@/components/ui/button'
 import Copyright from '@/components/content/Copyright'
-import LogoFull from '@/components/content/LogoFull'
+import LogoFull from '@/components/content/Logo'
 import SuccessResponse from '@/components/shared/SuccessResponse'
 import LinkButton from '../shared/buttons/LinkButton'
 
