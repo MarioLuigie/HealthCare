@@ -25,7 +25,7 @@ export default function UserDropDownMenu({
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="p-0 rounded-l-full rounded-r-[3000px] pr-6 bg-card hover:bg-hover"
+          className="p-0 rounded-l-full rounded-r-full lg:rounded-r-[3000px] lg:pr-6 bg-card hover:bg-hover"
         >
           <UserAvatar user={sessionUser} />
         </Button>

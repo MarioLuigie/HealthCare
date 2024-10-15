@@ -222,6 +222,14 @@ export const Icons = {
     path: IconPath.DOT,
     alt: "Dot",
   },
+  RELOAD_ICON: {
+    path: IconPath.RELOAD,
+    alt: "  Reload",
+  },
+  SEARCH_ICON: {
+    path: IconPath.SEARCH,
+    alt: "Search",
+  },
 }
 
 // Kinde of images

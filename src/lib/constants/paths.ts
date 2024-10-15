@@ -51,6 +51,8 @@ export const IconPath = {
 	DEVICE: '/assets/icons/device.svg',
 	CASH: '/assets/icons/cash.svg',
 	DOT: '/assets/icons/dot.svg',
+	RELOAD: '/assets/icons/reload.svg',
+	SEARCH: '/assets/icons/search.svg',
 }
 
 export const ImagePath = {
