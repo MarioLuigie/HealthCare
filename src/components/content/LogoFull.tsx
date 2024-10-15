@@ -51,6 +51,7 @@ export default function LogoFull({ redirect = false, mini }: { redirect?: boolea
 
 	return (
 		<>
+			{/* Logo Full */}
 			<div className="h-10 w-fit hidden sm:block">
 				{redirect ? (
 					<Link href={Route.HOME}>
@@ -62,6 +63,7 @@ export default function LogoFull({ redirect = false, mini }: { redirect?: boolea
 					logoFullBlack
 				)}
 			</div>
+			{/* Logo */}
       <div className="h-10 w-fit sm:hidden">
 			{redirect ? <Link href={Route.HOME}>{logo}</Link> : logo}
 		</div>
