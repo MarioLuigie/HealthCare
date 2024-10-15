@@ -8,8 +8,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import UserAvatar from "@/components/shared/UserAvatar"
-import SignOut from "@/components/shared/SignOut"
+import UserAvatar from "@/components/content/UserAvatar"
+import SignOutButton from "@/components/content/SignOutButton"
 import SwitchModeButton from "@/components/content/SwitchModeButton"
 import SVGImage from "@/components/shared/SvgImage"
 import { Icons } from "@/lib/constants"
@@ -60,7 +60,7 @@ export default function UserDropDownMenu({
         {/* Sign out option */}
         <DropdownMenuItem className="cursor-pointer flex justify-end mt-6 gap-2 items-center">
           <SVGImage src={Icons.SIGN_OUT_ICON.path} width={20} height={20} />
-          <SignOut />
+          <SignOutButton />
         </DropdownMenuItem>
 				<div className="w-full text-center">
 					<small className="text-dark-500 text-[12px]">© 2024 HealthCare by ARWcode</small>

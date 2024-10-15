@@ -10,7 +10,7 @@ import { IconPath, Route } from '@/lib/constants/paths'
 import { Button } from '@/components/ui/button'
 import Copyright from '@/components/content/Copyright'
 import LogoFull from '@/components/content/Logo'
-import SuccessResponse from '@/components/shared/SuccessResponse'
+import SuccessResponse from '@/components/content/SuccessResponse'
 import LinkButton from '../shared/buttons/LinkButton'
 
 export default async function SuccessApointmentPage({

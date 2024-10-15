@@ -2,7 +2,7 @@
 import LogoFull from '@/components/content/Logo'
 import BasicButton from '@/components/shared/buttons/BasicButton'
 import LinkButton from '@/components/shared/buttons/LinkButton'
-import SignOut from '@/components/shared/SignOut'
+import SignOut from '@/components/content/SignOutButton'
 import { Route } from '@/lib/constants/paths'
 import { generateUrl } from '@/lib/utils'
 // modules

@@ -4,7 +4,7 @@ import auth from "@/auth"
 // components
 import Copyright from "@/components/content/Copyright"
 import LogoFull from "@/components/content/Logo"
-import PendingResponse from "@/components/shared/PendingResponse"
+import PendingResponse from "@/components/content/PendingResponse"
 import { generateUrl } from "@/lib/utils"
 import LinkButton from "../shared/buttons/LinkButton"
 

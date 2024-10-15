@@ -26,7 +26,7 @@ import FileUploader from '@/components/shared/FileUploader'
 import 'react-datepicker/dist/react-datepicker.css'
 import { Route } from '@/lib/constants/paths'
 import { generateUrl } from '@/lib/utils'
-import UserAvatar from '@/components/shared/UserAvatar'
+import UserAvatar from '@/components/content/UserAvatar'
 
 type PatientFormProps = {
 	user: any
