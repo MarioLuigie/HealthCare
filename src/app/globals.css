@@ -33,6 +33,8 @@
 
   :root {
     --background: 0 0% 98%; /* Biały */
+    --background-active: 0 0% 85%; /* Biały */
+    --background-disactive: 0, 0%, 100%, 0; /* Biały */
     --backgroundTransparent: 0, 0%, 98%, 0.7; /* Biały */
     --foreground: 0 0% 99%; /* Ciemny szary */
     --badge: 0 0% 85%; /* Jasny biały */
@@ -50,7 +52,7 @@
     --accent-foreground: 0 0% 11.2%; /* Ciemny szary */
     --destructive: 0 84.2% 60.2%; /* Czerwony */
     --destructive-foreground: 0 0% 98%; /* Prawie biały */
-    --border: 0 0% 91.4%; /* Jasny szary */
+    --border: 0 0% 80%; /* Jasny szary */
     --input: 0 0% 91.4%; /* Jasny szary */
     --ring: 0 0% 5%; /* Ciemny szary */
     --chart-1: 12 76% 61%; /* Pomarańczowy */
@@ -60,12 +62,16 @@
     --chart-5: 27 87% 67%; /* Brązowy */
     --radius: 0.5rem;
     --font-sans: "Plus Jakarta Sans", sans-serif;
-    --textGeneral: 0 0% 2%;
+    --text-primary: 0 0% 2%;
+    --text-secondary: 0 0% 40%;
+    --text-accent: 162, 65%, 41%;
     --hover: 0 0% 85%;
   }
 
   .dark {
     --background: 0 0% 5%; /* Bardzo ciemny szary */
+    --background-active: 0 0% 20%; /* Biały */
+    --background-disactive: 0, 0%, 100%, 0; /* Biały */
     --backgroundTransparent: 0, 0%, 5%, 0.7; /* Biały */
     --foreground: 0 0% 8%; /* Prawie biały */
     --badge: 0 0% 15%;
@@ -83,7 +89,7 @@
     --accent-foreground: 0 0% 98%; /* Prawie biały */
     --destructive: 0 62.8% 30.6%; /* Ciemny czerwony */
     --destructive-foreground: 0 0% 98%; /* Prawie biały */
-    --border: 0 0% 17.5%; /* Ciemny szary */
+    --border: 0 0% 20%; /* Ciemny szary */
     --input: 214 11.9% 11.6%; /* Ciemny szary */
     --ring: 0 0% 83.9%; /* Bardzo jasny szary */
     --chart-1: 0 0% 50%; /* Średni szary */
@@ -92,7 +98,9 @@
     --chart-4: 280 65% 60%; /* Fioletowy */
     --chart-5: 340 75% 55%; /* Różowy */
     --font-sans: "Plus Jakarta Sans", sans-serif;
-    --textGeneral: 0 0% 99%;
+    --text-primary: 0 0% 99%;
+    --text-secondary: 0 0% 60%;
+    --text-accent: 155, 47%, 68%;
     --hover: 0 0% 20%;
   }
 }
@@ -247,8 +255,8 @@
     @apply sm:hidden;
   }
 
-  .test {
-    @apply bg-red-700;
+  .blur-plane {
+    @apply backdrop-blur-sm;
   }
 
   .sidebar {
@@ -323,7 +331,7 @@
 
   /* ==== FORM */
   .radio-group {
-    @apply flex h-full flex-1 items-center gap-2 rounded-md border border-dashed border-dark-500 bg-dark-400 p-3;
+    @apply flex h-full flex-1 items-center gap-2 rounded-md border border-dashed p-3;
   }
 
   .checkbox-label {
@@ -332,7 +340,7 @@
 
   /* ==== File Upload */
   .file-upload {
-    @apply min-h-[140px] text-12-regular flex cursor-pointer  flex-col items-center justify-center gap-3 rounded-md border border-dashed border-dark-500 bg-dark-400 p-2;
+    @apply min-h-[140px] text-12-regular flex cursor-pointer  flex-col items-center justify-center gap-3 rounded-md border border-dashed p-2;
   }
 
   .file-upload_label {
@@ -462,7 +470,7 @@
   }
 
   .shad-dropDownMenu {
-    @apply bg-card border-dark-500 !important;
+    @apply bg-card border-border shadow-lg !important;
   }
 
   .shad-dialog button {
@@ -531,13 +539,13 @@
 .react-datepicker-time__header {
   background-color: hsl(var(--input)) !important;
   border-color: #363a3d !important;
-  color: hsl(var(--textGeneral)) !important;
+  color: hsl(var(--text-primary)) !important;
 }
 
 .react-datepicker__current-month,
 .react-datepicker__day-name,
 .react-datepicker-time__header {
-  color: hsl(var(--textGeneral)) !important;
+  color: hsl(var(--text-primary)) !important;
 }
 
 .react-datepicker__triangle {
@@ -559,7 +567,7 @@
 
 .react-datepicker__day--selected {
   background-color: #24ae7c !important;
-  color: hsl(var(--textGeneral)) !important;
+  color: hsl(var(--text-primary)) !important;
   border-radius: 4px;
 }
 

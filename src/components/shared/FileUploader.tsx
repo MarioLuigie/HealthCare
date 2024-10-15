@@ -20,7 +20,7 @@ export default function FileUploader({ files, onChange }: FileUploaderProps) {
 	const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop })
 
 	return (
-		<div {...getRootProps()} className="file-upload">
+		<div {...getRootProps()} className="file-upload border-dark-500 bg-input">
 			<input {...getInputProps()} />
 
 			{files && files?.length > 0 ? (

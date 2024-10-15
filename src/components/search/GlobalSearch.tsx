@@ -69,7 +69,7 @@ export default function GlobalSearch() {
 			className="relative w-full mb-6"
 			ref={searchContainerRef}
 		>
-			<div className="bg-input shadow-lg relative flex xl:max-w-[500px] min-h-[45px] grow items-center gap-1 rounded-lg px-4 mx-auto">
+			<div className="w-full xl:max-w-globalSearch border border-border bg-input shadow-lg relative flex min-h-[47px] grow items-center gap-1 rounded-lg px-4 mx-auto">
         <SVGImage src={Icons.SEARCH_ICON.path} width={24} height={24} />
 				<Input
 					type="text"
@@ -81,7 +81,7 @@ export default function GlobalSearch() {
 						if (!isOpen) setIsOpen(true)
 						if (e.target.value === '' && isOpen) setIsOpen(false)
 					}}
-					className="paragraph-regular no-focus placeholder text-dark400_light700 border-none bg-transparent shadow-none outline-none"
+					className="paragraph-regular no-focus placeholder border-none bg-transparent shadow-none outline-none"
 				/>
 			</div>
 			{isOpen && <GlobalResult />}

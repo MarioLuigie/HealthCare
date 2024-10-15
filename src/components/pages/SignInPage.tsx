@@ -41,14 +41,14 @@ export default async function SignInPage({
             className="text-white flex justify-end mt-6"
           >
             <p className="flex gap-2">
-              <span className="text-zinc-600">Don&#39;t have an account?</span>
-              <span className="text-zinc-500">Sign Up</span>
+              <span className="text-textSecondary">Don&#39;t have an account?</span>
+              <span className="text-textSecondary font-semibold">Sign Up</span>
             </p>
           </Link>
         </div>
         <div className="flex justify-between">
           <Copyright />
-          <p className="text-dark-600 text-xs">* required fields</p>
+          <p className="text-textSecondary text-xs">* required fields</p>
         </div>
       </div>
     </FormPageTemplate>

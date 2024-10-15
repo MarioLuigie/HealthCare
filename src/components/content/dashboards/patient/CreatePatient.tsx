@@ -15,10 +15,10 @@ export default function CreatePatient({ sessionUser }: CreatePatientProps) {
 			<Image
 				src={Images.PATIENT_CREATE_IMAGE.path}
 				alt={Images.PATIENT_CREATE_IMAGE.alt}
-				width={500}
-				height={500}
+				width={380}
+				height={380}
 			/>
-			<p className="text-green-400 text-5xl font-bold text-center">
+			<p className="text-green-400 text-3xl font-bold text-center">
 				Create your Patient Profile!
 			</p>
 			<p className="max-w-[500px] text-center text-dark-600 text-xs">

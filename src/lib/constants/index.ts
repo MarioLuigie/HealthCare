@@ -230,6 +230,14 @@ export const Icons = {
     path: IconPath.SEARCH,
     alt: "Search",
   },
+  EYE_ICON: {
+    path: IconPath.EYE,
+    alt: "Search",
+  },
+  EYE_OFF_ICON: {
+    path: IconPath.EYE_OFF,
+    alt: "Search",
+  },
 }
 
 // Kinde of images

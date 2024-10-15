@@ -6,12 +6,14 @@ type LinkButtonProps = {
   children: string | React.ReactNode
   href: string
   variant?: "outline" | "fill" | "text"
+  className?: string
 }
 
 export default function LinkButton({
   children,
   href,
   variant = "outline",
+  className,
 }: LinkButtonProps) {
   const variants = {
     outline:
@@ -25,7 +27,7 @@ export default function LinkButton({
       href={href}
       className={clsx(variants[variant])}
     >
-      {children}
+      <p className={className}>{children}</p>
     </Link>
   )
 }

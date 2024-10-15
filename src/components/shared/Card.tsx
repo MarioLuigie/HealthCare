@@ -12,13 +12,13 @@ export default function Card({
 	return (
 		<div
 			className={clsx(
-				'flex flex-col min-w-[280px] min-h-[130px] max-h-[150px] rounded-xl p-4 bg-card shadow-lg',
+				'flex flex-col min-w-[280px] min-h-[130px] rounded-xl shadow-lg border border-border',
 				className
 			)}
 		>
 			<>
 				{title && (
-					<p className="text-sm border-b border-b-dark-500 p-[2px]">
+					<p className="text-sm border-b border-border pb-2">
 						{title}
 					</p>
 				)}

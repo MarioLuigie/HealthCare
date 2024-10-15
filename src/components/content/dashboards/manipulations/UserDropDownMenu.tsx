@@ -25,7 +25,7 @@ export default function UserDropDownMenu({
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
-          className="p-0 rounded-l-full rounded-r-full lg:rounded-r-[3000px] lg:pr-6 bg-card hover:bg-hover"
+          className="p-0 rounded-l-full rounded-r-full lg:rounded-r-[3000px] lg:pr-6 bg-card hover:bg-hover border border-border"
         >
           <UserAvatar user={sessionUser} />
         </Button>
@@ -36,12 +36,12 @@ export default function UserDropDownMenu({
         className="shad-dropDownMenu min-w-[290px] p-6 pb-2 flex flex-col gap-2 items-start"
       >
         {/* Mode selection item */}
-        <div className="pl-2 text-sm flex items-center justify-between w-full">
+        <div className="pl-2 mb-3 text-sm flex items-center justify-between w-full">
           <SwitchModeButton />
         </div>
 
         {/* Separator */}
-        <DropdownMenuSeparator className="w-full h-[1px] bg-dark-500 my-2" />
+        <DropdownMenuSeparator className="w-full h-[1px] bg-border" />
 
         {/* User options */}
         {UserDropDownMenuItems.map((item, i) => (
@@ -55,7 +55,7 @@ export default function UserDropDownMenu({
         ))}
 
         {/* Separator */}
-        <DropdownMenuSeparator className="w-full h-[1px] bg-dark-500 my-2" />
+        <DropdownMenuSeparator className="w-full h-[1px] bg-border my-2" />
 
         {/* Sign out option */}
         <DropdownMenuItem className="cursor-pointer flex justify-end mt-6 gap-2 items-center">

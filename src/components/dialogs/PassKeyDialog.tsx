@@ -96,7 +96,7 @@ export default function PassKeyDialog({
 		<AlertDialog open={isOpen} onOpenChange={handleClose}>
 			<AlertDialogOverlay onClick={handleClose}>
 				<AlertDialogContent
-					className="shad-alert-dialog"
+					className="bg-background border border-border outline-none"
 					onClick={(e) => e.stopPropagation()}
 				>
 					<AlertDialogHeader>
@@ -110,10 +110,10 @@ export default function PassKeyDialog({
 								className="cursor-pointer"
 							/>
 						</div>
-						<AlertDialogTitle className="flex items-start justify-center xs:justify-start text-[24px]">
+						<AlertDialogTitle className="flex items-start justify-center xs:justify-start text-[24px] text-textPrimary">
 							Admin Access Verification
 						</AlertDialogTitle>
-						<AlertDialogDescription className="flex items-start justify-center xs:justify-start">
+						<AlertDialogDescription className="flex items-start justify-center xs:justify-start text-textSecondary">
 							To access the admin dashboard please enter the passkey.
 						</AlertDialogDescription>
 					</AlertDialogHeader>

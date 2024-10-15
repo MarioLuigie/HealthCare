@@ -60,19 +60,19 @@ export default function GlobalResult() {
 	}
 
 	return (
-		<div className="absolute top-full z-10 mt-3 w-full rounded-xl bg-light-800 py-5 shadow-sm dark:bg-dark-400">
+		<div className="xl:max-w-globalSearch absolute top-full left-1/2 transform -translate-x-1/2 z-10 mt-4 w-full rounded-xl py-2 shadow-lg border border-border bg-input">
 			<GlobalFilters />
-			<div className="my-5 h-[1px] bg-light-700/50 dark:bg-dark-500/50" />
+			<div className="my-2 h-[1px] bg-border" />
 
 			<div className="space-y-5">
-				<p className="text-dark400_light900 paragraph-semibold px-5">
+				<p className="paragraph-semibold px-5 text-textSecondary">
 					Top Match
 				</p>
 
 				{isLoading ? (
 					<div className="flex-center flex-col px-5">
 						<Loader />
-						<p className="text-dark200_light800 body-regular">
+						<p>
 							Browsing the entire database
 						</p>
 					</div>
@@ -83,7 +83,7 @@ export default function GlobalResult() {
 								<Link
 									href={renderLink(item.type, item.id)}
 									key={item.type + item.id + index}
-									className="flex w-full cursor-pointer items-start gap-3 px-5 py-2.5 hover:bg-light-700/50 dark:bg-dark-500/50"
+									className="flex w-full cursor-pointer items-start gap-3 px-5 py-2.5"
 								>
 									<Image
 										src="/assets/icons/tag.svg"
@@ -94,10 +94,10 @@ export default function GlobalResult() {
 									/>
 
 									<div className="flex flex-col">
-										<p className="body-medium text-dark200_light800 line-clamp-1">
+										<p className="line-clamp-1">
 											{item.title}
 										</p>
-										<p className="text-light400_light500 small-medium mt-1 font-bold capitalize">
+										<p className="small-medium mt-1 font-bold capitalize">
 											{item.type}
 										</p>
 									</div>
@@ -105,8 +105,8 @@ export default function GlobalResult() {
 							))
 						) : (
 							<div className="flex-center flex-col px-5">
-								<p className="text-dark200_light800 body-regular px-5 py-2.5">
-									Oops, no results found
+								<p className="body-regular px-5 py-2.5">
+									No results found
 								</p>
 							</div>
 						)}

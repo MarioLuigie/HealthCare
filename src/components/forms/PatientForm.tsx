@@ -166,14 +166,14 @@ export default function PatientForm({
 								>
 									{Object.values(Gender).map(
 										(option: string, i: number) => (
-											<div key={option + i} className="radio-group">
+											<div key={option + i} className="radio-group border-dark-500 bg-input">
 												<RadioGroupItem
 													value={option}
 													id={option}
 												/>
 												<Label
 													htmlFor={option}
-													className="cursor-pointer"
+													className="cursor-pointer text-textPrimary"
 												>
 													{option}
 												</Label>

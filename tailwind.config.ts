@@ -53,6 +53,8 @@ const config = {
 				},
 				background: 'hsl(var(--background))',
 				backgroundTransparent: 'hsl(var(--backgroundTransparent))',
+				backgroundActive: 'hsl(var(--background-active))',
+				backgroundDisactive: 'hsl(var(--background-disactive))',
 				foreground: 'hsl(var(--foreground))',
 				badge: 'hsl(var(--badge))',
 				hover: 'hsl(var(--hover))',
@@ -94,6 +96,9 @@ const config = {
 					'4': 'hsl(var(--chart-4))',
 					'5': 'hsl(var(--chart-5))',
 				},
+				textPrimary: 'hsl(var(--text-primary))',
+				textSecondary: 'hsl(var(--text-secondary))',
+				textAccent: 'hsl(var(--text-accent))',
 			},
 			fontFamily: {
 				sans: ['var(--font-sans)', ...fontFamily.sans],
@@ -134,6 +139,12 @@ const config = {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'caret-blink': 'caret-blink 1.25s ease-out infinite',
+			},
+			maxWidth: {
+				'globalSearch' : '700px'
+			},
+			width: {
+				'rwd' : '500px'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

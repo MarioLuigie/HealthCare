@@ -47,7 +47,7 @@ export default async function HomePage({
             <LinkButton href={generateUrl([Route.SIGN_IN])} variant="fill">
               Sign In
             </LinkButton>
-            <LinkButton href={generateUrl([Route.SIGN_UP])} variant="outline">
+            <LinkButton href={generateUrl([Route.SIGN_UP])} variant="outline" className="text-textSecondary">
               Sign Up
             </LinkButton>
           </div>

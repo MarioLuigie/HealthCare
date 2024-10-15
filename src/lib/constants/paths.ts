@@ -53,6 +53,8 @@ export const IconPath = {
 	DOT: '/assets/icons/dot.svg',
 	RELOAD: '/assets/icons/reload.svg',
 	SEARCH: '/assets/icons/search.svg',
+	EYE: '/assets/icons/eye.svg',
+	EYE_OFF: '/assets/icons/eye-off.svg',
 }
 
 export const ImagePath = {
