@@ -5,7 +5,7 @@ import { Status } from '@/lib/types/enums'
 import { StatusConfig } from '@/lib/constants'
 import SVGImage from '@/components/shared/SvgImage'
 
-export const StatusBadge = ({
+export const AppointmentStatusBadge = ({
 	status,
 	badge = false,
 }: {

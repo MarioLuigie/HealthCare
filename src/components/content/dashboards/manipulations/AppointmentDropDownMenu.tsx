@@ -11,7 +11,7 @@ import {
 } from "@/lib/handlers/appointment.handlers"
 //components
 import { Button } from "@/components/ui/button"
-import { StatusBadge } from "@/components/shared/StatusBadge"
+import { AppointmentStatusBadge } from "@/components/content/AppointmentStatusBadge"
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -65,7 +65,7 @@ export default function AppointmentDropDownMenu({ row }: { row: any }) {
                 disabled={appointment.status === Status.SCHEDULED}
                 onClick={() => handleOpenDialog(ActionTypes.SCHEDULE)}
               >
-                <StatusBadge status={Status.SCHEDULED} />
+                <AppointmentStatusBadge status={Status.SCHEDULED} />
               </DropdownMenuItem>
               <DropdownMenuItem
                 className="cursor-pointer"
@@ -73,21 +73,21 @@ export default function AppointmentDropDownMenu({ row }: { row: any }) {
                 disabled={appointment.status === Status.CANCELLED}
               >
                 {/* <StatusItem status={Status.CANCELLED} /> */}
-                <StatusBadge status={Status.CANCELLED} />
+                <AppointmentStatusBadge status={Status.CANCELLED} />
               </DropdownMenuItem>
               <DropdownMenuItem
                 className="cursor-pointer"
                 onClick={() => handleAwaitAppointment(appointment)}
                 disabled={appointment.status === Status.PENDING}
               >
-                <StatusBadge status={Status.PENDING} />
+                <AppointmentStatusBadge status={Status.PENDING} />
               </DropdownMenuItem>
               <DropdownMenuItem
                 className="cursor-pointer"
                 onClick={() => handleFinishAppointment(appointment)}
                 disabled={appointment.status === Status.FINISHED}
               >
-                <StatusBadge status={Status.FINISHED} />
+                <AppointmentStatusBadge status={Status.FINISHED} />
               </DropdownMenuItem>
             </>
           )}

@@ -7,7 +7,7 @@ import { Appointment } from '@/lib/types/appwrite.types'
 import { Roles, TableCells, TableColumns } from '@/lib/types/enums'
 import { truncateText } from '@/lib/utils/index'
 // components
-import { StatusBadge } from '@/components/shared/StatusBadge'
+import { AppointmentStatusBadge } from '@/components/content/AppointmentStatusBadge'
 import AppointmentManipulation from '@/components/content/dashboards/manipulations/AppointmentDropDownMenu'
 
 // This type is used to define the shape of our data.
@@ -35,7 +35,7 @@ export const adminColumns: ColumnDef<Appointment>[] = [
 	{
 		accessorKey: TableCells.APPOINTMENT_STATUS,
 		header: TableColumns.STATUS,
-		cell: ({ row }) => <StatusBadge status={row.original.status} badge/>,
+		cell: ({ row }) => <AppointmentStatusBadge status={row.original.status} badge/>,
 	},
 	{
 		accessorKey: TableCells.PATIENT_NAME,
