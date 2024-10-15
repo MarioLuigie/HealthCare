@@ -230,6 +230,23 @@
     transform: scaleX(2);
   }
   /* ===== UTILITIES */
+  .desktop { 
+    @apply hidden lg:block;
+  }
+
+  .desktop-sm { 
+    @apply hidden sm:block;
+  }
+
+
+  .mobile { 
+    @apply lg:hidden;
+  }
+
+  .mobile-sm { 
+    @apply sm:hidden;
+  }
+
   .test {
     @apply bg-red-700;
   }

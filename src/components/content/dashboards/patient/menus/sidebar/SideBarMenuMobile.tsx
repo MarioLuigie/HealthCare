@@ -10,9 +10,9 @@ function SheetTrigger() {
 	)
 }
 
-export default function SideBarMenuMobil() {
+export default function SideBarMenuMobile() {
 	return (
-		<div className="lg:hidden">
+		<div className="mobile">
 			<CustomSheet
 				trigger={<SheetTrigger />}
 				title="Menu"

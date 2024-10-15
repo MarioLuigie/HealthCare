@@ -8,13 +8,7 @@ import { useTheme } from 'next-themes'
 import { Icons } from '@/lib/constants'
 import { Route } from '@/lib/constants/paths'
 
-export default function LogoFull({
-	redirect = false,
-	mini,
-}: {
-	redirect?: boolean
-	mini?: boolean
-}) {
+export default function Logo({ redirect = false }: { redirect?: boolean }) {
 	const { theme } = useTheme()
 	const [isDarkTheme, setIsDarkTheme] = useState<boolean | null>(null)
 
@@ -58,7 +52,7 @@ export default function LogoFull({
 	return (
 		<>
 			{/* Logo Full */}
-			<div className="h-10 w-fit hidden sm:block">
+			<div className="h-10 w-fit desktop-sm">
 				{redirect ? (
 					<Link href={Route.HOME}>
 						{isDarkTheme ? logoFullDarkMode : logoFullLightMode}
@@ -70,7 +64,7 @@ export default function LogoFull({
 				)}
 			</div>
 			{/* Logo */}
-			<div className="h-10 w-fit sm:hidden">
+			<div className="h-10 w-fit mobile-sm">
 				{redirect ? <Link href={Route.HOME}>{logo}</Link> : logo}
 			</div>
 		</>
