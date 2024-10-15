@@ -39,12 +39,31 @@ export default async function PatientDashboardPage({
 					</div>
 
 					<div className="flex gap-4 w-full">
-						<Card title="User Info" className="grow bg-card border border-border p-4">
+						<Card
+							title="User Info"
+							className="grow bg-card border border-border p-4"
+						>
 							<div></div>
 						</Card>
-						<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full"></div>
+						<Card
+							title="User Info"
+							className="grow bg-card border border-border p-4"
+						>
+							<div></div>
+						</Card>
+						<Card
+							title="User Info"
+							className="grow bg-card border border-border p-4"
+						>
+							<div></div>
+						</Card>
+						<Card
+							title="User Info"
+							className="grow bg-card border border-border p-4"
+						>
+							<div></div>
+						</Card>
 					</div>
-
 					<CreateAppointment sessionUser={sessionUser} />
 				</div>
 			)}
