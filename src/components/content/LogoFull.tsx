@@ -8,7 +8,13 @@ import { useTheme } from 'next-themes'
 import { Icons } from '@/lib/constants'
 import { Route } from '@/lib/constants/paths'
 
-export default function LogoFull({ redirect = false, mini }: { redirect?: boolean, mini?: boolean }) {
+export default function LogoFull({
+	redirect = false,
+	mini,
+}: {
+	redirect?: boolean
+	mini?: boolean
+}) {
 	const { theme } = useTheme()
 	const [isDarkTheme, setIsDarkTheme] = useState<boolean | null>(null)
 
@@ -26,7 +32,7 @@ export default function LogoFull({ redirect = false, mini }: { redirect?: boolea
 			priority
 		/>
 	)
-	const logoFull = (
+	const logoFullDarkMode = (
 		<Image
 			src={Icons.LOGO_FULL_ICON.path}
 			height={1000}
@@ -36,7 +42,7 @@ export default function LogoFull({ redirect = false, mini }: { redirect?: boolea
 			priority
 		/>
 	)
-	const logoFullBlack = (
+	const logoFullLightMode = (
 		<Image
 			src={Icons.LOGO_FULL_BLACK_ICON.path}
 			height={1000}
@@ -55,18 +61,18 @@ export default function LogoFull({ redirect = false, mini }: { redirect?: boolea
 			<div className="h-10 w-fit hidden sm:block">
 				{redirect ? (
 					<Link href={Route.HOME}>
-						{isDarkTheme ? logoFull : logoFullBlack}
+						{isDarkTheme ? logoFullDarkMode : logoFullLightMode}
 					</Link>
 				) : isDarkTheme ? (
-					logoFull
+					logoFullDarkMode
 				) : (
-					logoFullBlack
+					logoFullLightMode
 				)}
 			</div>
 			{/* Logo */}
-      <div className="h-10 w-fit sm:hidden">
-			{redirect ? <Link href={Route.HOME}>{logo}</Link> : logo}
-		</div>
+			<div className="h-10 w-fit sm:hidden">
+				{redirect ? <Link href={Route.HOME}>{logo}</Link> : logo}
+			</div>
 		</>
 	)
 }
@@ -181,5 +187,3 @@ export default function LogoFull({ redirect = false, mini }: { redirect?: boolea
 //     </div>
 //   )
 // }
-
-
