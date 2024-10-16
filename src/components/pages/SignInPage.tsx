@@ -9,7 +9,7 @@ import { redirect } from 'next/navigation'
 // components
 import PageTitle from '@/components/shared/PageTitle'
 import AuthForm from '@/components/forms/AuthForm'
-import LogoFull from '@/components/content/Logo'
+import Logo from '@/components/content/Logo'
 import Copyright from '@/components/content/Copyright'
 import FormPageTemplate from '@/components/shared/FormPageTemplate'
 
@@ -31,7 +31,7 @@ export default async function SignInPage({
 		>
 			{/* <PassKeyDialog searchParams={searchParams} /> */}
 			<div className="flex flex-col justify-between grow">
-				<LogoFull redirect />
+				<Logo redirect forceLogoFull/>
 				<div>
 					<PageTitle
 						title="Sign In"
