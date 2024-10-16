@@ -1,3 +1,5 @@
+// modules
+import clsx from "clsx"
 // components
 import {
   Accordion,
@@ -5,33 +7,32 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import React from "react"
 
-type SidebarMenuItemProps = {
-  name?: string
-  icon?: string
+type AccordionCardProps = {
+  children: React.ReactNode
+  className?: string
 }
 
-export default function AccordionCard({ name, icon }: SidebarMenuItemProps) {
+export default function AccordionCard({ children, className }: AccordionCardProps) {
   return (
-    <div className="grow max-w-[300px]">
+
       <Accordion
         type="single"
         collapsible
-        className="bg-input rounded-lg border border-border shadow-lg"
+        className={clsx("bg-input rounded-lg border border-border shadow-lg", className)}
       >
         <AccordionItem value="item-1" className="border-b-0">
-          <AccordionTrigger className="hover:no-underline p-2 hover:bg-hover transition duration-300 ease-in-out rounded-md">
+          <AccordionTrigger className="p-2 rounded-md hover:no-underline hover:bg-hover transition duration-300 ease-in-out">
             <div className={`flex items-center gap-2`}>
               <p className="text-start">Test</p>
             </div>
           </AccordionTrigger>
-          <AccordionContent className="flex flex-col gap-2 p-4 max-h-[130px]">
-            <div>Test</div>
-            <div>Test</div>
-            <div>Test</div>
+          <AccordionContent className="max-h-[130px]">
+            {children}
           </AccordionContent>
         </AccordionItem>
       </Accordion>
-    </div>
+ 
   )
 }
