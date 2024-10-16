@@ -17,7 +17,7 @@ export default function AccordionCard({ name, icon }: SidebarMenuItemProps) {
       <Accordion
         type="single"
         collapsible
-        className="bg-input rounded-xl border border-border shadow-lg"
+        className="bg-input rounded-lg border border-border shadow-lg"
       >
         <AccordionItem value="item-1" className="border-b-0">
           <AccordionTrigger className="hover:no-underline p-2 hover:bg-hover transition duration-300 ease-in-out rounded-md">

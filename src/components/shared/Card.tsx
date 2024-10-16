@@ -12,7 +12,7 @@ export default function Card({
 	return (
 		<div
 			className={clsx(
-				'flex flex-col max-w-[300px] min-w-[280px] min-h-[110px] rounded-xl shadow-lg border border-border p-4',
+				'flex flex-col max-w-[300px] min-w-[280px] min-h-[110px] rounded-lg shadow-lg border border-border p-4',
 				className
 			)}
 		>
