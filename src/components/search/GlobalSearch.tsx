@@ -66,11 +66,11 @@ export default function GlobalSearch() {
 
 	return (
 		<div
-			className="relative w-full mb-6"
+			className="relative w-full"
 			ref={searchContainerRef}
 		>
-			<div className="w-full xl:max-w-globalSearch border border-border bg-input shadow-lg relative flex min-h-[47px] grow items-center gap-1 rounded-lg px-4 mx-auto">
-        <SVGImage src={Icons.SEARCH_ICON.path} width={24} height={24} />
+			<div className="w-full xl:max-w-globalSearch border border-border bg-input shadow-lg relative flex min-h-[40px] grow items-center gap-1 rounded-lg px-4 mx-auto">
+        <SVGImage src={Icons.SEARCH_ICON.path} width={20} height={20} />
 				<Input
 					type="text"
 					placeholder="Search globally"
@@ -81,7 +81,7 @@ export default function GlobalSearch() {
 						if (!isOpen) setIsOpen(true)
 						if (e.target.value === '' && isOpen) setIsOpen(false)
 					}}
-					className="paragraph-regular no-focus placeholder border-none bg-transparent shadow-none outline-none"
+					className="paragraph-regular placeholder border-none bg-transparent shadow-none outline-none"
 				/>
 			</div>
 			{isOpen && <GlobalResult />}

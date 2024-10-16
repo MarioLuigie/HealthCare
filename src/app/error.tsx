@@ -24,7 +24,7 @@ export default function Error({
 			<div className="flex flex-col gap-4 mt-6">
 				<BasicButton onClick={() => reset()} variant='fill'>Try again</BasicButton>
 				<LinkButton href={generateUrl([Route.DASHBOARD])}>
-					Redirect to Dashboard
+					<p className='text-textSecondary'>Redirect to Dashboard</p>
 				</LinkButton>
         <div className='flex-center'><SignOut /></div>
 			</div>

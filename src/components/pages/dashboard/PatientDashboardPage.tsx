@@ -7,8 +7,6 @@ import CreatePatient from '@/components/content/dashboards/patient/CreatePatient
 import CreateAppointment from '@/components/content/dashboards/patient/CreateAppointment'
 import VerifyUserRequest from '@/components/content/dashboards/patient/VerifyUserRequest'
 import Card from '@/components/shared/Card'
-import CustomSearch from '@/components/shared/CustomSearch'
-import GlobalSearch from '@/components/search/GlobalSearch'
 
 export default async function PatientDashboardPage({
 	params,
@@ -34,23 +32,7 @@ export default async function PatientDashboardPage({
 			{/* User verified and Patient created - create appointment*/}
 			{isSessionUserVerified && patient && (
 				<div className="flex flex-col grow w-full">
-					<div>
-						<GlobalSearch />
-					</div>
-
 					<div className="flex gap-4 w-full">
-						<Card
-							title="User Info"
-							className="grow bg-card border border-border p-4"
-						>
-							<div></div>
-						</Card>
-						<Card
-							title="User Info"
-							className="grow bg-card border border-border p-4"
-						>
-							<div></div>
-						</Card>
 						<Card
 							title="User Info"
 							className="grow bg-card border border-border p-4"

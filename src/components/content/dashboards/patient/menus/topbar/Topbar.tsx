@@ -1,8 +1,9 @@
-export default function Topbar() {
+import GlobalSearch from "@/components/search/GlobalSearch"
 
+export default function Topbar() {
   return (
-    <div>
-      
+    <div className="flex-center w-full">
+      <GlobalSearch />
     </div>
   )
 }

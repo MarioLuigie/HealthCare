@@ -1,6 +1,6 @@
 // components
 import CustomSheet from '@/components/shared/CustomSheet'
-import { Sidebar } from '@/components/content/dashboards/patient/menus/sidebar/Sidebar'
+import Sidebar from '@/components/content/dashboards/patient/menus/sidebar/Sidebar'
 
 function SheetTrigger() {
 	return (
