@@ -10,7 +10,7 @@ export default function SidebarMenu() {
 		<div className="space-y-2">
 			<p className="text-xs text-textSecondary">Dashboard Managment</p>
 			<Card className='bg-card w-full'>
-				<nav className="text-sm rounded-xl p-4">
+				<nav className="text-sm rounded-xl">
 					<ul className="space-y-3">
 						{SidebarMenuItems.map((item, index) => (
 							<li key={index} className="flex flex-col">

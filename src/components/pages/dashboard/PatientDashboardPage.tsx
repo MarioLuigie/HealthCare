@@ -7,6 +7,7 @@ import CreatePatient from '@/components/content/dashboards/patient/CreatePatient
 import CreateAppointment from '@/components/content/dashboards/patient/CreateAppointment'
 import VerifyUserRequest from '@/components/content/dashboards/patient/VerifyUserRequest'
 import Card from '@/components/shared/Card'
+import AccordionCard from '@/components/shared/AccordionCard'
 
 export default async function PatientDashboardPage({
 	params,
@@ -32,19 +33,15 @@ export default async function PatientDashboardPage({
 			{/* User verified and Patient created - create appointment*/}
 			{isSessionUserVerified && patient && (
 				<div className="flex flex-col grow w-full">
-					<div className="flex gap-4 w-full">
+					<div className="flex gap-4 w-full h-[190px]">
 						<Card
 							title="User Info"
-							className="grow bg-card border border-border p-4"
+							className="grow bg-card border border-border"
 						>
 							<div></div>
 						</Card>
-						<Card
-							title="User Info"
-							className="grow bg-card border border-border p-4"
-						>
-							<div></div>
-						</Card>
+						<AccordionCard />
+						<AccordionCard />
 					</div>
 					<CreateAppointment sessionUser={sessionUser} />
 				</div>
