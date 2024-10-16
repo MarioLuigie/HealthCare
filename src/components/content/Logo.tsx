@@ -16,7 +16,7 @@ export default function Logo({ redirect = false }: { redirect?: boolean }) {
 		setIsDarkTheme(theme === 'dark')
 	}, [theme])
 
-	const logo = (
+	const logoSemi = (
 		<Image
 			src={Icons.LOGO_ICON.path}
 			height={1000}
@@ -65,7 +65,7 @@ export default function Logo({ redirect = false }: { redirect?: boolean }) {
 			</div>
 			{/* Logo */}
 			<div className="h-10 w-fit mobile-sm">
-				{redirect ? <Link href={Route.HOME}>{logo}</Link> : logo}
+				{redirect ? <Link href={Route.HOME}>{logoSemi}</Link> : logoSemi}
 			</div>
 		</>
 	)

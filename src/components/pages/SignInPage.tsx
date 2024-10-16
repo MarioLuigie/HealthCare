@@ -1,58 +1,62 @@
 // lib
 import auth from '@/auth'
-import { Images } from "@/lib/constants"
-import { AuthTypes } from "@/lib/types/enums"
-import Link from "next/link"
-import { generateUrl } from "@/lib/utils"
-import { Route } from "@/lib/constants/paths"
+import { Images } from '@/lib/constants'
+import { AuthTypes } from '@/lib/types/enums'
+import Link from 'next/link'
+import { generateUrl } from '@/lib/utils'
+import { Route } from '@/lib/constants/paths'
 import { redirect } from 'next/navigation'
 // components
-import PageTitle from "@/components/shared/PageTitle"
-import AuthForm from "@/components/forms/AuthForm"
-import LogoFull from "@/components/content/Logo"
-import Copyright from "@/components/content/Copyright"
-import FormPageTemplate from "@/components/shared/FormPageTemplate"
+import PageTitle from '@/components/shared/PageTitle'
+import AuthForm from '@/components/forms/AuthForm'
+import LogoFull from '@/components/content/Logo'
+import Copyright from '@/components/content/Copyright'
+import FormPageTemplate from '@/components/shared/FormPageTemplate'
 
 export default async function SignInPage({
-  searchParams,
+	searchParams,
 }: {
-  searchParams?: SearchParams
+	searchParams?: SearchParams
 }) {
-  const sessionUser = await auth.getSessionUser()
+	const sessionUser = await auth.getSessionUser()
 
-  if(sessionUser && sessionUser.$id) {
-    redirect(generateUrl([Route.DASHBOARD]))
-  }
+	if (sessionUser && sessionUser.$id) {
+		redirect(generateUrl([Route.DASHBOARD]))
+	}
 
-  return (
-    <FormPageTemplate image={Images.SIGN_IN_PAGE_IMAGE} classes="max-w-[480px]">
-      {/* <PassKeyDialog searchParams={searchParams} /> */}
-      <div className="flex flex-col justify-between grow">
-        <LogoFull redirect />
-        <div>
-          <PageTitle
-            title="Sign In"
-            description="Feel free to login for the app."
-            classes="my-12"
-          />
-          <AuthForm authType={AuthTypes.SIGN_IN} />
-          <Link
-            href={generateUrl([Route.SIGN_UP])}
-            className="text-white flex justify-end mt-6"
-          >
-            <p className="flex gap-2">
-              <span className="text-textSecondary">Don&#39;t have an account?</span>
-              <span className="text-textSecondary font-semibold">Sign Up</span>
-            </p>
-          </Link>
-        </div>
-        <div className="flex justify-between">
-          <Copyright />
-          <p className="text-textSecondary text-xs">* required fields</p>
-        </div>
-      </div>
-    </FormPageTemplate>
-  )
+	return (
+		<FormPageTemplate
+			image={Images.SIGN_IN_PAGE_IMAGE}
+			classes="max-w-[480px]"
+		>
+			{/* <PassKeyDialog searchParams={searchParams} /> */}
+			<div className="flex flex-col justify-between grow">
+				<LogoFull redirect />
+				<div>
+					<PageTitle
+						title="Sign In"
+						description="Feel free to login for the app."
+						classes="my-12"
+					/>
+					<AuthForm authType={AuthTypes.SIGN_IN} />
+					<Link
+						href={generateUrl([Route.SIGN_UP])}
+						className="text-white flex justify-end mt-6"
+					>
+						<p className="flex gap-2">
+							<span className="text-textSecondary">
+								Don&#39;t have an account?
+							</span>
+							<span className="text-textSecondary font-semibold text-lg">
+								Sign Up
+							</span>
+						</p>
+					</Link>
+				</div>
+				<Copyright />
+			</div>
+		</FormPageTemplate>
+	)
 }
 
 // ***User {

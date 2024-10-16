@@ -30,6 +30,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Label } from '@/components/ui/label'
 import SVGImage from '@/components/shared/SvgImage'
+import { Eye, EyeOff } from 'lucide-react'
 
 interface CustomFormFieldProps {
 	control: Control<any>
@@ -56,7 +57,7 @@ const RenderField = ({
 	field: any
 	props: CustomFormFieldProps
 }) => {
-	const [isPasswordHidden, setIsPasswordHidden] = useState<boolean>(false)
+	const [isPasswordHidden, setIsPasswordHidden] = useState<boolean>(true)
 	switch (props.typeField) {
 		case FormFieldType.INPUT:
 			return (
@@ -72,7 +73,7 @@ const RenderField = ({
 							placeholder={props.placeholder}
 							className="shad-input border-0"
 							disabled={props.disabled}
-							type={isPasswordHidden ? 'text' : props.type}
+							type={isPasswordHidden ? props.type : 'text'}
 							autoFocus={props.autoFocus}
 						/>
 					</FormControl>
@@ -82,21 +83,9 @@ const RenderField = ({
 							onClick={() => setIsPasswordHidden(!isPasswordHidden)}
 						>
 							{isPasswordHidden ? (
-								<div className="text-textAccent flex-center">
-									<SVGImage
-										src={Icons.EYE_OFF_ICON.path}
-										height={24}
-										width={24}
-									/>
-								</div>
+								<Eye size={24} className="text-textAccent" />
 							) : (
-								<div className="text-textAccent flex-center">
-									<SVGImage
-										src={Icons.EYE_ICON.path}
-										height={24}
-										width={24}
-									/>
-								</div>
+								<EyeOff size={24} className="text-textAccent" />
 							)}
 						</div>
 					)}
