@@ -16,7 +16,7 @@ function SheetTrigger() {
 {
 	/* Sidebar menu for mobile */
 }
-export default function SideBarMenuMobile() {
+export default function MainMenuMobile() {
 	return (
 		<div className="mobile">
 			<CustomSheet

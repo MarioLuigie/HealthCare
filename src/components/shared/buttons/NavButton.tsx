@@ -4,26 +4,18 @@ import {
 	ChevronLeft,
 	ChevronDown,
 	ChevronUp,
-	LucideIcon,
 } from 'lucide-react'
 
-const enum Nav {
-	UP = 'up',
-	DOWN = 'down',
-	FORWARD = 'forward',
-	BACK = 'back',
-}
-
 type NavButtonProps = {
-	navigate: Nav
+	navigate: 'up' | 'down' | 'forward' | 'back'
 	onClick: () => void
 }
 
-const iconMap: Record<Nav, LucideIcon> = {
-	[Nav.UP]: ChevronUp,
-	[Nav.DOWN]: ChevronDown,
-	[Nav.FORWARD]: ChevronRight,
-	[Nav.BACK]: ChevronLeft,
+const iconMap = {
+	'up': ChevronUp,
+	'down': ChevronDown,
+	'forward': ChevronRight,
+	'back': ChevronLeft,
 }
 
 export default function NavButton({ navigate, onClick }: NavButtonProps) {

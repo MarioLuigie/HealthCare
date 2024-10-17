@@ -10,23 +10,23 @@ import {
 } from '@/components/ui/accordion'
 import SVGImage from '@/components/shared/SvgImage'
 
-type SubMenuItem = {
+type SubMainManuItem = {
 	name: string
 	path: string
 	icon: string
 }
 
-type SidebarMenuItemProps = {
+type MainMenuItemProps = {
 	name: string
 	icon: string
-	subMenu: SubMenuItem[]
+	subMainMenu: SubMainManuItem[]
 }
 
-export default function SidebarMenuItem({
+export default function MainMenuItem({
 	name,
 	icon,
-	subMenu,
-}: SidebarMenuItemProps) {
+	subMainMenu,
+}: MainMenuItemProps) {
 	const router = useRouter()
 	const gap = 3
 	return (
@@ -39,9 +39,9 @@ export default function SidebarMenuItem({
 					</div>
 				</AccordionTrigger>
 				<AccordionContent>
-					{subMenu && (
+					{subMainMenu && (
 						<ul className="rounded-lg space-y-2 ml-2">
-							{subMenu.map((subItem, subIndex) => (
+							{subMainMenu.map((subItem, subIndex) => (
 								<li key={subIndex}>
 									<button
 										onClick={() => router.push(subItem.path)}

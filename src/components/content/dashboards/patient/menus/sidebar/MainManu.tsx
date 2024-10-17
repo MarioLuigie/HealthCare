@@ -1,24 +1,24 @@
 'use client'
 // lib
-import { SidebarMenuItems } from '@/lib/constants/menus'
+import { MainMenuItems } from '@/lib/constants/menus'
 // components
-import SidebarMenuItem from '@/components/content/dashboards/patient/menus/sidebar/MainMenuItem'
+import MainMenuItem from '@/components/content/dashboards/patient/menus/sidebar/MainMenuItem'
 import Card from '@/components/shared/Card'
 
-export default function SidebarMenu() {
+export default function MainMenu() {
 	return (
-		<div className="space-y-2 w-full">
+		<div className="space-y-1 w-full">
 			<p className="text-xs text-textSecondary">Dashboard Managment</p>
 			<Card className='bg-card'>
 				<nav className="text-sm rounded-xl">
 					<ul className="space-y-3">
-						{SidebarMenuItems.map((item, index) => (
+						{MainMenuItems.map((item, index) => (
 							<li key={index} className="flex flex-col">
 								<div className="flex items-center">
-									<SidebarMenuItem
+									<MainMenuItem
 										name={item.name}
 										icon={item.icon}
-										subMenu={item.subMenu}
+										subMainMenu={item.subMainMenu}
 									/>
 								</div>
 							</li>

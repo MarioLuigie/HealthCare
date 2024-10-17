@@ -7,12 +7,12 @@ export const UserDropDownMenuItems = [
   { title: "Settings", image: Icons.SETTINGS_ICON.path },
 ]
 
-export const SidebarMenuItems = [
+export const MainMenuItems = [
   {
     icon: Icons.DASHBOARD_ICON.path,
     name: "Dashboard",
     path: "/dashboard",
-    subMenu: [
+    subMainMenu: [
       {
         name: "Health Summary",
         path: "/dashboard/summary",
@@ -30,7 +30,7 @@ export const SidebarMenuItems = [
     icon: Icons.TEST_RESULT_ICON.path,
     name: "Test Results",
     path: "/results",
-    subMenu: [
+    subMainMenu: [
       {
         name: "Laboratory Tests",
         path: "/results/laboratory",
@@ -57,7 +57,7 @@ export const SidebarMenuItems = [
     icon: Icons.TREATMENT_HISTORY_ICON.path,
     name: "Treatment History",
     path: "/treatment-history",
-    subMenu: [
+    subMainMenu: [
       {
         name: "Past Illnesses",
         path: "/treatment-history/diseases",
@@ -84,7 +84,7 @@ export const SidebarMenuItems = [
     icon: Icons.APPOINTMENT_ICON.path,
     name: "Appointments",
     path: "/appointments",
-    subMenu: [
+    subMainMenu: [
       {
         name: "Upcoming Appointments",
         path: "/appointments/upcoming",
@@ -111,7 +111,7 @@ export const SidebarMenuItems = [
     icon: Icons.CHAT_ICON.path,
     name: "Communication",
     path: "/communication",
-    subMenu: [
+    subMainMenu: [
       {
         name: "Chat with Doctor",
         path: "/communication/chat",
@@ -133,7 +133,7 @@ export const SidebarMenuItems = [
     icon: Icons.DOC_MED_ICON.path,
     name: "Medical Documentation",
     path: "/medical-records",
-    subMenu: [
+    subMainMenu: [
       {
         name: "Electronic Records",
         path: "/medical-records/electronic",
@@ -155,7 +155,7 @@ export const SidebarMenuItems = [
     icon: Icons.BICYCLE_ICON.path,
     name: "Lifestyle and Prevention",
     path: "/lifestyle",
-    subMenu: [
+    subMainMenu: [
       {
         name: "Health Journal",
         path: "/lifestyle/health-journal",
@@ -177,7 +177,7 @@ export const SidebarMenuItems = [
   //   icon: Icons.DASHBOARD_ICON.path,
   //   name: "Account Settings",
   //   path: '/account-settings',
-  //   subMenu: [
+  //   subMainMenu: [
   //     { name: "Patient Profile", path: '/account-settings/profile' },
   //     { name: "Security Settings", path: '/account-settings/security' },
   //     { name: "Access Permissions", path: '/account-settings/access-permissions' }
@@ -187,7 +187,7 @@ export const SidebarMenuItems = [
     icon: Icons.BELL_ICON.path,
     name: "Notification System",
     path: "/notifications",
-    subMenu: [
+    subMainMenu: [
       {
         name: "Appointment Reminders",
         path: "/notifications/appointments",
@@ -209,7 +209,7 @@ export const SidebarMenuItems = [
     icon: Icons.DEVICE_ICON.path,
     name: "Device Integration",
     path: "/devices",
-    subMenu: [
+    subMainMenu: [
       {
         name: "Wearable Devices",
         path: "/devices/wearable",
@@ -226,7 +226,7 @@ export const SidebarMenuItems = [
     icon: Icons.CASH_ICON.path,
     name: "Billing and Insurance",
     path: "/billing",
-    subMenu: [
+    subMainMenu: [
       {
         name: "Invoices",
         path: "/billing/invoices",

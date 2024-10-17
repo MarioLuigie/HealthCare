@@ -1,7 +1,9 @@
 'use client'
-import Card from '@/components/shared/Card'
 // modules
 import { useState } from 'react'
+// components
+import NavButton from '@/components/shared/buttons/NavButton'
+import Card from '@/components/shared/Card'
 
 export default function Widgets() {
 	const [isOpen, setIsOpen] = useState<boolean>(true)
@@ -10,22 +12,21 @@ export default function Widgets() {
 
 	return (
 		<div className="overflow-hidden h-full min-w-[320px] flex flex-col items-center">
-			<div className="w-full min-h-[50px] max-h-[50px] flex items-end justify-between px-4 pb-[4px]">
+			<div className="w-full min-h-[54px] max-h-[54px] flex items-end justify-between px-4 pb-[4px]">
 				<p>Widgets</p>
-        <button>nav</button>
+				<NavButton navigate="forward" onClick={() => {}} />
 			</div>
 
-			<div className="overflow-auto remove-scrollbar space-y-2 px-4 w-full">
+			<div className="overflow-auto remove-scrollbar space-y-4 px-4 w-full">
 				{new Array(25).fill('Test').map((item, i) => (
-					<>
-          <p className="text-xs text-textSecondary">Test Information</p>
-						<Card
-							key={i}
-							className="p-4 rounded-md bg-card shadow-lg w-full border border-border"
-						>
-							<p>Widget <span>{item}</span></p>
+					<div key={i} className='space-y-1'>
+						<p className="text-xs text-textSecondary">Test Information</p>
+						<Card className="p-4 rounded-md bg-card shadow-lg w-full border border-border">
+							<p>
+								Widget <span>{item}</span>
+							</p>
 						</Card>
-					</>
+					</div>
 				))}
 			</div>
 		</div>
