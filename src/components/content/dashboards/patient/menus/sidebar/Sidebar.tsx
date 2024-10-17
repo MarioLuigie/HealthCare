@@ -5,11 +5,11 @@ import Card from '@/components/shared/Card'
 
 export default function Sidebar() {
 	return (
-		<div className="h-full overflow-hidden flex flex-col">
-			<div className="w-full min-h-[50px] max-h-[50px] flex items-end">
-				<p className="pl-4 pb-[4px]">Menu</p>
+		<div className="h-full overflow-hidden flex flex-col min-w-[320px]">
+			<div className="w-full min-h-[50px] max-h-[50px] flex items-end px-4 pb-[4px]">
+				<p>Menu</p>
 			</div>
-			<div className="overflow-auto remove-scrollbar space-y-4 px-4 w-full min-w-[320px]">
+			<div className="overflow-auto remove-scrollbar space-y-4 px-4 w-full">
 				<SidebarMenu />
 
 				<div className="space-y-2">
