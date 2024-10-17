@@ -140,11 +140,29 @@ const config = {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'caret-blink': 'caret-blink 1.25s ease-out infinite',
 			},
-			maxWidth: {
-				'globalSearch' : '700px'
-			},
 			width: {
-				'rwd' : '500px'
+				'rwd' : '500px',
+				'widgetsWidth': '320px',
+				'sidebarWidth': '320px',
+			},
+			maxWidth: {
+				'globalSearch' : '700px',
+				'widgetsMaxWidth': '320px',
+				'sidebarMaxWidth': '320px',
+			},
+			minWidth: {
+				'widgetsMinWidth': '320px',
+				'sidebarMinWidth': '320px',
+			},
+			height: {
+				'footerHeight' : '60px'
+			},
+			minHeight: {
+				'minFooterHeight' : '60px',
+				'minHeaderHeight' : '75px',
+			},
+			maxHeight: {
+				'maxFooterHeight' : '60px'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
