@@ -7,9 +7,9 @@ import Card from '@/components/shared/Card'
 
 export default function SidebarMenu() {
 	return (
-		<div className="space-y-2">
+		<div className="space-y-2 w-full">
 			<p className="text-xs text-textSecondary">Dashboard Managment</p>
-			<Card className='bg-card w-full'>
+			<Card className='bg-card'>
 				<nav className="text-sm rounded-xl">
 					<ul className="space-y-3">
 						{SidebarMenuItems.map((item, index) => (

@@ -32,32 +32,6 @@ export default async function PatientDashboardPage({
       {/* User verified and Patient created - create appointment*/}
       {isSessionUserVerified && patient && (
         <div className="flex flex-col grow w-full">
-          <div className="flex gap-4 w-full h-[190px]">
-            <Card
-              title="User Info"
-              className="grow bg-card border border-border"
-            >
-              <div></div>
-            </Card>
-            <div className="grow max-w-[300px]">
-              <AccordionCard>
-                <div className="p-4">
-                  <div>Test</div>
-                  <div>Test</div>
-                  <div>Test</div>
-                </div>
-              </AccordionCard>
-            </div>
-            <div className="grow max-w-[300px]">
-              <AccordionCard>
-                <div className="p-4">
-                  <div>Test</div>
-                  <div>Test</div>
-                  <div>Test</div>
-                </div>
-              </AccordionCard>
-            </div>
-          </div>
           <CreateAppointment sessionUser={sessionUser} />
         </div>
       )}

@@ -1,5 +1,5 @@
 // components
-import { Header, Aside, Main, Footer, Nav } from "@/components/layout"
+import { Header, Aside, Main, Footer, Nav, Bside } from "@/components/layout"
 
 export default function Layout({
   children,
@@ -12,14 +12,15 @@ export default function Layout({
     <div className="flex flex-col justify-between h-screen border-x border-border">
       <Header />
       <div className="flex overflow-hidden remove-scrollbar grow w-full">
-        <Aside className="hidden lg:flex h-full w-[320px]" />
+        <Aside />
         <div className="flex flex-col w-full">
 					<Nav />
-          <Main className="overflow-auto remove-scrollbar grow h-full p-4">
+          <Main>
             {children}
           </Main>
           <Footer />
         </div>
+        <Bside className="hidden lg:flex" />
       </div>
     </div>
   )

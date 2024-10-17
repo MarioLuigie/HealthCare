@@ -20,7 +20,7 @@ export default function AccordionCard({ children, className }: AccordionCardProp
       <Accordion
         type="single"
         collapsible
-        className={clsx("bg-input rounded-lg border border-border shadow-lg", className)}
+        className={clsx("bg-card rounded-lg border border-border shadow-lg", className)}
       >
         <AccordionItem value="item-1" className="border-b-0">
           <AccordionTrigger className="p-2 rounded-md hover:no-underline hover:bg-hover transition duration-300 ease-in-out">

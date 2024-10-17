@@ -5,7 +5,7 @@ import Card from '@/components/shared/Card'
 
 export default function Sidebar() {
 	return (
-		<div className="overflow-auto remove-scrollbar space-y-4 px-4">
+		<div className="overflow-auto remove-scrollbar space-y-4 px-4 w-full">
 			<SidebarMenu />
 
 			<div className="space-y-2">
