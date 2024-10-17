@@ -3,7 +3,7 @@ import auth from '@/auth'
 // components
 import Logo from '@/components/content/Logo'
 import UserDropDownMenu from '@/components/content/dashboards/manipulations/UserDropDownMenu'
-import SideBarMenuMobil from '@/components/content/dashboards/patient/menus/sidebar/SideBarMenuMobile'
+import SideBarMenuMobil from '@/components/content/dashboards/patient/menus/sidebar/MainMenuMobile'
 
 export default async function Header() {
 	const doctorDummyData = {

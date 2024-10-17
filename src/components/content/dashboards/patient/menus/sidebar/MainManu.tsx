@@ -2,7 +2,7 @@
 // lib
 import { SidebarMenuItems } from '@/lib/constants/menus'
 // components
-import SidebarMenuItem from '@/components/content/dashboards/patient/menus/sidebar/SidebarMenuItem'
+import SidebarMenuItem from '@/components/content/dashboards/patient/menus/sidebar/MainMenuItem'
 import Card from '@/components/shared/Card'
 
 export default function SidebarMenu() {

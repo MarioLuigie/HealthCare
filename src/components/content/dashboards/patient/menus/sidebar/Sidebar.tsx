@@ -1,6 +1,6 @@
 'use client'
 // components
-import SidebarMenu from '@/components/content/dashboards/patient/menus/sidebar/SidebarMenu'
+import SidebarMenu from '@/components/content/dashboards/patient/menus/sidebar/MainManu'
 import Card from '@/components/shared/Card'
 
 export default function Sidebar() {
