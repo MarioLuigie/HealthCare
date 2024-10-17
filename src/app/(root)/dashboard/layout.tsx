@@ -1,29 +1,27 @@
 // components
-import { Header, Aside, Main, Footer, Nav, Bside } from "@/components/layout"
+import { Header, Nav, Aside, Bside, Main, Footer } from '@/components/layout'
 
 export default function Layout({
-  children,
-  params,
+	children,
+	params,
 }: {
-  children: React.ReactNode
-  params: SingleSlugParams
+	children: React.ReactNode
+	params: SingleSlugParams
 }) {
-  return (
-    <div className="flex flex-col justify-between h-screen border-x border-border">
-      <Header />
-      <div className="flex overflow-hidden remove-scrollbar grow w-full">
-        <Aside />
-        <div className="flex flex-col w-full">
+	return (
+		<div className="flex flex-col justify-between h-screen border-x border-border">
+			<Header />
+			<div className="flex overflow-hidden remove-scrollbar grow w-full">
+				<Aside />
+				<div className="flex flex-col w-full">
 					<Nav />
-          <Main>
-            {children}
-          </Main>
-          <Footer />
-        </div>
-        <Bside className="hidden lg:flex" />
-      </div>
-    </div>
-  )
+					<Main>{children}</Main>
+					<Footer />
+				</div>
+				<Bside />
+			</div>
+		</div>
+	)
 }
 
 // ALTERNATIVE

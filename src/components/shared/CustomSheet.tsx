@@ -14,7 +14,7 @@ import {
 type CustomSheetProps = {
 	children: React.ReactNode
 	side?: 'left' | 'right' | 'top' | 'bottom'
-	title: string
+	title?: string
 	description?: string
 	trigger?: React.ReactNode | string
 	className?: string
@@ -32,8 +32,15 @@ export default function CustomSheet({
 		<Sheet>
 			<SheetTrigger>{trigger}</SheetTrigger>
 			<SheetContent side={side} className={clsx(className)}>
-				<SheetHeader className='mb-2'>
-					<SheetTitle className="text-textPrimary">{title}</SheetTitle>
+				<SheetHeader>
+					{title ? (
+						<SheetTitle className="text-textPrimary">{title}</SheetTitle>
+					) : (
+						<VisuallyHidden>
+							<SheetTitle>This sheet has no visible title.</SheetTitle>
+						</VisuallyHidden>
+					)}
+
 					{description ? (
 						<SheetDescription className="pb-2">
 							{description}
@@ -46,7 +53,6 @@ export default function CustomSheet({
 						</VisuallyHidden>
 					)}
 				</SheetHeader>
-
 				{children}
 			</SheetContent>
 		</Sheet>

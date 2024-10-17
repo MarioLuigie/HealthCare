@@ -2,6 +2,9 @@
 import CustomSheet from '@/components/shared/CustomSheet'
 import Sidebar from '@/components/content/dashboards/patient/menus/sidebar/Sidebar'
 
+{
+	/* Trigger for sheet menu */
+}
 function SheetTrigger() {
 	return (
 		<div className="relative z-50">
@@ -10,13 +13,15 @@ function SheetTrigger() {
 	)
 }
 
+{
+	/* Sidebar menu for mobile */
+}
 export default function SideBarMenuMobile() {
 	return (
 		<div className="mobile">
 			<CustomSheet
 				trigger={<SheetTrigger />}
-				title="Menu"
-				className="overflow-auto remove-scrollbar bg-backgroundTransparent blur-plane border-r-0 p-4 pt-6"
+				className="overflow-auto remove-scrollbar bg-backgroundTransparent blur-plane border-r-0 p-4 pb-10"
 			>
 				<Sidebar />
 			</CustomSheet>
