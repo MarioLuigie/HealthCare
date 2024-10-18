@@ -31,7 +31,7 @@ export default async function SignInPage({
 		>
 			{/* <PassKeyDialog searchParams={searchParams} /> */}
 			<div className="flex flex-col justify-between grow">
-				<Logo redirect forceLogoFull/>
+				<Logo redirect full />
 				<div>
 					<PageTitle
 						title="Sign In"
@@ -41,7 +41,7 @@ export default async function SignInPage({
 					<AuthForm authType={AuthTypes.SIGN_IN} />
 					<Link
 						href={generateUrl([Route.SIGN_UP])}
-						className="text-white flex justify-end mt-6"
+						className="text-white flex justify-end mt-4"
 					>
 						<p className="flex gap-2">
 							<span className="text-textSecondary">

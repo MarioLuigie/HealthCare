@@ -1,6 +1,6 @@
 'use client'
 // components
-import SidebarMenu from '@/components/content/dashboards/patient/menus/sidebar/MainManu'
+import MainManu from '@/components/content/dashboards/patient/menus/sidebar/MainManu'
 import Card from '@/components/shared/Card'
 
 export default function Sidebar() {
@@ -10,7 +10,7 @@ export default function Sidebar() {
 				<p>Menu</p>
 			</div>
 			<div className="overflow-auto remove-scrollbar space-y-4 px-4 w-full">
-				<SidebarMenu />
+				<MainManu />
 
 				<div className='space-y-1'>
 					<p className="text-xs text-textSecondary">Test Information</p>

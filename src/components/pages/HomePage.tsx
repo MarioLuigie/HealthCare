@@ -8,7 +8,7 @@ import { SearchParamsString } from "@/lib/types/enums"
 import auth from "@/auth"
 // components
 import PageTitle from "@/components/shared/PageTitle"
-import LogoFull from "@/components/content/Logo"
+import Logo from "@/components/content/Logo"
 import Copyright from "@/components/content/Copyright"
 import FormPageTemplate from "@/components/shared/FormPageTemplate"
 import PassKeyDialog from "@/components/dialogs/PassKeyDialog"
@@ -36,7 +36,7 @@ export default async function HomePage({
     >
       <PassKeyDialog searchParams={searchParams} />
       <div className="flex flex-col justify-between grow">
-        <LogoFull redirect />
+        <Logo redirect />
         <div>
           <PageTitle
             title="Hi there !"

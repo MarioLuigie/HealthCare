@@ -33,7 +33,7 @@ export default async function SignUpPage({
 		>
 			{/* <PassKeyDialog searchParams={searchParams} /> */}
 			<div className="flex flex-col justify-between grow">
-				<Logo redirect forceLogoFull />
+				<Logo redirect full />
 				<div>
 					<PageTitle
 						title="Sign Up"
@@ -43,7 +43,7 @@ export default async function SignUpPage({
 					<AuthForm authType={AuthTypes.SIGN_UP} />
 					<Link
 						href={generateUrl([Route.SIGN_IN])}
-						className="text-white flex justify-end mt-6"
+						className="text-white flex justify-end mt-4"
 					>
 						<p className="flex-center gap-2">
 							<span className="text-textSecondary">

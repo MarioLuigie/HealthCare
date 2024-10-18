@@ -23,10 +23,10 @@ function LogoTemplate({ src, alt }: { src: string; alt: string }) {
 
 export default function Logo({
   redirect,
-  forceLogoFull,
+  full,
 }: {
   redirect?: boolean
-  forceLogoFull?: boolean
+  full?: boolean
 }) {
   const { theme } = useTheme()
   const [isDarkTheme, setIsDarkTheme] = useState<boolean | null>(null)
@@ -35,30 +35,29 @@ export default function Logo({
     setIsDarkTheme(theme === "dark")
   }, [theme])
 
-  const logoSemi = (
+  const logoSemi = 
     <LogoTemplate src={Icons.LOGO_ICON.path} alt={Icons.LOGO_ICON.alt} />
-  )
-  const logoFullDarkMode = (
+  
+  const logoFullDarkMode = 
     <LogoTemplate
       src={Icons.LOGO_FULL_ICON.path}
       alt={Icons.LOGO_FULL_ICON.alt}
     />
-  )
-  const logoFullLightMode = (
+  
+  const logoFullLightMode = 
     <LogoTemplate
       src={Icons.LOGO_FULL_BLACK_ICON.path}
       alt={Icons.LOGO_FULL_BLACK_ICON.alt}
     />
-  )
+  
 
   if (isDarkTheme === null) return <div></div>
 
 
 	// ! Check or remove condition below
-  if (forceLogoFull) {
-		console.log('force')
+  if (full) {
     return (
-      <div className="h-10 w-fit desktop-sm">
+      <div className="h-10 w-fit">
         {redirect ? (
           <Link href={Route.HOME}>
             {isDarkTheme ? logoFullDarkMode : logoFullLightMode}

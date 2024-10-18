@@ -3,6 +3,8 @@ import plugin from 'tailwindcss/plugin'
 
 const { fontFamily } = require('tailwindcss/defaultTheme')
 
+const asideWitdh = '320px'
+
 const config = {
 	darkMode: ['class'],
 	content: [
@@ -142,7 +144,8 @@ const config = {
 			},
 			width: {
 				'rwd' : '500px',
-				'widgetsWidth': '320px',
+				'widgetsWidth': asideWitdh,
+				'widgetsWidthZero': '0px',
 				'sidebarWidth': '320px',
 			},
 			maxWidth: {
@@ -169,6 +172,9 @@ const config = {
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)',
 			},
+			translate: {
+				'widgetsWidth' : '320px'
+			}
 		},
 	},
 	plugins: [

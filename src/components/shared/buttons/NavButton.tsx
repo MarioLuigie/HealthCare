@@ -1,6 +1,6 @@
 'use client'
 // modules
-import clsx from 'clsx'
+import { cn } from '@/lib/utils'
 import { useState } from 'react'
 import { ChevronRight, ChevronLeft, ChevronDown, ChevronUp } from 'lucide-react'
 
@@ -38,7 +38,7 @@ export default function NavButton({
 		<button
 			onClick={handleClick}
 			aria-label={`Navigate ${navigate}`}
-			className={clsx('w-full h-full', className)}
+			className={cn('w-full h-full', className)}
 		>
 			<IconComponent
 				style={{
@@ -46,7 +46,7 @@ export default function NavButton({
 					height: `${size}px`,
 					transform: isRotated ? `rotate(${rotate}deg)` : 'none',
 				}}
-				className="transition duration-300 ease-in-out"
+				className="transition-all duration-300 ease-in-out"
 			/>
 		</button>
 	)
