@@ -15,8 +15,8 @@ export default function CreatePatient({ sessionUser }: CreatePatientProps) {
 			<Image
 				src={Images.PATIENT_CREATE_IMAGE.path}
 				alt={Images.PATIENT_CREATE_IMAGE.alt}
-				width={380}
-				height={380}
+				width={300}
+				height={300}
 			/>
 			<p className="text-green-400 text-3xl font-bold text-center">
 				Create your Patient Profile!
@@ -26,7 +26,7 @@ export default function CreatePatient({ sessionUser }: CreatePatientProps) {
 				create and manage your appointments with our doctors.
 			</p>
 			<div className="flex-center mt-4">
-				<CreatePatientButton sessionUser={sessionUser}>
+				<CreatePatientButton sessionUser={sessionUser} variant='fill' plus >
 					Create Patient Profile
 				</CreatePatientButton>
 			</div>

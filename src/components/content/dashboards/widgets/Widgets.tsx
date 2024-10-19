@@ -68,12 +68,11 @@
 
 'use client'
 // modules
-import clsx from 'clsx'
 import { cn } from '@/lib/utils'
 import { useState } from 'react'
 // components
-import NavButton from '@/components/shared/buttons/NavButton'
 import Card from '@/components/shared/Card'
+import WidgetsTriggerButton from './WidgetsTriggerButton'
 
 export default function Widgets() {
 	const [isOpen, setIsOpen] = useState<boolean>(true)
@@ -111,25 +110,7 @@ export default function Widgets() {
 				))}
 			</div>
 
-			<div
-				className={cn(
-					'relative flex min-h-minFooterHeight w-full grow'
-				)}
-			>
-				<div
-					className={cn(
-						'absolute right-0 bottom-0 w-16 flex-center min-h-minFooterHeight pl-[6px] rounded-l-full bg-card border border-border transition-all duration-300 ease-in-out',
-						!isOpen && 'transform -translate-x-widgetsWidth'
-					)}
-				>
-					<NavButton
-						navigate="forward"
-						onClick={handleClose}
-						size={40}
-						rotate={180}
-					/>
-				</div>
-			</div>
+			<WidgetsTriggerButton isOpen={isOpen} handleClose={handleClose} />
 		</div>
 	)
 }

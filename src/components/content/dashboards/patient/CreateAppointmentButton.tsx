@@ -1,6 +1,7 @@
 'use client'
 // modules
 import React, { useState } from 'react'
+import { Plus } from 'lucide-react'
 // lib
 import { ActionTypes } from '@/lib/types/enums'
 // components
@@ -11,11 +12,15 @@ import AppointmentForm from '@/components/forms/AppointmentForm'
 type CreateAppointmentButtonProps = {
 	children: React.ReactNode
 	sessionUser: any
+	variant?: 'text' | 'fill' | 'outline'
+	plus?: boolean
 }
 
 export default function CreateAppointmentButton({
 	children,
 	sessionUser,
+	variant='fill',
+	plus,
 }: CreateAppointmentButtonProps) {
 	const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
 
@@ -29,7 +34,8 @@ export default function CreateAppointmentButton({
 
 	return (
 		<>
-			<BasicButton variant="fill" onClick={handleOpenDialog}>
+			<BasicButton variant={variant} onClick={handleOpenDialog}>
+				{plus && <Plus size={18} className='mr-[2px]'/>}
 				{children}
 			</BasicButton>
 			{isDialogOpen && (

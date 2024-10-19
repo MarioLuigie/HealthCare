@@ -17,8 +17,8 @@ export default function CreateAppointment({
 			<Image
 				src={Images.APPOINTMENT_CREATE_IMAGE.path}
 				alt={Images.APPOINTMENT_CREATE_IMAGE.alt}
-				width={350}
-				height={350}
+				width={300}
+				height={300}
 			/>
 			<p className="text-green-400 text-3xl font-bold text-center">
 				Create Appointment with Doctor!
@@ -28,7 +28,7 @@ export default function CreateAppointment({
 				Don&lsquo;t forget to describe what ails you.
 			</p>
 			<div className="flex-center mt-4">
-				<CreateAppointmentButton sessionUser={sessionUser}>
+				<CreateAppointmentButton sessionUser={sessionUser} variant='fill' plus >
 					Create Appointment
 				</CreateAppointmentButton>
 			</div>

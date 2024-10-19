@@ -5,15 +5,20 @@ import React, { useState } from 'react'
 import BasicButton from '@/components/shared/buttons/BasicButton'
 import GeneralDialog from '@/components/dialogs/GeneralDialog'
 import PatientForm from '@/components/forms/PatientForm'
+import { Plus } from 'lucide-react'
 
 type CreatePatientButtonProps = {
 	children: React.ReactNode
 	sessionUser: any
+	plus?: boolean
+	variant?: 'text' | 'fill' | 'outline'
 }
 
 export default function CreatePatientButton({
 	children,
 	sessionUser,
+	plus,
+	variant,
 }: CreatePatientButtonProps) {
 	const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false)
 
@@ -27,7 +32,8 @@ export default function CreatePatientButton({
 
 	return (
 		<>
-			<BasicButton variant="fill" onClick={handleOpenDialog}>
+			<BasicButton variant={variant} onClick={handleOpenDialog}>
+			{plus && <Plus size={18} className='mr-[2px]'/>}
 				{children}
 			</BasicButton>
 			{isDialogOpen && (
