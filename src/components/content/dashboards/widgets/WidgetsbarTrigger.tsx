@@ -1,15 +1,17 @@
-import NavButton from "@/components/shared/buttons/NavButton"
+// lib
 import { cn } from "@/lib/utils"
+// components
+import NavButton from "@/components/shared/buttons/NavButton"
 
-type WidgetsTriggerButtonProps = {
+type WidgetsbarTriggerProps = {
   isOpen: boolean
   handleClose: () => void
 }
 
-export default function WidgetsTriggerButton({
+export default function WidgetsbarTrigger({
   isOpen,
   handleClose,
-}: WidgetsTriggerButtonProps) {
+}: WidgetsbarTriggerProps) {
   return (
     <div className={cn("relative flex min-h-minFooterHeight w-full grow")}>
       <div

@@ -3,7 +3,7 @@ import auth from '@/auth'
 // components
 import Logo from '@/components/content/Logo'
 import UserDropDownMenu from '@/components/content/dashboards/manipulations/UserDropDownMenu'
-import SideBarMenuMobil from '@/components/content/dashboards/patient/menus/sidebar/MainMenuMobile'
+import SidebarSheet from '@/components/content/dashboards/patient/menus/sidebar/SidebarSheet'
 
 export default async function Header() {
 	const doctorDummyData = {
@@ -15,7 +15,7 @@ export default async function Header() {
 
 	return (
 		<header className="blur-plane bg-base-200/50 border-b-[1px] border-border px-2 py-4 lg:py-6 z-40 min-h-minHeaderHeight max-h-minHeaderHeight sticky top-0 left-0 w-full flex justify-between items-center">
-			<SideBarMenuMobil />
+			<SidebarSheet />
 			<Logo redirect />
 			<div className="flex-end gap-3">
 				<div className={`desktop`}>Welcome!</div>

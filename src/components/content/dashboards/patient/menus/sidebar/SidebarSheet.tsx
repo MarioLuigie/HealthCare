@@ -2,9 +2,6 @@
 import CustomSheet from '@/components/shared/CustomSheet'
 import Sidebar from '@/components/content/dashboards/patient/menus/sidebar/Sidebar'
 
-{
-	/* Trigger for sheet menu */
-}
 function SheetTrigger() {
 	return (
 		<div className="relative z-50">
@@ -13,10 +10,7 @@ function SheetTrigger() {
 	)
 }
 
-{
-	/* Sidebar menu for mobile */
-}
-export default function MainMenuMobile() {
+export default function SidebarSheet() {
 	return (
 		<div className="mobile">
 			<CustomSheet
