@@ -5,11 +5,11 @@ import CustomSheet from "@/components/shared/CustomSheet"
 import Widgets from "@/components/content/dashboards/widgets/Widgets"
 import AsideTitle from "@/components/shared/AsideTitle"
 
-type WidgetsbarSheetProps = {
+type WidgetsSheetProps = {
   className?: string
 }
 
-export default function WidgetsbarSheet({ className }: WidgetsbarSheetProps) {
+export default function WidgetsSheet({ className }: WidgetsSheetProps) {
   return (
     <div className={cn("mobile", className)}>
       <CustomSheet

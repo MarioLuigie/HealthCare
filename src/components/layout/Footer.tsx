@@ -1,6 +1,6 @@
 // components
 import Copyright from "@/components/content/Copyright"
-import WidgetsSheet from "@/components/content/dashboards/widgets/WidgetsbarSheet"
+import WidgetsSheet from "@/components/content/dashboards/widgets/WidgetsSheet"
 
 export default function Footer() {
   return (
