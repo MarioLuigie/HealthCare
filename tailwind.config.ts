@@ -4,6 +4,9 @@ import plugin from 'tailwindcss/plugin'
 const { fontFamily } = require('tailwindcss/defaultTheme')
 
 const asideWitdh = '320px'
+const bsideWitdh = '320px'
+const footerHeight = '60px'
+const headerHeight = '75px'
 
 const config = {
 	darkMode: ['class'],
@@ -144,28 +147,29 @@ const config = {
 			},
 			width: {
 				'rwd' : '500px',
-				'widgetsWidth': asideWitdh,
+				'widgetsWidth': bsideWitdh,
 				'widgetsWidthZero': '0px',
-				'sidebarWidth': '320px',
+				'sidebarWidth': asideWitdh,
 			},
 			maxWidth: {
 				'globalSearch' : '700px',
-				'widgetsMaxWidth': '320px',
-				'sidebarMaxWidth': '320px',
+				'widgetsMaxWidth': bsideWitdh,
+				'sidebarMaxWidth': asideWitdh,
 			},
 			minWidth: {
-				'widgetsMinWidth': '320px',
-				'sidebarMinWidth': '320px',
+				'widgetsMinWidth': bsideWitdh,
+				'sidebarMinWidth': asideWitdh,
 			},
 			height: {
-				'footerHeight' : '60px'
+				'footerHeight' : footerHeight
 			},
 			minHeight: {
-				'minFooterHeight' : '60px',
-				'minHeaderHeight' : '75px',
+				'minFooterHeight' : footerHeight,
+				'minHeaderHeight' : headerHeight,
+				'widgetsMinHeight': footerHeight,
 			},
 			maxHeight: {
-				'maxFooterHeight' : '60px'
+				'maxFooterHeight' : footerHeight
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

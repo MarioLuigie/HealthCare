@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="min-h-minFooterHeight border-t border-t-border">
       <div className="relative flex-center w-full h-full">
         <Copyright />
-        <WidgetsSheet className="absolute right-0 bottom-0" />
+        <WidgetsSheet className="absolute right-0 bottom-0 h-footerHeight" />
       </div>
     </footer>
   )

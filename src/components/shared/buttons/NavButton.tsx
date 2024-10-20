@@ -6,7 +6,7 @@ import { ChevronRight, ChevronLeft, ChevronDown, ChevronUp } from 'lucide-react'
 
 type NavButtonProps = {
 	navigate: 'up' | 'down' | 'forward' | 'back'
-	onClick: () => void // Funkcja przesłana z komponentu rodzica
+	onClick?: () => void
 	className?: string
 	size?: number
 	rotate?: number
@@ -31,14 +31,14 @@ export default function NavButton({
 
 	const handleClick = () => {
 		if (rotate) setIsRotated((prev) => !prev)
-		onClick()
+		onClick && onClick()
 	}
 
 	return (
-		<button
+		<div
 			onClick={handleClick}
 			aria-label={`Navigate ${navigate}`}
-			className={cn('w-full h-full', className)}
+			className={cn('w-full h-full cursor-pointer', className)}
 		>
 			<IconComponent
 				style={{
@@ -48,6 +48,6 @@ export default function NavButton({
 				}}
 				className="transition-all duration-300 ease-in-out"
 			/>
-		</button>
+		</div>
 	)
 }
