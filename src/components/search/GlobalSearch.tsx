@@ -66,11 +66,11 @@ export default function GlobalSearch() {
 
 	return (
 		<div
-			className="w-full h-full flex-center"
+			className="w-full h-full flex justify-center items-center"
 			ref={searchContainerRef}
 		>
 			<div className='relative w-full'>
-				<div className="w-full xl:max-w-globalSearch border border-border bg-input flex min-h-[35px] grow items-center gap-1 rounded-lg px-4 mx-auto">
+				<div className="flex items-center w-full xl:max-w-globalSearch border border-border bg-input min-h-[35px] grow gap-1 rounded-lg px-4 mx-auto">
 					<SVGImage src={Icons.SEARCH_ICON.path} width={20} height={20} />
 					<Input
 						type="text"

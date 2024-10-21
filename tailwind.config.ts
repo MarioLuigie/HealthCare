@@ -4,7 +4,7 @@ import plugin from 'tailwindcss/plugin'
 const { fontFamily } = require('tailwindcss/defaultTheme')
 
 const asideWitdh = '320px'
-const asideTitleHeight = '70px'
+const asideTitleHeight = '65px'
 const bsideWitdh = '320px'
 const footerHeight = '60px'
 const headerHeight = '75px'
