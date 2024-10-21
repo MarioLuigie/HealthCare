@@ -1,5 +1,6 @@
-// modules
-import Image from 'next/image'
+// components
+import Avatar from '@/components/content/Avatar'
+
 
 export default function UserAvatar({ user }: { user: any }) {
 	if (!user) {
@@ -8,19 +9,7 @@ export default function UserAvatar({ user }: { user: any }) {
 
 	return (
 		<div className="flex justify-start items-center gap-3">
-			{user.image ? (
-				<Image
-					src={user.image}
-					alt="Avatar"
-					width={32}
-					height={32}
-					className="rounded-full"
-				/>
-			) : (
-				<div className="flex-center w-[40px] aspect-square rounded-full bg-green-300 text-zinc-800 text-lg font-semibold">
-					<p className="pt-[2px]">{user.name.charAt(0)}</p>
-				</div>
-			)}
+			<Avatar user={user} />
 			<p className='desktop'>{user.name}</p>
 		</div>
 	)

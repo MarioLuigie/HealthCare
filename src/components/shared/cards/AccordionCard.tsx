@@ -42,7 +42,7 @@ export default function AccordionCard({
 						<div className="text-start">{trigger}</div>
 					</AccordionTrigger>
 					<AccordionContent
-						className="p-2 pb-6"
+						className="p-4 pb-6"
 						onClick={(e) => e.stopPropagation()}
 					>
 						{children}

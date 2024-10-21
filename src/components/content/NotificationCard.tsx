@@ -14,7 +14,7 @@ export default function NotificationCard({
 	...rest
 }: NotificationCardProps) {
 	return (
-		<Card className={cn('bg-card min-w-[200px] min-h-[160px]', className)} {...rest}>
+		<Card className={cn('bg-card min-w-[220px] min-h-[180px]', className)} {...rest}>
 			{children}
 		</Card>
 	)
