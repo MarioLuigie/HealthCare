@@ -66,25 +66,27 @@ export default function GlobalSearch() {
 
 	return (
 		<div
-			className="relative w-full"
+			className="w-full h-full flex-center"
 			ref={searchContainerRef}
 		>
-			<div className="w-full xl:max-w-globalSearch border border-border bg-input shadow-lg relative flex min-h-[40px] grow items-center gap-1 rounded-lg px-4 mx-auto">
-        <SVGImage src={Icons.SEARCH_ICON.path} width={20} height={20} />
-				<Input
-					type="text"
-					placeholder="Search globally"
-					value={search}
-					onChange={(e) => {
-						setSearch(e.target.value)
+			<div className='relative w-full'>
+				<div className="w-full xl:max-w-globalSearch border border-border bg-input shadow-lg flex min-h-[35px] grow items-center gap-1 rounded-lg px-4 mx-auto">
+					<SVGImage src={Icons.SEARCH_ICON.path} width={20} height={20} />
+					<Input
+						type="text"
+						placeholder="Search globally"
+						value={search}
+						onChange={(e) => {
+							setSearch(e.target.value)
 
-						if (!isOpen) setIsOpen(true)
-						if (e.target.value === '' && isOpen) setIsOpen(false)
-					}}
-					className="paragraph-regular placeholder border-none bg-transparent shadow-none outline-none"
-				/>
+							if (!isOpen) setIsOpen(true)
+							if (e.target.value === '' && isOpen) setIsOpen(false)
+						}}
+						className="paragraph-regular placeholder border-none bg-transparent shadow-none outline-none"
+					/>
+				</div>
+				{isOpen && <GlobalResult />}
 			</div>
-			{isOpen && <GlobalResult />}
 		</div>
 	)
 }

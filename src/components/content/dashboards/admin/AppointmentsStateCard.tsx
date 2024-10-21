@@ -1,7 +1,7 @@
 import { Status } from '@/lib/types/enums'
 import { StatusConfig } from '@/lib/constants'
 import SVGImage from '@/components/shared/SvgImage'
-import Card from '@/components/shared/Card'
+import Card from '@/components/shared/cards/Card'
 
 type AppointmentsStateCard = {
 	status: Status

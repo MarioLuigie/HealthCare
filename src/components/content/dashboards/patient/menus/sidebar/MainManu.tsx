@@ -3,7 +3,7 @@
 import { MainMenuItems } from '@/lib/constants/menus'
 // components
 import MainMenuItem from '@/components/content/dashboards/patient/menus/sidebar/MainMenuItem'
-import Card from '@/components/shared/Card'
+import Card from '@/components/shared/cards/Card'
 
 export default function MainMenu() {
 	return (

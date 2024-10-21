@@ -6,8 +6,8 @@ import { getPatient } from "@/lib/actions/patient.actions"
 import CreatePatient from "@/components/content/dashboards/patient/CreatePatient"
 import CreateAppointment from "@/components/content/dashboards/patient/CreateAppointment"
 import VerifyUserRequest from "@/components/content/dashboards/patient/VerifyUserRequest"
-import Card from "@/components/shared/Card"
-import AccordionCard from "@/components/shared/AccordionCard"
+import Card from "@/components/shared/cards/Card"
+import AccordionCard from "@/components/shared/cards/AccordionCard"
 
 export default async function PatientDashboardPage({
   params,

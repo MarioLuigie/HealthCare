@@ -60,7 +60,7 @@ export default function GlobalResult() {
 	}
 
 	return (
-		<div className="xl:max-w-globalSearch absolute top-full left-1/2 transform -translate-x-1/2 z-10 mt-4 w-full rounded-xl py-2 shadow-lg border border-border bg-input">
+		<div className="absolute top-full left-1/2 xl:max-w-globalSearch transform -translate-x-1/2 z-10 mt-2 w-full rounded-xl py-2 shadow-lg border border-border bg-input">
 			<GlobalFilters />
 			<div className="my-2 h-[1px] bg-border" />
 

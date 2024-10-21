@@ -4,6 +4,7 @@ import plugin from 'tailwindcss/plugin'
 const { fontFamily } = require('tailwindcss/defaultTheme')
 
 const asideWitdh = '320px'
+const asideTitleHeight = '60px'
 const bsideWitdh = '320px'
 const footerHeight = '60px'
 const headerHeight = '75px'
@@ -161,15 +162,18 @@ const config = {
 				'sidebarMinWidth': asideWitdh,
 			},
 			height: {
-				'footerHeight' : footerHeight
+				'footerHeight' : footerHeight,
+				'asideTitleHeight' : asideTitleHeight,
 			},
 			minHeight: {
 				'minFooterHeight' : footerHeight,
 				'minHeaderHeight' : headerHeight,
 				'widgetsMinHeight': footerHeight,
+				'minAsideTitleHeight' : asideTitleHeight,
 			},
 			maxHeight: {
-				'maxFooterHeight' : footerHeight
+				'maxFooterHeight' : footerHeight,
+				'maxAsideTitleHeight' : asideTitleHeight,
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
