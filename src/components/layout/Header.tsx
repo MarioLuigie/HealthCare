@@ -4,6 +4,7 @@ import auth from '@/auth'
 import Logo from '@/components/content/Logo'
 import UserDropDownMenu from '@/components/content/dashboards/manipulations/UserDropDownMenu'
 import SidebarSheet from '@/components/content/dashboards/patient/menus/sidebar/SidebarSheet'
+import GlobalSearch from '../search/GlobalSearch'
 
 export default async function Header() {
 	const doctorDummyData = {

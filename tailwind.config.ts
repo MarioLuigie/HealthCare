@@ -4,7 +4,7 @@ import plugin from 'tailwindcss/plugin'
 const { fontFamily } = require('tailwindcss/defaultTheme')
 
 const asideWitdh = '320px'
-const asideTitleHeight = '60px'
+const asideTitleHeight = '70px'
 const bsideWitdh = '320px'
 const footerHeight = '60px'
 const headerHeight = '75px'
@@ -153,7 +153,7 @@ const config = {
 				'sidebarWidth': asideWitdh,
 			},
 			maxWidth: {
-				'globalSearch' : '700px',
+				'globalSearch' : '500px',
 				'widgetsMaxWidth': bsideWitdh,
 				'sidebarMaxWidth': asideWitdh,
 			},

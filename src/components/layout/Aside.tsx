@@ -7,7 +7,7 @@ export default function Aside() {
       className="hidden lg:flex h-full flex-col border-r border-border"
     >
       <Sidebar />
-      <div className="w-full min-h-[115px] max-h-[115px]"></div>
+      <div className="w-full min-h-minFooterHeight max-h-maxFooterHeight"></div>
     </aside>
   )
 }
