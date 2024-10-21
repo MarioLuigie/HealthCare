@@ -17,7 +17,7 @@ import { RequestCookie } from 'next/dist/compiled/@edge-runtime/cookies'
 import { getErrorByCode } from '../utils/errors'
 
 // Start user verification on Appwrite
-export async function createUserVerification() {
+export async function createUserVerification(): Promise<void> {
 	try {
 		const sessionCookie: RequestCookie | null | undefined = cookies().get(
 			Auth.SESSION
@@ -33,18 +33,8 @@ export async function createUserVerification() {
 		await account.createVerification(
 			generateUrl([Route.USER_VERIFICATION_RESULT])
 		)
-
-		return { success: true, message: 'Verification email sent successfully.' }
 	} catch (err: any) {
 		console.error('Error creating user verification:', err)
-		if (err.code) {
-			return {
-				success: false,
-				message: getErrorByCode(err.code),
-				code: err.code,
-			}
-		}
-		return { success: false, message: 'Create user verification failed.' }
 	}
 }
 
