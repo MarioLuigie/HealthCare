@@ -1,6 +1,4 @@
 import NotificationCard from '@/components/content/NotificationCard'
-import AccordionCard from '@/components/shared/cards/AccordionCard'
-import Card from '@/components/shared/cards/Card'
 
 export default function Topbar() {
 	return (
