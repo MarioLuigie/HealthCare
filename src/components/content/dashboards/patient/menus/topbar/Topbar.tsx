@@ -5,6 +5,9 @@ import { useState } from 'react'
 import NotificationCard from '@/components/content/NotificationCard'
 import AccordionCard from '@/components/shared/cards/AccordionCard'
 import GeneralPatientData from '@/components/content/dashboards/patient/GeneralPatientData'
+import HealthSummary from '@/components/content/dashboards/patient/HealthSummary'
+import HealthAlerts from '@/components/content/dashboards/patient/HealthAlerts'
+import CurrentAppointments from '@/components/content/dashboards/patient/CurrentAppointments'
 
 export default function Topbar({ user, patient }: { user: any; patient: any }) {
 	const [isHide, setIsHide] = useState<boolean>(true)
@@ -21,15 +24,15 @@ export default function Topbar({ user, patient }: { user: any; patient: any }) {
 					</NotificationCard>
 
 					<NotificationCard extitle="Health Summary">
-						<p>Test</p>
+						<HealthSummary patient={patient} />
 					</NotificationCard>
 
 					<NotificationCard extitle="Health Alerts">
-						<p>Test</p>
+						<HealthAlerts patient={patient} />
 					</NotificationCard>
 
 					<NotificationCard extitle="Current Appointments">
-						<p>Test</p>
+						<CurrentAppointments patient={patient} />
 					</NotificationCard>
 				</div>
 			</AccordionCard>

@@ -17,7 +17,7 @@ export default function Avatar({ user }: { user: any }) {
 				/>
 			) : (
 				<div className="flex-center w-[40px] aspect-square rounded-full bg-green-300 text-zinc-800 text-lg font-semibold">
-					<p className="pt-[2px]">{user.name.charAt(0)}</p>
+					<p className="pt-[2px] pr-[2px]">{user.name.charAt(0)}</p>
 				</div>
 			)}
 		</>

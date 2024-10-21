@@ -1,4 +1,4 @@
-import UserAvatar from '@/components/content/UserAvatar'
+import Avatar from '@/components/content/Avatar'
 import { Droplets } from 'lucide-react'
 
 export default function GeneralPatientData({
@@ -11,23 +11,29 @@ export default function GeneralPatientData({
 	return (
 		<div>
 			<div className="flex justify-between items-center">
-				<UserAvatar user={user} />
+				<Avatar user={user} />
 				<div className='flex gap-1 items-center'>
-					<Droplets />
+					<Droplets color='red'/>
 					<p>
 						BT: <span className="font-semibold">0Rh+</span>
 					</p>
 				</div>
 			</div>
-			<div className="mt-4 space-y-1">
+			<div className="mt-6 space-y-2">
 				<p>
 					Primary Physician:{' '}
-					<span className="font-semibold">{patient.primaryPhysician}</span>
+					<span className="font-semibold">dr.{' '}{patient.primaryPhysician}</span>
 				</p>
 				<p>
-					IPN:{' '}
+					Policy Number:{' '}
 					<span className="font-semibold">
 						{patient.insurancePolicyNumber}
+					</span>
+				</p>
+				<p>
+					Subscription Plan:{' '}
+					<span className="font-semibold">
+						Gold
 					</span>
 				</p>
 			</div>
