@@ -8,6 +8,7 @@ const asideTitleHeight = '65px'
 const asideWitdh = '320px'
 const bsideWitdh = '320px'
 const footerHeight = '60px'
+const avatarRadius = '40px'
 
 const config = {
 	darkMode: ['class'],
@@ -151,6 +152,7 @@ const config = {
 				'widgetsWidth': bsideWitdh,
 				'widgetsWidthZero': '0px',
 				'sidebarWidth': asideWitdh,
+				'avatarRadius': avatarRadius,
 			},
 			maxWidth: {
 				'globalSearch' : '500px',
@@ -164,6 +166,7 @@ const config = {
 			height: {
 				'footerHeight' : footerHeight,
 				'asideTitleHeight' : asideTitleHeight,
+				'avatarRadius': avatarRadius
 			},
 			minHeight: {
 				'minFooterHeight' : footerHeight,
