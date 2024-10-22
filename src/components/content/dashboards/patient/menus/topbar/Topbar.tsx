@@ -15,10 +15,10 @@ export default function Topbar({ user, patient }: { user: any; patient: any }) {
 	return (
 		<div onClick={() => setIsHide((prefState) => !prefState)}>
 			<AccordionCard
-				title="Medical Notifications Cards"
+				title="Short Medical Notification Cards"
 				trigger={isHide ? 'Show Cards' : 'Hide Cards'}
 			>
-				<div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-[repeat(auto-fit,minmax(270px,1fr))] w-full">
+				<div className="overflow-auto remove-scrollbar grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] w-full">
 					<NotificationCard extitle="General Patient Data">
 						<GeneralPatientData user={user} patient={patient} />
 					</NotificationCard>

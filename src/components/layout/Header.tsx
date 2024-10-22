@@ -15,7 +15,7 @@ export default async function Header() {
 	const sessionUser = await auth.getSessionUser()
 
 	return (
-		<header className="blur-plane bg-base-200/50 border-b-[1px] border-border px-2 py-4 lg:py-6 z-40 min-h-minHeaderHeight max-h-minHeaderHeight sticky top-0 left-0 w-full flex justify-between items-center">
+		<header className="blur-plane bg-base-200/50 border-b-[1px] border-border px-2 py-4 lg:py-6 z-40 min-h-minHeaderHeight max-h-maxHeaderHeight sticky top-0 left-0 w-full flex justify-between items-center">
 			<SidebarSheet />
 			<Logo redirect />
 			<div className="flex-end gap-3">

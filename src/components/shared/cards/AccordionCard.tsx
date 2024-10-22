@@ -42,7 +42,7 @@ export default function AccordionCard({
 						<div className="text-start">{trigger}</div>
 					</AccordionTrigger>
 					<AccordionContent
-						className="p-4 pb-6"
+						className="p-4 pb-6 flex flex-col max-h-cardsMaxHeight"
 						onClick={(e) => e.stopPropagation()}
 					>
 						{children}

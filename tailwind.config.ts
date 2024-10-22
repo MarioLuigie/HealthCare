@@ -3,11 +3,11 @@ import plugin from 'tailwindcss/plugin'
 
 const { fontFamily } = require('tailwindcss/defaultTheme')
 
-const asideWitdh = '320px'
+const headerHeight = '75px'
 const asideTitleHeight = '65px'
+const asideWitdh = '320px'
 const bsideWitdh = '320px'
 const footerHeight = '60px'
-const headerHeight = '75px'
 
 const config = {
 	darkMode: ['class'],
@@ -174,6 +174,8 @@ const config = {
 			maxHeight: {
 				'maxFooterHeight' : footerHeight,
 				'maxAsideTitleHeight' : asideTitleHeight,
+				'maxHeaderHeight' : headerHeight,
+				'cardsMaxHeight': `calc(100vh - ${asideTitleHeight} - ${headerHeight} - 80px)`,
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
